@@ -1,0 +1,90 @@
+{
+	"tasks": [
+		{
+			"id": "1",
+			"description": "descr",
+			"creator": {
+				"username": "Max",
+				"avatar": ""
+			},
+			"date": "22.04",
+			"title": "title",
+			"tags": [
+				{
+					"id": "1",
+					"text": "Programming"
+				}
+			],
+			"isActive": false
+		},
+		{
+			"id": "2",
+			"description": "descr",
+			"creator": {
+				"username": "Max",
+				"avatar": ""
+			},
+			"date": "22.04",
+			"title": "title",
+			"tags": [
+				{
+					"id": "1",
+					"text": "Programming"
+				}
+			],
+			"isActive": false
+		},
+		{
+			"id": "3",
+			"description": "descr",
+			"creator": {
+				"username": "Max",
+				"avatar": ""
+			},
+			"date": "22.04",
+			"title": "title",
+			"tags": [
+				{
+					"id": "1",
+					"text": "Programming"
+				}
+			],
+			"isActive": false
+		},
+		{
+			"id": "4",
+			"description": "descr",
+			"creator": {
+				"username": "Max",
+				"avatar": ""
+			},
+			"date": "22.04",
+			"title": "title",
+			"tags": [
+				{
+					"id": "1",
+					"text": "Programming"
+				}
+			],
+			"isActive": false
+		}
+	],
+	"achieves": [
+		{
+			"id": "1",
+			"description": "Описание достижения"
+		},
+		{
+			"id": "2",
+			"description": "Описание достижения"
+		},
+		{
+			"id": "3",
+			"description": "Описание достижения"
+		}
+	],
+	"stats": [
+		{"id": "1", "value": 123, "title": "Решённых"},
+		{"id": "2", "value": 50, "title": "Созданных"}
+	]
+}
