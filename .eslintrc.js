@@ -31,6 +31,7 @@ module.exports = {
 				assert: "either"
 			}
 		],
-		"react/require-default-props": "off"
+		"react/require-default-props": "off",
+		"no-param-reassign": "off"
 	}
 };
