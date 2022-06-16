@@ -1,0 +1,10 @@
+.item {
+	color: var(--color-text-light);
+	font-size: 16px;
+
+	&:hover {
+		background: var(--color-accent);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}

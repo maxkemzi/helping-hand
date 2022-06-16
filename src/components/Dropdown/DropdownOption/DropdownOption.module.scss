@@ -1,0 +1,19 @@
+.option {
+	display: inline-block;
+	color: var(--color-text-dark-light);
+	transition: color .3s ease;
+	margin-bottom: 4px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	&.active {
+		pointer-events: none;
+		color: var(--color-text-light);
+	}
+
+	&:hover {
+		color: var(--color-text-light);
+	}
+}

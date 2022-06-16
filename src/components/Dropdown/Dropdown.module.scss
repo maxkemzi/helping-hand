@@ -1,0 +1,63 @@
+.dropdown {
+	position: relative;
+
+	&.big .content {
+		padding: 8px 16px;
+	}
+
+	&.big .button {
+		padding: 8px 16px;
+	}
+
+	&.small .content {
+		padding: 8px 12px;
+	}
+
+	&.small .button {
+		padding: 4px 12px;
+	}
+
+	&.visible .button {
+		box-shadow: none;
+	}
+
+	&.visible .list {
+		top: 100%;
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	color: var(--color-text-light);
+	border-radius: var(--border-radius-base);
+	box-shadow: var(--box-shadow-base);
+	background: var(--color-primary-lighter);
+	transition: all .4s ease;
+
+	span {
+		margin-right: 8px;
+	}
+}
+
+.list {
+	position: absolute;
+	top: 150%;
+	left: 50%;
+	min-width: 100%;
+	padding-top: 8px;
+	opacity: 0;
+	visibility: hidden;
+	transition: all .4s ease;
+	transform: translateZ(0) translateX(-50%);
+}
+
+.content {
+	width: 100%;
+	text-align: center;
+	border-radius: var(--border-radius-base);
+	box-shadow: var(--box-shadow-base);
+	background: var(--color-primary-lighter);
+}

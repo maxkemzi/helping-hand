@@ -1,0 +1,22 @@
+.btn {
+	padding: 8px 20px;
+	background: var(--color-primary-light);
+	border-radius: var(--border-radius-base);
+	font-weight: 700;
+	color: var(--color-text-light);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 12px;
+	box-shadow: var(--box-shadow-base);
+}
+
+.icon.up {
+	transform: rotate(180deg);
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	transition: all var(--transition-base);
+}

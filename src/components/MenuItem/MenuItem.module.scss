@@ -1,0 +1,36 @@
+.item {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 8px;
+	transition: all var(--transition-base);
+	border-radius: var(--border-radius-base);
+	color: var(--color-text-dark-light);
+	text-align: center;
+
+	&.active {
+		background: rgba(#00D4C3, .2);
+		color: #00D4C3;
+
+		.icon path {
+			fill: #00D4C3;
+		}
+	}
+
+	span {
+		font-size: 16px;
+		white-space: nowrap;
+	}
+
+	&:hover {
+		background: rgba(#00D4C3, .2);
+		color: #00D4C3;
+
+		.icon path {
+			fill: #00D4C3;
+		}
+	}
+}
+
+.icon path {
+	transition: fill var(--transition-base);
+}
