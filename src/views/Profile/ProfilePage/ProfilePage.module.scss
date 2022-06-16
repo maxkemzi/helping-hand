@@ -1,0 +1,79 @@
+.page {
+	padding-top: 28px;
+	padding-bottom: 28px;
+}
+
+.container {
+	max-width: 1080px;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.avatar {
+	margin-right: 28px;
+}
+
+.username {
+	font-weight: 700;
+	font-size: 32px;
+	margin-right: 8px;
+}
+
+.description {
+	font-size: 20px;
+	margin-bottom: 12px;
+}
+
+.rank {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.tabs {
+	position: relative;
+	padding-bottom: 8px;
+	display: flex;
+	margin-bottom: 24px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background: var(--color-text-dark-lighter);
+		height: 1px;
+	}
+}
+
+.tab {
+	padding: 0 28px;
+	text-transform: uppercase;
+	color: var(--color-text-dark-light);
+	transition: color var(--transition-base);
+
+	&.active {
+		color: var(--color-text-light);
+	}
+}
+
+.line {
+	position: absolute;
+	bottom: 0;
+	left: 28px;
+	width: 80px;
+	transform: translateX(-50%);
+	height: 2px;
+	background: var(--gradient-primary-horizontal);
+	transition: all var(--transition-base);
+}
+
+.name {
+	display: flex;
+	align-items: center;
+	margin-bottom: 12px;
+}

@@ -1,0 +1,17 @@
+.grid {
+	display: grid;
+	grid-gap: 24px;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.header {
+	margin-bottom: 24px;
+	display: flex;
+	justify-content: flex-end;
+}

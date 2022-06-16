@@ -1,0 +1,13 @@
+.btns {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn {
+	width: 50%;
+
+	& + & {
+		margin-left: 24px;
+	}
+}
+

@@ -1,0 +1,16 @@
+.fields {
+	margin-bottom: 24px;
+}
+
+.field {
+	width: 100%;
+
+	&:not(:last-child) {
+		margin-bottom: 16px;
+	}
+}
+
+.btn {
+	width: 100%;
+}
+
