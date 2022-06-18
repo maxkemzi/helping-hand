@@ -56,7 +56,12 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 						element={Input}
 					/>
 				</div>
-				<Button className={styles.btn} text="Зареєструватись" isSubmit />
+				<Button
+					size="big"
+					className={styles.btn}
+					text="Зареєструватись"
+					isSubmit
+				/>
 			</Form>
 		</Formik>
 	);
