@@ -4,7 +4,14 @@ import Menu from "@components/Menu/Menu";
 import MenuItem from "@components/MenuItem/MenuItem";
 import {ReactComponent as ProfileIcon} from "@images/profile.svg";
 import {ReactComponent as TaskIcon} from "@images/task.svg";
-import {HOME_ROUTE, TASKS_ROUTE} from "@utils/constants/routes";
+import {ReactComponent as HomeIcon} from "@images/home.svg";
+import {ReactComponent as SettingsIcon} from "@images/settings.svg";
+import {
+	HOME_ROUTE,
+	PROFILE_ROUTE,
+	SETTINGS_ROUTE,
+	TASKS_ROUTE
+} from "@utils/constants/routes";
 import useListenClickOutside from "../../../hooks/useListenClickOutside";
 
 const HeaderMenu = () => {
@@ -24,7 +31,7 @@ const HeaderMenu = () => {
 				<MenuItem
 					onClick={handleItemClick}
 					path={HOME_ROUTE}
-					icon={ProfileIcon}
+					icon={HomeIcon}
 					text="Головна"
 				/>
 				<MenuItem
@@ -32,6 +39,18 @@ const HeaderMenu = () => {
 					path={TASKS_ROUTE}
 					icon={TaskIcon}
 					text="Завдання"
+				/>
+				<MenuItem
+					onClick={handleItemClick}
+					path={PROFILE_ROUTE}
+					icon={ProfileIcon}
+					text="Мій профіль"
+				/>
+				<MenuItem
+					onClick={handleItemClick}
+					path={SETTINGS_ROUTE}
+					icon={SettingsIcon}
+					text="Налаштування"
 				/>
 			</Menu>
 		</div>
