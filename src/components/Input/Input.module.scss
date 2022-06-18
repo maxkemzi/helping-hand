@@ -8,11 +8,11 @@
 
 	&:focus {
 		outline: none;
-		border-color: var(--color-text-dark-light);
+		border-color: var(--color-text-dark-lighter);
 	}
 
 	&::placeholder {
-		color: var(--color-text-dark-light);
+		color: var(--color-text-dark-lighter);
 		opacity: 1;
 	}
 }

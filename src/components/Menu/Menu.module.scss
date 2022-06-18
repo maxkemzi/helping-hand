@@ -13,9 +13,11 @@
 	visibility: hidden;
 	transition: all var(--transition-base);
 	border-radius: var(--border-radius-base);
+	transform: translateY(5%);
 
 	&.open {
 		opacity: 1;
+		transform: translateY(0);
 		visibility: visible;
 	}
 }
