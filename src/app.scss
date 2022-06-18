@@ -1,5 +1,5 @@
 @import "normalize.css/normalize.css";
-@import "./utils/variables.css";
+@import "utils/variables";
 
 @font-face {
 	font-family: "Manrope";
@@ -17,9 +17,9 @@
 
 @font-face {
 	font-family: "Manrope";
-	src: url("./assets/fonts/Manrope-ExtraBold.woff2") format("woff2");
+	src: url("./assets/fonts/Manrope-SemiBold.ttf");
 	font-display: swap;
-	font-weight: 800;
+	font-weight: 600;
 }
 
 *,
