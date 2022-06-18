@@ -2,7 +2,7 @@
 	position: relative;
 	width: 100%;
 	padding-bottom: 8px;
-	margin-bottom: 24px;
+	margin-bottom: 28px;
 
 	&::before,
 	&::after {
@@ -19,8 +19,8 @@
 	}
 
 	&::after {
-		background: var(--gradient-primary-vertical);
-		width: 80px;
+		background: var(--color-gradient-right);
+		width: 40px;
 		transition: all var(--transition-base);
 		z-index: 999;
 		height: 2px;
@@ -42,11 +42,12 @@
 	width: 50%;
 	text-align: center;
 	text-transform: uppercase;
-	color: var(--color-text-dark-light);
+	color: var(--color-text-dark-lighter);
 	transition: color var(--transition-base);
-	font-size: 24px;
+	font-size: 22px;
+	font-weight: 600;
 
 	&.active {
-		color: var(--color-text-light);
+		color: var(--color-gradient-right);
 	}
 }

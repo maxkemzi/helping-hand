@@ -46,18 +46,20 @@
 		bottom: 0;
 		width: 100%;
 		background: var(--color-text-dark-lighter);
+		border-radius: var(--border-radius-base);
 		height: 1px;
 	}
 }
 
 .tab {
-	padding: 0 28px;
+	font-weight: 600;
+	padding: 0 14px;
 	text-transform: uppercase;
-	color: var(--color-text-dark-light);
+	color: var(--color-text-dark-lighter);
 	transition: color var(--transition-base);
 
 	&.active {
-		color: var(--color-text-light);
+		color: var(--color-gradient-right);
 	}
 }
 
@@ -65,11 +67,12 @@
 	position: absolute;
 	bottom: 0;
 	left: 28px;
-	width: 80px;
+	width: 40px;
 	transform: translateX(-50%);
 	height: 2px;
-	background: var(--gradient-primary-horizontal);
+	background: var(--color-gradient-right);
 	transition: all var(--transition-base);
+	border-radius: var(--border-radius-base);
 }
 
 .name {

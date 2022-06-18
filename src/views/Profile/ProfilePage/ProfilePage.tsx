@@ -19,7 +19,6 @@ const ProfilePage = () => {
 			const tabOffsetLeft = child.offsetLeft;
 			const tabWidth = child.offsetWidth;
 
-			lineRef.current.style.width = `${tabWidth}px`;
 			lineRef.current.style.left = `${tabOffsetLeft + tabWidth / 2}px`;
 		}
 	}, [activeTab]);
