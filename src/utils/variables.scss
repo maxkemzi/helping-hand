@@ -2,15 +2,16 @@
     --font-family-base: 'Manrope', sans-serif;
     --font-size-base: 18px;
     --border-radius-base: 12px;
-    --box-shadow-base: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    --box-shadow-base: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px;
     --color-primary: #252139;
     --color-primary-lighter: #2F2B44;
     --color-primary-light: #3A364E;
     --color-text-light: #ffffff;
     --color-text-dark: #252139;
-    --color-text-dark-lighter: #646274;
-    --color-text-dark-light: #86829B;
+    --color-text-dark-lighter: #6C6880;
     --gradient-primary-vertical: linear-gradient(180deg, #00D4C3 0%, #009AD2 100%);
     --gradient-primary-horizontal:  linear-gradient(90deg, #00D4C3 0%, #009AD2 100%);
-    --transition-base: .4s ease;
+    --color-gradient-right: #009AD2;
+    --color-gradient-left: #00D4C3;
+    --transition-base: .3s ease;
 }
