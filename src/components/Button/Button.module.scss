@@ -1,16 +1,12 @@
 .button {
 	border-radius: var(--border-radius-base);
 	box-shadow: var(--box-shadow-base);
-	font-weight: 700;
+	font-weight: 600;
 	text-transform: uppercase;
-
-	&:hover {
-		box-shadow: none;
-	}
 }
 
 .big {
-	padding: 16px 60px;
+	padding: 12px 40px;
 }
 
 .medium {
@@ -25,6 +21,10 @@
 	color: var(--color-primary);
 	background-image: var(--gradient-primary-horizontal);
 	transition: box-shadow var(--transition-base);
+
+	&:hover {
+		box-shadow: none;
+	}
 }
 
 .outline {
@@ -42,16 +42,5 @@
 		background: var(--gradient-primary-horizontal);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-	}
-
-	&:hover {
-		box-shadow: none;
-
-		span {
-			color: var(--color-primary);
-			background: transparent;
-			-webkit-background-clip: initial;
-			-webkit-text-fill-color: initial;
-		}
 	}
 }
