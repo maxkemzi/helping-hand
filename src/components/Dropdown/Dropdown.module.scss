@@ -22,7 +22,7 @@
 	}
 
 	&.visible .list {
-		top: 100%;
+		transform: translateZ(0) translateX(-50%) translateY(0);
 		opacity: 1;
 		visibility: visible;
 	}
@@ -44,14 +44,14 @@
 
 .list {
 	position: absolute;
-	top: 150%;
+	top: 100%;
 	left: 50%;
 	min-width: 100%;
 	padding-top: 8px;
 	opacity: 0;
 	visibility: hidden;
 	transition: all .4s ease;
-	transform: translateZ(0) translateX(-50%);
+	transform: translateZ(0) translateX(-50%) translateY(5%);
 }
 
 .content {

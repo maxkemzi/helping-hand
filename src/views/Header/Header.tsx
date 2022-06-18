@@ -20,9 +20,7 @@ const Header: FC = () => {
 
 	if (ROUTES_WITH_ABSOLUTE_HEADER.includes(location.pathname)) {
 		position = "absolute";
-	}
-
-	if (ROUTES_WITH_BORDER_HEADER.includes(location.pathname)) {
+	} else if (ROUTES_WITH_BORDER_HEADER.includes(location.pathname)) {
 		variant = "border";
 	}
 
