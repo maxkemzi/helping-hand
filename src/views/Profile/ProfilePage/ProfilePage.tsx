@@ -21,6 +21,7 @@ const ProfilePage = () => {
 						imagePath=""
 						width={150}
 						height={150}
+						fallbackVariant="lighter"
 					/>
 					<div className={styles.user}>
 						<div className={styles.name}>

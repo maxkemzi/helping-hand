@@ -1,25 +1,44 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import classNames from "classnames";
-import Thumbnail from "@images/thumbnail.svg";
 import styles from "./Avatar.module.scss";
+import FallbackImage, {
+	FallbackImageVariant
+} from "../../icons/FallbackImage/FallbackImage";
 
 interface AvatarProps {
 	className?: string;
 	imagePath: string;
 	width?: number;
 	height?: number;
+	fallbackVariant?: FallbackImageVariant;
 }
 
-const Avatar: FC<AvatarProps> = ({className, imagePath, width, height}) => {
-	const path: string = imagePath || Thumbnail;
+const Avatar: FC<AvatarProps> = ({
+	className,
+	fallbackVariant,
+	imagePath,
+	width,
+	height
+}) => {
+	const [hasError, setHasError] = useState(false);
+	const [isLoaded, setIsLoaded] = useState(false);
+	const props = {
+		width,
+		height,
+		className: classNames(className, styles.avatar)
+	};
+
+	if (!imagePath || hasError || isLoaded) {
+		return <FallbackImage {...props} variant={fallbackVariant} />;
+	}
 
 	return (
 		<img
-			className={classNames(className, styles.avatar)}
-			src={path}
-			width={width || 32}
-			height={height || 32}
+			{...props}
+			src={imagePath}
+			onError={() => setHasError(true)}
 			alt="avatar"
+			onLoad={() => setIsLoaded(true)}
 		/>
 	);
 };
