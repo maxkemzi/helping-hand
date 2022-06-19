@@ -1,27 +1,16 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useState} from "react";
 import classNames from "classnames";
 import Avatar from "@components/Avatar/Avatar";
 import ProfileTasks from "@views/Profile/ProfileTasks/ProfileTasks";
 import {ReactComponent as VerifiedIcon} from "@images/verified.svg";
 import ProfileAchieves from "@views/Profile/ProfileAchieves/ProfileAchieves";
 import ProfileStats from "@views/Profile/ProfileStats/ProfileStats";
+import TabList from "@components/TabList/TabList";
+import TabItem from "@components/TabItem/TabItem";
 import styles from "./ProfilePage.module.scss";
 
 const ProfilePage = () => {
 	const [activeTab, setActiveTab] = useState(0);
-	const parentRef = useRef<HTMLDivElement>(null);
-	const lineRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		if (parentRef.current && lineRef.current) {
-			const child = parentRef.current.children[activeTab]
-				.children[0] as HTMLElement;
-			const tabOffsetLeft = child.offsetLeft;
-			const tabWidth = child.offsetWidth;
-
-			lineRef.current.style.left = `${tabOffsetLeft + tabWidth / 2}px`;
-		}
-	}, [activeTab]);
 
 	return (
 		<div className={styles.page}>
@@ -42,36 +31,23 @@ const ProfilePage = () => {
 						<p className={styles.rank}>Expert</p>
 					</div>
 				</div>
-				<div className={styles.tabs} ref={parentRef}>
-					<button
+				<TabList className={styles.tabs} activeTab={activeTab}>
+					<TabItem
+						text="Завдання"
 						onClick={() => setActiveTab(0)}
-						type="button"
-						className={classNames(styles.tab, {
-							[styles.active]: activeTab === 0
-						})}
-					>
-						<span>Завдання</span>
-					</button>
-					<button
+						isActive={activeTab === 0}
+					/>
+					<TabItem
+						text="Досягнення"
 						onClick={() => setActiveTab(1)}
-						type="button"
-						className={classNames(styles.tab, {
-							[styles.active]: activeTab === 1
-						})}
-					>
-						<span>Досягнення</span>
-					</button>
-					<button
+						isActive={activeTab === 1}
+					/>
+					<TabItem
+						text="Статистика"
 						onClick={() => setActiveTab(2)}
-						type="button"
-						className={classNames(styles.tab, {
-							[styles.active]: activeTab === 2
-						})}
-					>
-						<span>Статистика</span>
-					</button>
-					<div ref={lineRef} className={styles.line} />
-				</div>
+						isActive={activeTab === 2}
+					/>
+				</TabList>
 				<div className={styles.content}>
 					{activeTab === 0 && <ProfileTasks />}
 					{activeTab === 1 && <ProfileAchieves />}

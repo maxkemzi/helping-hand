@@ -1,0 +1,18 @@
+.tab {
+	font-weight: 600;
+	text-transform: uppercase;
+	color: var(--color-text-dark-lighter);
+	transition: color var(--transition-base);
+
+	&.active {
+		color: var(--color-gradient-right);
+	}
+}
+
+.horizontal {
+	padding: 0 14px;
+}
+
+.vertical {
+	padding: 14px 0;
+}
