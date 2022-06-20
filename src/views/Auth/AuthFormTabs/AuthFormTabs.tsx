@@ -1,36 +1,31 @@
-import {LOGIN_ROUTE, SIGNUP_ROUTE} from "@utils/constants/routes";
-import classNames from "classnames";
-import {NavLink, useLocation} from "react-router-dom";
+import TabList from "@components/TabList/TabList";
+import TabItem from "@components/TabItem/TabItem";
+import {FC, SetStateAction, Dispatch} from "react";
 import styles from "./AuthFormTabs.module.scss";
 
-const AuthFormTabs = () => {
-	const location = useLocation();
+interface AuthFormTabsProps {
+	activeTab: number;
+	setActiveTab: Dispatch<SetStateAction<number>>;
+}
 
-	return (
-		<div
-			className={classNames(styles.tabs, {
-				[styles.login]: location.pathname === LOGIN_ROUTE,
-				[styles.signup]: location.pathname === SIGNUP_ROUTE
-			})}
-		>
-			<NavLink
-				className={({isActive}) =>
-					classNames(styles.tab, {[styles.active]: isActive})
-				}
-				to={LOGIN_ROUTE}
-			>
-				вхід
-			</NavLink>
-			<NavLink
-				className={({isActive}) =>
-					classNames(styles.tab, {[styles.active]: isActive})
-				}
-				to={SIGNUP_ROUTE}
-			>
-				Реєстрація
-			</NavLink>
-		</div>
-	);
-};
+const AuthFormTabs: FC<AuthFormTabsProps> = ({
+	activeTab,
+	setActiveTab
+}: any) => (
+	<TabList className={styles.tabs} activeTab={activeTab}>
+		<TabItem
+			className={styles.tab}
+			text="вхід"
+			onClick={() => setActiveTab(0)}
+			isActive={activeTab === 0}
+		/>
+		<TabItem
+			className={styles.tab}
+			text="Реєстрація"
+			onClick={() => setActiveTab(1)}
+			isActive={activeTab === 1}
+		/>
+	</TabList>
+);
 
 export default AuthFormTabs;
