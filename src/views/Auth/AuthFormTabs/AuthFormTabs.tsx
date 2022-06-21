@@ -1,6 +1,6 @@
 import TabList from "@components/TabList/TabList";
 import TabItem from "@components/TabItem/TabItem";
-import {FC, SetStateAction, Dispatch} from "react";
+import React, {Dispatch, FC, SetStateAction} from "react";
 import styles from "./AuthFormTabs.module.scss";
 
 interface AuthFormTabsProps {
