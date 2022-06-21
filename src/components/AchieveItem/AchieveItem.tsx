@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {IAchieve} from "@models/models";
+import {IAchieve} from "@customTypes/index";
 import styles from "./AchieveItem.module.scss";
 
 const AchieveItem: FC<IAchieve & {icon: FC<{className?: string}>}> = ({

@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {IStat} from "@models/models";
+import {IStat} from "@customTypes/index";
 import classNames from "classnames";
 import styles from "./StatItem.module.scss";
 

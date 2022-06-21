@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@components/Button/Button";
 import TasksSortDropdowns from "@views/Tasks/TasksSortDropdowns/TasksSortDropdowns";
 import TasksSearchBar from "@views/Tasks/TasksSearchBar/TasksSearchBar";
-import {ITask} from "@models/models";
+import {ITask} from "@customTypes/index";
 import TaskItem from "@components/TaskItem/TaskItem";
 import TasksFilters from "@views/Tasks/TasksFilters/TasksFilters";
 import styles from "./TasksPage.module.scss";

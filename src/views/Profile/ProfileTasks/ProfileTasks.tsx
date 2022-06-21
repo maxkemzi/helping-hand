@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {ITask} from "@models/models";
+import {ITask} from "@customTypes/index";
 import TaskItem from "@components/TaskItem/TaskItem";
 import SearchBar from "@components/SearchBar/SearchBar";
 import DropdownOption from "@components/Dropdown/DropdownOption/DropdownOption";

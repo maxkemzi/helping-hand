@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ITask} from "@models/models";
+import {ITask} from "@customTypes/index";
 
 interface ProfileSliceState {
 	task: ITask;
