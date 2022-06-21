@@ -1,7 +1,7 @@
-.light path {
+.light path:first-child {
 	fill: var(--color-primary-light);
 }
 
-.lighter path {
+.lighter path:first-child {
 	fill: var(--color-primary-lighter);
 }
