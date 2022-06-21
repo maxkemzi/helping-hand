@@ -54,12 +54,12 @@
 
 .wrapper:hover .icon,
 .wrapper:valid .icon {
-	background: rgba(#00D4C3, .2);
+	background: var(--color-primary-light);
 }
 
 .wrapper:hover .icon path,
 .wrapper:valid .icon path {
-	stroke: #00D4C3;
+	stroke: var(--color-text-light);
 }
 
 .icon path {
