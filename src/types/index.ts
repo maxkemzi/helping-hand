@@ -27,3 +27,11 @@ export interface IStat {
 	value: number;
 	title: string;
 }
+
+export interface IconProps {
+	className?: string;
+	width?: number;
+	height?: number;
+}
+
+export type PrimaryColor = "" | "lighter" | "light";
