@@ -3,6 +3,7 @@ import classNames from "classnames";
 import AccountSettings from "@views/Settings/AccountSettings/AccountSettings";
 import TabList from "@components/TabList/TabList";
 import TabItem from "@components/TabItem/TabItem";
+import IntegrationSettings from "@views/Settings/IntegrationSettings/IntegrationSettings";
 import styles from "./SettingsPage.module.scss";
 
 const SettingsPage: FC = () => {
@@ -39,6 +40,7 @@ const SettingsPage: FC = () => {
 					</TabList>
 					<div className={styles.content}>
 						{activeTab === 0 && <AccountSettings />}
+						{activeTab === 1 && <IntegrationSettings />}
 					</div>
 				</div>
 			</div>

@@ -5,10 +5,42 @@
 }
 
 .small-title {
+	font-size: 20px;
+	margin-bottom: 12px;
+	font-weight: 600;
+}
+
+.user {
+	display: flex;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.avatar {
+	margin-right: 24px;
+}
+
+.fields {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 24px;
+}
+
+.field:not(:last-child) {
 	margin-bottom: 16px;
 }
 
-.item {
-	padding: 16px 0;
-	border-bottom: 1px solid var(--color-text-dark-lighter);
+.submit-btn {
+	margin-left: auto;
+	display: block;
+}
+
+.btn + .btn {
+	margin-left: 12px;
+}
+
+.inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
