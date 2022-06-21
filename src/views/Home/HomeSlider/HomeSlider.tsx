@@ -3,15 +3,15 @@ import styles from "@views/Home/HomePage/HomePage.module.scss";
 import classNames from "classnames";
 import Button from "@components/Button/Button";
 import {NavLink} from "react-router-dom";
-import {LOGIN_ROUTE} from "@utils/constants/routes";
+import {AUTH_ROUTE} from "@utils/constants/routes";
 
 interface HomeSliderProps {
-	slides: Array<{
+	slides: {
 		title: string;
-		text: string;
+		text: JSX.Element;
 		buttonText?: string;
 		onClick: () => void;
-	}>;
+	}[];
 }
 
 const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
@@ -60,7 +60,7 @@ const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
 						<h1 className={styles.title}>{title}</h1>
 						<p className={styles.text}>{text}</p>
 						{buttonText && (
-							<NavLink to={LOGIN_ROUTE}>
+							<NavLink to={AUTH_ROUTE}>
 								<Button size="big" onClick={onClick} text={buttonText} />
 							</NavLink>
 						)}
