@@ -15,19 +15,20 @@ const config = {
 			"@components": path.resolve(__dirname, "./src/components/"),
 			"@utils": path.resolve(__dirname, "./src/utils/"),
 			"@views": path.resolve(__dirname, "./src/views/"),
-			"@models": path.resolve(__dirname, "./src/models/")
+			"@customTypes": path.resolve(__dirname, "./src/types/")
 		}
 	},
 	module: {
 		rules: [
 			{
-				test: /\.(ts|js)x?$/,
+				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				use: [
-					{
-						loader: "babel-loader"
-					}
-				]
+				loader: "babel-loader"
+			},
+			{
+				test: /\.tsx?$/,
+				exclude: /node_modules/,
+				use: ["ts-loader"]
 			},
 			{
 				test: /\.css$/,
