@@ -20,6 +20,7 @@
 	background: var(--color-primary-light);
 	border-radius: 3px;
 	margin-right: 12px;
+	box-shadow: var(--box-shadow-base);
 
 	&::before {
 		content: "";
@@ -27,12 +28,13 @@
 		display: block;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 12px;
-		height: 12px;
-		background: var(--gradient-primary-vertical);
+		transform: translate(-50%, -50%) scale(0.95);
+		width: 11px;
+		height: 11px;
+		background: var(--color-accent);
 		opacity: 0;
 		border-radius: 3px;
+		transition: all var(--transition-base);
 	}
 }
 
@@ -42,5 +44,6 @@
 
 .checkbox:checked + .fake::before {
 	opacity: 1;
+	transform: translate(-50%, -50%) scale(1);
 }
 
