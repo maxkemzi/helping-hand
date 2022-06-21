@@ -1,4 +1,4 @@
-import {FC} from "react";
+import React, {FC} from "react";
 import classNames from "classnames";
 import styles from "./Button.module.scss";
 
@@ -13,6 +13,7 @@ interface ButtonProps {
 	onClick?: () => void;
 	isLoading?: boolean;
 	className?: string;
+	startIcon?: FC<{className?: string}>;
 }
 
 const noop = () => {};
@@ -24,20 +25,23 @@ const Button: FC<ButtonProps> = ({
 	onClick = noop,
 	variant = "primary",
 	isSubmit,
-	size = "medium"
+	size = "medium",
+	startIcon: Icon
 }) => (
 	<button
 		disabled={isLoading}
 		className={classNames(
 			className,
 			styles.button,
+			{[styles["icon-btn"]]: !!Icon},
 			styles[variant],
 			styles[size]
 		)}
 		type={isSubmit ? "submit" : "button"}
 		onClick={onClick}
 	>
-		{variant === "outline" ? <span>{text}</span> : text}
+		{Icon && <Icon className={styles.icon} />}
+		{Icon ? <span>{text}</span> : text}
 	</button>
 );
 
