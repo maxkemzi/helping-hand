@@ -1,15 +1,15 @@
-import React, {ComponentType, FC} from "react";
+import React, {FC} from "react";
 import {FieldProps} from "formik";
+import classNames from "classnames";
 import styles from "./FormElement.module.scss";
 
 interface FormElementProps {
-	element: keyof JSX.IntrinsicElements &
-		ComponentType<{
-			isInvalid: boolean;
-			className: string;
-			icon: keyof JSX.IntrinsicElements;
-		}>;
-	icon: keyof JSX.IntrinsicElements;
+	element: FC<{
+		isInvalid: boolean;
+		className: string;
+		required: boolean;
+		id: string;
+	}>;
 	className?: string;
 	label: string;
 }
@@ -17,7 +17,6 @@ interface FormElementProps {
 const FormElement: FC<FormElementProps & FieldProps> = ({
 	element: Element,
 	label,
-	icon,
 	form: {errors, touched},
 	field,
 	className = "",
@@ -26,17 +25,18 @@ const FormElement: FC<FormElementProps & FieldProps> = ({
 	const hasError = !!(touched[field.name] && errors[field.name]);
 
 	return (
-		<div className={className}>
-			<label className={styles.label} htmlFor={field.name}>
-				{label}
-			</label>
+		<div className={classNames(className, styles.item)}>
 			<Element
+				id={field.name}
 				className={styles.input}
 				isInvalid={hasError}
-				icon={icon}
+				required
 				{...field}
 				{...props}
 			/>
+			<label className={styles.label} htmlFor={field.name}>
+				{label}
+			</label>
 		</div>
 	);
 };

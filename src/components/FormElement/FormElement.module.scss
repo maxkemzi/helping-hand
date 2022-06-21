@@ -5,13 +5,35 @@
 	margin-bottom: 4px;
 }
 
+.item {
+	position: relative;
+}
+
 .label {
-	display: inline-block;
-	margin-bottom: 8px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 12px;
 	color: var(--color-text-dark-lighter);
+	transition: all var(--transition-base);
+	background: var(--color-primary-lighter);
+	cursor: text;
+	padding: 0 4px;
 }
 
 .input {
 	display: block;
 	width: 100%;
+
+	&:focus + .label,
+	&:valid + .label {
+		top: -10px;
+		transform: translateY(0);
+		font-size: 16px;
+	}
+
+	&:focus + .label {
+		color: var(--color-accent);
+	}
 }
+

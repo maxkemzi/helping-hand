@@ -1,4 +1,4 @@
-import {
+import React, {
 	ChangeEventHandler,
 	FC,
 	FocusEventHandler,
@@ -18,7 +18,8 @@ interface InputProps {
 	onBlur?: FocusEventHandler;
 	onKeyDown?: KeyboardEventHandler;
 	isInvalid: boolean;
-	icon: keyof JSX.IntrinsicElements;
+	required?: boolean;
+	id?: string;
 }
 
 const Input: FC<InputProps> = ({
@@ -31,42 +32,23 @@ const Input: FC<InputProps> = ({
 	onBlur,
 	onKeyDown,
 	isInvalid,
-	icon: Icon
-}) => {
-	if (Icon) {
-		return (
-			<div className={styles.wrapper}>
-				<input
-					className={classNames(className, styles.input, {
-						[styles.invalid]: isInvalid
-					})}
-					type={type}
-					value={value}
-					name={name}
-					placeholder={placeholder}
-					onChange={onChange}
-					onBlur={onBlur}
-					onKeyDown={onKeyDown}
-				/>
-				<Icon className={styles.icon} />
-			</div>
-		);
-	}
-
-	return (
-		<input
-			className={classNames(className, styles.input, {
-				[styles.invalid]: isInvalid
-			})}
-			type={type}
-			value={value}
-			name={name}
-			placeholder={placeholder}
-			onChange={onChange}
-			onBlur={onBlur}
-			onKeyDown={onKeyDown}
-		/>
-	);
-};
+	required,
+	id
+}) => (
+	<input
+		id={id}
+		className={classNames(className, styles.input, {
+			[styles.invalid]: isInvalid
+		})}
+		type={type}
+		value={value}
+		name={name}
+		placeholder={placeholder}
+		onChange={onChange}
+		onBlur={onBlur}
+		onKeyDown={onKeyDown}
+		required={required}
+	/>
+);
 
 export default Input;
