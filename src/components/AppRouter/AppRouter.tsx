@@ -1,8 +1,8 @@
 import React from "react";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {
+	AUTH_ROUTE,
 	HOME_ROUTE,
-	LOGIN_ROUTE,
 	PROFILE_ROUTE,
 	SETTINGS_ROUTE,
 	SIGNUP_ROUTE,
@@ -18,7 +18,7 @@ const AppRouter = () => (
 	<Routes>
 		<Route path={HOME_ROUTE} element={<HomePage />} />
 		<Route path={SIGNUP_ROUTE} element={<AuthPage />} />
-		<Route path={LOGIN_ROUTE} element={<AuthPage />} />
+		<Route path={AUTH_ROUTE} element={<AuthPage />} />
 		<Route path={TASKS_ROUTE} element={<TasksPage />} />
 		<Route path={PROFILE_ROUTE} element={<ProfilePage />} />
 		<Route path={SETTINGS_ROUTE} element={<SettingsPage />} />

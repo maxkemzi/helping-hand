@@ -1,5 +1,5 @@
 export const HOME_ROUTE: string = "/";
-export const LOGIN_ROUTE: string = "/login";
+export const AUTH_ROUTE: string = "/auth";
 export const SIGNUP_ROUTE: string = "/signup";
 export const TASKS_ROUTE: string = "/tasks";
 export const PROFILE_ROUTE: string = "/profile";

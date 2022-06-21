@@ -33,8 +33,8 @@ const Header: FC = () => {
 					<Logo />
 					{isAuth ? (
 						<div className={styles.info}>
-							<NavLink className={styles.link} to={PROFILE_ROUTE}>
-								<Avatar className={styles.avatar} imagePath="" />
+							<NavLink className={styles.avatar} to={PROFILE_ROUTE}>
+								<Avatar imagePath="" />
 							</NavLink>
 							<HeaderMenu />
 						</div>

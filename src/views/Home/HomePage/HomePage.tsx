@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import HomeBackground from "@images/home-bg.svg";
 import {useNavigate} from "react-router-dom";
 import HomeSlider from "@views/Home/HomeSlider/HomeSlider";
-import {LOGIN_ROUTE} from "@utils/constants/routes";
+import {AUTH_ROUTE} from "@utils/constants/routes";
 import styles from "./HomePage.module.scss";
 
 const HomePage: FC = () => {
@@ -19,7 +19,7 @@ const HomePage: FC = () => {
 			),
 			buttonText: "Почати",
 			onClick: () => {
-				navigate(LOGIN_ROUTE);
+				navigate(AUTH_ROUTE);
 			}
 		},
 		{
@@ -31,7 +31,7 @@ const HomePage: FC = () => {
 				</p>
 			),
 			onClick: () => {
-				navigate(LOGIN_ROUTE);
+				navigate(AUTH_ROUTE);
 			}
 		},
 		{
@@ -43,7 +43,7 @@ const HomePage: FC = () => {
 				</p>
 			),
 			onClick: () => {
-				navigate(LOGIN_ROUTE);
+				navigate(AUTH_ROUTE);
 			}
 		}
 	];
