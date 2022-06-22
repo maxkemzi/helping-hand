@@ -15,7 +15,8 @@ const config = {
 			"@components": path.resolve(__dirname, "./src/components/"),
 			"@utils": path.resolve(__dirname, "./src/utils/"),
 			"@views": path.resolve(__dirname, "./src/views/"),
-			"@customTypes": path.resolve(__dirname, "./src/types/")
+			"@customTypes": path.resolve(__dirname, "./src/types/"),
+			"@store": path.resolve(__dirname, "./src/store/")
 		}
 	},
 	module: {
@@ -48,7 +49,8 @@ const config = {
 			},
 			{
 				test: /\.svg$/,
-				use: ["@svgr/webpack", "url-loader"]
+				use: ["@svgr/webpack"],
+				issuer: /\.tsx?$/
 			}
 		]
 	},
