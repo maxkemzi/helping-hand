@@ -1,7 +1,15 @@
-.light path:first-child {
+.icon .bg {
+	fill: var(--color-primary);
+}
+
+.light .bg {
 	fill: var(--color-primary-light);
 }
 
-.lighter path:first-child {
+.lighter .bg {
 	fill: var(--color-primary-lighter);
+}
+
+.icon path:not(.bg) {
+	fill: var(--color-accent);
 }

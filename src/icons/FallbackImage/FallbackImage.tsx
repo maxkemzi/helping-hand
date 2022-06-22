@@ -1,25 +1,23 @@
 import React, {FC} from "react";
 import classNames from "classnames";
-import {IconProps} from "@customTypes/index";
+import {IconProps, PrimaryColor} from "@customTypes/index";
 import styles from "./FallbackImage.module.scss";
 
-export type FallbackImageVariant = "light" | "lighter";
-
-const FallbackImage: FC<IconProps & {variant?: FallbackImageVariant}> = ({
+const FallbackImage: FC<IconProps & {variant?: PrimaryColor}> = ({
 	className,
 	width,
 	height,
 	variant = ""
 }) => (
 	<svg
-		className={classNames(className, styles[variant])}
+		className={classNames(className, styles.icon, styles[variant])}
 		width={width || 32}
 		height={height || 32}
 		viewBox="0 0 32 32"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
 	>
-		<path d="M32 0H0V32H32V0Z" fill="#2F2B44" />
+		<path className={styles.bg} d="M32 0H0V32H32V0Z" fill="#2F2B44" />
 		<path
 			d="M8 24.6518C8 20.3255 11.4293 16.8183 15.6596 16.8183H16.3404C20.5707 16.8183 24 20.3255 24 24.6518C24 24.8441 23.8476 25 23.6596 25H8.34043C8.15241 25 8 24.8441 8 24.6518Z"
 			fill="#00D4C3"
