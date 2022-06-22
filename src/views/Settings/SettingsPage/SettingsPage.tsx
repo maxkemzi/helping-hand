@@ -4,6 +4,8 @@ import AccountSettings from "@views/Settings/AccountSettings/AccountSettings";
 import TabList from "@components/TabList/TabList";
 import TabItem from "@components/TabItem/TabItem";
 import IntegrationSettings from "@views/Settings/IntegrationSettings/IntegrationSettings";
+import InterfaceSettings from "@views/Settings/InterfaceSettings/InterfaceSettings";
+import Typography from "@components/Typography/Typography";
 import styles from "./SettingsPage.module.scss";
 
 const SettingsPage: FC = () => {
@@ -12,7 +14,9 @@ const SettingsPage: FC = () => {
 	return (
 		<div className={styles.page}>
 			<div className={classNames(styles.container, "container")}>
-				<h2 className={styles.title}>Налаштування</h2>
+				<Typography className={styles.title} variant="h2" component="h2">
+					Налаштування
+				</Typography>
 				<div className={styles.inner}>
 					<TabList
 						className={styles.tabs}
@@ -41,6 +45,7 @@ const SettingsPage: FC = () => {
 					<div className={styles.content}>
 						{activeTab === 0 && <AccountSettings />}
 						{activeTab === 1 && <IntegrationSettings />}
+						{activeTab === 2 && <InterfaceSettings />}
 					</div>
 				</div>
 			</div>

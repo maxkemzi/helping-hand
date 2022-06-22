@@ -6,6 +6,7 @@ import {Field, Form, Formik} from "formik";
 import FormElement from "@components/FormElement/FormElement";
 import Input from "@components/Input/Input";
 import SettingsItem from "@components/SettingsItem/SettingsItem";
+import Typography from "@components/Typography/Typography";
 import styles from "./AccountSettings.module.scss";
 
 const AccountSettings = () => {
@@ -16,8 +17,10 @@ const AccountSettings = () => {
 	});
 
 	return (
-		<div>
-			<h3 className={styles.title}>Акаунт</h3>
+		<>
+			<Typography className={styles.title} component="h3" variant="h3">
+				Акаунт
+			</Typography>
 			<Formik
 				initialValues={{username: "", email: "", password: ""}}
 				onSubmit={() => console.log("Submit")}
@@ -26,7 +29,13 @@ const AccountSettings = () => {
 			>
 				<Form className={styles.form}>
 					<SettingsItem>
-						<h4 className={styles["small-title"]}>Зображення профілю</h4>
+						<Typography
+							className={styles["small-title"]}
+							variant="h4"
+							component="h4"
+						>
+							Зображення профілю
+						</Typography>
 						<div className={styles.user}>
 							<Avatar
 								className={styles.avatar}
@@ -79,17 +88,23 @@ const AccountSettings = () => {
 					<SettingsItem>
 						<div className={styles.inner}>
 							<div>
-								<h4 className={styles["small-title"]}>Видалити акаунт</h4>
-								<p className={styles.text}>
+								<Typography
+									className={styles["small-title"]}
+									component="h4"
+									variant="h4"
+								>
+									Видалити акаунт
+								</Typography>
+								<Typography variant="body1" component="p">
 									Після видалення акаунту ви втратите всі ваші дані.
-								</p>
+								</Typography>
 							</div>
 							<Button variant="outline" text="Видалити" />
 						</div>
 					</SettingsItem>
 				</Form>
 			</Formik>
-		</div>
+		</>
 	);
 };
 

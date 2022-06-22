@@ -1,5 +1,5 @@
-import {ReactComponent as GoogleIcon} from "@images/google.svg";
-import {ReactComponent as TelegramIcon} from "@images/telegram.svg";
+import GoogleIcon from "@images/google.svg";
+import TelegramIcon from "@images/telegram.svg";
 import React, {memo} from "react";
 import Button from "@components/Button/Button";
 import styles from "./AuthFormBtns.module.scss";

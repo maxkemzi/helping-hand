@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import classNames from "classnames";
-import {ReactComponent as ArrowDownIcon} from "@images/arrow-down.svg";
+import ArrowDownIcon from "@images/arrow-down.svg";
 import styles from "./Dropdown.module.scss";
 
 type Size = "big" | "small";

@@ -4,6 +4,7 @@ import classNames from "classnames";
 import Button from "@components/Button/Button";
 import {NavLink} from "react-router-dom";
 import {AUTH_ROUTE} from "@utils/constants/routes";
+import Typography from "@components/Typography/Typography";
 
 interface HomeSliderProps {
 	slides: {
@@ -57,8 +58,16 @@ const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
 
 				return (
 					<div className={classNames(styles.content, styles[position])}>
-						<h1 className={styles.title}>{title}</h1>
-						<p className={styles.text}>{text}</p>
+						<Typography className={styles.title} variant="h1" component="h1">
+							{title}
+						</Typography>
+						<Typography
+							className={styles.text}
+							variant="subtitle1"
+							component="p"
+						>
+							{text}
+						</Typography>
 						{buttonText && (
 							<NavLink to={AUTH_ROUTE}>
 								<Button size="big" onClick={onClick} text={buttonText} />

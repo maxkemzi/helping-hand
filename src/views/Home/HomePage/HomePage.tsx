@@ -1,5 +1,4 @@
 import React, {FC} from "react";
-import HomeBackground from "@images/home-bg.svg";
 import {useNavigate} from "react-router-dom";
 import HomeSlider from "@views/Home/HomeSlider/HomeSlider";
 import {AUTH_ROUTE} from "@utils/constants/routes";
@@ -49,10 +48,7 @@ const HomePage: FC = () => {
 	];
 
 	return (
-		<div
-			className={styles.page}
-			style={{backgroundImage: `url(${HomeBackground})`}}
-		>
+		<div className={styles.page}>
 			<HomeSlider slides={slides} />
 		</div>
 	);

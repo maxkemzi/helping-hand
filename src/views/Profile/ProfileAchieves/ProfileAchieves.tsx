@@ -1,5 +1,5 @@
 import React from "react";
-import {ReactComponent as StarIcon} from "@images/star.svg";
+import StarIcon from "@images/star.svg";
 import AchieveItem from "@components/AchieveItem/AchieveItem";
 import {IAchieve} from "@customTypes/index";
 import styles from "./ProfileAchieves.module.scss";

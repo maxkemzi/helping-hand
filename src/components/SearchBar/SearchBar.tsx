@@ -1,5 +1,5 @@
 import React, {ChangeEvent, Dispatch, FC, SetStateAction} from "react";
-import {ReactComponent as SearchIcon} from "@images/search.svg";
+import SearchIcon from "@images/search.svg";
 import styles from "./SearchBar.module.scss";
 
 interface SearchBarProps {

@@ -8,10 +8,7 @@ interface AuthFormTabsProps {
 	setActiveTab: Dispatch<SetStateAction<number>>;
 }
 
-const AuthFormTabs: FC<AuthFormTabsProps> = ({
-	activeTab,
-	setActiveTab
-}: any) => (
+const AuthFormTabs: FC<AuthFormTabsProps> = ({activeTab, setActiveTab}) => (
 	<TabList className={styles.tabs} activeTab={activeTab}>
 		<TabItem
 			className={styles.tab}

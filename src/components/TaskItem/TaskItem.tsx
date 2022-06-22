@@ -5,6 +5,7 @@ import Button from "@components/Button/Button";
 import TagItem from "@components/TagItem/TagItem";
 import {NavLink} from "react-router-dom";
 import {TASKS_ROUTE} from "@utils/constants/routes";
+import Typography from "@components/Typography/Typography";
 import StatusIcon from "../../icons/StatusIcon/StatusIcon";
 import styles from "./TaskItem.module.scss";
 
@@ -19,14 +20,20 @@ const TaskItem: FC<ITask> = ({
 }) => (
 	<NavLink to={`${TASKS_ROUTE}/${id}`} className={styles.item}>
 		<div className={styles.header}>
-			<h3 className={styles.title}>{title}</h3>
+			<Typography variant="h4" component="h4">
+				{title}
+			</Typography>
 			<StatusIcon variant={isActive ? "active" : "inactive"} />
 		</div>
 		<div className={styles.user}>
 			<Avatar className={styles.avatar} imagePath={creator.avatar} />
-			<p>{creator.username}</p>
+			<Typography variant="body1" component="p">
+				{creator.username}
+			</Typography>
 		</div>
-		<p className={styles.description}>{description}</p>
+		<Typography className={styles.description} variant="body1" component="p">
+			{description}
+		</Typography>
 		<div className={styles.tags}>
 			{tags.map((tag: ITag) => (
 				<TagItem key={tag.id} {...tag} />
@@ -34,7 +41,9 @@ const TaskItem: FC<ITask> = ({
 		</div>
 		<div className={styles.footer}>
 			<Button size="small" variant="outline" text="Докладніше" />
-			<p className={styles.date}>{date}</p>
+			<Typography className={styles.date} variant="body1" component="p">
+				{date}
+			</Typography>
 		</div>
 	</NavLink>
 );

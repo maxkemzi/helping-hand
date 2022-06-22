@@ -1,4 +1,4 @@
-import {ReactComponent as HumanImage} from "@images/human.svg";
+import HumanImage from "@images/human.svg";
 import AuthForm from "@views/Auth/AuthForm/AuthForm";
 import React, {FC} from "react";
 import styles from "./AuthPage.module.scss";

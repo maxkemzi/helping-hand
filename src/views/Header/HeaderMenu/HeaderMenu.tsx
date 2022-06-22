@@ -2,10 +2,10 @@ import React, {useRef, useState} from "react";
 import MenuButton from "@components/MenuButton/MenuButton";
 import Menu from "@components/Menu/Menu";
 import MenuItem from "@components/MenuItem/MenuItem";
-import {ReactComponent as ProfileIcon} from "@images/profile.svg";
-import {ReactComponent as TaskIcon} from "@images/task.svg";
-import {ReactComponent as HomeIcon} from "@images/home.svg";
-import {ReactComponent as SettingsIcon} from "@images/settings.svg";
+import ProfileIcon from "@images/profile.svg";
+import TaskIcon from "@images/task.svg";
+import HomeIcon from "@images/home.svg";
+import SettingsIcon from "@images/settings.svg";
 import {
 	HOME_ROUTE,
 	PROFILE_ROUTE,

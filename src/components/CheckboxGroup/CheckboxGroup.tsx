@@ -1,6 +1,7 @@
 import React, {FC, ReactNode, useState} from "react";
 import classNames from "classnames";
-import {ReactComponent as ArrowDownIcon} from "@images/arrow-down.svg";
+import ArrowDownIcon from "@images/arrow-down.svg";
+import Typography from "@components/Typography/Typography";
 import styles from "./CheckboxGroup.module.scss";
 
 interface CheckboxGroupProps {
@@ -27,7 +28,9 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
 	return (
 		<div className={classNames(className, styles.item)}>
 			<button onClick={handleClick} className={styles.btn} type="button">
-				{title}
+				<Typography variant="h5" component="span">
+					{title}
+				</Typography>
 				<ArrowDownIcon
 					className={classNames(styles.icon, {[styles.up]: isOpen})}
 				/>

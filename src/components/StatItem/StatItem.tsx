@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import {IStat} from "@customTypes/index";
 import classNames from "classnames";
+import Typography from "@components/Typography/Typography";
 import styles from "./StatItem.module.scss";
 
 const StatItem: FC<IStat & {className?: string}> = ({
@@ -9,8 +10,12 @@ const StatItem: FC<IStat & {className?: string}> = ({
 	title
 }) => (
 	<div className={classNames(className, styles.item)}>
-		<p className={styles.value}>{value}</p>
-		<p className={styles.title}>{title}</p>
+		<Typography className={styles.value} variant="h3" component="p">
+			{value}
+		</Typography>
+		<Typography className={styles.title} variant="subtitle2" component="p">
+			{title}
+		</Typography>
 	</div>
 );
 

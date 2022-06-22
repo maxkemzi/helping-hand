@@ -2,11 +2,12 @@ import React, {useState} from "react";
 import classNames from "classnames";
 import Avatar from "@components/Avatar/Avatar";
 import ProfileTasks from "@views/Profile/ProfileTasks/ProfileTasks";
-import {ReactComponent as VerifiedIcon} from "@images/verified.svg";
+import VerifiedIcon from "@images/verified.svg";
 import ProfileAchieves from "@views/Profile/ProfileAchieves/ProfileAchieves";
 import ProfileStats from "@views/Profile/ProfileStats/ProfileStats";
 import TabList from "@components/TabList/TabList";
 import TabItem from "@components/TabItem/TabItem";
+import Typography from "@components/Typography/Typography";
 import styles from "./ProfilePage.module.scss";
 
 const ProfilePage = () => {
@@ -25,11 +26,25 @@ const ProfilePage = () => {
 					/>
 					<div className={styles.user}>
 						<div className={styles.name}>
-							<h3 className={styles.username}>Max Kemzi</h3>
+							<Typography
+								className={styles.username}
+								variant="h3"
+								component="h3"
+							>
+								Max Kemzi
+							</Typography>
 							<VerifiedIcon />
 						</div>
-						<p className={styles.description}>sdfdsfsdfds</p>
-						<p className={styles.rank}>Expert</p>
+						<Typography
+							className={styles.description}
+							variant="subtitle2"
+							component="p"
+						>
+							sdfdsfsdfds
+						</Typography>
+						<Typography variant="h4" component="h4">
+							Expert
+						</Typography>
 					</div>
 				</div>
 				<TabList className={styles.tabs} activeTab={activeTab}>

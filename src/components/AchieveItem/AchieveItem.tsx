@@ -1,5 +1,6 @@
 import React, {FC} from "react";
 import {IAchieve} from "@customTypes/index";
+import Typography from "@components/Typography/Typography";
 import styles from "./AchieveItem.module.scss";
 
 const AchieveItem: FC<IAchieve & {icon: FC<{className?: string}>}> = ({
@@ -8,7 +9,9 @@ const AchieveItem: FC<IAchieve & {icon: FC<{className?: string}>}> = ({
 }) => (
 	<div className={styles.item}>
 		<Icon className={styles.icon} />
-		<p>{description}</p>
+		<Typography variant="body1" component="p">
+			{description}
+		</Typography>
 	</div>
 );
 

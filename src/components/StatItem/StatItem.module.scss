@@ -6,15 +6,10 @@
 }
 
 .value {
-	background: var(--color-accent);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	font-size: 32px;
-	font-weight: 700;
+	color: var(--color-accent);
 	margin-bottom: 8px;
 }
 
 .title {
 	text-transform: uppercase;
-	font-size: 20px;
 }
