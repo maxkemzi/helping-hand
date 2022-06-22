@@ -40,7 +40,7 @@
 
 	&:hover {
 		box-shadow: none;
-		background: darken(#00D4C3, 5%);
+		background: var(--color-accent-darker);
 	}
 }
 
@@ -52,8 +52,8 @@
 	&:hover {
 		box-shadow: none;
 		color: var(--color-primary);
-		background: darken(#00D4C3, 5%);
-		border-color: darken(#00D4C3, 5%);
+		background: var(--color-accent-darker);
+		border-color: var(--color-accent-darker);
 
 		.icon path {
 			fill: var(--color-primary);
