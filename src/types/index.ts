@@ -34,4 +34,6 @@ export interface IconProps {
 	height?: number;
 }
 
+export type AccentColor = "#009AD2" | "#00D4C3";
+
 export type PrimaryColor = "" | "lighter" | "light";

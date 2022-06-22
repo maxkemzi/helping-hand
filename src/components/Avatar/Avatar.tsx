@@ -1,16 +1,15 @@
 import React, {FC, useState} from "react";
 import classNames from "classnames";
+import {PrimaryColor} from "@customTypes/index";
 import styles from "./Avatar.module.scss";
-import FallbackImage, {
-	FallbackImageVariant
-} from "../../icons/FallbackImage/FallbackImage";
+import FallbackImage from "../../icons/FallbackImage/FallbackImage";
 
 interface AvatarProps {
 	className?: string;
 	imagePath: string;
 	width?: number;
 	height?: number;
-	fallbackVariant?: FallbackImageVariant;
+	fallbackVariant?: PrimaryColor;
 }
 
 const Avatar: FC<AvatarProps> = ({
