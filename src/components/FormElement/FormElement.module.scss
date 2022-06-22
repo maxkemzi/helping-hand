@@ -18,7 +18,7 @@
 	transition: all var(--transition-base);
 	background: var(--color-primary-lighter);
 	cursor: text;
-	padding: 0 4px;
+	padding: 2px 4px;
 }
 
 .input {
@@ -27,7 +27,7 @@
 
 	&:focus + .label,
 	&:valid + .label {
-		top: -10px;
+		top: -14px;
 		transform: translateY(0);
 		font-size: 16px;
 	}

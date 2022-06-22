@@ -5,6 +5,7 @@
 	background-repeat: no-repeat;
 	background-position: bottom;
 	overflow: hidden;
+	background-image: url("@images/home-bg.svg");
 }
 
 .content {
@@ -34,17 +35,11 @@
 }
 
 .title {
-	font-weight: 700;
-	font-size: 66px;
-	color: var(--color-text-light);
 	margin-bottom: 24px;
 }
 
 .text {
-	color: var(--color-text-light);
 	margin-bottom: 40px;
-	line-height: 1.4;
-	font-size: 24px;
 }
 
 .dots {
@@ -62,6 +57,7 @@
 	height: 20px;
 	border-radius: 50%;
 	background: var(--color-primary);
+	transition: background var(--transition-base);
 
 	&.active {
 		background: var(--color-accent);

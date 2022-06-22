@@ -34,7 +34,7 @@ const Header: FC = () => {
 					{isAuth ? (
 						<div className={styles.info}>
 							<NavLink className={styles.avatar} to={PROFILE_ROUTE}>
-								<Avatar imagePath="" />
+								<Avatar fallbackVariant="lighter" imagePath="" />
 							</NavLink>
 							<HeaderMenu />
 						</div>

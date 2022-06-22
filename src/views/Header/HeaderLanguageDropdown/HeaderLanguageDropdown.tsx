@@ -2,7 +2,7 @@ import React, {FC, useState} from "react";
 import DropdownOption from "@components/Dropdown/DropdownOption/DropdownOption";
 import Dropdown from "@components/Dropdown/Dropdown";
 
-const HeaderLanguageDropdown: FC = () => {
+const HeaderLanguageDropdown: FC<{className?: string}> = ({className}) => {
 	const [dropdownValue, setDropdownValue] = useState("UA");
 	const [isVisible, setIsVisible] = useState(false);
 
@@ -13,6 +13,7 @@ const HeaderLanguageDropdown: FC = () => {
 
 	return (
 		<Dropdown
+			className={className}
 			isVisible={isVisible}
 			setIsVisible={setIsVisible}
 			value={dropdownValue}
