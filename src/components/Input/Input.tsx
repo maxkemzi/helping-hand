@@ -9,7 +9,7 @@ import classNames from "classnames";
 import styles from "./Input.module.scss";
 
 interface InputProps {
-	className?: "";
+	className?: string;
 	type?: HTMLInputTypeAttribute;
 	value: string;
 	name: string;
@@ -17,7 +17,8 @@ interface InputProps {
 	onChange?: ChangeEventHandler;
 	onBlur?: FocusEventHandler;
 	onKeyDown?: KeyboardEventHandler;
-	isInvalid: boolean;
+	onFocus?: FocusEventHandler;
+	isInvalid?: boolean;
 	required?: boolean;
 	id?: string;
 }
@@ -33,7 +34,8 @@ const Input: FC<InputProps> = ({
 	onKeyDown,
 	isInvalid,
 	required,
-	id
+	id,
+	onFocus
 }) => (
 	<input
 		id={id}
@@ -45,6 +47,7 @@ const Input: FC<InputProps> = ({
 		name={name}
 		placeholder={placeholder}
 		onChange={onChange}
+		onFocus={onFocus}
 		onBlur={onBlur}
 		onKeyDown={onKeyDown}
 		required={required}
