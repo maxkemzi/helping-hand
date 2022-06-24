@@ -1,7 +1,7 @@
 import {RefObject, useEffect} from "react";
 
 const useListenClickOutside = (
-	ref: RefObject<HTMLButtonElement>,
+	ref: RefObject<any>,
 	onClickOutside: () => void
 ) => {
 	useEffect(() => {
