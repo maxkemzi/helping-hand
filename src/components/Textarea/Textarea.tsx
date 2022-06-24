@@ -46,9 +46,8 @@ const Textarea: FC<TextareaProps> = ({
 		onBlur={onBlur}
 		onKeyDown={onKeyDown}
 		required={required}
-	>
-		{value}
-	</textarea>
+		value={value}
+	/>
 );
 
 export default Textarea;
