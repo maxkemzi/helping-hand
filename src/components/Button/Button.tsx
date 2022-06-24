@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, MouseEventHandler} from "react";
 import classNames from "classnames";
 import styles from "./Button.module.scss";
 
@@ -10,10 +10,11 @@ interface ButtonProps {
 	isSubmit?: boolean;
 	variant?: Variant;
 	size?: Size;
-	onClick?: () => void;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 	isLoading?: boolean;
 	className?: string;
 	startIcon?: FC<{className?: string}>;
+	isActive?: boolean;
 }
 
 const noop = () => {};
@@ -26,14 +27,15 @@ const Button: FC<ButtonProps> = ({
 	variant = "primary",
 	isSubmit,
 	size = "medium",
-	startIcon: Icon
+	startIcon: Icon,
+	isActive
 }) => (
 	<button
 		disabled={isLoading}
 		className={classNames(
 			className,
 			styles.button,
-			{[styles["icon-btn"]]: !!Icon},
+			{[styles["icon-btn"]]: !!Icon, [styles.active]: isActive},
 			styles[variant],
 			styles[size]
 		)}
