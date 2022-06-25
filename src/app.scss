@@ -35,6 +35,10 @@ body {
 	color: var(--color-text-light);
 	min-width: 320px;
 	background: var(--color-primary);
+
+	&.lock {
+		overflow: hidden;
+	}
 }
 
 button {
