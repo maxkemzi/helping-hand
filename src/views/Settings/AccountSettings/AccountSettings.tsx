@@ -3,7 +3,7 @@ import Avatar from "@components/Avatar/Avatar";
 import Button from "@components/Button/Button";
 import * as yup from "yup";
 import {Field, Form, Formik} from "formik";
-import FormElement from "@components/FormElement/FormElement";
+import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import SettingsItem from "@components/SettingsItem/SettingsItem";
 import Typography from "@components/Typography/Typography";
@@ -62,7 +62,7 @@ const AccountSettings = () => {
 								label="Ім'я"
 								className={styles.field}
 								name="username"
-								component={FormElement}
+								component={FormTextField}
 								element={Input}
 							/>
 
@@ -70,7 +70,7 @@ const AccountSettings = () => {
 								label="Email"
 								className={styles.field}
 								name="email"
-								component={FormElement}
+								component={FormTextField}
 								element={Input}
 							/>
 
@@ -79,7 +79,7 @@ const AccountSettings = () => {
 								type="password"
 								className={styles.field}
 								name="password"
-								component={FormElement}
+								component={FormTextField}
 								element={Input}
 							/>
 						</div>

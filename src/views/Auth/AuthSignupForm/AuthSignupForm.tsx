@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {Field, Form, Formik} from "formik";
-import FormElement from "@components/FormElement/FormElement";
+import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import * as yup from "yup";
 import Button from "@components/Button/Button";
@@ -26,7 +26,7 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 						label="Ім'я"
 						className={styles.field}
 						name="username"
-						component={FormElement}
+						component={FormTextField}
 						element={Input}
 					/>
 
@@ -34,7 +34,7 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 						label="Email"
 						className={styles.field}
 						name="email"
-						component={FormElement}
+						component={FormTextField}
 						element={Input}
 					/>
 
@@ -43,7 +43,7 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 						type="password"
 						className={styles.field}
 						name="password"
-						component={FormElement}
+						component={FormTextField}
 						element={Input}
 					/>
 				</div>
