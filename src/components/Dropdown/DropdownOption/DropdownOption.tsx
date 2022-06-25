@@ -4,7 +4,7 @@ import styles from "./DropdownOption.module.scss";
 
 interface DropdownOptionProps {
 	value: string;
-	isActive: boolean;
+	isActive?: boolean;
 	onClick: (value: string) => void;
 }
 

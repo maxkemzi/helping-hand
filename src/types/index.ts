@@ -19,7 +19,7 @@ export interface IUser {
 }
 
 export interface ITag {
-	id: string;
+	id?: string;
 	text: string;
 }
 

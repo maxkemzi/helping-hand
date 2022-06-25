@@ -6,3 +6,38 @@
 	padding: 4px 12px;
 	border-radius: var(--border-radius-base);
 }
+
+.inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.text {
+	margin-right: 8px;
+}
+
+.btn {
+	display: flex;
+	position: relative;
+	padding: 4px;
+	margin: -4px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border-radius: var(--border-radius-base);
+		background: var(--color-primary-light);
+		opacity: 0;
+		z-index: -1;
+		transition: opacity var(--transition-base);
+	}
+
+	&:hover::before {
+		opacity: 1;
+	}
+}

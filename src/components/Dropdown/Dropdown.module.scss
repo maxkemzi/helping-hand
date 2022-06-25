@@ -51,7 +51,7 @@
 	padding-top: 8px;
 	opacity: 0;
 	visibility: hidden;
-	transition: all .4s ease;
+	transition: all var(--transition-base);
 	transform: translateZ(0) translateX(-50%) translateY(5%);
 }
 
