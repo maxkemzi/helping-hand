@@ -1,21 +1,17 @@
 import React, {FC} from "react";
 import {FieldProps} from "formik";
+import TextField from "@components/TextField/TextField";
 import classNames from "classnames";
 import styles from "./FormElement.module.scss";
 
 interface FormElementProps {
-	element: FC<{
-		isInvalid: boolean;
-		className: string;
-		required: boolean;
-		id: string;
-	}>;
+	element: FC;
 	className?: string;
 	label: string;
 }
 
 const FormElement: FC<FormElementProps & FieldProps> = ({
-	element: Element,
+	element,
 	label,
 	form: {errors, touched},
 	field,
@@ -25,19 +21,15 @@ const FormElement: FC<FormElementProps & FieldProps> = ({
 	const hasError = !!(touched[field.name] && errors[field.name]);
 
 	return (
-		<div className={classNames(className, styles.item)}>
-			<Element
-				id={field.name}
-				className={styles.input}
-				isInvalid={hasError}
-				required
-				{...field}
-				{...props}
-			/>
-			<label className={styles.label} htmlFor={field.name}>
-				{label}
-			</label>
-		</div>
+		<TextField
+			element={element}
+			label={label}
+			id={field.name}
+			className={classNames(className, styles.input)}
+			isInvalid={hasError}
+			{...field}
+			{...props}
+		/>
 	);
 };
 
