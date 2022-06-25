@@ -42,6 +42,16 @@
 		box-shadow: none;
 		background: var(--color-accent-darker);
 	}
+
+	&:disabled {
+		color: var(--color-text-dark);
+		background: var(--color-text-dark-lighter);
+	}
+
+	&:disabled:hover {
+		box-shadow: none;
+		background: var(--color-text-dark-lighter);
+	}
 }
 
 .outline {
@@ -59,5 +69,16 @@
 		.icon path {
 			fill: var(--color-primary);
 		}
+	}
+
+	&:disabled {
+		color: var(--color-text-dark-lighter);
+		border-color: var(--color-text-dark-lighter);
+	}
+
+	&:disabled:hover {
+		color: var(--color-text-dark);
+		border-color: var(--color-text-dark-lighter);
+		background: var(--color-text-dark-lighter);
 	}
 }
