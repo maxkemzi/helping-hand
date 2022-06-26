@@ -35,6 +35,7 @@ body {
 	color: var(--color-text-light);
 	min-width: 320px;
 	background: var(--color-primary);
+	height: 100%;
 
 	&.lock {
 		overflow: hidden;
@@ -80,6 +81,14 @@ ul {
 	padding: 0;
 }
 
+html {
+	height: 100%;
+}
+
+#app {
+	height: 100%;
+}
+
 .main-wrapper {
 	display: flex;
 	flex-direction: column;
@@ -87,11 +96,19 @@ ul {
 	position: relative;
 }
 
+.main {
+	flex: 1 0 auto;
+}
+
 .container {
 	position: relative;
 	max-width: 1472px;
 	padding: 0 16px;
 	margin: 0 auto;
+
+	&.container--small {
+		max-width: 1080px;
+	}
 }
 
 .wrapper {
@@ -99,4 +116,8 @@ ul {
 	padding: 24px;
 	box-shadow: var(--box-shadow-base);
 	border-radius: var(--border-radius-base);
+}
+
+.page {
+	padding: 28px 0;
 }

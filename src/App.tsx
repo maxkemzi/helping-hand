@@ -2,6 +2,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 import "./app.scss";
 import React, {FC, useEffect} from "react";
 import {useSelector} from "react-redux";
+import Footer from "@views/Footer/Footer";
 import AppRouter from "./components/AppRouter/AppRouter";
 import Header from "./views/Header/Header";
 import {RootState} from "./store";
@@ -33,9 +34,10 @@ const App: FC = () => {
 		<Router>
 			<div className="main-wrapper">
 				<Header />
-				<main>
+				<main className="main">
 					<AppRouter />
 				</main>
+				<Footer />
 			</div>
 		</Router>
 	);
