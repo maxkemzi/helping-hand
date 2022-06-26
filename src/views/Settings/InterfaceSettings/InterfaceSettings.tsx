@@ -1,12 +1,12 @@
 import React from "react";
-import SettingsItem from "@components/SettingsItem/SettingsItem";
-import HeaderLanguageDropdown from "@views/Header/HeaderLanguageDropdown/HeaderLanguageDropdown";
+import SeparatorItem from "@components/SeparatorItem/SeparatorItem";
 import {useDispatch, useSelector} from "react-redux";
 import {AccentColor} from "@customTypes/index";
 import ColorButton from "@components/ColorButton/ColorButton";
 import {RootState} from "@store/index";
 import {setAccentColor} from "@store/app/app.slice";
 import Typography from "@components/Typography/Typography";
+import LanguageDropdown from "@components/LanguageDropdown/LanguageDropdown";
 import styles from "./InterfaceSettings.module.scss";
 
 const InterfaceSettings = () => {
@@ -22,7 +22,7 @@ const InterfaceSettings = () => {
 			<Typography className={styles.title} variant="h3" component="h3">
 				Інтерфейс
 			</Typography>
-			<SettingsItem>
+			<SeparatorItem>
 				<Typography
 					className={styles["small-title"]}
 					variant="h4"
@@ -44,10 +44,10 @@ const InterfaceSettings = () => {
 						color="#009AD2"
 					/>
 				</div>
-			</SettingsItem>
-			<SettingsItem>
-				<HeaderLanguageDropdown />
-			</SettingsItem>
+			</SeparatorItem>
+			<SeparatorItem>
+				<LanguageDropdown />
+			</SeparatorItem>
 		</>
 	);
 };
