@@ -1,0 +1,8 @@
+.devs {
+	display: flex;
+	align-items: center;
+}
+
+.dev + .dev {
+	margin-left: 24px;
+}
