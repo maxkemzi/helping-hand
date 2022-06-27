@@ -9,7 +9,7 @@ interface AuthSliceState {
 
 const initialState: AuthSliceState = {
 	user: {username: "", avatar: ""},
-	isAuth: false,
+	isAuth: true,
 	isFetching: false
 };
 

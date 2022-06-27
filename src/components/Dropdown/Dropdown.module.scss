@@ -53,6 +53,7 @@
 	visibility: hidden;
 	transition: all var(--transition-base);
 	transform: translateZ(0) translateX(-50%) translateY(5%);
+	z-index: 999;
 }
 
 .content {

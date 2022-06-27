@@ -21,6 +21,7 @@ const MenuItem: FC<MenuItemProps> = ({
 	<NavLink
 		onClick={onClick}
 		to={path}
+		end
 		className={({isActive}) =>
 			classNames(className, styles.item, {[styles.active]: isActive})
 		}

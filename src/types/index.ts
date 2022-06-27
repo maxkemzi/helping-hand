@@ -24,7 +24,7 @@ export interface ITag {
 }
 
 export interface IStat {
-	value: number;
+	value: number | string;
 	title: string;
 }
 
@@ -33,6 +33,8 @@ export interface IconProps {
 	width?: number;
 	height?: number;
 }
+
+export type Language = "en" | "ru" | "ua";
 
 export type AccentColor = "#009AD2" | "#00D4C3";
 

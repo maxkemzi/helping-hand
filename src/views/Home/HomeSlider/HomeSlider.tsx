@@ -12,6 +12,7 @@ interface HomeSliderProps {
 		text: JSX.Element;
 		buttonText?: string;
 		onClick: () => void;
+		id: string;
 	}[];
 }
 
@@ -41,7 +42,7 @@ const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
 	return (
 		<>
 			{slides.map((slide, slideIndex) => {
-				const {title, text, buttonText, onClick} = slide;
+				const {id, title, text, buttonText, onClick} = slide;
 
 				let position = "nextSlide";
 
@@ -57,7 +58,10 @@ const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
 				}
 
 				return (
-					<div className={classNames(styles.content, styles[position])}>
+					<div
+						key={id}
+						className={classNames(styles.content, styles[position])}
+					>
 						<Typography className={styles.title} variant="h1" component="h1">
 							{title}
 						</Typography>
@@ -79,6 +83,7 @@ const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
 			<div className={styles.dots}>
 				{slides.map((slide, slideIndex) => (
 					<button
+						key={slide.id}
 						onClick={() => setIndex(slideIndex)}
 						aria-label="dot"
 						className={classNames(styles.dot, {
