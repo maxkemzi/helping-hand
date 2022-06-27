@@ -1,15 +1,36 @@
 .item {
-	padding: 20px;
 	background: var(--color-primary-light);
 	border-radius: var(--border-radius-base);
 	text-align: center;
 }
 
-.value {
+.title {
+	margin-bottom: 4px;
 	color: var(--color-accent);
-	margin-bottom: 8px;
+	font-weight: 600;
+	text-transform: uppercase;
 }
 
-.title {
-	text-transform: uppercase;
+.big {
+	padding: 20px;
+
+	.title {
+		font-size: 20px;
+	}
+
+	.value {
+		font-size: 22px;
+	}
+}
+
+.small {
+	padding: 12px;
+
+	.title {
+		font-size: 16px;
+	}
+
+	.value {
+		font-size: 18px;
+	}
 }
