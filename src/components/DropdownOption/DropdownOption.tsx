@@ -6,10 +6,12 @@ interface DropdownOptionProps {
 	value: string;
 	isActive?: boolean;
 	onClick: (value: string) => void;
+	text?: string;
 }
 
 const DropdownOption: FC<DropdownOptionProps> = ({
 	value,
+	text,
 	isActive,
 	onClick
 }) => (
@@ -19,7 +21,7 @@ const DropdownOption: FC<DropdownOptionProps> = ({
 		onClick={() => onClick(value)}
 		disabled={isActive}
 	>
-		{value}
+		{text || value}
 	</button>
 );
 

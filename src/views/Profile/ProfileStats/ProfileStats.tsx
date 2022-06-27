@@ -2,7 +2,7 @@ import React, {FC, useState} from "react";
 import StatItem from "@components/StatItem/StatItem";
 import classNames from "classnames";
 import Dropdown from "@components/Dropdown/Dropdown";
-import DropdownOption from "@components/Dropdown/DropdownOption/DropdownOption";
+import DropdownOption from "@components/DropdownOption/DropdownOption";
 import data from "../../../mock.json";
 import styles from "./ProfileStats.module.scss";
 
@@ -39,16 +39,13 @@ const ProfileStats: FC = () => {
 				</Dropdown>
 			</div>
 			<div
-				className={classNames(
-					{
-						[styles.grid]: value === grid,
-						[styles.list]: value === list
-					},
-					"wrapper"
-				)}
+				className={classNames("wrapper", {
+					[styles.grid]: value === grid,
+					[styles.list]: value === list
+				})}
 			>
 				{data.stats.map(stat => (
-					<StatItem key={stat.id} {...stat} />
+					<StatItem size="big" key={stat.id} {...stat} />
 				))}
 			</div>
 		</div>

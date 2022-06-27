@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Dropdown from "@components/Dropdown/Dropdown";
-import DropdownOption from "@components/Dropdown/DropdownOption/DropdownOption";
+import DropdownOption from "@components/DropdownOption/DropdownOption";
 import styles from "./TasksSortDropdowns.module.scss";
 
 const TasksSortDropdowns = () => {

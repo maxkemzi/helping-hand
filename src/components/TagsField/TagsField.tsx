@@ -5,7 +5,7 @@ import TagItem from "@components/TagItem/TagItem";
 import TextField from "@components/TextField/TextField";
 import Input from "@components/Input/Input";
 import Button from "@components/Button/Button";
-import DropdownOption from "@components/Dropdown/DropdownOption/DropdownOption";
+import DropdownOption from "@components/DropdownOption/DropdownOption";
 import styles from "./TagsField.module.scss";
 import useListenClickOutside from "../../hooks/useListenClickOutside";
 
@@ -50,7 +50,7 @@ const TagsField: FC<TagsFieldProps> = ({
 			{tags.length !== 0 && (
 				<div className={styles.tags}>
 					{tags.map(tag => (
-						<div className={styles.tag}>
+						<div key={tag.id} className={styles.tag}>
 							<TagItem
 								text={tag.text}
 								hasRemoveBtn
@@ -89,6 +89,7 @@ const TagsField: FC<TagsFieldProps> = ({
 							.filter(item => item.text.includes(searchValue))
 							.map(tag => (
 								<DropdownOption
+									key={tag.id}
 									isActive={
 										tags.some(item => tag.id === item.id) ||
 										selectedTags.some(item => tag.id === item.id)
