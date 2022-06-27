@@ -5,7 +5,7 @@ import * as yup from "yup";
 import {Field, Form, Formik} from "formik";
 import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
-import SettingsItem from "@components/SettingsItem/SettingsItem";
+import SeparatorItem from "@components/SeparatorItem/SeparatorItem";
 import Typography from "@components/Typography/Typography";
 import styles from "./AccountSettings.module.scss";
 
@@ -28,7 +28,7 @@ const AccountSettings = () => {
 				validateOnBlur
 			>
 				<Form className={styles.form}>
-					<SettingsItem>
+					<SeparatorItem>
 						<Typography
 							className={styles["small-title"]}
 							variant="h4"
@@ -84,8 +84,8 @@ const AccountSettings = () => {
 							/>
 						</div>
 						<Button className={styles["submit-btn"]} text="Зберегти" isSubmit />
-					</SettingsItem>
-					<SettingsItem>
+					</SeparatorItem>
+					<SeparatorItem>
 						<div className={styles.inner}>
 							<div>
 								<Typography
@@ -101,7 +101,7 @@ const AccountSettings = () => {
 							</div>
 							<Button variant="outline" text="Видалити" />
 						</div>
-					</SettingsItem>
+					</SeparatorItem>
 				</Form>
 			</Formik>
 		</>

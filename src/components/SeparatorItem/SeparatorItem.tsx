@@ -1,14 +1,14 @@
 import React, {FC, ReactNode} from "react";
 import classNames from "classnames";
-import styles from "./SettingsItem.module.scss";
+import styles from "./SeparatorItem.module.scss";
 
-interface SettingsItemProps {
+interface SeparatorItemProps {
 	className?: string;
 	children: ReactNode;
 }
 
-const SettingsItem: FC<SettingsItemProps> = ({className, children}) => (
+const SeparatorItem: FC<SeparatorItemProps> = ({className, children}) => (
 	<div className={classNames(className, styles.item)}>{children}</div>
 );
 
-export default SettingsItem;
+export default SeparatorItem;
