@@ -2,9 +2,6 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-gap: 24px;
-	padding: 24px;
-	background: var(--color-primary-lighter);
-	border-radius: var(--border-radius-base);
 }
 
 .icon-wrapper {

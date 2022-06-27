@@ -9,10 +9,6 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 24px;
-	background: var(--color-primary-lighter);
-	padding: 24px;
-	border-radius: var(--border-radius-base);
-	box-shadow: var(--box-shadow-base);
 }
 
 .sorts {

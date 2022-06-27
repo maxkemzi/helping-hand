@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import classNames from "classnames";
 import Avatar from "@components/Avatar/Avatar";
 import ProfileTasks from "@views/Profile/ProfileTasks/ProfileTasks";
 import VerifiedIcon from "@images/verified.svg";
@@ -14,8 +13,8 @@ const ProfilePage = () => {
 	const [activeTab, setActiveTab] = useState(0);
 
 	return (
-		<div className={styles.page}>
-			<div className={classNames(styles.container, "container")}>
+		<div className="page">
+			<div className="container container--small">
 				<div className={styles.header}>
 					<Avatar
 						className={styles.avatar}

@@ -4,7 +4,7 @@ import React, {FC} from "react";
 import styles from "./AuthPage.module.scss";
 
 const AuthPage: FC = () => (
-	<div className={styles.page}>
+	<div className="page">
 		<div className="container">
 			<div className={styles.inner}>
 				<AuthForm />

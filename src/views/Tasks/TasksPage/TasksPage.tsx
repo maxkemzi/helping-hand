@@ -7,6 +7,7 @@ import TaskItem from "@components/TaskItem/TaskItem";
 import TasksFilters from "@views/Tasks/TasksFilters/TasksFilters";
 import Modal from "@components/Modal/Modal";
 import TasksCreateForm from "@views/Tasks/TasksCreateForm/TasksCreateForm";
+import classNames from "classnames";
 import styles from "./TasksPage.module.scss";
 import data from "../../../mock.json";
 
@@ -14,10 +15,10 @@ const TasksPage = () => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	return (
-		<div className={styles.page}>
+		<div className="page">
 			<div className="container">
 				<div className={styles.inner}>
-					<aside className={styles.sidebar}>
+					<aside className={classNames("wrapper", styles.sidebar)}>
 						<TasksFilters />
 					</aside>
 					<div>
@@ -32,7 +33,7 @@ const TasksPage = () => {
 							</div>
 							<TasksSortDropdowns />
 						</div>
-						<div className={styles.items}>
+						<div className={classNames("wrapper", styles.items)}>
 							{data.tasks.map((task: ITask) => (
 								<TaskItem key={task.id} {...task} />
 							))}

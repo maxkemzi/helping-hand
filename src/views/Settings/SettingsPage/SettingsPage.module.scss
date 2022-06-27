@@ -1,11 +1,3 @@
-.page {
-	padding: 28px 0;
-}
-
-.container {
-	max-width: 1080px;
-}
-
 .title {
 	margin-bottom: 28px;
 }
@@ -19,10 +11,6 @@
 	margin-right: 28px;
 }
 
-.content {
-	background: var(--color-primary-lighter);
-	padding: 24px 24px 0;
-	box-shadow: var(--box-shadow-base);
-	border-radius: var(--border-radius-base);
+.wrapper {
 	width: 100%;
 }
