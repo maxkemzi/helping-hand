@@ -1,14 +1,14 @@
-import HumanImage from "@images/human.svg";
 import AuthForm from "@views/Auth/AuthForm/AuthForm";
 import React, {FC} from "react";
 import styles from "./AuthPage.module.scss";
+import HumanIcon from "../../../icons/HumanIcon/HumanIcon";
 
 const AuthPage: FC = () => (
 	<div className="page">
 		<div className="container">
 			<div className={styles.inner}>
 				<AuthForm />
-				<HumanImage />
+				<HumanIcon />
 			</div>
 		</div>
 	</div>

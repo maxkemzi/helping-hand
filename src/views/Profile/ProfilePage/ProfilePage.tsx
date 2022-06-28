@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import Avatar from "@components/Avatar/Avatar";
 import ProfileTasks from "@views/Profile/ProfileTasks/ProfileTasks";
-import VerifiedIcon from "@images/verified.svg";
 import ProfileAchieves from "@views/Profile/ProfileAchieves/ProfileAchieves";
 import ProfileStats from "@views/Profile/ProfileStats/ProfileStats";
 import TabList from "@components/TabList/TabList";
 import TabItem from "@components/TabItem/TabItem";
 import Typography from "@components/Typography/Typography";
 import styles from "./ProfilePage.module.scss";
+import VerifiedIcon from "../../../icons/VerifiedIcon/VerifiedIcon";
 
 const ProfilePage = () => {
 	const [activeTab, setActiveTab] = useState(0);
