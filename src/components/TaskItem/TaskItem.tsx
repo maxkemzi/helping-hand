@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom";
 import {PROFILE_ROUTE, TASKS_ROUTE} from "@utils/constants/routes";
 import Typography from "@components/Typography/Typography";
 import UserInfo from "@components/UserInfo/UserInfo";
-import StatusIcon from "../../icons/StatusIcon/StatusIcon";
+import StatusIcon from "@icons/StatusIcon/StatusIcon";
 import styles from "./TaskItem.module.scss";
 
 const TaskItem: FC<ITask> = ({

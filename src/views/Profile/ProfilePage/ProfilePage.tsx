@@ -6,8 +6,8 @@ import ProfileStats from "@views/Profile/ProfileStats/ProfileStats";
 import TabList from "@components/TabList/TabList";
 import TabItem from "@components/TabItem/TabItem";
 import Typography from "@components/Typography/Typography";
+import VerifiedIcon from "@icons/VerifiedIcon/VerifiedIcon";
 import styles from "./ProfilePage.module.scss";
-import VerifiedIcon from "../../../icons/VerifiedIcon/VerifiedIcon";
 
 const ProfilePage = () => {
 	const [activeTab, setActiveTab] = useState(0);

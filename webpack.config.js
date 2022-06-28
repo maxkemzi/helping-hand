@@ -16,7 +16,8 @@ const config = {
 			"@utils": path.resolve(__dirname, "./src/utils/"),
 			"@views": path.resolve(__dirname, "./src/views/"),
 			"@customTypes": path.resolve(__dirname, "./src/types/"),
-			"@store": path.resolve(__dirname, "./src/store/")
+			"@store": path.resolve(__dirname, "./src/store/"),
+			"@icons": path.resolve(__dirname, "./src/icons/")
 		}
 	},
 	module: {

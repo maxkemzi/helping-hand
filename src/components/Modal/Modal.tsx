@@ -1,7 +1,7 @@
 import React, {Dispatch, FC, ReactNode, SetStateAction, useEffect} from "react";
 import classNames from "classnames";
+import CrossIcon from "@icons/CrossIcon/CrossIcon";
 import styles from "./Modal.module.scss";
-import CrossIcon from "../../icons/CrossIcon/CrossIcon";
 
 interface ModalProps {
 	title: string;

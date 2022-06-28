@@ -1,8 +1,8 @@
 import React, {FC, MouseEventHandler} from "react";
 import {ITag} from "@customTypes/index";
 import classNames from "classnames";
+import CrossIcon from "@icons/CrossIcon/CrossIcon";
 import styles from "./TagItem.module.scss";
-import CrossIcon from "../../icons/CrossIcon/CrossIcon";
 
 interface TagItemProps {
 	className?: string;
