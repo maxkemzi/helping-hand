@@ -1,7 +1,6 @@
 import React, {FC, ReactNode, useState} from "react";
 import classNames from "classnames";
 import ArrowDownIcon from "@images/arrow-down.svg";
-import Typography from "@components/Typography/Typography";
 import styles from "./CheckboxGroup.module.scss";
 
 interface CheckboxGroupProps {
@@ -26,16 +25,14 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
 	const handleClick = () => setIsOpen(!isOpen);
 
 	return (
-		<div className={classNames(className, styles.item)}>
+		<div
+			className={classNames(className, styles.item, {[styles.open]: isOpen})}
+		>
 			<button onClick={handleClick} className={styles.btn} type="button">
-				<Typography variant="h5" component="span">
-					{title}
-				</Typography>
-				<ArrowDownIcon
-					className={classNames(styles.icon, {[styles.up]: isOpen})}
-				/>
+				<span>{title}</span>
+				<ArrowDownIcon className={styles.icon} />
 			</button>
-			{isOpen && (
+			<div className={styles.content}>
 				<div className={styles.list}>
 					{React.Children.map(children, child => {
 						if (React.isValidElement(child)) {
@@ -44,7 +41,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
 						return false;
 					})}
 				</div>
-			)}
+			</div>
 		</div>
 	);
 };

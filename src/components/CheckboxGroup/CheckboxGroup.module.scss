@@ -1,22 +1,42 @@
-.btn {
-	padding: 8px 20px;
+.item {
 	background: var(--color-primary-light);
 	border-radius: var(--border-radius-base);
-	font-weight: 700;
+	box-shadow: var(--box-shadow-base);
+
+	&.open {
+		.icon {
+			transform: rotate(180deg);
+		}
+
+		.content {
+			transition: max-height .3s ease;
+			max-height: 140px;
+		}
+	}
+}
+
+.btn {
 	color: var(--color-text-light);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 12px;
-	box-shadow: var(--box-shadow-base);
+	font-size: 18px;
+	padding: 10px 20px;
 }
 
-.icon.up {
-	transform: rotate(180deg);
+.icon {
+	transition: transform var(--transition-base);
+}
+
+.content {
+	transition: max-height .3s ease;
+	max-height: 0;
+	overflow: auto;
 }
 
 .list {
 	display: flex;
 	flex-direction: column;
-	transition: all var(--transition-base);
+	padding: 0 20px 10px;
 }
+
