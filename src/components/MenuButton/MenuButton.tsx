@@ -1,12 +1,18 @@
-import React, {FC} from "react";
+import React, {FC, MouseEventHandler} from "react";
+import classNames from "classnames";
 import styles from "./MenuButton.module.scss";
 
 interface MenuButtonProps {
-	onClick: () => void;
+	onClick: MouseEventHandler;
+	isActive?: boolean;
 }
 
-const MenuButton: FC<MenuButtonProps> = ({onClick}) => (
-	<button onClick={onClick} type="button" className={styles.button}>
+const MenuButton: FC<MenuButtonProps> = ({onClick, isActive}) => (
+	<button
+		onClick={onClick}
+		type="button"
+		className={classNames(styles.button, {[styles.active]: isActive})}
+	>
 		<span />
 		<span />
 		<span />

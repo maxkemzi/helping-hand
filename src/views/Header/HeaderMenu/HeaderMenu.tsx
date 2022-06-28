@@ -16,7 +16,7 @@ import useListenClickOutside from "../../../hooks/useListenClickOutside";
 
 const HeaderMenu = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const parentRef = useRef(null);
+	const parentRef = useRef<HTMLDivElement>(null);
 
 	useListenClickOutside(parentRef, () => setIsOpen(false));
 
@@ -26,7 +26,7 @@ const HeaderMenu = () => {
 
 	return (
 		<div ref={parentRef}>
-			<MenuButton onClick={handleButtonClick} />
+			<MenuButton isActive={isOpen} onClick={handleButtonClick} />
 			<Menu isOpen={isOpen}>
 				<MenuItem
 					onClick={handleItemClick}
