@@ -34,8 +34,11 @@ export interface IconProps {
 	height?: number;
 }
 
-export type Language = "en" | "ru" | "ua";
+export interface Theme {
+	name: string;
+	styles: {[key: string]: string};
+}
 
-export type AccentColor = "#009AD2" | "#00D4C3";
+export type Language = "en" | "ru" | "ua";
 
 export type PrimaryColor = "" | "lighter" | "light";

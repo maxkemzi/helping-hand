@@ -1,16 +1,15 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {AccentColor, Language} from "@customTypes/index";
+import {Language, Theme} from "@customTypes/index";
 
 interface AppSliceState {
 	isInitializing: boolean;
-	accentColor: string;
+	theme: Theme;
 	language: Language;
 }
 
-// @ts-ignore
 const initialState: AppSliceState = {
 	isInitializing: false,
-	accentColor: localStorage.getItem("accentColor"),
+	theme: JSON.parse(localStorage.getItem("theme")),
 	language: "ua"
 };
 
@@ -21,9 +20,10 @@ const appSlice = createSlice({
 		setIsInitializing(state, action: PayloadAction<boolean>) {
 			state.isInitializing = action.payload;
 		},
-		setAccentColor(state, action: PayloadAction<AccentColor>) {
-			state.accentColor = action.payload;
-			localStorage.setItem("accentColor", action.payload);
+		setTheme(state, action: PayloadAction<Theme>) {
+			state.theme = action.payload;
+
+			localStorage.setItem("theme", JSON.stringify(action.payload));
 		},
 		setLanguage(state, action: PayloadAction<Language>) {
 			state.language = action.payload;
@@ -32,5 +32,4 @@ const appSlice = createSlice({
 });
 
 export default appSlice.reducer;
-export const {setIsInitializing, setAccentColor, setLanguage} =
-	appSlice.actions;
+export const {setIsInitializing, setTheme, setLanguage} = appSlice.actions;

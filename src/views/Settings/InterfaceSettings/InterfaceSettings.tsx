@@ -1,21 +1,20 @@
 import React from "react";
 import SeparatorItem from "@components/SeparatorItem/SeparatorItem";
 import {useDispatch, useSelector} from "react-redux";
-import {AccentColor} from "@customTypes/index";
-import ColorButton from "@components/ColorButton/ColorButton";
-import {RootState} from "@store/index";
-import {setAccentColor} from "@store/app/app.slice";
+import ThemeButton from "@components/ThemeButton/ThemeButton";
 import Typography from "@components/Typography/Typography";
 import LanguageDropdown from "@components/LanguageDropdown/LanguageDropdown";
+import {setTheme} from "@store/app/app.slice";
+import themes from "@utils/constants/themes";
+import {RootState} from "@store/index";
+import {Theme} from "@customTypes/index";
 import styles from "./InterfaceSettings.module.scss";
 
 const InterfaceSettings = () => {
 	const dispatch = useDispatch();
-	const accentColor = useSelector(
-		(state: RootState) => state.appState.accentColor
-	);
+	const themeSelector = useSelector((state: RootState) => state.appState.theme);
 
-	const handleClick = (color: AccentColor) => dispatch(setAccentColor(color));
+	const handleClick = (item: Theme) => dispatch(setTheme(item));
 
 	return (
 		<>
@@ -31,18 +30,14 @@ const InterfaceSettings = () => {
 					Акцентний колір
 				</Typography>
 				<div className={styles.items}>
-					<ColorButton
-						className={styles.item}
-						onClick={handleClick}
-						activeColorName={accentColor}
-						color="#00D4C3"
-					/>
-					<ColorButton
-						className={styles.item}
-						onClick={handleClick}
-						activeColorName={accentColor}
-						color="#009AD2"
-					/>
+					{themes.map(theme => (
+						<ThemeButton
+							className={styles.item}
+							onClick={handleClick}
+							isActive={theme.name === themeSelector.name}
+							theme={theme}
+						/>
+					))}
 				</div>
 			</SeparatorItem>
 			<SeparatorItem>
