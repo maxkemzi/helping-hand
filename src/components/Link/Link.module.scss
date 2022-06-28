@@ -1,0 +1,9 @@
+.link {
+	color: var(--color-accent);
+	border-bottom: 1px solid var(--color-accent);
+	transition: border-bottom-color var(--transition-base);
+
+	&:hover {
+		border-bottom-color: transparent;
+	}
+}

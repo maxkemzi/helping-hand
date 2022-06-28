@@ -1,5 +1,6 @@
 import React, {FC} from "react";
 import classNames from "classnames";
+import Link from "@components/Link/Link";
 import styles from "./FooterDevItem.module.scss";
 
 interface FooterDevItemProps {
@@ -17,14 +18,7 @@ const FooterDevItem: FC<FooterDevItemProps> = ({
 }) => (
 	<div className={classNames(className, styles.item)}>
 		<p className={styles.work}>{work}</p>
-		<a
-			className={styles.name}
-			href={linkPath}
-			rel="noreferrer noopener"
-			target="_blank"
-		>
-			{name}
-		</a>
+		<Link href={linkPath} text={name} />
 	</div>
 );
 
