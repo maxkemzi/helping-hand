@@ -1,3 +1,5 @@
+import {ReactNode} from "react";
+
 export interface ITask {
 	title: string;
 	tags: ITag[];
@@ -32,6 +34,14 @@ export interface IconProps {
 	className?: string;
 	width?: number;
 	height?: number;
+}
+
+export interface ISlide {
+	id: number;
+	title: string;
+	text: ReactNode;
+	buttonText?: string;
+	buttonPath?: string;
 }
 
 export interface Theme {
