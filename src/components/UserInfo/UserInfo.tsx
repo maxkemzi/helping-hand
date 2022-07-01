@@ -19,10 +19,12 @@ const UserInfo: FC<UserInfoProps> = ({
 	className
 }) => (
 	<NavLink to={path} className={classNames(className, styles.info)}>
-		<Avatar className={styles.avatar} imagePath={avatarPath} />
-		<Typography variant="body1" component="p">
-			{username}
-		</Typography>
+		<div className={styles.inner}>
+			<Avatar className={styles.avatar} imagePath={avatarPath} />
+			<Typography variant="body1" component="p">
+				{username}
+			</Typography>
+		</div>
 	</NavLink>
 );
 
