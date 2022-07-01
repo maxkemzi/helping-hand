@@ -6,6 +6,7 @@ const useListenClickOutside = (
 ) => {
 	useEffect(() => {
 		const handleClickOutside = ({target}: MouseEvent): void => {
+			// Check if the clicked element isn't an element with the onClickOutside handler
 			if (ref.current && !ref.current.contains(target as Node)) {
 				onClickOutside();
 			}

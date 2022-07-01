@@ -9,15 +9,22 @@ const useTheme = (theme: Theme): void => {
 	const themeSelector = useSelector((state: RootState) => state.appState.theme);
 
 	useLayoutEffect(() => {
-		if (!themeSelector) {
-			dispatch(setTheme(theme));
-		} else {
+		// Set global CSS variables
+		const setThemeStyleProperties = () => {
 			Object.keys(themeSelector.styles).forEach(key => {
 				document.documentElement.style.setProperty(
 					`--${key}`,
 					themeSelector.styles[key]
 				);
 			});
+		};
+
+		// Check if theme isn't in the local storage
+		if (!themeSelector) {
+			// Add theme to the local storage
+			dispatch(setTheme(theme));
+		} else {
+			setThemeStyleProperties();
 		}
 	}, [dispatch, theme, themeSelector]);
 };
