@@ -41,25 +41,3 @@
 .text {
 	margin-bottom: 40px;
 }
-
-.dots {
-	display: flex;
-	flex-direction: column;
-	row-gap: 8px;
-	position: absolute;
-	right: 16px;
-	top: 50%;
-	transform: translateY(-50%);
-}
-
-.dot {
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	background: var(--color-primary);
-	transition: background var(--transition-base);
-
-	&.active {
-		background: var(--color-accent);
-	}
-}
