@@ -36,6 +36,9 @@
 			],
 			"@icons/*": [
 				"./src/icons/*"
+			],
+			"@data/*": [
+				"./src/data/*"
 			]
 		}
 	}
