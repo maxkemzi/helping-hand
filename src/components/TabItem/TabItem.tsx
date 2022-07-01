@@ -6,22 +6,22 @@ type Variant = "horizontal" | "vertical";
 
 interface TabItemProps {
 	text: string;
-	onClick: MouseEventHandler;
-	isActive: boolean;
+	onClick?: MouseEventHandler;
 	variant?: Variant;
 	className?: string;
+	isActive: boolean;
 }
 
 const TabItem: FC<TabItemProps> = ({
 	text,
 	onClick,
-	isActive,
 	variant = "horizontal",
-	className
+	className,
+	isActive
 }) => (
 	<button
-		onClick={onClick}
 		type="button"
+		onClick={onClick}
 		className={classNames(className, styles.tab, styles[variant], {
 			[styles.active]: isActive
 		})}

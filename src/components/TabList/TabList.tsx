@@ -22,9 +22,11 @@ const TabList: FC<TabListProps> = ({
 
 	useEffect(() => {
 		if (parentRef.current && lineRef.current) {
+			// Get active child out of the tab list
 			const child = parentRef.current.children[activeTab]
 				.children[0] as HTMLElement;
 
+			// Line position calculations for a horizontal/vertical list
 			if (variant === "horizontal") {
 				const tabOffsetLeft = child.offsetLeft;
 				const tabWidth = child.offsetWidth;
