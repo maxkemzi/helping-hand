@@ -32,6 +32,7 @@ module.exports = {
 			}
 		],
 		"react/require-default-props": "off",
-		"no-param-reassign": "off"
+		"no-param-reassign": "off",
+		"react/jsx-no-useless-fragment": ["error", {allowExpressions: true}]
 	}
 };
