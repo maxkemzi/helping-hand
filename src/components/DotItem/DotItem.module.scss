@@ -1,0 +1,11 @@
+.dot {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--color-primary);
+	transition: background var(--transition-base);
+
+	&.active {
+		background: var(--color-accent);
+	}
+}

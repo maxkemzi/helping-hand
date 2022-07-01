@@ -3,17 +3,12 @@ import styles from "@views/Home/HomePage/HomePage.module.scss";
 import classNames from "classnames";
 import Button from "@components/Button/Button";
 import {NavLink} from "react-router-dom";
-import {AUTH_ROUTE} from "@utils/constants/routes";
 import Typography from "@components/Typography/Typography";
+import HomeSliderDots from "@views/Home/HomeSliderDots/HomeSliderDots";
+import {ISlide} from "@customTypes/index";
 
 interface HomeSliderProps {
-	slides: {
-		title: string;
-		text: JSX.Element;
-		buttonText?: string;
-		onClick: () => void;
-		id: string;
-	}[];
+	slides: ISlide[];
 }
 
 const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
@@ -42,7 +37,7 @@ const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
 	return (
 		<>
 			{slides.map((slide, slideIndex) => {
-				const {id, title, text, buttonText, onClick} = slide;
+				const {id, title, text, buttonText, buttonPath} = slide;
 
 				let position = "nextSlide";
 
@@ -72,27 +67,15 @@ const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
 						>
 							{text}
 						</Typography>
-						{buttonText && (
-							<NavLink to={AUTH_ROUTE}>
-								<Button size="big" onClick={onClick} text={buttonText} />
+						{buttonText && buttonPath && (
+							<NavLink to={buttonPath}>
+								<Button size="big" text={buttonText} />
 							</NavLink>
 						)}
 					</div>
 				);
 			})}
-			<div className={styles.dots}>
-				{slides.map((slide, slideIndex) => (
-					<button
-						key={slide.id}
-						onClick={() => setIndex(slideIndex)}
-						aria-label="dot"
-						className={classNames(styles.dot, {
-							[styles.active]: index === slideIndex
-						})}
-						type="button"
-					/>
-				))}
-			</div>
+			<HomeSliderDots slides={slides} index={index} setIndex={setIndex} />
 		</>
 	);
 };
