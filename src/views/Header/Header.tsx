@@ -32,7 +32,12 @@ const Header: FC<HeaderProps> = ({position = "relative", hasBorder}) => {
 					<div className={styles.info}>
 						{isAuth ? (
 							<NavLink className={styles.avatar} to={PROFILE_ROUTE}>
-								<Avatar fallbackVariant="lighter" imagePath="" />
+								<Avatar
+									width={32}
+									height={32}
+									fallbackVariant="lighter"
+									imagePath=""
+								/>
 							</NavLink>
 						) : (
 							<LanguageDropdown className={styles.avatar} />

@@ -1,5 +1,5 @@
 import React, {ChangeEvent, Dispatch, FC, SetStateAction} from "react";
-import SearchIcon from "@images/search.svg";
+import SearchIcon from "@icons/SearchIcon/SearchIcon";
 import styles from "./SearchBar.module.scss";
 
 interface SearchBarProps {
@@ -22,7 +22,7 @@ const SearchBar: FC<SearchBarProps> = ({value, setValue}) => {
 				required
 			/>
 			<div className={styles.icon}>
-				<SearchIcon />
+				<SearchIcon width={16} height={16} />
 			</div>
 		</form>
 	);

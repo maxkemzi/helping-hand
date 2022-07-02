@@ -2,16 +2,16 @@ import React, {useRef, useState} from "react";
 import MenuButton from "@components/MenuButton/MenuButton";
 import Menu from "@components/Menu/Menu";
 import MenuItem from "@components/MenuItem/MenuItem";
-import ProfileIcon from "@images/profile.svg";
-import TaskIcon from "@images/task.svg";
-import HomeIcon from "@images/home.svg";
-import SettingsIcon from "@images/settings.svg";
 import {
 	HOME_ROUTE,
 	PROFILE_ROUTE,
 	SETTINGS_ROUTE,
 	TASKS_ROUTE
 } from "@utils/constants/routes";
+import HomeIcon from "@icons/HomeIcon/HomeIcon";
+import TasksIcon from "@icons/TasksIcon/TasksIcon";
+import UserIcon from "@icons/UserIcon/UserIcon";
+import SettingsIcon from "@icons/SettingsIcon/SettingsIcon";
 import useListenClickOutside from "../../../hooks/useListenClickOutside";
 
 const HeaderMenu = () => {
@@ -37,13 +37,13 @@ const HeaderMenu = () => {
 				<MenuItem
 					onClick={handleItemClick}
 					path={TASKS_ROUTE}
-					icon={TaskIcon}
+					icon={TasksIcon}
 					text="Завдання"
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={PROFILE_ROUTE}
-					icon={ProfileIcon}
+					icon={UserIcon}
 					text="Мій профіль"
 				/>
 				<MenuItem

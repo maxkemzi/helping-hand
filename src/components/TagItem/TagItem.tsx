@@ -21,7 +21,7 @@ const TagItem: FC<ITag & TagItemProps> = ({
 			<div className={classNames(className, styles.item, styles.inner)}>
 				<span className={styles.text}>{text}</span>
 				<button onClick={onRemoveBtnClick} type="button" className={styles.btn}>
-					<CrossIcon width={8} height={8} />
+					<CrossIcon className={styles.icon} width={8} height={8} />
 				</button>
 			</div>
 		);

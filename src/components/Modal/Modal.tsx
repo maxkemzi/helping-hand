@@ -49,7 +49,7 @@ const Modal: FC<ModalProps> = ({
 							className={styles["close-btn"]}
 							type="button"
 						>
-							<CrossIcon />
+							<CrossIcon width={20} height={20} />
 						</button>
 					</div>
 				</div>

@@ -1,5 +1,6 @@
 import React, {ButtonHTMLAttributes, FC} from "react";
 import classNames from "classnames";
+import {IconProps} from "@customTypes/index";
 import styles from "./Button.module.scss";
 
 type Variant = "primary" | "outline";
@@ -11,7 +12,7 @@ interface ButtonProps {
 	variant?: Variant;
 	size?: Size;
 	className?: string;
-	startIcon?: FC<{className?: string}>;
+	startIcon?: FC<IconProps>;
 	isActive?: boolean;
 }
 
@@ -36,7 +37,7 @@ const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({
 		type={isSubmit ? "submit" : "button"}
 		{...props}
 	>
-		{Icon && <Icon className={styles.icon} />}
+		{Icon && <Icon className={styles.icon} width={20} height={20} />}
 		{Icon ? <span>{text}</span> : text}
 	</button>
 );
