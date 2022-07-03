@@ -7,14 +7,14 @@ import LanguageDropdown from "@components/LanguageDropdown/LanguageDropdown";
 import {setTheme} from "@store/app/app.slice";
 import themes from "@utils/constants/themes";
 import {RootState} from "@store/index";
-import {Theme} from "@customTypes/index";
+import {ITheme} from "@customTypes/index";
 import styles from "./InterfaceSettings.module.scss";
 
 const InterfaceSettings = () => {
 	const dispatch = useDispatch();
 	const themeSelector = useSelector((state: RootState) => state.appState.theme);
 
-	const handleClick = (item: Theme) => dispatch(setTheme(item));
+	const handleClick = (item: ITheme) => dispatch(setTheme(item));
 
 	return (
 		<>

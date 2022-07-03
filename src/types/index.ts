@@ -44,7 +44,7 @@ export interface ISlide {
 	buttonPath?: string;
 }
 
-export interface Theme {
+export interface ITheme {
 	name: string;
 	styles: {[key: string]: string};
 }

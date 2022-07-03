@@ -1,15 +1,19 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Language, Theme} from "@customTypes/index";
+import {ITheme, Language} from "@customTypes/index";
 
-interface AppSliceState {
+export interface AppSliceState {
 	isInitializing: boolean;
-	theme: Theme;
+	theme: ITheme;
 	language: Language;
 }
 
-const initialState: AppSliceState = {
+// todo: Add proper synchronization with localStorage
+export const initialState: AppSliceState = {
 	isInitializing: false,
-	theme: JSON.parse(localStorage.getItem("theme")),
+	theme:
+		typeof window !== "undefined"
+			? JSON.parse(localStorage.getItem("theme"))
+			: null,
 	language: "ua"
 };
 
@@ -20,10 +24,12 @@ const appSlice = createSlice({
 		setIsInitializing(state, action: PayloadAction<boolean>) {
 			state.isInitializing = action.payload;
 		},
-		setTheme(state, action: PayloadAction<Theme>) {
+		setTheme(state, action: PayloadAction<ITheme>) {
 			state.theme = action.payload;
 
-			localStorage.setItem("theme", JSON.stringify(action.payload));
+			if (typeof window !== "undefined") {
+				localStorage.setItem("theme", JSON.stringify(action.payload));
+			}
 		},
 		setLanguage(state, action: PayloadAction<Language>) {
 			state.language = action.payload;

@@ -1,13 +1,13 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IUser} from "@customTypes/index";
 
-interface AuthSliceState {
+export interface AuthSliceState {
 	user: IUser;
 	isAuth: boolean;
 	isFetching: boolean;
 }
 
-const initialState: AuthSliceState = {
+export const initialState: AuthSliceState = {
 	user: {username: "", avatar: ""},
 	isAuth: true,
 	isFetching: false

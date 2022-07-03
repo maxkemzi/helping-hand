@@ -1,10 +1,10 @@
 import {useLayoutEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Theme} from "@customTypes/index";
+import {ITheme} from "@customTypes/index";
 import {RootState} from "@store/index";
 import {setTheme} from "@store/app/app.slice";
 
-const useTheme = (theme: Theme): void => {
+const useTheme = (theme: ITheme): void => {
 	const dispatch = useDispatch();
 	const themeSelector = useSelector((state: RootState) => state.appState.theme);
 

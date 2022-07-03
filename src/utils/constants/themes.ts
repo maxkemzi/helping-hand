@@ -1,6 +1,6 @@
-import {Theme} from "@customTypes/index";
+import {ITheme} from "@customTypes/index";
 
-export const BlueTheme: Theme = {
+export const BlueTheme: ITheme = {
 	name: "blue",
 	styles: {
 		"color-accent": "#009AD2",
@@ -9,7 +9,7 @@ export const BlueTheme: Theme = {
 	}
 };
 
-export const GreenTheme: Theme = {
+export const GreenTheme: ITheme = {
 	name: "green",
 	styles: {
 		"color-accent": "#00D4C3",
