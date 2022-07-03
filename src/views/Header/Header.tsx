@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import Logo from "@components/Logo/Logo";
 import classNames from "classnames";
 import {NavLink} from "react-router-dom";
-import {PROFILE_ROUTE} from "@utils/constants/routes";
+import {PROFILE_TASKS_ROUTE} from "@utils/constants/routes";
 import Avatar from "@components/Avatar/Avatar";
 import HeaderMenu from "@views/Header/HeaderMenu/HeaderMenu";
 import {useSelector} from "react-redux";
@@ -31,7 +31,7 @@ const Header: FC<HeaderProps> = ({position = "relative", hasBorder}) => {
 					<Logo />
 					<div className={styles.info}>
 						{isAuth ? (
-							<NavLink className={styles.avatar} to={PROFILE_ROUTE}>
+							<NavLink className={styles.avatar} to={PROFILE_TASKS_ROUTE}>
 								<Avatar
 									width={32}
 									height={32}

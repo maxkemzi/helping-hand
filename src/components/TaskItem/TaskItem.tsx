@@ -3,7 +3,7 @@ import {ITag, ITask} from "@customTypes/index";
 import Button from "@components/Button/Button";
 import TagItem from "@components/TagItem/TagItem";
 import {NavLink} from "react-router-dom";
-import {PROFILE_ROUTE, TASKS_ROUTE} from "@utils/constants/routes";
+import {PROFILE_TASKS_ROUTE, TASKS_ROUTE} from "@utils/constants/routes";
 import Typography from "@components/Typography/Typography";
 import UserInfo from "@components/UserInfo/UserInfo";
 import StatusIcon from "@icons/StatusIcon/StatusIcon";
@@ -26,7 +26,7 @@ const TaskItem: FC<ITask> = ({
 			<StatusIcon variant={isActive ? "active" : "inactive"} />
 		</div>
 		<UserInfo
-			path={PROFILE_ROUTE}
+			path={PROFILE_TASKS_ROUTE}
 			className={styles.user}
 			avatarPath={creator.avatar}
 			username={creator.username}

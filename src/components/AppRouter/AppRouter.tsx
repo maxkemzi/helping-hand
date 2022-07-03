@@ -60,7 +60,7 @@ const AppRouter = () => (
 				</>
 			}
 		>
-			<Route index element={<Navigate to={LOGIN_ROUTE} />} />
+			<Route index element={<Navigate to={LOGIN_ROUTE} replace />} />
 			<Route path={LOGIN_ROUTE} element={<AuthLoginForm />} />
 			<Route path={SIGNUP_ROUTE} element={<AuthSignupForm />} />
 			<Route path="*" element={<Navigate to={LOGIN_ROUTE} />} />
@@ -91,7 +91,7 @@ const AppRouter = () => (
 				</PrivateRoute>
 			}
 		>
-			<Route index element={<Navigate to={PROFILE_TASKS_ROUTE} />} />
+			<Route index element={<Navigate to={PROFILE_TASKS_ROUTE} replace />} />
 			<Route path={PROFILE_TASKS_ROUTE} element={<ProfileTasks />} />
 			<Route path={PROFILE_ACHIEVES_ROUTE} element={<ProfileAchieves />} />
 			<Route path={PROFILE_STATS_ROUTE} element={<ProfileStats />} />
@@ -110,7 +110,7 @@ const AppRouter = () => (
 				</>
 			}
 		>
-			<Route index element={<Navigate to={SETTINGS_ACCOUNT_ROUTE} />} />
+			<Route index element={<Navigate to={SETTINGS_ACCOUNT_ROUTE} replace />} />
 			<Route path={SETTINGS_ACCOUNT_ROUTE} element={<AccountSettings />} />
 			<Route
 				path={SETTINGS_INTEGRATION_ROUTE}

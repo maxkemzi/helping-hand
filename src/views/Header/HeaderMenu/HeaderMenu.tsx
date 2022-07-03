@@ -4,8 +4,8 @@ import Menu from "@components/Menu/Menu";
 import MenuItem from "@components/MenuItem/MenuItem";
 import {
 	HOME_ROUTE,
-	PROFILE_ROUTE,
-	SETTINGS_ROUTE,
+	PROFILE_TASKS_ROUTE,
+	SETTINGS_ACCOUNT_ROUTE,
 	TASKS_ROUTE
 } from "@utils/constants/routes";
 import HomeIcon from "@icons/HomeIcon/HomeIcon";
@@ -42,13 +42,13 @@ const HeaderMenu = () => {
 				/>
 				<MenuItem
 					onClick={handleItemClick}
-					path={PROFILE_ROUTE}
+					path={PROFILE_TASKS_ROUTE}
 					icon={UserIcon}
 					text="Мій профіль"
 				/>
 				<MenuItem
 					onClick={handleItemClick}
-					path={SETTINGS_ROUTE}
+					path={SETTINGS_ACCOUNT_ROUTE}
 					icon={SettingsIcon}
 					text="Налаштування"
 				/>
