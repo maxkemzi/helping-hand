@@ -6,7 +6,7 @@
 	&::before {
 		content: "";
 		position: absolute;
-		background: var(--color-text-dark-lighter);
+		background: var(--color-divider);
 		border-radius: var(--border-radius-base);
 	}
 }

@@ -1,6 +1,6 @@
 import React, {FC, MouseEventHandler} from "react";
 import classNames from "classnames";
-import styles from "@views/Home/HomeSliderDots/HomeSliderDots.module.scss";
+import styles from "./DotItem.module.scss";
 
 interface DotItemProps {
 	className?: string;

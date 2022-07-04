@@ -40,7 +40,7 @@ const AppRouter = () => (
 			path={HOME_ROUTE}
 			element={
 				<>
-					<Header position="absolute" />
+					<Header hasBorder position="absolute" />
 					<main className="main">
 						<HomePage />
 					</main>
