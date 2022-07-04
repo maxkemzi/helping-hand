@@ -1,3 +1,11 @@
 {
-	"description": "A service that will answer all your questions. Do not believe? Try it yourself!"
+	"home": {
+		"description": "A service that will answer all your questions. Do not believe? Try it yourself!"
+	},
+	"menuItems": {
+		"home": "Home",
+		"tasks": "Tasks",
+		"profile": "Profile",
+		"settings": "Settings"
+	}
 }

@@ -5,21 +5,21 @@ const slides: ISlide[] = [
 	{
 		id: 1,
 		title: "Helping hand",
-		text: "description",
+		text: "home.description",
 		buttonText: "Почати",
 		buttonPath: LOGIN_ROUTE
 	},
 	{
 		id: 2,
 		title: "Helping hand",
-		text: "description",
+		text: "home.description",
 		buttonText: "Почати",
 		buttonPath: LOGIN_ROUTE
 	},
 	{
 		id: 3,
 		title: "Helping hand",
-		text: "description",
+		text: "home.description",
 		buttonText: "Почати",
 		buttonPath: LOGIN_ROUTE
 	}

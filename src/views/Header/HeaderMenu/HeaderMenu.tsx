@@ -12,11 +12,13 @@ import HomeIcon from "@icons/HomeIcon/HomeIcon";
 import TasksIcon from "@icons/TasksIcon/TasksIcon";
 import UserIcon from "@icons/UserIcon/UserIcon";
 import SettingsIcon from "@icons/SettingsIcon/SettingsIcon";
+import {useTranslation} from "react-i18next";
 import useListenClickOutside from "../../../hooks/useListenClickOutside";
 
 const HeaderMenu = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const parentRef = useRef<HTMLDivElement>(null);
+	const {t} = useTranslation();
 
 	useListenClickOutside(parentRef, () => setIsOpen(false));
 
@@ -32,25 +34,25 @@ const HeaderMenu = () => {
 					onClick={handleItemClick}
 					path={HOME_ROUTE}
 					icon={HomeIcon}
-					text="Головна"
+					text={t("menuItems.home")}
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={TASKS_ROUTE}
 					icon={TasksIcon}
-					text="Завдання"
+					text={t("menuItems.tasks")}
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={PROFILE_TASKS_ROUTE}
 					icon={UserIcon}
-					text="Мій профіль"
+					text={t("menuItems.profile")}
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={SETTINGS_ACCOUNT_ROUTE}
 					icon={SettingsIcon}
-					text="Налаштування"
+					text={t("menuItems.settings")}
 				/>
 			</Menu>
 		</div>
