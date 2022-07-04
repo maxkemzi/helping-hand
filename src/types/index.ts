@@ -1,5 +1,3 @@
-import {ReactNode} from "react";
-
 export interface ITask {
 	title: string;
 	tags: ITag[];
@@ -39,7 +37,7 @@ export interface IconProps {
 export interface ISlide {
 	id: number;
 	title: string;
-	text: ReactNode;
+	text: string;
 	buttonText?: string;
 	buttonPath?: string;
 }
@@ -48,7 +46,5 @@ export interface ITheme {
 	name: string;
 	styles: {[key: string]: string};
 }
-
-export type Language = "en" | "ru" | "ua";
 
 export type PrimaryColor = "" | "lighter" | "light";

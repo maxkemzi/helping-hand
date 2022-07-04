@@ -2,7 +2,6 @@ import reducer, {
 	initialState,
 	setIsInitializing,
 	setTheme,
-	setLanguage,
 	AppSliceState
 } from "./app.slice";
 
@@ -33,14 +32,6 @@ describe("app reducer should work properly", () => {
 		).toEqual({
 			...previousState,
 			theme: {name: "red", styles: {color: "red"}}
-		});
-	});
-
-	test("should set the language to en", () => {
-		const previousState: AppSliceState = {...initialState, language: "ua"};
-		expect(reducer(previousState, setLanguage("en"))).toEqual({
-			...previousState,
-			language: "en"
 		});
 	});
 });

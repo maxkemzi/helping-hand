@@ -1,18 +1,16 @@
 import React, {FC, useState} from "react";
 import Dropdown from "@components/Dropdown/Dropdown";
 import DropdownOption from "@components/DropdownOption/DropdownOption";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "@store/index";
-import {setLanguage} from "@store/app/app.slice";
-import {Language} from "@customTypes/index";
+import {useTranslation} from "react-i18next";
+import supportedLangs, {Lang} from "@utils/constants/langs";
 
 const LanguageDropdown: FC<{className?: string}> = ({className}) => {
-	const dispatch = useDispatch();
-	const language = useSelector((state: RootState) => state.appState.language);
+	const {i18n} = useTranslation();
 	const [isVisible, setIsVisible] = useState(false);
 
-	const handleClick = (value: Language) => {
-		dispatch(setLanguage(value));
+	const handleClick = (lang: Lang) => {
+		i18n.changeLanguage(lang);
+		localStorage.setItem("lang", lang);
 		setIsVisible(false);
 	};
 
@@ -21,26 +19,17 @@ const LanguageDropdown: FC<{className?: string}> = ({className}) => {
 			className={className}
 			isVisible={isVisible}
 			setIsVisible={setIsVisible}
-			value={language.toUpperCase()}
+			value={i18n.language.toUpperCase()}
 		>
-			<DropdownOption
-				value="ua"
-				text="UA"
-				isActive={language === "ua"}
-				onClick={handleClick}
-			/>
-			<DropdownOption
-				value="en"
-				text="EN"
-				isActive={language === "en"}
-				onClick={handleClick}
-			/>
-			<DropdownOption
-				value="ru"
-				text="RU"
-				isActive={language === "ru"}
-				onClick={handleClick}
-			/>
+			{Object.keys(supportedLangs).map((lang: Lang) => (
+				<DropdownOption
+					key={lang}
+					value={lang}
+					text={supportedLangs[lang]}
+					isActive={i18n.resolvedLanguage === lang}
+					onClick={() => handleClick(lang)}
+				/>
+			))}
 		</Dropdown>
 	);
 };

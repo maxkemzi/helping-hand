@@ -1,10 +1,9 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ITheme, Language} from "@customTypes/index";
+import {ITheme} from "@customTypes/index";
 
 export interface AppSliceState {
 	isInitializing: boolean;
 	theme: ITheme;
-	language: Language;
 }
 
 // todo: Add proper synchronization with localStorage
@@ -13,8 +12,7 @@ export const initialState: AppSliceState = {
 	theme:
 		typeof window !== "undefined"
 			? JSON.parse(localStorage.getItem("theme"))
-			: null,
-	language: "ua"
+			: null
 };
 
 const appSlice = createSlice({
@@ -30,12 +28,9 @@ const appSlice = createSlice({
 			if (typeof window !== "undefined") {
 				localStorage.setItem("theme", JSON.stringify(action.payload));
 			}
-		},
-		setLanguage(state, action: PayloadAction<Language>) {
-			state.language = action.payload;
 		}
 	}
 });
 
 export default appSlice.reducer;
-export const {setIsInitializing, setTheme, setLanguage} = appSlice.actions;
+export const {setIsInitializing, setTheme} = appSlice.actions;
