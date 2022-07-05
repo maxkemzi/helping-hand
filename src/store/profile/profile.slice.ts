@@ -1,12 +1,12 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IUser} from "@customTypes/index";
 
-interface ProfileSliceState {
+export interface ProfileSliceState {
 	profile: IUser;
 	isFetching: boolean;
 }
 
-const initialState: ProfileSliceState = {
+export const initialState: ProfileSliceState = {
 	profile: {username: "", avatar: ""},
 	isFetching: false
 };
