@@ -13,9 +13,13 @@ import TasksIcon from "@icons/TasksIcon/TasksIcon";
 import UserIcon from "@icons/UserIcon/UserIcon";
 import SettingsIcon from "@icons/SettingsIcon/SettingsIcon";
 import {useTranslation} from "react-i18next";
+import TeamIcon from "@icons/TeamIcon/TeamIcon";
+import Modal from "@components/Modal/Modal";
+import HeaderContactForm from "@views/Header/HeaderContactForm/HeaderContactForm";
 import useListenClickOutside from "../../../hooks/useListenClickOutside";
 
 const HeaderMenu = () => {
+	const [isVisible, setIsVisible] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const parentRef = useRef<HTMLDivElement>(null);
 	const {t} = useTranslation();
@@ -25,6 +29,11 @@ const HeaderMenu = () => {
 	const handleButtonClick = () => setIsOpen(!isOpen);
 
 	const handleItemClick = () => setIsOpen(false);
+
+	const handleContactClick = () => {
+		setIsVisible(true);
+		setIsOpen(false);
+	};
 
 	return (
 		<div ref={parentRef}>
@@ -54,7 +63,16 @@ const HeaderMenu = () => {
 					icon={SettingsIcon}
 					text={t("menuItems.settings")}
 				/>
+				<MenuItem
+					onClick={handleContactClick}
+					as="button"
+					icon={TeamIcon}
+					text={t("menuItems.contact")}
+				/>
 			</Menu>
+			<Modal title="Contact" isVisible={isVisible} setIsVisible={setIsVisible}>
+				<HeaderContactForm />
+			</Modal>
 		</div>
 	);
 };
