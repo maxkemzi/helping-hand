@@ -14,7 +14,7 @@ module.exports = {
 	extends: ["airbnb", "airbnb-typescript", "airbnb/hooks", "prettier"],
 	plugins: ["prettier"],
 	rules: {
-		"prettier/prettier": "error",
+		"prettier/prettier": ["error", {endOfLine: "auto"}],
 		"react/prop-types": "off",
 		"react/function-component-definition": [
 			"error",
