@@ -6,33 +6,36 @@ import TaskQuestionSection from "@views/Task/TaskQuestionSection/TaskQuestionSec
 import TaskAnswersSection from "@views/Task/TaskAnswersSection/TaskAnswersSection";
 import TaskAnswerFormSection from "@views/Task/TaskAnswerFormSection/TaskAnswerFormSection";
 import {useParams} from "react-router-dom";
+import MainLayout from "@components/MainLayout/MainLayout";
 import mockData from "../../../mock.json";
 
 const TaskPage: FC = () => {
 	const {id} = useParams();
 	console.log(id);
 	return (
-		<div className="page">
-			<div className="container container--small">
-				<div className="wrapper">
-					<SeparatorItem>
-						<TaskTitleSection title="Title" tags={mockData.tags} />
-					</SeparatorItem>
-					<SeparatorItem>
-						<TaskStatsSection />
-					</SeparatorItem>
-					<SeparatorItem>
-						<TaskQuestionSection />
-					</SeparatorItem>
-					<SeparatorItem>
-						<TaskAnswersSection />
-					</SeparatorItem>
-					<SeparatorItem>
-						<TaskAnswerFormSection />
-					</SeparatorItem>
+		<MainLayout>
+			<div className="page">
+				<div className="container container--small">
+					<div className="wrapper">
+						<SeparatorItem>
+							<TaskTitleSection title="Title" tags={mockData.tags} />
+						</SeparatorItem>
+						<SeparatorItem>
+							<TaskStatsSection />
+						</SeparatorItem>
+						<SeparatorItem>
+							<TaskQuestionSection />
+						</SeparatorItem>
+						<SeparatorItem>
+							<TaskAnswersSection />
+						</SeparatorItem>
+						<SeparatorItem>
+							<TaskAnswerFormSection />
+						</SeparatorItem>
+					</div>
 				</div>
 			</div>
-		</div>
+		</MainLayout>
 	);
 };
 

@@ -4,44 +4,51 @@ import Typography from "@components/Typography/Typography";
 import VerifiedIcon from "@icons/VerifiedIcon/VerifiedIcon";
 import {Outlet} from "react-router-dom";
 import ProfileTabs from "@views/Profile/ProfileTabs/ProfileTabs";
+import MainLayout from "@components/MainLayout/MainLayout";
 import styles from "./ProfilePage.module.scss";
 
 const ProfilePage = () => (
-	<div className="page">
-		<div className="container container--small">
-			<div className={styles.header}>
-				<Avatar
-					className={styles.avatar}
-					imagePath=""
-					width={150}
-					height={150}
-					fallbackVariant="lighter"
-				/>
-				<div className={styles.user}>
-					<div className={styles.name}>
-						<Typography className={styles.username} variant="h3" component="h3">
-							Max Kemzi
+	<MainLayout>
+		<div className="page">
+			<div className="container container--small">
+				<div className={styles.header}>
+					<Avatar
+						className={styles.avatar}
+						imagePath=""
+						width={150}
+						height={150}
+						fallbackVariant="lighter"
+					/>
+					<div className={styles.user}>
+						<div className={styles.name}>
+							<Typography
+								className={styles.username}
+								variant="h3"
+								component="h3"
+							>
+								Max Kemzi
+							</Typography>
+							<VerifiedIcon />
+						</div>
+						<Typography
+							className={styles.description}
+							variant="subtitle2"
+							component="p"
+						>
+							sdfdsfsdfds
 						</Typography>
-						<VerifiedIcon />
+						<Typography variant="h4" component="h4">
+							Expert
+						</Typography>
 					</div>
-					<Typography
-						className={styles.description}
-						variant="subtitle2"
-						component="p"
-					>
-						sdfdsfsdfds
-					</Typography>
-					<Typography variant="h4" component="h4">
-						Expert
-					</Typography>
+				</div>
+				<ProfileTabs />
+				<div className={styles.content}>
+					<Outlet />
 				</div>
 			</div>
-			<ProfileTabs />
-			<div className={styles.content}>
-				<Outlet />
-			</div>
 		</div>
-	</div>
+	</MainLayout>
 );
 
 export default ProfilePage;

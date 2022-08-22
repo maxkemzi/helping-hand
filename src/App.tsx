@@ -11,9 +11,7 @@ const App: FC = () => {
 
 	return (
 		<Router>
-			<div className="main-wrapper">
-				<AppRouter />
-			</div>
+			<AppRouter />
 		</Router>
 	);
 };
