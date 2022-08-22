@@ -8,7 +8,8 @@
     "build": "webpack --mode production",
     "eslint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "test": "npx jest"
+    "test": "npx jest",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx"
   },
   "keywords": [],
   "author": "Max Kemzi <kemzi9585@gmail.com>",

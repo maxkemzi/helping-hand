@@ -1,15 +1,15 @@
 import React, {FC, ReactNode} from "react";
-import {useSelector} from "react-redux";
-import {RootState} from "@store/index";
 import {Navigate} from "react-router-dom";
 import {LOGIN_ROUTE} from "@utils/constants/routes";
+import {getIsAuth} from "@store/auth/auth.selectors";
+import useAppSelector from "../../hooks/useAppSelector";
 
 interface PrivateRouteProps {
 	children: ReactNode;
 }
 
 const PrivateRoute: FC<PrivateRouteProps> = ({children}) => {
-	const isAuth = useSelector((state: RootState) => state.authState.isAuth);
+	const isAuth = useAppSelector(getIsAuth);
 	return isAuth ? <>{children}</> : <Navigate to={LOGIN_ROUTE} />;
 };
 
