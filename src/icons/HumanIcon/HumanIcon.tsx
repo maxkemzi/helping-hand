@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {IconProps} from "@customTypes/index";
+import {IconProps} from "@customTypes/components";
 import classNames from "classnames";
 import styles from "./HumanIcon.module.scss";
 

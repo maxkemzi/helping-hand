@@ -1,11 +1,11 @@
 import React, {FC} from "react";
-import {ITag} from "@customTypes/index";
 import TagsField from "@components/TagsField/TagsField";
 import {FieldProps} from "formik";
+import Tag from "@customTypes/entities/tag";
 
 interface FormTagsFieldProps {
 	className?: string;
-	tagOptions: ITag[];
+	tagOptions: Tag[];
 }
 
 const FormTagsField: FC<FormTagsFieldProps & FieldProps> = ({
@@ -17,10 +17,10 @@ const FormTagsField: FC<FormTagsFieldProps & FieldProps> = ({
 	const handleRemoveTag = (id: string) =>
 		setFieldValue(
 			"tags",
-			field.value.filter((tag: ITag) => tag.id !== id)
+			field.value.filter((tag: Tag) => tag.id !== id)
 		);
 
-	const handleAddTags = (items: ITag[]) =>
+	const handleAddTags = (items: Tag[]) =>
 		setFieldValue("tags", [...field.value, ...items]);
 
 	return (

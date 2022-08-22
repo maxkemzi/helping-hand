@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {IconProps} from "@customTypes/index";
+import {IconProps} from "@customTypes/components";
 
 const HomeIcon: FC<IconProps> = ({height, width, className}) => (
 	<svg

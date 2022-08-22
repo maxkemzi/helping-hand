@@ -1,6 +1,6 @@
 import React, {FC} from "react";
-import {IconProps} from "@customTypes/index";
 import classNames from "classnames";
+import {IconProps} from "@customTypes/components";
 import styles from "./CrossIcon.module.scss";
 
 const CrossIcon: FC<IconProps> = ({height, width, className}) => (

@@ -1,7 +1,7 @@
 import {LOGIN_ROUTE} from "@utils/constants/routes";
-import {ISlide} from "@customTypes/index";
+import {Slide} from "@customTypes/components";
 
-const slides: ISlide[] = [
+const slides: Slide[] = [
 	{
 		id: 1,
 		title: "Helping hand",

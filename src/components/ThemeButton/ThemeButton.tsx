@@ -1,14 +1,14 @@
 import React, {FC} from "react";
 import classNames from "classnames";
 import {css} from "@emotion/css";
-import {ITheme} from "@customTypes/index";
+import {Theme} from "@customTypes/components";
 import styles from "./ThemeButton.module.scss";
 
 interface ColorItemProps {
 	className?: string;
-	onClick: (theme: ITheme) => void;
+	onClick: (theme: Theme) => void;
 	isActive: boolean;
-	theme: ITheme;
+	theme: Theme;
 }
 
 const ThemeButton: FC<ColorItemProps> = ({

@@ -1,7 +1,7 @@
 import React, {FC, useState} from "react";
 import classNames from "classnames";
-import {PrimaryColor} from "@customTypes/index";
 import FallbackImage from "@icons/FallbackImage/FallbackImage";
+import {PrimaryColor} from "@customTypes/components";
 import styles from "./Avatar.module.scss";
 
 interface AvatarProps {

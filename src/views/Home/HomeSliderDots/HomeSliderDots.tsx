@@ -1,10 +1,10 @@
 import React, {Dispatch, FC, SetStateAction} from "react";
 import DotItem from "@components/DotItem/DotItem";
-import {ISlide} from "@customTypes/index";
+import {Slide} from "@customTypes/components";
 import styles from "./HomeSliderDots.module.scss";
 
 interface HomeSliderDotsProps {
-	slides: ISlide[];
+	slides: Slide[];
 	setIndex: Dispatch<SetStateAction<number>>;
 	index: number;
 }

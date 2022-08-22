@@ -1,5 +1,4 @@
 import React, {FC} from "react";
-import {ITag, ITask} from "@customTypes/index";
 import Button from "@components/Button/Button";
 import TagItem from "@components/TagItem/TagItem";
 import {NavLink} from "react-router-dom";
@@ -7,9 +6,21 @@ import {PROFILE_TASKS_ROUTE, TASKS_ROUTE} from "@utils/constants/routes";
 import Typography from "@components/Typography/Typography";
 import UserInfo from "@components/UserInfo/UserInfo";
 import StatusIcon from "@icons/StatusIcon/StatusIcon";
+import Tag from "@customTypes/entities/tag";
+import User from "@customTypes/entities/user";
 import styles from "./TaskItem.module.scss";
 
-const TaskItem: FC<ITask> = ({
+interface TaskItemProps {
+	title: string;
+	tags: Tag[];
+	description: string;
+	creator: User;
+	id: string;
+	date: string;
+	isActive: boolean;
+}
+
+const TaskItem: FC<TaskItemProps> = ({
 	title,
 	date,
 	creator,
@@ -35,7 +46,7 @@ const TaskItem: FC<ITask> = ({
 			{description}
 		</Typography>
 		<div className={styles.tags}>
-			{tags.map((tag: ITag) => (
+			{tags.map((tag: Tag) => (
 				<TagItem key={tag.id} {...tag} />
 			))}
 		</div>

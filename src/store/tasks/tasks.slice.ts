@@ -1,19 +1,18 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ITask} from "@customTypes/index";
-
-interface TasksSliceState {
-	tasks: ITask[];
-	currentPage: number;
-	limit: number;
-	searchQuery: string;
-	isFetching: boolean;
-	hasMore: boolean;
-	sortBy: {name: string; value: string};
-}
+import {createSlice} from "@reduxjs/toolkit";
+import {
+	AddTasks,
+	SetHasMore,
+	SetIsFetching,
+	SetPage,
+	SetSearchQuery,
+	SetSortBy,
+	SetTasks,
+	TasksSliceState
+} from "@store/tasks/tasks.types";
 
 const initialState: TasksSliceState = {
 	tasks: [],
-	currentPage: 1,
+	page: 1,
 	limit: 10,
 	searchQuery: "",
 	isFetching: false,
@@ -28,25 +27,25 @@ const tasksSlice = createSlice({
 	name: "tasks",
 	initialState,
 	reducers: {
-		setTasks(state, action: PayloadAction<never[]>) {
+		setTasks(state, action: SetTasks) {
 			state.tasks = action.payload;
 		},
-		addTasks(state, action: PayloadAction<never[]>) {
+		addTasks(state, action: AddTasks) {
 			state.tasks = [...state.tasks, ...action.payload];
 		},
-		setIsFetching(state, action: PayloadAction<boolean>) {
+		setIsFetching(state, action: SetIsFetching) {
 			state.isFetching = action.payload;
 		},
-		setCurrentPage(state, action: PayloadAction<number>) {
-			state.currentPage = action.payload;
+		setPage(state, action: SetPage) {
+			state.page = action.payload;
 		},
-		setSearchQuery(state, action: PayloadAction<string>) {
+		setSearchQuery(state, action: SetSearchQuery) {
 			state.searchQuery = action.payload;
 		},
-		setSortBy(state, action: PayloadAction<{name: string; value: string}>) {
+		setSortBy(state, action: SetSortBy) {
 			state.sortBy = action.payload;
 		},
-		setHasMore(state, action: PayloadAction<boolean>) {
+		setHasMore(state, action: SetHasMore) {
 			state.hasMore = action.payload;
 		}
 	}
@@ -60,5 +59,5 @@ export const {
 	setSearchQuery,
 	setTasks,
 	addTasks,
-	setCurrentPage
+	setPage
 } = tasksSlice.actions;

@@ -1,6 +1,6 @@
 import React, {ButtonHTMLAttributes, FC} from "react";
 import classNames from "classnames";
-import {IconProps} from "@customTypes/index";
+import {IconProps} from "@customTypes/components";
 import styles from "./Button.module.scss";
 
 type Variant = "primary" | "outline";

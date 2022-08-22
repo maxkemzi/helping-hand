@@ -1,20 +1,20 @@
 import React, {ChangeEvent, FC, useRef, useState} from "react";
-import {ITag} from "@customTypes/index";
 import classNames from "classnames";
 import TagItem from "@components/TagItem/TagItem";
 import TextField from "@components/TextField/TextField";
 import Input from "@components/Input/Input";
 import Button from "@components/Button/Button";
 import DropdownOption from "@components/DropdownOption/DropdownOption";
+import Tag from "@customTypes/entities/tag";
 import styles from "./TagsField.module.scss";
 import useListenClickOutside from "../../hooks/useListenClickOutside";
 
 interface TagsFieldProps {
 	className?: string;
-	tags: ITag[];
-	tagOptions: ITag[];
+	tags: Tag[];
+	tagOptions: Tag[];
 	onRemoveTag: (id: string) => void;
-	onAddTags: (items: ITag[]) => void;
+	onAddTags: (items: Tag[]) => void;
 	id: string;
 }
 
@@ -27,13 +27,13 @@ const TagsField: FC<TagsFieldProps> = ({
 	id
 }) => {
 	const [searchValue, setSearchValue] = useState("");
-	const [selectedTags, setSelectedTags] = useState<ITag[]>([]);
+	const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 	const [isListVisible, setIsListVisible] = useState(false);
 	const fieldRef = useRef<HTMLDivElement>(null);
 
 	useListenClickOutside(fieldRef, () => setIsListVisible(false));
 
-	const addTags = (items: ITag[]) => {
+	const addTags = (items: Tag[]) => {
 		onAddTags(items);
 		setSelectedTags([]);
 		setIsListVisible(false);

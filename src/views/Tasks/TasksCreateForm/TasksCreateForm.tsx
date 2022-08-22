@@ -5,15 +5,15 @@ import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import Button from "@components/Button/Button";
 import Textarea from "@components/Textarea/Textarea";
-import {ITag} from "@customTypes/index";
 import FormTagsField from "@components/FormTagsField/FormTagsField";
+import Tag from "@customTypes/entities/tag";
 import styles from "./TasksCreateForm.module.scss";
 import mockData from "../../../mock.json";
 
 interface TasksCreateFormValues {
 	title: string;
 	description: string;
-	tags: ITag[];
+	tags: Tag[];
 }
 
 const TasksCreateForm = () => {

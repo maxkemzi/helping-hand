@@ -1,5 +1,4 @@
 import React, {FC, MouseEventHandler} from "react";
-import {ITag} from "@customTypes/index";
 import classNames from "classnames";
 import CrossIcon from "@icons/CrossIcon/CrossIcon";
 import styles from "./TagItem.module.scss";
@@ -8,9 +7,10 @@ interface TagItemProps {
 	className?: string;
 	hasRemoveBtn?: boolean;
 	onRemoveBtnClick?: MouseEventHandler;
+	text: string;
 }
 
-const TagItem: FC<ITag & TagItemProps> = ({
+const TagItem: FC<TagItemProps> = ({
 	text,
 	className,
 	hasRemoveBtn = false,

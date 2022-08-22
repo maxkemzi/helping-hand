@@ -1,20 +1,21 @@
 import React from "react";
 import SeparatorItem from "@components/SeparatorItem/SeparatorItem";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import ThemeButton from "@components/ThemeButton/ThemeButton";
 import Typography from "@components/Typography/Typography";
 import LanguageDropdown from "@components/LanguageDropdown/LanguageDropdown";
 import {setTheme} from "@store/app/app.slice";
 import themes from "@utils/constants/themes";
-import {RootState} from "@store/index";
-import {ITheme} from "@customTypes/index";
+import {getAppTheme} from "@store/app/app.selectors";
+import {Theme} from "@customTypes/components";
 import styles from "./InterfaceSettings.module.scss";
+import useAppSelector from "../../../hooks/useAppSelector";
 
 const InterfaceSettings = () => {
 	const dispatch = useDispatch();
-	const themeSelector = useSelector((state: RootState) => state.appState.theme);
+	const themeSelector = useAppSelector(getAppTheme);
 
-	const handleClick = (item: ITheme) => dispatch(setTheme(item));
+	const handleClick = (item: Theme) => dispatch(setTheme(item));
 
 	return (
 		<>

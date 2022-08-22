@@ -1,12 +1,13 @@
 import {useLayoutEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {ITheme} from "@customTypes/index";
-import {RootState} from "@store/index";
+import {useDispatch} from "react-redux";
 import {setTheme} from "@store/app/app.slice";
+import {Theme} from "@customTypes/components";
+import {getAppTheme} from "@store/app/app.selectors";
+import useAppSelector from "./useAppSelector";
 
-const useTheme = (theme: ITheme): void => {
+const useTheme = (theme: Theme): void => {
 	const dispatch = useDispatch();
-	const themeSelector = useSelector((state: RootState) => state.appState.theme);
+	const themeSelector = useAppSelector(getAppTheme);
 
 	useLayoutEffect(() => {
 		// Set global CSS variables

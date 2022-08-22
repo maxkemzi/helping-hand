@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import classNames from "classnames";
-import {IconProps, PrimaryColor} from "@customTypes/index";
+import {IconProps, PrimaryColor} from "@customTypes/components";
 import styles from "./FallbackImage.module.scss";
 
 const FallbackImage: FC<IconProps & {variant?: PrimaryColor}> = ({

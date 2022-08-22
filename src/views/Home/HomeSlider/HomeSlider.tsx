@@ -5,11 +5,11 @@ import Button from "@components/Button/Button";
 import {NavLink} from "react-router-dom";
 import Typography from "@components/Typography/Typography";
 import HomeSliderDots from "@views/Home/HomeSliderDots/HomeSliderDots";
-import {ISlide} from "@customTypes/index";
+import {Slide} from "@customTypes/components";
 import {useTranslation} from "react-i18next";
 
 interface HomeSliderProps {
-	slides: ISlide[];
+	slides: Slide[];
 }
 
 const HomeSlider: FC<HomeSliderProps> = ({slides}) => {

@@ -1,12 +1,12 @@
 import React, {FC} from "react";
 import Typography from "@components/Typography/Typography";
 import TagItem from "@components/TagItem/TagItem";
-import {ITag} from "@customTypes/index";
+import Tag from "@customTypes/entities/tag";
 import styles from "./TaskTItleSection.module.scss";
 
 interface TaskTitleSectionProps {
 	title: string;
-	tags: ITag[];
+	tags: Tag[];
 }
 
 const TaskTitleSection: FC<TaskTitleSectionProps> = ({title, tags}) => (

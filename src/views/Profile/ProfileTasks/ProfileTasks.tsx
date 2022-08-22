@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import {ITask} from "@customTypes/index";
 import TaskItem from "@components/TaskItem/TaskItem";
 import SearchBar from "@components/SearchBar/SearchBar";
 import DropdownOption from "@components/DropdownOption/DropdownOption";
 import Dropdown from "@components/Dropdown/Dropdown";
 import classNames from "classnames";
+import Task from "@customTypes/entities/task";
 import data from "../../../mock.json";
 import styles from "./ProfileTasks.module.scss";
 
@@ -75,7 +75,7 @@ const ProfileTasks = () => {
 				</div>
 			</div>
 			<div className={classNames("wrapper", styles.items)}>
-				{data.tasks.map((task: ITask) => (
+				{data.tasks.map((task: Task) => (
 					<TaskItem key={task.id} {...task} />
 				))}
 			</div>

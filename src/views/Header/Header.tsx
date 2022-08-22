@@ -5,10 +5,10 @@ import {NavLink} from "react-router-dom";
 import {PROFILE_TASKS_ROUTE} from "@utils/constants/routes";
 import Avatar from "@components/Avatar/Avatar";
 import HeaderMenu from "@views/Header/HeaderMenu/HeaderMenu";
-import {useSelector} from "react-redux";
-import {RootState} from "@store/index";
 import LanguageDropdown from "@components/LanguageDropdown/LanguageDropdown";
+import {getIsAuth} from "@store/auth/auth.selectors";
 import styles from "./Header.module.scss";
+import useAppSelector from "../../hooks/useAppSelector";
 
 type Position = "relative" | "absolute";
 
@@ -18,7 +18,7 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({position = "relative", hasBorder}) => {
-	const isAuth = useSelector((state: RootState) => state.authState.isAuth);
+	const isAuth = useAppSelector(getIsAuth);
 
 	return (
 		<header

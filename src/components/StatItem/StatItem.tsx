@@ -1,12 +1,18 @@
 import React, {FC} from "react";
-import {IStat} from "@customTypes/index";
 import classNames from "classnames";
 import Typography from "@components/Typography/Typography";
 import styles from "./StatItem.module.scss";
 
 type Size = "small" | "big";
 
-const StatItem: FC<IStat & {className?: string; size?: Size}> = ({
+interface StatItemProps {
+	value: number | string;
+	title: string;
+	className?: string;
+	size?: Size;
+}
+
+const StatItem: FC<StatItemProps> = ({
 	className,
 	value,
 	title,
