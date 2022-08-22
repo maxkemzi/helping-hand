@@ -3,7 +3,7 @@ module.exports = {
 	parserOptions: {
 		ecmaVersion: "latest",
 		sourceType: "module",
-		project: "./tsconfig.json"
+		project: ["./tsconfig.json"]
 	},
 	settings: {
 		"import/resolver": "webpack",
@@ -11,15 +11,22 @@ module.exports = {
 			version: "detect"
 		}
 	},
-	extends: ["airbnb", "airbnb-typescript", "airbnb/hooks", "prettier"],
-	plugins: ["prettier"],
+	extends: [
+		"airbnb",
+		"airbnb-typescript",
+		"airbnb/hooks",
+		"plugin:@typescript-eslint/recommended",
+		"prettier"
+	],
+	plugins: ["@typescript-eslint", "prettier"],
 	rules: {
 		"prettier/prettier": ["error", {endOfLine: "auto"}],
 		"react/prop-types": "off",
 		"react/function-component-definition": [
 			"error",
 			{
-				namedComponents: "arrow-function"
+				namedComponents: "arrow-function",
+				unnamedComponents: "arrow-function"
 			}
 		],
 		"no-console": "off",
@@ -33,6 +40,7 @@ module.exports = {
 		],
 		"react/require-default-props": "off",
 		"no-param-reassign": "off",
-		"react/jsx-no-useless-fragment": ["error", {allowExpressions: true}]
+		"react/jsx-no-useless-fragment": ["error", {allowExpressions: true}],
+		"@typescript-eslint/no-non-null-assertion": "off"
 	}
 };
