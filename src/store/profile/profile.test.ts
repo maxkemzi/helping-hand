@@ -1,6 +1,6 @@
+import {ProfileSliceState} from "@store/profile/profile.types";
 import reducer, {
 	initialState,
-	ProfileSliceState,
 	setIsFetching,
 	setProfile
 } from "./profile.slice";

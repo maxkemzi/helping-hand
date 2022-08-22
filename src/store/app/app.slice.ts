@@ -1,10 +1,5 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ITheme} from "@customTypes/index";
-
-export interface AppSliceState {
-	isInitializing: boolean;
-	theme: ITheme;
-}
+import {createSlice} from "@reduxjs/toolkit";
+import {AppSliceState, SetIsInitializing, SetTheme} from "@store/app/app.types";
 
 // todo: Add proper synchronization with localStorage
 export const initialState: AppSliceState = {
@@ -19,10 +14,10 @@ const appSlice = createSlice({
 	name: "app",
 	initialState,
 	reducers: {
-		setIsInitializing(state, action: PayloadAction<boolean>) {
+		setIsInitializing(state, action: SetIsInitializing) {
 			state.isInitializing = action.payload;
 		},
-		setTheme(state, action: PayloadAction<ITheme>) {
+		setTheme(state, action: SetTheme) {
 			state.theme = action.payload;
 
 			if (typeof window !== "undefined") {

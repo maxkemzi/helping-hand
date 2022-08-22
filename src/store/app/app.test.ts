@@ -1,9 +1,5 @@
-import reducer, {
-	initialState,
-	setIsInitializing,
-	setTheme,
-	AppSliceState
-} from "./app.slice";
+import {AppSliceState} from "@store/app/app.types";
+import reducer, {initialState, setIsInitializing, setTheme} from "./app.slice";
 
 describe("app reducer should work properly", () => {
 	test("should return the initial state", () => {

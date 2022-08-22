@@ -1,11 +1,10 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IUser} from "@customTypes/index";
-
-export interface AuthSliceState {
-	user: IUser;
-	isAuth: boolean;
-	isFetching: boolean;
-}
+import {createSlice} from "@reduxjs/toolkit";
+import {
+	AuthSliceState,
+	SetIsAuth,
+	SetIsFetching,
+	SetUser
+} from "@store/auth/auth.types";
 
 export const initialState: AuthSliceState = {
 	user: {username: "", avatar: ""},
@@ -17,13 +16,13 @@ const authSlice = createSlice({
 	name: "auth",
 	initialState,
 	reducers: {
-		setIsAuth(state, action: PayloadAction<boolean>) {
+		setIsAuth(state, action: SetIsAuth) {
 			state.isAuth = action.payload;
 		},
-		setUser(state, action: PayloadAction<IUser>) {
+		setUser(state, action: SetUser) {
 			state.user = action.payload;
 		},
-		setIsFetching(state, action: PayloadAction<boolean>) {
+		setIsFetching(state, action: SetIsFetching) {
 			state.isFetching = action.payload;
 		}
 	}

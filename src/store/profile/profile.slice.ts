@@ -1,10 +1,9 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IUser} from "@customTypes/index";
-
-export interface ProfileSliceState {
-	profile: IUser;
-	isFetching: boolean;
-}
+import {createSlice} from "@reduxjs/toolkit";
+import {
+	ProfileSliceState,
+	SetIsFetching,
+	SetProfile
+} from "@store/profile/profile.types";
 
 export const initialState: ProfileSliceState = {
 	profile: {username: "", avatar: ""},
@@ -15,10 +14,10 @@ const profileSlice = createSlice({
 	name: "profile",
 	initialState,
 	reducers: {
-		setProfile(state, action: PayloadAction<IUser>) {
+		setProfile(state, action: SetProfile) {
 			state.profile = action.payload;
 		},
-		setIsFetching(state, action: PayloadAction<boolean>) {
+		setIsFetching(state, action: SetIsFetching) {
 			state.isFetching = action.payload;
 		}
 	}

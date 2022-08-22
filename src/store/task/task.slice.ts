@@ -1,12 +1,7 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ITask} from "@customTypes/index";
+import {createSlice} from "@reduxjs/toolkit";
+import {SetIsFetching, SetTask, TaskSliceState} from "@store/task/task.types";
 
-interface ProfileSliceState {
-	task: ITask;
-	isFetching: boolean;
-}
-
-const initialState: ProfileSliceState = {
+const initialState: TaskSliceState = {
 	task: {
 		title: "",
 		creator: {username: "", avatar: ""},
@@ -23,10 +18,10 @@ const taskSlice = createSlice({
 	name: "task",
 	initialState,
 	reducers: {
-		setTask(state, action: PayloadAction<ITask>) {
+		setTask(state, action: SetTask) {
 			state.task = action.payload;
 		},
-		setIsFetching(state, action: PayloadAction<boolean>) {
+		setIsFetching(state, action: SetIsFetching) {
 			state.isFetching = action.payload;
 		}
 	}

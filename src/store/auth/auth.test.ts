@@ -1,5 +1,5 @@
+import {AuthSliceState} from "@store/auth/auth.types";
 import reducer, {
-	AuthSliceState,
 	initialState,
 	setIsAuth,
 	setIsFetching,
