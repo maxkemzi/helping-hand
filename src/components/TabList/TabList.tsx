@@ -31,10 +31,12 @@ const TabList: FC<TabListProps> = ({
 				const tabOffsetLeft = child.offsetLeft;
 				const tabWidth = child.offsetWidth;
 				lineRef.current.style.left = `${tabOffsetLeft + tabWidth / 2}px`;
+				lineRef.current.style.transform = "translateX(-50%)";
 			} else {
 				const tabOffsetTop = child.offsetTop;
 				const tabHeight = child.offsetHeight;
 				lineRef.current.style.top = `${tabOffsetTop + tabHeight / 2}px`;
+				lineRef.current.style.transform = "translateY(-50%)";
 			}
 		}
 	}, [activeTab, variant]);
