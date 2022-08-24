@@ -6,19 +6,24 @@ import supportedLangs, {Lang} from "@utils/constants/langs";
 
 const LanguageDropdown: FC<{className?: string}> = ({className}) => {
 	const {i18n} = useTranslation();
-	const [isVisible, setIsVisible] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const handleClick = (lang: Lang) => {
 		i18n.changeLanguage(lang);
 		localStorage.setItem("lang", lang);
-		setIsVisible(false);
+		setIsOpen(false);
 	};
+
+	const handleClose = () => setIsOpen(false);
+
+	const toggleOpen = () => setIsOpen(!isOpen);
 
 	return (
 		<Dropdown
 			className={className}
-			isVisible={isVisible}
-			setIsVisible={setIsVisible}
+			isOpen={isOpen}
+			toggleOpen={toggleOpen}
+			onClose={handleClose}
 			value={i18n.language.toUpperCase()}
 		>
 			{Object.keys(supportedLangs).map((lang: Lang) => (

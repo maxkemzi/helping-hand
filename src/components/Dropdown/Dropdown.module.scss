@@ -18,11 +18,11 @@
 		padding: 4px 12px;
 	}
 
-	&.visible .button {
-		box-shadow: none;
+	&.open .button {
+		box-shadow: var(--box-shadow-base);
 	}
 
-	&.visible .list {
+	&.open .list {
 		transform: translateZ(0) translateX(-50%) translateY(0);
 		opacity: 1;
 		visibility: visible;
@@ -34,7 +34,6 @@
 	align-items: center;
 	color: var(--color-text-light);
 	border-radius: var(--border-radius-base);
-	box-shadow: var(--box-shadow-base);
 	background: var(--color-primary-lighter);
 	transition: all .4s ease;
 

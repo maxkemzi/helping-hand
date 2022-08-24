@@ -10,19 +10,27 @@ import styles from "./ProfileTasks.module.scss";
 
 const ProfileTasks = () => {
 	const [value, setValue] = useState("");
-	const [isDateDropdownVisible, setIsDateDropdownVisible] = useState(false);
-	const [isTypeDropdownVisible, setIsTypeDropdownVisible] = useState(false);
+	const [isDateDropdownOpen, setIsDateDropdownOpen] = useState(false);
+	const [isTypeDropdownOpen, setIsTypeDropdownOpen] = useState(false);
 	const [sortByDateValue, setSortByDateValue] = useState("Нові");
 	const [sortByTypeValue, setSortByTypeValue] = useState("Усі");
 
+	const handleDateClose = () => setIsDateDropdownOpen(false);
+
+	const toggleDateOpen = () => setIsDateDropdownOpen(!isDateDropdownOpen);
+
+	const handleTypeClose = () => setIsTypeDropdownOpen(false);
+
+	const toggleTypeOpen = () => setIsDateDropdownOpen(!isTypeDropdownOpen);
+
 	const handleSortByDateClick = (itemValue: string) => {
 		setSortByDateValue(itemValue);
-		setIsDateDropdownVisible(false);
+		handleDateClose();
 	};
 
 	const handleSortByTypeClick = (itemValue: string) => {
 		setSortByTypeValue(itemValue);
-		setIsTypeDropdownVisible(false);
+		handleTypeClose();
 	};
 
 	return (
@@ -33,8 +41,9 @@ const ProfileTasks = () => {
 					<Dropdown
 						variant="big"
 						className={styles.dropdown}
-						isVisible={isDateDropdownVisible}
-						setIsVisible={setIsDateDropdownVisible}
+						isOpen={isDateDropdownOpen}
+						onClose={handleDateClose}
+						toggleOpen={toggleDateOpen}
 						value={sortByDateValue}
 					>
 						<DropdownOption
@@ -52,8 +61,9 @@ const ProfileTasks = () => {
 					<Dropdown
 						variant="big"
 						className={styles.dropdown}
-						isVisible={isTypeDropdownVisible}
-						setIsVisible={setIsTypeDropdownVisible}
+						isOpen={isTypeDropdownOpen}
+						onClose={handleTypeClose}
+						toggleOpen={toggleTypeOpen}
 						value={sortByTypeValue}
 					>
 						<DropdownOption
