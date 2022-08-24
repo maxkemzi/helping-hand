@@ -1,7 +1,6 @@
 import React, {memo} from "react";
 import Button from "@components/Button/Button";
-import TelegramIcon from "@icons/TelegramIcon/TelegramIcon";
-import GoogleIcon from "@icons/GoogleIcon/GoogleIcon";
+import {IoLogoGoogle, IoPaperPlane} from "react-icons/io5";
 import styles from "./AuthFormBtns.module.scss";
 
 const AuthFormBtns = memo(() => (
@@ -10,13 +9,13 @@ const AuthFormBtns = memo(() => (
 			className={styles.btn}
 			text="Google"
 			variant="outline"
-			startIcon={GoogleIcon}
+			startIcon={IoLogoGoogle}
 		/>
 		<Button
 			className={styles.btn}
 			text="Telegram"
 			variant="outline"
-			startIcon={TelegramIcon}
+			startIcon={IoPaperPlane}
 		/>
 	</div>
 ));

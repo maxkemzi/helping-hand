@@ -1,5 +1,5 @@
 import React, {ChangeEvent, Dispatch, FC, SetStateAction} from "react";
-import SearchIcon from "@icons/SearchIcon/SearchIcon";
+import {IoSearch} from "react-icons/io5";
 import styles from "./SearchBar.module.scss";
 
 interface SearchBarProps {
@@ -21,8 +21,8 @@ const SearchBar: FC<SearchBarProps> = ({value, setValue}) => {
 				type="text"
 				required
 			/>
-			<div className={styles.icon}>
-				<SearchIcon width={16} height={16} />
+			<div className={styles["icon-wrapper"]}>
+				<IoSearch className={styles.icon} size={18} />
 			</div>
 		</form>
 	);

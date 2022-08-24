@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {memo, useRef, useState} from "react";
 import MenuButton from "@components/MenuButton/MenuButton";
 import Menu from "@components/Menu/Menu";
 import MenuItem from "@components/MenuItem/MenuItem";
@@ -8,17 +8,19 @@ import {
 	SETTINGS_ACCOUNT_ROUTE,
 	TASKS_ROUTE
 } from "@utils/constants/routes";
-import HomeIcon from "@icons/HomeIcon/HomeIcon";
-import TasksIcon from "@icons/TasksIcon/TasksIcon";
-import UserIcon from "@icons/UserIcon/UserIcon";
-import SettingsIcon from "@icons/SettingsIcon/SettingsIcon";
 import {useTranslation} from "react-i18next";
-import TeamIcon from "@icons/TeamIcon/TeamIcon";
 import Modal from "@components/Modal/Modal";
 import HeaderContactForm from "@views/Header/HeaderContactForm/HeaderContactForm";
+import {
+	IoLayers,
+	IoHome,
+	IoMegaphone,
+	IoPerson,
+	IoSettings
+} from "react-icons/io5";
 import useListenClickOutside from "../../../hooks/useListenClickOutside";
 
-const HeaderMenu = () => {
+const HeaderMenu = memo(() => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const parentRef = useRef<HTMLDivElement>(null);
@@ -42,31 +44,31 @@ const HeaderMenu = () => {
 				<MenuItem
 					onClick={handleItemClick}
 					path={HOME_ROUTE}
-					icon={HomeIcon}
+					icon={IoHome}
 					text={t("menuItems.home")}
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={TASKS_ROUTE}
-					icon={TasksIcon}
+					icon={IoLayers}
 					text={t("menuItems.tasks")}
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={PROFILE_TASKS_ROUTE}
-					icon={UserIcon}
+					icon={IoPerson}
 					text={t("menuItems.profile")}
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={SETTINGS_ACCOUNT_ROUTE}
-					icon={SettingsIcon}
+					icon={IoSettings}
 					text={t("menuItems.settings")}
 				/>
 				<MenuItem
 					onClick={handleContactClick}
 					as="button"
-					icon={TeamIcon}
+					icon={IoMegaphone}
 					text={t("menuItems.contact")}
 				/>
 			</Menu>
@@ -75,6 +77,6 @@ const HeaderMenu = () => {
 			</Modal>
 		</div>
 	);
-};
+});
 
 export default HeaderMenu;

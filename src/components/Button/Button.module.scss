@@ -1,6 +1,5 @@
 .button {
 	border-radius: var(--border-radius-base);
-	box-shadow: var(--box-shadow-base);
 	font-weight: 600;
 	text-transform: uppercase;
 }
@@ -13,10 +12,7 @@
 
 .icon {
 	margin-right: 8px;
-
-	path {
-		transition: fill var(--transition-base);
-	}
+	transition: color var(--transition-base);
 }
 
 .big {
@@ -34,22 +30,16 @@
 }
 
 .primary {
-	color: var(--color-primary);
+	color: var(--color-text-dark);
 	background: var(--color-accent);
 	transition: all var(--transition-base);
 
-	&:hover {
-		box-shadow: none;
+	&:not(:disabled):hover {
+		box-shadow: var(--box-shadow-base);
 		background: var(--color-accent-darker);
 	}
 
 	&:disabled {
-		color: var(--color-text-dark);
-		background: var(--color-text-dark-lighter);
-	}
-
-	&:disabled:hover {
-		box-shadow: none;
 		background: var(--color-text-dark-lighter);
 	}
 }
@@ -59,26 +49,20 @@
 	border: solid 1px var(--color-accent);
 	transition: all var(--transition-base);
 
-	&:hover,
-	&.active {
-		box-shadow: none;
+	&:not(:disabled):hover,
+	&:not(:disabled).active {
+		box-shadow: var(--box-shadow-base);
 		color: var(--color-primary);
 		background: var(--color-accent-darker);
 		border-color: var(--color-accent-darker);
 
-		.icon path {
-			fill: var(--color-primary);
+		.icon {
+			color: var(--color-primary);
 		}
 	}
 
 	&:disabled {
 		color: var(--color-text-dark-lighter);
 		border-color: var(--color-text-dark-lighter);
-	}
-
-	&:disabled:hover {
-		color: var(--color-text-dark);
-		border-color: var(--color-text-dark-lighter);
-		background: var(--color-text-dark-lighter);
 	}
 }

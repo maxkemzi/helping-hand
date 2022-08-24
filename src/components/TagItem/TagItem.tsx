@@ -1,6 +1,7 @@
 import React, {FC, MouseEventHandler} from "react";
 import classNames from "classnames";
-import CrossIcon from "@icons/CrossIcon/CrossIcon";
+import {IoClose} from "react-icons/io5";
+import ClickExtender from "@components/ClickExtender/ClickExtender";
 import styles from "./TagItem.module.scss";
 
 interface TagItemProps {
@@ -20,9 +21,13 @@ const TagItem: FC<TagItemProps> = ({
 		return (
 			<div className={classNames(className, styles.item, styles.inner)}>
 				<span className={styles.text}>{text}</span>
-				<button onClick={onRemoveBtnClick} type="button" className={styles.btn}>
-					<CrossIcon className={styles.icon} width={8} height={8} />
-				</button>
+				<ClickExtender
+					className={styles.button}
+					onClick={onRemoveBtnClick}
+					type="button"
+				>
+					<IoClose className={styles.icon} size={16} />
+				</ClickExtender>
 			</div>
 		);
 	}
