@@ -1,47 +1,41 @@
 import React, {FC, useState} from "react";
 import StatItem from "@components/StatItem/StatItem";
 import classNames from "classnames";
-import Dropdown from "@components/Dropdown/Dropdown";
-import DropdownOption from "@components/DropdownOption/DropdownOption";
+import {IoGrid, IoList} from "react-icons/io5";
 import data from "../../../mock.json";
 import styles from "./ProfileStats.module.scss";
 
 const ProfileStats: FC = () => {
-	const grid = "Сітка";
-	const list = "Список";
-	const [value, setValue] = useState(grid);
-	const [isVisible, setIsVisible] = useState(false);
+	const [isList, setIsList] = useState(false);
 
-	const handleClick = (val: string) => {
-		setValue(val);
-		setIsVisible(false);
-	};
+	const handleGrid = () => setIsList(false);
+
+	const handleList = () => setIsList(true);
 
 	return (
 		<div>
 			<div className={styles.header}>
-				<Dropdown
-					isVisible={isVisible}
-					setIsVisible={setIsVisible}
-					value={value}
-					variant="big"
-				>
-					<DropdownOption
-						value={grid}
-						isActive={value === grid}
-						onClick={handleClick}
-					/>
-					<DropdownOption
-						value={list}
-						isActive={value === list}
-						onClick={handleClick}
-					/>
-				</Dropdown>
+				<div className={styles.buttons}>
+					<button
+						onClick={handleList}
+						className={classNames(styles.button, {[styles.active]: isList})}
+						type="button"
+					>
+						<IoList size={24} className={styles.icon} />
+					</button>
+					<button
+						onClick={handleGrid}
+						className={classNames(styles.button, {[styles.active]: !isList})}
+						type="button"
+					>
+						<IoGrid size={24} className={styles.icon} />
+					</button>
+				</div>
 			</div>
 			<div
 				className={classNames("wrapper", {
-					[styles.grid]: value === grid,
-					[styles.list]: value === list
+					[styles.grid]: !isList,
+					[styles.list]: isList
 				})}
 			>
 				{data.stats.map(stat => (

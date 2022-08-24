@@ -15,3 +15,24 @@
 	display: flex;
 	justify-content: flex-end;
 }
+
+.buttons {
+	display: flex;
+}
+
+.button:not(:last-child) {
+	margin-right: 8px;
+}
+
+.button {
+	display: flex;
+
+	&.active .icon {
+		color: var(--color-accent);
+	}
+}
+
+.icon {
+	transition: color var(--transition-base);
+	color: var(--color-text-dark-lighter);
+}
