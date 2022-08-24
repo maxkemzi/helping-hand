@@ -1,25 +1,25 @@
 import React, {FC} from "react";
 import classNames from "classnames";
 import Link from "@components/Link/Link";
-import styles from "./FooterDevItem.module.scss";
+import styles from "./DeveloperItem.module.scss";
 
-interface FooterDevItemProps {
+interface DeveloperItemProps {
 	name: string;
-	work: string;
+	job: string;
 	linkPath: string;
 	className?: string;
 }
 
-const FooterDevItem: FC<FooterDevItemProps> = ({
-	work,
+const DeveloperItem: FC<DeveloperItemProps> = ({
+	job,
 	linkPath,
 	name,
 	className
 }) => (
 	<div className={classNames(className, styles.item)}>
-		<p className={styles.work}>{work}</p>
+		<p className={styles.job}>{job} by</p>
 		<Link href={linkPath} text={name} />
 	</div>
 );
 
-export default FooterDevItem;
+export default DeveloperItem;
