@@ -1,5 +1,5 @@
-import React, {FC, MouseEventHandler} from "react";
-import classNames from "classnames";
+import React, {FC, memo, MouseEventHandler} from "react";
+import ClickExtender from "@components/ClickExtender/ClickExtender";
 import styles from "./MenuButton.module.scss";
 
 interface MenuButtonProps {
@@ -7,11 +7,13 @@ interface MenuButtonProps {
 	isActive?: boolean;
 }
 
-const MenuButton: FC<MenuButtonProps> = ({onClick, isActive}) => (
-	<button
+const MenuButton: FC<MenuButtonProps> = memo(({onClick, isActive}) => (
+	<ClickExtender
+		aria-label="menu"
 		onClick={onClick}
 		type="button"
-		className={classNames(styles.button, {[styles.active]: isActive})}
+		isActive={isActive}
+		className={styles.button}
 	>
 		<span />
 		<span />
@@ -22,7 +24,7 @@ const MenuButton: FC<MenuButtonProps> = ({onClick, isActive}) => (
 		<span />
 		<span />
 		<span />
-	</button>
-);
+	</ClickExtender>
+));
 
 export default MenuButton;

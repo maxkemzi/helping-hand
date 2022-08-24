@@ -1,6 +1,8 @@
 import React, {Dispatch, FC, ReactNode, SetStateAction, useEffect} from "react";
 import classNames from "classnames";
-import CrossIcon from "@icons/CrossIcon/CrossIcon";
+import {IoClose} from "react-icons/io5";
+import Divider from "@components/Divider/Divider";
+import ClickExtender from "@components/ClickExtender/ClickExtender";
 import styles from "./Modal.module.scss";
 
 interface ModalProps {
@@ -43,16 +45,15 @@ const Modal: FC<ModalProps> = ({
 			>
 				<div className={styles.header}>
 					<h4 className={styles.title}>{title}</h4>
-					<div className={styles["btn-wrapper"]}>
-						<button
-							onClick={handleClose}
-							className={styles["close-btn"]}
-							type="button"
-						>
-							<CrossIcon width={20} height={20} />
-						</button>
-					</div>
+					<ClickExtender
+						className={styles["close-btn"]}
+						type="button"
+						onClick={handleClose}
+					>
+						<IoClose className={styles["close-icon"]} size={24} />
+					</ClickExtender>
 				</div>
+				<Divider />
 				<div className={styles.body}>{children}</div>
 			</div>
 		</div>
