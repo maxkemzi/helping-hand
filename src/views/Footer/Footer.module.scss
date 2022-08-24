@@ -1,8 +1,7 @@
 .footer {
-	margin-top: 56px;
+	flex-shrink: 0;
 	padding: 28px;
 	border-top: 1px solid var(--color-divider);
-	flex: 0 0 auto;
 }
 
 .logo {
@@ -24,6 +23,15 @@
 	margin-right: 56px;
 }
 
+.item {
+	display: flex;
+	align-items: center;
+}
+
 .item:not(:last-child) {
-	margin-bottom: 4px;
+	margin-bottom: 8px;
+}
+
+.icon {
+	margin-right: 8px;
 }

@@ -1,22 +1,23 @@
-import React from "react";
+import React, {FC} from "react";
 import Logo from "@components/Logo/Logo";
-import FooterNavbar from "@views/Footer/FooterNavbar/FooterNavbar";
-import FooterSocialNavbar from "@views/Footer/FooterSocialNavbar/FooterSocialNavbar";
-import FooterDevList from "@views/Footer/FooterDevList/FooterDevList";
+import FooterSocialList from "@views/Footer/FooterSocialList/FooterSocialList";
+import FooterDeveloperList from "@views/Footer/FooterDeveloperList/FooterDeveloperList";
+import classNames from "classnames";
 import styles from "./Footer.module.scss";
 
-const Footer = () => (
-	<footer className={styles.footer}>
+interface FooterProps {
+	className?: string;
+}
+
+const Footer: FC<FooterProps> = ({className}) => (
+	<footer className={classNames(className, styles.footer)}>
 		<div className="container">
 			<div className={styles.inner}>
 				<div className={styles.row}>
 					<Logo className={styles.logo} />
-					<FooterDevList />
+					<FooterDeveloperList />
 				</div>
-				<div className={styles.row}>
-					<FooterNavbar />
-					<FooterSocialNavbar />
-				</div>
+				<FooterSocialList />
 			</div>
 		</div>
 	</footer>
