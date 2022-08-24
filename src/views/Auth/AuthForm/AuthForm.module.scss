@@ -9,34 +9,10 @@
 	width: 450px;
 }
 
-.separator {
-	width: 100%;
-	position: relative;
-	text-transform: uppercase;
-	color: var(--color-text-dark-lighter);
-	text-align: center;
-	font-size: 14px;
+.form-content {
 	margin-bottom: 14px;
-
-	&::before,
-	&::after {
-		content: "";
-		position: absolute;
-		top: 50%;
-		width: 45%;
-		height: 1px;
-		background: var(--color-divider);
-	}
-
-	&::before {
-		left: 0;
-	}
-
-	&::after {
-		right: 0;
-	}
 }
 
-.form-content {
+.divider {
 	margin-bottom: 14px;
 }

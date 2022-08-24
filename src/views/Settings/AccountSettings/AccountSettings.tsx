@@ -5,8 +5,8 @@ import * as yup from "yup";
 import {Field, Form, Formik} from "formik";
 import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
-import SeparatorItem from "@components/SeparatorItem/SeparatorItem";
 import Typography from "@components/Typography/Typography";
+import Divider from "@components/Divider/Divider";
 import styles from "./AccountSettings.module.scss";
 
 const AccountSettings = () => {
@@ -28,80 +28,76 @@ const AccountSettings = () => {
 				validateOnBlur
 			>
 				<Form className={styles.form}>
-					<SeparatorItem>
-						<Typography
-							className={styles["small-title"]}
-							variant="h4"
-							component="h4"
-						>
-							Зображення профілю
-						</Typography>
-						<div className={styles.user}>
-							<Avatar
-								className={styles.avatar}
-								imagePath=""
-								width={80}
-								height={80}
-								fallbackVariant="light"
+					<Typography
+						className={styles["small-title"]}
+						variant="h4"
+						component="h4"
+					>
+						Зображення профілю
+					</Typography>
+					<div className={styles.user}>
+						<Avatar
+							className={styles.avatar}
+							imagePath=""
+							size={80}
+							fallbackVariant="light"
+						/>
+						<div className={styles.btns}>
+							<Button
+								className={styles.btn}
+								variant="outline"
+								text="Завантажити"
 							/>
-							<div className={styles.btns}>
-								<Button
-									className={styles.btn}
-									variant="outline"
-									text="Завантажити"
-								/>
-								<Button
-									className={styles.btn}
-									variant="outline"
-									text="Видалити"
-								/>
-							</div>
+							<Button
+								className={styles.btn}
+								variant="outline"
+								text="Видалити"
+							/>
 						</div>
-						<div className={styles.fields}>
-							<Field
-								label="Ім'я"
-								className={styles.field}
-								name="username"
-								component={FormTextField}
-								element={Input}
-							/>
+					</div>
+					<div className={styles.fields}>
+						<Field
+							label="Ім'я"
+							className={styles.field}
+							name="username"
+							component={FormTextField}
+							element={Input}
+						/>
 
-							<Field
-								label="Email"
-								className={styles.field}
-								name="email"
-								component={FormTextField}
-								element={Input}
-							/>
+						<Field
+							label="Email"
+							className={styles.field}
+							name="email"
+							component={FormTextField}
+							element={Input}
+						/>
 
-							<Field
-								label="Пароль"
-								type="password"
-								className={styles.field}
-								name="password"
-								component={FormTextField}
-								element={Input}
-							/>
+						<Field
+							label="Пароль"
+							type="password"
+							className={styles.field}
+							name="password"
+							component={FormTextField}
+							element={Input}
+						/>
+					</div>
+					<Button className={styles["submit-btn"]} text="Зберегти" isSubmit />
+					<Divider className={styles.divider} />
+					<div className={styles.inner}>
+						<div>
+							<Typography
+								className={styles["small-title"]}
+								component="h4"
+								variant="h4"
+							>
+								Видалити акаунт
+							</Typography>
+							<Typography variant="body1" component="p">
+								Після видалення акаунту ви втратите всі ваші дані.
+							</Typography>
 						</div>
-						<Button className={styles["submit-btn"]} text="Зберегти" isSubmit />
-					</SeparatorItem>
-					<SeparatorItem>
-						<div className={styles.inner}>
-							<div>
-								<Typography
-									className={styles["small-title"]}
-									component="h4"
-									variant="h4"
-								>
-									Видалити акаунт
-								</Typography>
-								<Typography variant="body1" component="p">
-									Після видалення акаунту ви втратите всі ваші дані.
-								</Typography>
-							</div>
-							<Button variant="outline" text="Видалити" />
-						</div>
-					</SeparatorItem>
+						<Button variant="outline" text="Видалити" />
+					</div>
 				</Form>
 			</Formik>
 		</>
