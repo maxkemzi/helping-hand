@@ -1,9 +1,6 @@
 .page {
+	flex-grow: 1;
 	position: relative;
-	height: 100vh;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: bottom;
 	overflow: hidden;
 }
 
