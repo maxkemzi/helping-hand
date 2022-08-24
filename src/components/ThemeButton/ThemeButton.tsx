@@ -28,11 +28,13 @@ const ThemeButton: FC<ColorItemProps> = ({
 				[styles.active]: isActive
 			},
 			css`
-				background: ${theme.styles["color-accent"]};
+				border-color: ${theme.styles["color-accent"]};
 			`
 		)}
 		onClick={() => onClick(theme)}
-	/>
+	>
+		<div className={styles.icon} />
+	</button>
 );
 
 export default ThemeButton;

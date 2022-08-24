@@ -3,22 +3,23 @@
 	border-radius: var(--border-radius-base);
 	width: 32px;
 	height: 32px;
+	border-width: 1px;
+	border-style: solid;
 
-	&::before {
-		content: "";
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 17px;
-		height: 12px;
-		background: url("@images/mark.svg");
-		background-size: cover;
-		opacity: 0;
-		transition: opacity var(--transition-base);
-	}
-
-	&.active::before {
+	&.active .icon {
 		opacity: 1;
 	}
+}
+
+.icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 50%;
+	height: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	border-radius: var(--border-radius-base);
+	background-color: var(--color-accent);
+	opacity: 0;
+	transition: opacity var(--transition-base);
 }
