@@ -1,9 +1,11 @@
 .item {
+	transition: box-shadow var(--transition-base);
 	background: var(--color-primary-light);
 	border-radius: var(--border-radius-base);
-	box-shadow: var(--box-shadow-base);
 
 	&.open {
+		box-shadow: var(--box-shadow-base);
+
 		.icon {
 			transform: rotate(180deg);
 		}

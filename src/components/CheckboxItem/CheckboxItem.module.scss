@@ -15,12 +15,12 @@
 .fake {
 	display: inline-block;
 	position: relative;
+	transition: box-shadow var(--transition-base);
 	width: 20px;
 	height: 20px;
 	border: 1px solid var(--color-divider);
 	border-radius: 3px;
 	margin-right: 12px;
-	box-shadow: var(--box-shadow-base);
 
 	&::before {
 		content: "";
@@ -40,6 +40,10 @@
 
 .label {
 	font-size: 16px;
+}
+
+.checkbox:checked + .fake {
+	box-shadow: var(--box-shadow-base);
 }
 
 .checkbox:checked + .fake::before {

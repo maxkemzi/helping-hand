@@ -12,8 +12,8 @@
 		background: var(--color-primary-light);
 		color: var(--color-text-light);
 
-		.icon path {
-			fill: var(--color-text-light);
+		.icon {
+			color: var(--color-text-light);
 		}
 	}
 
@@ -23,6 +23,6 @@
 	}
 }
 
-.icon path {
-	transition: fill var(--transition-base);
+.icon {
+	transition: color var(--transition-base);
 }
