@@ -20,7 +20,11 @@ const UserInfo: FC<UserInfoProps> = ({
 }) => (
 	<NavLink to={path} className={classNames(className, styles.info)}>
 		<div className={styles.inner}>
-			<Avatar className={styles.avatar} imagePath={avatarPath} />
+			<Avatar
+				fallbackVariant="lighter"
+				className={styles.avatar}
+				imagePath={avatarPath}
+			/>
 			<Typography variant="body1" component="p">
 				{username}
 			</Typography>

@@ -1,10 +1,10 @@
 import React from "react";
 import Avatar from "@components/Avatar/Avatar";
 import Typography from "@components/Typography/Typography";
-import VerifiedIcon from "@icons/VerifiedIcon/VerifiedIcon";
 import {Outlet} from "react-router-dom";
 import ProfileTabs from "@views/Profile/ProfileTabs/ProfileTabs";
 import MainLayout from "@components/MainLayout/MainLayout";
+import {IoCheckmark} from "react-icons/io5";
 import styles from "./ProfilePage.module.scss";
 
 const ProfilePage = () => (
@@ -15,8 +15,7 @@ const ProfilePage = () => (
 					<Avatar
 						className={styles.avatar}
 						imagePath=""
-						width={150}
-						height={150}
+						size={150}
 						fallbackVariant="lighter"
 					/>
 					<div className={styles.user}>
@@ -28,7 +27,7 @@ const ProfilePage = () => (
 							>
 								Max Kemzi
 							</Typography>
-							<VerifiedIcon />
+							<IoCheckmark className={styles.icon} size={24} />
 						</div>
 						<Typography
 							className={styles.description}

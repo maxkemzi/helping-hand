@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import Logo from "@components/Logo/Logo";
 import classNames from "classnames";
 import {NavLink} from "react-router-dom";
@@ -17,7 +17,7 @@ interface HeaderProps {
 	hasBorder?: boolean;
 }
 
-const Header: FC<HeaderProps> = ({position = "relative", hasBorder}) => {
+const Header: FC<HeaderProps> = memo(({position = "relative", hasBorder}) => {
 	const isAuth = useAppSelector(getIsAuth);
 
 	return (
@@ -32,12 +32,7 @@ const Header: FC<HeaderProps> = ({position = "relative", hasBorder}) => {
 					<div className={styles.info}>
 						{isAuth ? (
 							<NavLink className={styles.avatar} to={PROFILE_TASKS_ROUTE}>
-								<Avatar
-									width={32}
-									height={32}
-									fallbackVariant="lighter"
-									imagePath=""
-								/>
+								<Avatar fallbackVariant="lighter" imagePath="" />
 							</NavLink>
 						) : (
 							<LanguageDropdown className={styles.avatar} />
@@ -48,6 +43,6 @@ const Header: FC<HeaderProps> = ({position = "relative", hasBorder}) => {
 			</div>
 		</header>
 	);
-};
+});
 
 export default Header;
