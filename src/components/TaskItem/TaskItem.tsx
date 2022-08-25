@@ -51,13 +51,8 @@ const TaskItem: FC<TaskItemProps> = ({
 			))}
 		</div>
 		<div className={styles.footer}>
-			<NavLink to={`${TASKS_ROUTE}/${id}`}>
-				<Button
-					className={styles.btn}
-					size="small"
-					variant="outline"
-					text="Докладніше"
-				/>
+			<NavLink className={styles.btn} to={`${TASKS_ROUTE}/${id}`}>
+				<Button size="small" variant="outline" text="Докладніше" />
 			</NavLink>
 			<Typography className={styles.date} variant="body1" component="p">
 				{date}

@@ -38,3 +38,9 @@
 	max-width: 600px;
 	margin-bottom: 40px;
 }
+
+.container {
+	margin: 0;
+	flex-grow: 1;
+	display: flex;
+}

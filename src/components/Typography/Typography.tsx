@@ -1,6 +1,8 @@
 import React, {FC, ReactNode} from "react";
 import classNames from "classnames";
+import ScreenSizes from "@utils/constants/screenSizes";
 import styles from "./Typography.module.scss";
+import useWindowSize from "../../hooks/useWindowSize";
 
 type TypographyVariant =
 	| "h1"
@@ -24,12 +26,19 @@ const Typography: FC<TypographyProps> = ({
 	variant,
 	component: Component,
 	children
-}) => (
-	<Component
-		className={classNames(className, styles.typography, styles[variant])}
-	>
-		{children}
-	</Component>
-);
+}) => {
+	const {width} = useWindowSize();
+
+	return (
+		<Component
+			className={classNames(className, styles.typography, styles[variant], {
+				[styles["sm-tablet"]]: width <= ScreenSizes.SmTabletWidth,
+				[styles.phone]: width <= ScreenSizes.PhoneWidth
+			})}
+		>
+			{children}
+		</Component>
+	);
+};
 
 export default Typography;

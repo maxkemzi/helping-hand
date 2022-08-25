@@ -17,7 +17,7 @@ const TasksSortDropdowns = () => {
 	};
 
 	return (
-		<div>
+		<div className={styles.list}>
 			<Dropdown
 				variant="big"
 				className={styles.dropdown}

@@ -1,4 +1,4 @@
-import React, {ButtonHTMLAttributes, FC} from "react";
+import React, {ButtonHTMLAttributes, FC, ReactNode} from "react";
 import classNames from "classnames";
 import {IconType} from "react-icons";
 import styles from "./Button.module.scss";
@@ -6,17 +6,18 @@ import styles from "./Button.module.scss";
 type Variant = "primary" | "outline";
 type Size = "big" | "medium" | "small";
 
-interface ButtonProps {
-	text: string;
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+	text?: string;
 	isSubmit?: boolean;
 	variant?: Variant;
 	size?: Size;
 	className?: string;
 	startIcon?: IconType;
 	isActive?: boolean;
+	children?: ReactNode;
 }
 
-const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({
+const Button: FC<ButtonProps> = ({
 	text,
 	className,
 	variant = "primary",
@@ -24,6 +25,7 @@ const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({
 	startIcon: Icon,
 	isActive,
 	isSubmit,
+	children,
 	...props
 }) => (
 	<button
@@ -38,7 +40,7 @@ const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({
 		{...props}
 	>
 		{Icon && <Icon className={styles.icon} size={20} />}
-		{Icon ? <span>{text}</span> : text}
+		{Icon ? <span>{text || children}</span> : text || children}
 	</button>
 );
 

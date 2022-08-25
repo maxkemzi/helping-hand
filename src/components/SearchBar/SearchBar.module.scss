@@ -66,3 +66,15 @@
 .wrapper:valid .icon {
 	color: var(--color-text-light);
 }
+
+.phone {
+	width: 200px;
+
+	.input {
+		display: block;
+	}
+
+	.icon-wrapper {
+		background: var(--color-primary-light);
+	}
+}

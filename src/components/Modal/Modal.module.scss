@@ -12,6 +12,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 0 16px;
 }
 
 .modal.visible {
@@ -25,24 +26,25 @@
 
 .header {
 	position: relative;
-	text-align: center;
+	align-items: center;
+	display: flex;
 	padding: 16px 24px;
-}
-
-.close-btn {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 24px;
+	text-align: center;
 }
 
 .title {
+	flex-grow: 1;
 	font-size: 22px;
 	font-weight: 600;
 	text-transform: uppercase;
+	margin-right: 10px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
 }
 
 .content {
+	overflow: hidden;
 	background: var(--color-primary-lighter);
 	box-shadow: var(--box-shadow-base);
 	border-radius: var(--border-radius-base);
