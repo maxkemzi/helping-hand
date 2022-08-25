@@ -2,7 +2,7 @@
 	position: absolute;
 	top: 100%;
 	margin-top: 16px;
-	right: 0;
+	right: 16px;
 	display: grid;
 	grid-template-columns: 80px 80px 80px;
 	grid-gap: 16px;
@@ -14,10 +14,21 @@
 	transition: all var(--transition-base);
 	border-radius: var(--border-radius-base);
 	transform: translateY(5%);
+	overflow: auto;
 
 	&.open {
 		opacity: 1;
 		transform: translateY(0);
 		visibility: visible;
+	}
+
+	&.sm-tablet {
+		grid-template-columns: 80px 80px;
+		max-height: 400px;
+	}
+
+	&.phone {
+		grid-template-columns: 80px;
+		max-height: 350px;
 	}
 }
