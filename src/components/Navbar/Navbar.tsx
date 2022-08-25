@@ -2,12 +2,12 @@ import React, {FC, ReactNode} from "react";
 import classNames from "classnames";
 import styles from "./Navbar.module.scss";
 
-type Variant = "row" | "column";
+export type NavbarVariant = "row" | "column";
 
 interface NavbarProps {
 	children: ReactNode;
 	className?: string;
-	variant?: Variant;
+	variant?: NavbarVariant;
 }
 
 const Navbar: FC<NavbarProps> = ({children, variant = "row", className}) => (
