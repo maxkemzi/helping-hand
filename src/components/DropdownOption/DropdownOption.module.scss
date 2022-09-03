@@ -2,11 +2,9 @@
 	display: inline-block;
 	color: var(--color-text-dark-lighter);
 	transition: color .3s ease;
-	margin-bottom: 4px;
-
-	&:last-child {
-		margin-bottom: 0;
-	}
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 
 	&.active {
 		pointer-events: none;
