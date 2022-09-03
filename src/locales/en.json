@@ -1,0 +1,145 @@
+{
+	"form": {
+		"fields": {
+			"username": "Username",
+			"email": "Email",
+			"password": "Password",
+			"message": "Message"
+		}
+	},
+	"sortDropdowns": {
+		"date": {
+			"new": "New",
+			"old": "Old"
+		},
+		"status": {
+			"solved": "Solved",
+			"all": "All",
+			"createdByMe": "Mine"
+		}
+	},
+	"auth": {
+		"tabs": {
+			"login": "Login",
+			"signup": "Signup"
+		},
+		"form": {
+			"loginSubmitButton": "Log in",
+			"signupSubmitButton": "Sign up",
+			"dividerText": "Or"
+		}
+	},
+	"profile": {
+		"tabs": {
+			"tasks": "Tasks",
+			"achievements": "Achievements",
+			"statistics": {
+				"name": "Statistics",
+				"content": {
+					"solved": "Solved",
+					"created": "Created"
+				}
+			}
+		}
+	},
+	"settings": {
+		"title": "Settings",
+		"tabs": {
+			"account": {
+				"name": "Account",
+				"content": {
+					"title": "Account",
+					"form": {
+						"profileImage": {
+							"title": "Profile image",
+							"uploadButton": "Upload",
+							"deleteButton": "Delete"
+						},
+						"saveButton": "Save"
+					},
+					"deleteSection": {
+						"title": "Delete account",
+						"text": "After deleting your account, you will lose all your data.",
+						"deleteButton": "Delete"
+					}
+				}
+			},
+			"integration": {
+				"name": "Integration",
+				"content": {
+					"title": "Integration",
+					"integrations": {
+						"moodle": "Log in with moodle",
+						"triton": "Log in with triton"
+					}
+				}
+			},
+			"interface": {
+				"name": "Interface",
+				"content": {
+					"title": "Interface",
+					"accentColorTitle": "Accent color"
+				}
+			}
+		}
+	},
+	"home": {
+		"description": "A service that will answer all your questions. Do not believe? Try it yourself!",
+		"startButton": "Get started"
+	},
+	"tasks": {
+		"createButtonText": "Create",
+		"filters": {
+			"allValue": "All",
+			"courses": {"name": "Courses"},
+			"categories": {
+				"name": "Categories",
+				"values": {
+					"programming": "Programming",
+					"design": "Design"
+				}
+			}
+		},
+		"createModal": {
+			"title": "Create task",
+			"submitButton": "Create",
+			"fields": {
+				"title": "Title",
+				"description": "Description"
+			}
+		}
+	},
+	"task": {
+		"info": {
+			"created": "Created",
+			"changed": "Changed",
+			"views": "Views"
+		},
+		"yourAnswer": "Your answer",
+		"sendButton": "Send"
+	},
+	"menuItems": {
+		"home": "Home",
+		"tasks": "Tasks",
+		"profile": "Profile",
+		"settings": "Settings",
+		"contact": "Contact"
+	},
+	"contactModal": {
+		"title": "Contact",
+		"sendButtonText": "Send"
+	},
+	"SearchBar": {
+		"placeholder": "Search"
+	},
+	"TaskItem": {
+		"moreDetailsButton": "More details"
+	},
+	"IntegrationItem": {
+		"button": "Connect"
+	},
+	"TagsField": {
+		"label": "Tags",
+		"buttonText": "Add"
+	}
+}

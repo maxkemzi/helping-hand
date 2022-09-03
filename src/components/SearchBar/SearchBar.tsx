@@ -2,6 +2,7 @@ import React, {ChangeEvent, Dispatch, FC, SetStateAction} from "react";
 import {IoSearch} from "react-icons/io5";
 import classNames from "classnames";
 import ScreenSizes from "@utils/constants/screenSizes";
+import {useTranslation} from "react-i18next";
 import styles from "./SearchBar.module.scss";
 import useWindowSize from "../../hooks/useWindowSize";
 
@@ -12,6 +13,7 @@ interface SearchBarProps {
 }
 
 const SearchBar: FC<SearchBarProps> = ({value, setValue, className}) => {
+	const {t} = useTranslation();
 	const {width} = useWindowSize();
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
 		setValue(e.target.value);
@@ -23,7 +25,7 @@ const SearchBar: FC<SearchBarProps> = ({value, setValue, className}) => {
 			})}
 		>
 			<input
-				placeholder="Пошук"
+				placeholder={t("SearchBar.placeholder")}
 				value={value}
 				onChange={handleChange}
 				className={styles.input}

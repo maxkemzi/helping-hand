@@ -4,9 +4,11 @@ import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import * as yup from "yup";
 import Button from "@components/Button/Button";
+import {useTranslation} from "react-i18next";
 import styles from "./AuthLoginForm.module.scss";
 
 const AuthLoginForm: FC<{className?: string}> = ({className}) => {
+	const {t} = useTranslation();
 	const validationSchema = yup.object().shape({
 		email: yup.string(),
 		password: yup.string()
@@ -22,7 +24,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 			<Form className={className}>
 				<div className={styles.fields}>
 					<Field
-						label="Email"
+						label={t("form.fields.email")}
 						className={styles.field}
 						name="email"
 						component={FormTextField}
@@ -30,7 +32,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 					/>
 
 					<Field
-						label="Пароль"
+						label={t("form.fields.password")}
 						type="password"
 						className={styles.field}
 						name="password"
@@ -38,7 +40,12 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 						element={Input}
 					/>
 				</div>
-				<Button size="big" className={styles.btn} text="Увійти" isSubmit />
+				<Button
+					size="big"
+					className={styles.btn}
+					text={t("auth.form.loginSubmitButton")}
+					isSubmit
+				/>
 			</Form>
 		</Formik>
 	);

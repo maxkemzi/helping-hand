@@ -5,15 +5,21 @@ import DropdownOption from "@components/DropdownOption/DropdownOption";
 import Dropdown from "@components/Dropdown/Dropdown";
 import classNames from "classnames";
 import Task from "@customTypes/entities/task";
+import {useTranslation} from "react-i18next";
 import data from "../../../mock.json";
 import styles from "./ProfileTasks.module.scss";
 
 const ProfileTasks = () => {
+	const {t} = useTranslation();
 	const [value, setValue] = useState("");
 	const [isDateDropdownOpen, setIsDateDropdownOpen] = useState(false);
 	const [isTypeDropdownOpen, setIsTypeDropdownOpen] = useState(false);
-	const [sortByDateValue, setSortByDateValue] = useState("Нові");
-	const [sortByTypeValue, setSortByTypeValue] = useState("Усі");
+	const [sortByDateValue, setSortByDateValue] = useState(() =>
+		t("sortDropdowns.date.new")
+	);
+	const [sortByTypeValue, setSortByTypeValue] = useState(() =>
+		t("sortDropdowns.status.all")
+	);
 
 	const handleDateClose = () => setIsDateDropdownOpen(false);
 
@@ -48,13 +54,13 @@ const ProfileTasks = () => {
 					>
 						<DropdownOption
 							onClick={handleSortByDateClick}
-							isActive={sortByDateValue === "Нові"}
-							value="Нові"
+							isActive={sortByDateValue === t("sortDropdowns.date.new")}
+							value={t("sortDropdowns.date.new")}
 						/>
 						<DropdownOption
 							onClick={handleSortByDateClick}
-							isActive={sortByDateValue === "Старі"}
-							value="Старі"
+							isActive={sortByDateValue === t("sortDropdowns.date.old")}
+							value={t("sortDropdowns.date.old")}
 						/>
 					</Dropdown>
 
@@ -68,18 +74,20 @@ const ProfileTasks = () => {
 					>
 						<DropdownOption
 							onClick={handleSortByTypeClick}
-							isActive={sortByTypeValue === "Усі"}
-							value="Усі"
+							isActive={sortByTypeValue === t("sortDropdowns.status.all")}
+							value={t("sortDropdowns.status.all")}
 						/>
 						<DropdownOption
 							onClick={handleSortByTypeClick}
-							isActive={sortByTypeValue === "Вирішені"}
-							value="Вирішені"
+							isActive={sortByTypeValue === t("sortDropdowns.status.solved")}
+							value={t("sortDropdowns.status.solved")}
 						/>
 						<DropdownOption
 							onClick={handleSortByTypeClick}
-							isActive={sortByTypeValue === "Створені"}
-							value="Створені"
+							isActive={
+								sortByTypeValue === t("sortDropdowns.status.createdByMe")
+							}
+							value={t("sortDropdowns.status.createdByMe")}
 						/>
 					</Dropdown>
 				</div>

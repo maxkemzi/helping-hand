@@ -1,2 +1,145 @@
 {
+	"form": {
+		"fields": {
+			"username": "Ім'я",
+			"email": "Email",
+			"password": "Пароль",
+			"message": "Повідомлення"
+		}
+	},
+	"sortDropdowns": {
+		"date": {
+			"new": "Нові",
+			"old": "Старі"
+		},
+		"status": {
+			"solved": "Вирішені",
+			"all": "Усі",
+			"createdByMe": "Мої"
+		}
+	},
+	"auth": {
+		"tabs": {
+			"login": "Вхід",
+			"signup": "Реєстрація"
+		},
+		"form": {
+			"loginSubmitButton": "Увійти",
+			"signupSubmitButton": "Зареєструватися",
+			"dividerText": "Або"
+		}
+	},
+	"profile": {
+		"tabs": {
+			"tasks": "Завдання",
+			"achievements": "Досягнення",
+			"statistics": {
+				"name": "Статистика",
+				"content": {
+					"solved": "Вирішені",
+					"created": "Створені"
+				}
+			}
+		}
+	},
+	"settings": {
+		"title": "Налаштування",
+		"tabs": {
+			"account": {
+				"name": "Акаунт",
+				"content": {
+					"title": "Акаунт",
+					"form": {
+						"profileImage": {
+							"title": "Зображення профілю",
+							"uploadButton": "Завантажити",
+							"deleteButton": "Видалити"
+						},
+						"saveButton": "Зберегти"
+					},
+					"deleteSection": {
+						"title": "Видалити акаунт",
+						"text": "Після видалення облікового запису ви втратите всі свої дані.",
+						"deleteButton": "Видалити"
+					}
+				}
+			},
+			"integration": {
+				"name": "Інтеграція",
+				"content": {
+					"title": "Інтеграція",
+					"integrations": {
+						"moodle": "Увійти за допомогою moodle",
+						"triton": "Увійти за допомогою triton"
+					}
+				}
+			},
+			"interface": {
+				"name": "Інтерфейс",
+				"content": {
+					"title": "Інтерфейс",
+					"accentColorTitle": "Акцентний колір"
+				}
+			}
+		}
+	},
+	"home": {
+		"description": "Сервіс, який дасть відповідь на всі ваші питання. Не віриш? Спробуй сам!",
+		"startButton": "Почати"
+	},
+	"tasks": {
+		"createButtonText": "Створити",
+		"filters": {
+			"allValue": "Усі",
+			"courses": {"name": "Курси"},
+			"categories": {
+				"name": "Категорії",
+				"values": {
+					"programming": "Програмування",
+					"design": "Дизайн"
+				}
+			}
+		},
+		"createModal": {
+			"title": "Створити завдання",
+			"submitButton": "Створити",
+			"fields": {
+				"title": "Назва",
+				"description": "Опис"
+			}
+		}
+	},
+	"task": {
+		"info": {
+			"created": "Створене",
+			"changed": "Змінене",
+			"views": "Переглядів"
+		},
+		"yourAnswer": "Ваша відповідь",
+		"sendButton": "Відправити"
+	},
+	"menuItems": {
+		"home": "Головна",
+		"tasks": "Завдання",
+		"profile": "Профіль",
+		"settings": "Налаштування",
+		"contact": "Зв'язатися"
+	},
+	"contactModal": {
+		"title": "Зв'язатися",
+		"sendButtonText": "Відправити"
+	},
+	"SearchBar": {
+		"placeholder": "Пошук"
+	},
+	"TaskItem": {
+		"moreDetailsButton": "Детальніше"
+	},
+	"IntegrationItem": {
+		"button": "Приєднати"
+	},
+	"TagsField": {
+		"label": "Теги",
+		"buttonText": "Додати"
+	}
 }

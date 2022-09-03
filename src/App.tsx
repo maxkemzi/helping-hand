@@ -4,6 +4,7 @@ import React, {FC} from "react";
 import {GreenTheme} from "@utils/constants/themes";
 import AppRouter from "./components/AppRouter/AppRouter";
 import useTheme from "./hooks/useTheme";
+import "./config/i18n.config";
 
 const App: FC = () => {
 	useTheme(GreenTheme);
