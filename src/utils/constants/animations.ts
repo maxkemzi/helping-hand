@@ -1,0 +1,3 @@
+const ANIMATION_DURATION = 300;
+
+export default ANIMATION_DURATION;

@@ -1,4 +1,5 @@
 .tab {
+	display: inline-block;
 	font-weight: 600;
 	text-align: center;
 	text-transform: uppercase;
@@ -8,12 +9,4 @@
 	&.active {
 		color: var(--color-accent);
 	}
-}
-
-.horizontal {
-	padding: 0 14px;
-}
-
-.vertical {
-	padding: 14px 0;
 }
