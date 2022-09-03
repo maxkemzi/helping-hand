@@ -4,24 +4,28 @@ import classNames from "classnames";
 import {Outlet} from "react-router-dom";
 import SettingsTabs from "@views/Settings/SettingsTabs/SettingsTabs";
 import MainLayout from "@components/MainLayout/MainLayout";
+import {useTranslation} from "react-i18next";
 import styles from "./SettingsPage.module.scss";
 
-const SettingsPage: FC = () => (
-	<MainLayout>
-		<div className="page">
-			<div className="container container--small">
-				<Typography className={styles.title} variant="h2" component="h2">
-					Налаштування
-				</Typography>
-				<div className={styles.inner}>
-					<SettingsTabs />
-					<div className={classNames("wrapper", styles.wrapper)}>
-						<Outlet />
+const SettingsPage: FC = () => {
+	const {t} = useTranslation();
+	return (
+		<MainLayout>
+			<div className="page">
+				<div className="container container--small">
+					<Typography className={styles.title} variant="h2" component="h2">
+						{t("settings.title")}
+					</Typography>
+					<div className={styles.inner}>
+						<SettingsTabs />
+						<div className={classNames("wrapper", styles.wrapper)}>
+							<Outlet />
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</MainLayout>
-);
+		</MainLayout>
+	);
+};
 
 export default SettingsPage;

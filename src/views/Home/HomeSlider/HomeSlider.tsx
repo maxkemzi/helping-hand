@@ -70,7 +70,7 @@ const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
 						</Typography>
 						{buttonText && buttonPath && (
 							<NavLink to={buttonPath}>
-								<Button size="big" text={buttonText} />
+								<Button size="big" text={t(buttonText)} />
 							</NavLink>
 						)}
 					</div>

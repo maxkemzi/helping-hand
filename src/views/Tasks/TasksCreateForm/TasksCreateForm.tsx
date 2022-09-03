@@ -7,6 +7,7 @@ import Button from "@components/Button/Button";
 import Textarea from "@components/Textarea/Textarea";
 import FormTagsField from "@components/FormTagsField/FormTagsField";
 import Tag from "@customTypes/entities/tag";
+import {useTranslation} from "react-i18next";
 import styles from "./TasksCreateForm.module.scss";
 import mockData from "../../../mock.json";
 
@@ -17,6 +18,7 @@ interface TasksCreateFormValues {
 }
 
 const TasksCreateForm = () => {
+	const {t} = useTranslation("translation", {keyPrefix: "tasks.createModal"});
 	const initialValues: TasksCreateFormValues = {
 		title: "",
 		description: "",
@@ -46,7 +48,7 @@ const TasksCreateForm = () => {
 					/>
 
 					<Field
-						label="Заголовок"
+						label={t("fields.title")}
 						className={styles.field}
 						name="title"
 						component={FormTextField}
@@ -54,7 +56,7 @@ const TasksCreateForm = () => {
 					/>
 
 					<Field
-						label="Опис"
+						label={t("fields.description")}
 						className={styles.field}
 						name="description"
 						component={FormTextField}
@@ -62,7 +64,12 @@ const TasksCreateForm = () => {
 						rows={4}
 					/>
 				</div>
-				<Button size="big" className={styles.btn} text="Створити" isSubmit />
+				<Button
+					size="big"
+					className={styles.btn}
+					text={t("submitButton")}
+					isSubmit
+				/>
 			</Form>
 		</Formik>
 	);

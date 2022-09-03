@@ -12,8 +12,8 @@ import {useTranslation} from "react-i18next";
 import Modal from "@components/Modal/Modal";
 import HeaderContactForm from "@views/Header/HeaderContactForm/HeaderContactForm";
 import {
-	IoLayers,
 	IoHome,
+	IoLayers,
 	IoMegaphone,
 	IoPerson,
 	IoSettings
@@ -72,7 +72,11 @@ const HeaderMenu = memo(() => {
 					text={t("menuItems.contact")}
 				/>
 			</Menu>
-			<Modal title="Contact" isVisible={isVisible} setIsVisible={setIsVisible}>
+			<Modal
+				title={t("contactModal.title")}
+				isVisible={isVisible}
+				setIsVisible={setIsVisible}
+			>
 				<HeaderContactForm />
 			</Modal>
 		</div>

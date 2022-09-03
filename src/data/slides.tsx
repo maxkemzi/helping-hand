@@ -6,21 +6,21 @@ const slides: Slide[] = [
 		id: 1,
 		title: "Helping hand",
 		text: "home.description",
-		buttonText: "Почати",
+		buttonText: "home.startButton",
 		buttonPath: LOGIN_ROUTE
 	},
 	{
 		id: 2,
 		title: "Helping hand",
 		text: "home.description",
-		buttonText: "Почати",
+		buttonText: "home.startButton",
 		buttonPath: LOGIN_ROUTE
 	},
 	{
 		id: 3,
 		title: "Helping hand",
 		text: "home.description",
-		buttonText: "Почати",
+		buttonText: "home.startButton",
 		buttonPath: LOGIN_ROUTE
 	}
 ];
