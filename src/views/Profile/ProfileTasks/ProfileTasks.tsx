@@ -21,7 +21,7 @@ const ProfileTasks = () => {
 
 	const handleTypeClose = () => setIsTypeDropdownOpen(false);
 
-	const toggleTypeOpen = () => setIsDateDropdownOpen(!isTypeDropdownOpen);
+	const toggleTypeOpen = () => setIsTypeDropdownOpen(!isTypeDropdownOpen);
 
 	const handleSortByDateClick = (itemValue: string) => {
 		setSortByDateValue(itemValue);

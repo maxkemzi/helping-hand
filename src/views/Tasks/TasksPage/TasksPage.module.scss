@@ -11,13 +11,13 @@
 
 .header {
 	display: flex;
-	overflow: hidden;
 	align-items: center;
 	justify-content: space-between;
 }
 
 .panel {
 	display: flex;
+	align-items: center;
 }
 
 .search {
@@ -64,7 +64,7 @@
 	.filter-btn {
 		margin-right: 16px;
 	}
-	
+
 	.header {
 		flex-direction: column;
 		align-items: stretch;
