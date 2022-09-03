@@ -26,7 +26,6 @@ const FormTagsField: FC<FormTagsFieldProps & FieldProps> = ({
 	return (
 		<TagsField
 			className={className}
-			id={field.name}
 			tagOptions={tagOptions}
 			tags={field.value}
 			onAddTags={handleAddTags}

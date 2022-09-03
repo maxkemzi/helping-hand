@@ -15,7 +15,6 @@ interface TagsFieldProps {
 	tagOptions: Tag[];
 	onRemoveTag: (id: string) => void;
 	onAddTags: (items: Tag[]) => void;
-	id: string;
 }
 
 const TagsField: FC<TagsFieldProps> = ({
@@ -23,8 +22,7 @@ const TagsField: FC<TagsFieldProps> = ({
 	tags,
 	tagOptions,
 	onRemoveTag,
-	onAddTags,
-	id
+	onAddTags
 }) => {
 	const [searchValue, setSearchValue] = useState("");
 	const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
@@ -63,7 +61,6 @@ const TagsField: FC<TagsFieldProps> = ({
 			<div ref={fieldRef} className={styles.field}>
 				<div className={styles.inner}>
 					<TextField
-						id={id}
 						onChange={handleSearchChange}
 						onFocus={handleSearchFocus}
 						className={styles.input}

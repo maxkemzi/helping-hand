@@ -9,9 +9,7 @@ const FormTextField: FC<TextFieldProps & FieldProps> = ({
 }) => {
 	const hasError = !!(touched[field.name] && errors[field.name]);
 
-	return (
-		<TextField id={field.name} isInvalid={hasError} {...field} {...props} />
-	);
+	return <TextField isInvalid={hasError} {...field} {...props} />;
 };
 
 export default FormTextField;
