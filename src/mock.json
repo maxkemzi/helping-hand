@@ -42,7 +42,7 @@
 			"tags": [
 				{
 					"id": "1",
-					"text": "Programming"
+					"text": "Програмування"
 				}
 			],
 			"isActive": true
@@ -59,7 +59,7 @@
 			"tags": [
 				{
 					"id": "1",
-					"text": "Programming"
+					"text": "Програмування"
 				}
 			],
 			"isActive": false
@@ -76,7 +76,7 @@
 			"tags": [
 				{
 					"id": "1",
-					"text": "Programming"
+					"text": "Програмування"
 				}
 			],
 			"isActive": false
@@ -93,7 +93,7 @@
 			"tags": [
 				{
 					"id": "1",
-					"text": "Programming"
+					"text": "Програмування"
 				}
 			],
 			"isActive": false
@@ -102,27 +102,27 @@
 	"achieves": [
 		{
 			"id": "1",
-			"description": "Описание достижения"
+			"description": "Опис досягнення"
 		},
 		{
 			"id": "2",
-			"description": "Описание достижения"
+			"description": "Опис досягнення"
 		},
 		{
 			"id": "3",
-			"description": "Описание достижения"
+			"description": "Опис досягнення"
 		}
 	],
 	"stats": [
 		{
 			"id": "1",
 			"value": 123,
-			"title": "Решённых"
+			"title": "Вирішених"
 		},
 		{
 			"id": "2",
 			"value": 50,
-			"title": "Созданных"
+			"title": "Створених"
 		}
 	]
 }

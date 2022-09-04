@@ -5,7 +5,6 @@ import {NavLink} from "react-router-dom";
 import {PROFILE_TASKS_ROUTE} from "@utils/constants/routes";
 import Avatar from "@components/Avatar/Avatar";
 import HeaderMenu from "@views/Header/HeaderMenu/HeaderMenu";
-import LanguageDropdown from "@components/LanguageDropdown/LanguageDropdown";
 import {getIsAuth} from "@store/auth/auth.selectors";
 import styles from "./Header.module.scss";
 import useAppSelector from "../../hooks/useAppSelector";
@@ -30,12 +29,10 @@ const Header: FC<HeaderProps> = memo(({position = "relative", hasBorder}) => {
 				<div className={styles.inner}>
 					<Logo />
 					<div className={styles.info}>
-						{isAuth ? (
+						{isAuth && (
 							<NavLink className={styles.avatar} to={PROFILE_TASKS_ROUTE}>
 								<Avatar fallbackVariant="lighter" imagePath="" />
 							</NavLink>
-						) : (
-							<LanguageDropdown className={styles.avatar} />
 						)}
 						<HeaderMenu />
 					</div>

@@ -2,12 +2,10 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import ThemeButton from "@components/ThemeButton/ThemeButton";
 import Typography from "@components/Typography/Typography";
-import LanguageDropdown from "@components/LanguageDropdown/LanguageDropdown";
 import {setTheme} from "@store/app/app.slice";
 import themes from "@utils/constants/themes";
 import {getAppTheme} from "@store/app/app.selectors";
 import {Theme} from "@customTypes/components";
-import Divider from "@components/Divider/Divider";
 import styles from "./InterfaceSettings.module.scss";
 import useAppSelector from "../../../hooks/useAppSelector";
 
@@ -35,8 +33,6 @@ const InterfaceSettings = () => {
 					/>
 				))}
 			</div>
-			<Divider className={styles.divider} />
-			<LanguageDropdown />
 		</>
 	);
 };

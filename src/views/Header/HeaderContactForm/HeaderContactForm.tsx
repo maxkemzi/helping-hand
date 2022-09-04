@@ -38,7 +38,7 @@ const HeaderContactForm = () => {
 						element={Textarea}
 					/>
 				</div>
-				<Button size="big" className={styles.btn} text="Send" isSubmit />
+				<Button size="big" className={styles.btn} text="Відправити" isSubmit />
 			</Form>
 		</Formik>
 	);

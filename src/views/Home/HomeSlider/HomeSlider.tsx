@@ -6,7 +6,6 @@ import {NavLink} from "react-router-dom";
 import Typography from "@components/Typography/Typography";
 import HomeSliderDots from "@views/Home/HomeSliderDots/HomeSliderDots";
 import {Slide} from "@customTypes/components";
-import {useTranslation} from "react-i18next";
 
 interface HomeSliderProps {
 	slides: Slide[];
@@ -14,7 +13,6 @@ interface HomeSliderProps {
 
 const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
 	const [index, setIndex] = useState(0);
-	const {t} = useTranslation();
 
 	useEffect(() => {
 		const slider = setInterval(() => {
@@ -66,7 +64,7 @@ const HomeSlider: FC<HomeSliderProps> = ({slides}) => {
 							variant="subtitle1"
 							component="p"
 						>
-							{t(text)}
+							{text}
 						</Typography>
 						{buttonText && buttonPath && (
 							<NavLink to={buttonPath}>

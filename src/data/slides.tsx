@@ -5,21 +5,21 @@ const slides: Slide[] = [
 	{
 		id: 1,
 		title: "Helping hand",
-		text: "home.description",
+		text: "Сервіс, який дасть відповідь на всі ваші питання. Не віриш? Спробуй сам!",
 		buttonText: "Почати",
 		buttonPath: LOGIN_ROUTE
 	},
 	{
 		id: 2,
 		title: "Helping hand",
-		text: "home.description",
+		text: "Сервіс, який дасть відповідь на всі ваші питання. Не віриш? Спробуй сам!",
 		buttonText: "Почати",
 		buttonPath: LOGIN_ROUTE
 	},
 	{
 		id: 3,
 		title: "Helping hand",
-		text: "home.description",
+		text: "Сервіс, який дасть відповідь на всі ваші питання. Не віриш? Спробуй сам!",
 		buttonText: "Почати",
 		buttonPath: LOGIN_ROUTE
 	}

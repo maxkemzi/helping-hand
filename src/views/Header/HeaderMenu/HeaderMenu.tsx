@@ -8,12 +8,11 @@ import {
 	SETTINGS_ACCOUNT_ROUTE,
 	TASKS_ROUTE
 } from "@utils/constants/routes";
-import {useTranslation} from "react-i18next";
 import Modal from "@components/Modal/Modal";
 import HeaderContactForm from "@views/Header/HeaderContactForm/HeaderContactForm";
 import {
-	IoLayers,
 	IoHome,
+	IoLayers,
 	IoMegaphone,
 	IoPerson,
 	IoSettings
@@ -24,7 +23,6 @@ const HeaderMenu = memo(() => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const parentRef = useRef<HTMLDivElement>(null);
-	const {t} = useTranslation();
 
 	useListenClickOutside(parentRef, () => setIsOpen(false));
 
@@ -45,34 +43,38 @@ const HeaderMenu = memo(() => {
 					onClick={handleItemClick}
 					path={HOME_ROUTE}
 					icon={IoHome}
-					text={t("menuItems.home")}
+					text="Головна"
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={TASKS_ROUTE}
 					icon={IoLayers}
-					text={t("menuItems.tasks")}
+					text="Завдання"
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={PROFILE_TASKS_ROUTE}
 					icon={IoPerson}
-					text={t("menuItems.profile")}
+					text="Профіль"
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={SETTINGS_ACCOUNT_ROUTE}
 					icon={IoSettings}
-					text={t("menuItems.settings")}
+					text="Налаштування"
 				/>
 				<MenuItem
 					onClick={handleContactClick}
 					as="button"
 					icon={IoMegaphone}
-					text={t("menuItems.contact")}
+					text="Зв'язатись"
 				/>
 			</Menu>
-			<Modal title="Contact" isVisible={isVisible} setIsVisible={setIsVisible}>
+			<Modal
+				title="Зв'язатись"
+				isVisible={isVisible}
+				setIsVisible={setIsVisible}
+			>
 				<HeaderContactForm />
 			</Modal>
 		</div>
