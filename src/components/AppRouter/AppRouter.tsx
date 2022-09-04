@@ -4,6 +4,7 @@ import {
 	AUTH_ROUTE,
 	HOME_ROUTE,
 	LOGIN_ROUTE,
+	PROFILE_ACHIEVES_ROUTE,
 	PROFILE_ROUTE,
 	PROFILE_STATS_ROUTE,
 	PROFILE_TASKS_ROUTE,
@@ -29,6 +30,7 @@ import IntegrationSettings from "@views/Settings/IntegrationSettings/Integration
 import InterfaceSettings from "@views/Settings/InterfaceSettings/InterfaceSettings";
 import TaskPage from "@views/Task/TaskPage/TaskPage";
 import PrivateRoute from "@components/PrivateRoute/PrivateRoute";
+import ProfileAchieves from "@views/Profile/ProfileAchieves/ProfileAchieves";
 
 const AppRouter = () => (
 	<Routes>
@@ -46,6 +48,7 @@ const AppRouter = () => (
 		<Route path={PROFILE_ROUTE} element={<ProfilePage />}>
 			<Route index element={<Navigate to={PROFILE_TASKS_ROUTE} replace />} />
 			<Route path={PROFILE_TASKS_ROUTE} element={<ProfileTasks />} />
+			<Route path={PROFILE_ACHIEVES_ROUTE} element={<ProfileAchieves />} />
 			<Route path={PROFILE_STATS_ROUTE} element={<ProfileStats />} />
 			<Route path="*" element={<Navigate to={PROFILE_TASKS_ROUTE} />} />
 		</Route>

@@ -8,6 +8,7 @@ export const TASKS_ROUTE = "/tasks";
 
 export const PROFILE_ROUTE = "/profile";
 export const PROFILE_TASKS_ROUTE = "/profile/tasks";
+export const PROFILE_ACHIEVES_ROUTE = "/profile/achieves";
 export const PROFILE_STATS_ROUTE = "/profile/stats";
 
 export const SETTINGS_ROUTE = "/settings";
