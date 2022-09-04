@@ -6,16 +6,20 @@ import {
 	PROFILE_TASKS_ROUTE
 } from "@utils/constants/routes";
 import TabList from "@components/TabList/TabList";
+import {useTranslation} from "react-i18next";
 import styles from "./ProfileTabs.module.scss";
 
-const ProfileTabs = () => (
-	<TabList className={styles.tabs} adaptiveLineSizing>
-		<TabItem to={PROFILE_TASKS_ROUTE} text="Завдання" />
+const ProfileTabs = () => {
+	const {t} = useTranslation("translation", {keyPrefix: "profile.tabs"});
+	return (
+		<TabList className={styles.tabs} adaptiveLineSizing>
+			<TabItem to={PROFILE_TASKS_ROUTE} text={t("tasks")} />
 
-		<TabItem to={PROFILE_ACHIEVES_ROUTE} text="Досягнення" />
+			<TabItem to={PROFILE_ACHIEVES_ROUTE} text={t("achievements")} />
 
-		<TabItem to={PROFILE_STATS_ROUTE} text="Статистика" />
-	</TabList>
-);
+			<TabItem to={PROFILE_STATS_ROUTE} text={t("statistics.name")} />
+		</TabList>
+	);
+};
 
 export default ProfileTabs;

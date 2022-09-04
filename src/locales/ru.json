@@ -1,0 +1,145 @@
+{
+	"form": {
+		"fields": {
+			"username": "Имя",
+			"email": "Email",
+			"password": "Пароль",
+			"message": "Сообщение"
+		}
+	},
+	"sortDropdowns": {
+		"date": {
+			"new": "Новые",
+			"old": "Старые"
+		},
+		"status": {
+			"solved": "Решённые",
+			"all": "Все",
+			"createdByMe": "Мои"
+		}
+	},
+	"auth": {
+		"tabs": {
+			"login": "Вход",
+			"signup": "Регистрация"
+		},
+		"form": {
+			"loginSubmitButton": "Войти",
+			"signupSubmitButton": "Зарегестрироватся",
+			"dividerText": "Или"
+		}
+	},
+	"profile": {
+		"tabs": {
+			"tasks": "Задания",
+			"achievements": "Достижения",
+			"statistics": {
+				"name": "Статистика",
+				"content": {
+					"solved": "Решённых",
+					"created": "Созданных"
+				}
+			}
+		}
+	},
+	"settings": {
+		"title": "Настройки",
+		"tabs": {
+			"account": {
+				"name": "Аккаунт",
+				"content": {
+					"title": "Аккаунт",
+					"form": {
+						"profileImage": {
+							"title": "Изображение профиля",
+							"uploadButton": "Загрузить",
+							"deleteButton": "Удалить"
+						},
+						"saveButton": "Сохранить"
+					},
+					"deleteSection": {
+						"title": "Удалить аккаунт",
+						"text": "После удаления аккаунта вы потеряете все свои данные.",
+						"deleteButton": "Удалить"
+					}
+				}
+			},
+			"integration": {
+				"name": "Интеграция",
+				"content": {
+					"title": "Интеграция",
+					"integrations": {
+						"moodle": "Войти с помощью moodle",
+						"triton": "Войти с помощью triton"
+					}
+				}
+			},
+			"interface": {
+				"name": "Интерфейс",
+				"content": {
+					"title": "Интерфейс",
+					"accentColorTitle": "Акцентный цвет"
+				}
+			}
+		}
+	},
+	"home": {
+		"description": "Сервис, который ответит на все ваши вопросы. Не веришь? Попробуй сам!",
+		"startButton": "Начать"
+	},
+	"tasks": {
+		"createButtonText": "Создать",
+		"filters": {
+			"allValue": "Все",
+			"courses": {"name": "Курсы"},
+			"categories": {
+				"name": "Категории",
+				"values": {
+					"programming": "Программирование",
+					"design": "Дизайн"
+				}
+			}
+		},
+		"createModal": {
+			"title": "Создать задание",
+			"submitButton": "Создать",
+			"fields": {
+				"title": "Название",
+				"description": "Описание"
+			}
+		}
+	},
+	"task": {
+		"info": {
+			"created": "Создано",
+			"changed": "Изменено",
+			"views": "Просмотров"
+		},
+		"yourAnswer": "Ваш ответ",
+		"sendButton": "Отправить"
+	},
+	"menuItems": {
+		"home": "Главная",
+		"tasks": "Задания",
+		"profile": "Профиль",
+		"settings": "Настройки",
+		"contact": "Связаться"
+	},
+	"contactModal": {
+		"title": "Связаться",
+		"sendButtonText": "Отправить"
+	},
+	"SearchBar": {
+		"placeholder": "Поиск"
+	},
+	"TaskItem": {
+		"moreDetailsButton": "Детальней"
+	},
+	"IntegrationItem": {
+		"button": "Присоединить"
+	},
+	"TagsField": {
+		"label": "Теги",
+		"buttonText": "Добавить"
+	}
+}

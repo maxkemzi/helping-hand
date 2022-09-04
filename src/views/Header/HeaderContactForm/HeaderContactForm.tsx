@@ -5,9 +5,11 @@ import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import Button from "@components/Button/Button";
 import Textarea from "@components/Textarea/Textarea";
+import {useTranslation} from "react-i18next";
 import styles from "./HeaderContactForm.module.scss";
 
 const HeaderContactForm = () => {
+	const {t} = useTranslation();
 	const validationSchema = yup.object().shape({
 		email: yup.string(),
 		text: yup.string()
@@ -23,7 +25,7 @@ const HeaderContactForm = () => {
 			<Form>
 				<div className={styles.fields}>
 					<Field
-						label="Email"
+						label={t("form.fields.email")}
 						className={styles.field}
 						name="email"
 						component={FormTextField}
@@ -31,14 +33,19 @@ const HeaderContactForm = () => {
 					/>
 
 					<Field
-						label="Текст"
+						label={t("form.fields.message")}
 						className={styles.field}
 						name="text"
 						component={FormTextField}
 						element={Textarea}
 					/>
 				</div>
-				<Button size="big" className={styles.btn} text="Відправити" isSubmit />
+				<Button
+					size="big"
+					className={styles.btn}
+					text={t("contactModal.sendButtonText")}
+					isSubmit
+				/>
 			</Form>
 		</Formik>
 	);

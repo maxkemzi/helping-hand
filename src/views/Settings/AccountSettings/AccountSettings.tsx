@@ -7,9 +7,14 @@ import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import Typography from "@components/Typography/Typography";
 import Divider from "@components/Divider/Divider";
+import {useTranslation} from "react-i18next";
 import styles from "./AccountSettings.module.scss";
 
 const AccountSettings = () => {
+	const {t} = useTranslation("translation", {
+		keyPrefix: "settings.tabs.account.content"
+	});
+	const {t: fieldsT} = useTranslation();
 	const validationSchema = yup.object().shape({
 		email: yup.string(),
 		password: yup.string(),
@@ -19,7 +24,7 @@ const AccountSettings = () => {
 	return (
 		<>
 			<Typography className={styles.title} component="h3" variant="h3">
-				Акаунт
+				{t("title")}
 			</Typography>
 			<Formik
 				initialValues={{username: "", email: "", password: ""}}
@@ -33,7 +38,7 @@ const AccountSettings = () => {
 						variant="h4"
 						component="h4"
 					>
-						Зображення профілю
+						{t("form.profileImage.title")}
 					</Typography>
 					<div className={styles.user}>
 						<Avatar
@@ -46,18 +51,18 @@ const AccountSettings = () => {
 							<Button
 								className={styles.btn}
 								variant="outline"
-								text="Завантажити"
+								text={t("form.profileImage.uploadButton")}
 							/>
 							<Button
 								className={styles.btn}
 								variant="outline"
-								text="Видалити"
+								text={t("form.profileImage.deleteButton")}
 							/>
 						</div>
 					</div>
 					<div className={styles.fields}>
 						<Field
-							label="Ім'я"
+							label={fieldsT("form.fields.username")}
 							className={styles.field}
 							name="username"
 							component={FormTextField}
@@ -65,7 +70,7 @@ const AccountSettings = () => {
 						/>
 
 						<Field
-							label="Email"
+							label={fieldsT("form.fields.email")}
 							className={styles.field}
 							name="email"
 							component={FormTextField}
@@ -73,7 +78,7 @@ const AccountSettings = () => {
 						/>
 
 						<Field
-							label="Пароль"
+							label={fieldsT("form.fields.password")}
 							type="password"
 							className={styles.field}
 							name="password"
@@ -81,7 +86,11 @@ const AccountSettings = () => {
 							element={Input}
 						/>
 					</div>
-					<Button className={styles["submit-btn"]} text="Зберегти" isSubmit />
+					<Button
+						className={styles["submit-btn"]}
+						text={t("form.saveButton")}
+						isSubmit
+					/>
 					<Divider className={styles.divider} />
 					<div className={styles.inner}>
 						<div>
@@ -90,13 +99,13 @@ const AccountSettings = () => {
 								component="h4"
 								variant="h4"
 							>
-								Видалити акаунт
+								{t("deleteSection.title")}
 							</Typography>
 							<Typography variant="body1" component="p">
-								Після видалення акаунту ви втратите всі ваші дані.
+								{t("deleteSection.text")}
 							</Typography>
 						</div>
-						<Button variant="outline" text="Видалити" />
+						<Button variant="outline" text={t("deleteSection.deleteButton")} />
 					</div>
 				</Form>
 			</Formik>

@@ -6,6 +6,7 @@ import Input from "@components/Input/Input";
 import Button from "@components/Button/Button";
 import DropdownOption from "@components/DropdownOption/DropdownOption";
 import Tag from "@customTypes/entities/tag";
+import {useTranslation} from "react-i18next";
 import styles from "./TagsField.module.scss";
 import useListenClickOutside from "../../hooks/useListenClickOutside";
 
@@ -24,6 +25,7 @@ const TagsField: FC<TagsFieldProps> = ({
 	onRemoveTag,
 	onAddTags
 }) => {
+	const {t} = useTranslation();
 	const [searchValue, setSearchValue] = useState("");
 	const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 	const [isListVisible, setIsListVisible] = useState(false);
@@ -66,11 +68,11 @@ const TagsField: FC<TagsFieldProps> = ({
 						className={styles.input}
 						element={Input}
 						value={searchValue}
-						label="Теги"
+						label={t("TagsField.label")}
 					/>
 					<Button
 						className={styles.btn}
-						text="Додати"
+						text={t("TagsField.buttonText")}
 						onClick={() => addTags(selectedTags)}
 						disabled={selectedTags.length === 0}
 					/>

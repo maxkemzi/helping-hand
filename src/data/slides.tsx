@@ -5,22 +5,22 @@ const slides: Slide[] = [
 	{
 		id: 1,
 		title: "Helping hand",
-		text: "Сервіс, який дасть відповідь на всі ваші питання. Не віриш? Спробуй сам!",
-		buttonText: "Почати",
+		text: "home.description",
+		buttonText: "home.startButton",
 		buttonPath: LOGIN_ROUTE
 	},
 	{
 		id: 2,
 		title: "Helping hand",
-		text: "Сервіс, який дасть відповідь на всі ваші питання. Не віриш? Спробуй сам!",
-		buttonText: "Почати",
+		text: "home.description",
+		buttonText: "home.startButton",
 		buttonPath: LOGIN_ROUTE
 	},
 	{
 		id: 3,
 		title: "Helping hand",
-		text: "Сервіс, який дасть відповідь на всі ваші питання. Не віриш? Спробуй сам!",
-		buttonText: "Почати",
+		text: "home.description",
+		buttonText: "home.startButton",
 		buttonPath: LOGIN_ROUTE
 	}
 ];

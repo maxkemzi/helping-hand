@@ -2,6 +2,7 @@ import React, {FC} from "react";
 import classNames from "classnames";
 import Button from "@components/Button/Button";
 import Typography from "@components/Typography/Typography";
+import {useTranslation} from "react-i18next";
 import styles from "./IntegrationItem.module.scss";
 
 interface IntegrationItemProps {
@@ -14,16 +15,19 @@ const IntegrationItem: FC<IntegrationItemProps> = ({
 	className,
 	icon: Icon,
 	text
-}) => (
-	<div className={classNames(className, styles.item)}>
-		<div className={styles.info}>
-			<Icon className={styles.icon} />
-			<Typography variant="body1" component="p">
-				{text}
-			</Typography>
+}) => {
+	const {t} = useTranslation("translation", {keyPrefix: "IntegrationItem"});
+	return (
+		<div className={classNames(className, styles.item)}>
+			<div className={styles.info}>
+				<Icon className={styles.icon} />
+				<Typography variant="body1" component="p">
+					{text}
+				</Typography>
+			</div>
+			<Button text={t("button")} variant="outline" />
 		</div>
-		<Button text="Приєднати" variant="outline" />
-	</div>
-);
+	);
+};
 
 export default IntegrationItem;

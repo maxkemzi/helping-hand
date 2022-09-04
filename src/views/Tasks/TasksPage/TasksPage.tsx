@@ -11,6 +11,7 @@ import MainLayout from "@components/MainLayout/MainLayout";
 import Task from "@customTypes/entities/task";
 import ScreenSizes from "@utils/constants/screenSizes";
 import FilterButton from "@components/FilterButton/FilterButton";
+import {useTranslation} from "react-i18next";
 import styles from "./TasksPage.module.scss";
 import data from "../../../mock.json";
 import useWindowSize from "../../../hooks/useWindowSize";
@@ -21,6 +22,8 @@ const TasksPage = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isVisible, setIsVisible] = useState(false);
 	const filterRef = useRef(null);
+
+	const {t} = useTranslation();
 
 	const handleClick = () => setIsOpen(!isOpen);
 
@@ -54,7 +57,7 @@ const TasksPage = () => {
 									<Button
 										onClick={() => setIsVisible(true)}
 										className={styles.btn}
-										text="Створити"
+										text={t("tasks.createButtonText")}
 									/>
 								)}
 								{width <= ScreenSizes.PhoneWidth ? (
@@ -66,7 +69,7 @@ const TasksPage = () => {
 										<Button
 											onClick={() => setIsVisible(true)}
 											className={styles.btn}
-											text="Створити"
+											text={t("tasks.createButtonText")}
 										/>
 									</div>
 								) : (
@@ -79,7 +82,7 @@ const TasksPage = () => {
 											<Button
 												onClick={() => setIsVisible(true)}
 												className={styles.btn}
-												text="Створити"
+												text={t("tasks.createButtonText")}
 											/>
 										</>
 									)
@@ -97,7 +100,7 @@ const TasksPage = () => {
 					</div>
 				</div>
 				<Modal
-					title="Створити завдання"
+					title={t("tasks.createModal.title")}
 					isVisible={isVisible}
 					setIsVisible={setIsVisible}
 				>
