@@ -4,7 +4,6 @@ import {
 	AUTH_ROUTE,
 	HOME_ROUTE,
 	LOGIN_ROUTE,
-	PROFILE_ACHIEVES_ROUTE,
 	PROFILE_ROUTE,
 	PROFILE_STATS_ROUTE,
 	PROFILE_TASKS_ROUTE,
@@ -23,7 +22,6 @@ import AuthSignupForm from "@views/Auth/AuthSignupForm/AuthSignupForm";
 import TasksPage from "@views/Tasks/TasksPage/TasksPage";
 import ProfilePage from "@views/Profile/ProfilePage/ProfilePage";
 import ProfileTasks from "@views/Profile/ProfileTasks/ProfileTasks";
-import ProfileAchieves from "@views/Profile/ProfileAchieves/ProfileAchieves";
 import ProfileStats from "@views/Profile/ProfileStats/ProfileStats";
 import SettingsPage from "@views/Settings/SettingsPage/SettingsPage";
 import AccountSettings from "@views/Settings/AccountSettings/AccountSettings";
@@ -48,7 +46,6 @@ const AppRouter = () => (
 		<Route path={PROFILE_ROUTE} element={<ProfilePage />}>
 			<Route index element={<Navigate to={PROFILE_TASKS_ROUTE} replace />} />
 			<Route path={PROFILE_TASKS_ROUTE} element={<ProfileTasks />} />
-			<Route path={PROFILE_ACHIEVES_ROUTE} element={<ProfileAchieves />} />
 			<Route path={PROFILE_STATS_ROUTE} element={<ProfileStats />} />
 			<Route path="*" element={<Navigate to={PROFILE_TASKS_ROUTE} />} />
 		</Route>

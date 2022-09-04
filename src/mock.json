@@ -99,20 +99,6 @@
 			"isActive": false
 		}
 	],
-	"achieves": [
-		{
-			"id": "1",
-			"description": "Опис досягнення"
-		},
-		{
-			"id": "2",
-			"description": "Опис досягнення"
-		},
-		{
-			"id": "3",
-			"description": "Опис досягнення"
-		}
-	],
 	"stats": [
 		{
 			"id": "1",
