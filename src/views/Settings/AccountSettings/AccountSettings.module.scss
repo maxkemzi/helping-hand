@@ -6,6 +6,33 @@
 	margin-bottom: 12px;
 }
 
+.btns {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.form {
+	flex-grow: 1;
+
+	&.phone {
+		.user {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.avatar {
+			margin-right: 0;
+			margin-bottom: 16px;
+		}
+
+		.submit-btn {
+			width: 100%;
+			margin-left: 0;
+		}
+	}
+}
+
 .user {
 	display: flex;
 	align-items: center;
@@ -14,6 +41,7 @@
 
 .avatar {
 	margin-right: 24px;
+	flex-shrink: 0;
 }
 
 .fields {
@@ -31,14 +59,19 @@
 	display: block;
 }
 
-.btn + .btn {
-	margin-left: 12px;
-}
-
 .inner {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	&.custom {
+		flex-direction: column;
+		align-items: flex-start;
+
+		.row {
+			margin-bottom: 20px;
+		}
+	}
 }
 
 .divider {

@@ -20,7 +20,6 @@ const TasksSortDropdowns = () => {
 		<div className={styles.list}>
 			<Dropdown
 				variant="big"
-				className={styles.dropdown}
 				isOpen={isOpen}
 				onClose={handleClose}
 				toggleOpen={toggleOpen}

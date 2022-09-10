@@ -5,10 +5,13 @@ import DropdownOption from "@components/DropdownOption/DropdownOption";
 import Dropdown from "@components/Dropdown/Dropdown";
 import classNames from "classnames";
 import Task from "@customTypes/entities/task";
+import ScreenSizes from "@utils/constants/screenSizes";
 import data from "../../../mock.json";
 import styles from "./ProfileTasks.module.scss";
+import useWindowSize from "../../../hooks/useWindowSize";
 
 const ProfileTasks = () => {
+	const {width} = useWindowSize();
 	const [value, setValue] = useState("");
 	const [isDateDropdownOpen, setIsDateDropdownOpen] = useState(false);
 	const [isTypeDropdownOpen, setIsTypeDropdownOpen] = useState(false);
@@ -34,9 +37,17 @@ const ProfileTasks = () => {
 	};
 
 	return (
-		<div>
-			<div className={styles.header}>
-				<SearchBar value={value} setValue={setValue} />
+		<>
+			<div
+				className={classNames(styles.header, {
+					[styles.phone]: width <= ScreenSizes.PhoneWidth
+				})}
+			>
+				<SearchBar
+					className={styles.search}
+					value={value}
+					setValue={setValue}
+				/>
 				<div className={styles.sorts}>
 					<Dropdown
 						variant="big"
@@ -84,12 +95,16 @@ const ProfileTasks = () => {
 					</Dropdown>
 				</div>
 			</div>
-			<div className={classNames("wrapper", styles.items)}>
+			<div
+				className={classNames("wrapper", styles.items, {
+					[styles.tablet]: width <= ScreenSizes.TabletWidth
+				})}
+			>
 				{data.tasks.map((task: Task) => (
 					<TaskItem key={task.id} {...task} />
 				))}
 			</div>
-		</div>
+		</>
 	);
 };
 

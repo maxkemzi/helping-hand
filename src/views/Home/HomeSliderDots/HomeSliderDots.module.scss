@@ -3,7 +3,13 @@
 	flex-direction: column;
 	row-gap: 8px;
 	position: absolute;
-	right: 16px;
+	right: 0;
 	top: 50%;
 	transform: translateY(-50%);
+
+	&.sm-desktop {
+		bottom: 16px;
+		top: initial;
+		transform: translateY(0);
+	}
 }

@@ -2,12 +2,15 @@
 	display: grid;
 	grid-gap: 24px;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
+	flex-grow: 1;
+	align-content: start;
 }
 
 .list {
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
+	flex-grow: 1;
 }
 
 .header {

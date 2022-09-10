@@ -16,9 +16,7 @@ const TaskTitleSection: FC<TaskTitleSectionProps> = ({title, tags}) => (
 		</Typography>
 		<div className={styles.tags}>
 			{tags.map(tag => (
-				<div key={tag.id} className={styles.tag}>
-					<TagItem text={tag.text} />
-				</div>
+				<TagItem key={tag.id} text={tag.text} />
 			))}
 		</div>
 	</>

@@ -1,19 +1,47 @@
 .header {
 	display: flex;
-	align-items: center;
 	margin-bottom: 24px;
+
+	&.phone {
+		flex-direction: column;
+
+		.avatar {
+			margin-right: 0;
+			margin-bottom: 16px;
+		}
+	}
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 
 .avatar {
+	flex-shrink: 0;
 	margin-right: 28px;
+}
+
+.user {
+	overflow: hidden;
 }
 
 .username {
 	margin-right: 8px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .description {
 	margin-bottom: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	word-break: break-word;
 }
 
 .name {
@@ -24,4 +52,5 @@
 
 .icon {
 	color: var(--color-accent);
+	flex-shrink: 0;
 }

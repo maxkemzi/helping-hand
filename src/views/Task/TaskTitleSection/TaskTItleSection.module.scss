@@ -1,13 +1,11 @@
 .title {
-	margin-bottom: 8px;
+	margin-bottom: 12px;
 }
 
 .tags {
 	display: flex;
 	align-items: center;
-	margin: -8px;
-}
-
-.tag {
-	padding: 8px;
+	gap: 16px;
+	overflow-x: auto;
+	overflow-y: hidden;
 }

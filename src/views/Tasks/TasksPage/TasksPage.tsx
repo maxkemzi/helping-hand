@@ -47,45 +47,22 @@ const TasksPage = () => {
 						</aside>
 						<div className={styles.header}>
 							<div className={styles.panel}>
-								{!(
-									width <= ScreenSizes.PhoneWidth ||
-									width <= ScreenSizes.TabletWidth
-								) && (
-									<Button
-										onClick={() => setIsVisible(true)}
-										className={styles.btn}
-										text="Створити"
-									/>
-								)}
-								{width <= ScreenSizes.PhoneWidth ? (
+								{width <= ScreenSizes.TabletWidth ? (
 									<div className={styles.row}>
 										<FilterButton
 											onClick={handleClick}
 											className={styles["filter-btn"]}
 										/>
-										<Button
-											onClick={() => setIsVisible(true)}
-											className={styles.btn}
-											text="Створити"
-										/>
+										<TasksSearchBar />
 									</div>
 								) : (
-									width <= ScreenSizes.TabletWidth && (
-										<>
-											<FilterButton
-												onClick={handleClick}
-												className={styles["filter-btn"]}
-											/>
-											<Button
-												onClick={() => setIsVisible(true)}
-												className={styles.btn}
-												text="Створити"
-											/>
-										</>
-									)
+									<TasksSearchBar />
 								)}
-
-								<TasksSearchBar />
+								<Button
+									onClick={() => setIsVisible(true)}
+									className={styles.btn}
+									text="Створити"
+								/>
 							</div>
 							<TasksSortDropdowns />
 						</div>

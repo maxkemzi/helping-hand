@@ -13,7 +13,7 @@ const ProfileStats: FC = () => {
 	const handleList = () => setIsList(true);
 
 	return (
-		<div>
+		<>
 			<div className={styles.header}>
 				<div className={styles.buttons}>
 					<button
@@ -42,7 +42,7 @@ const ProfileStats: FC = () => {
 					<StatItem size="big" key={stat.id} {...stat} />
 				))}
 			</div>
-		</div>
+		</>
 	);
 };
 

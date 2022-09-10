@@ -1,9 +1,7 @@
 import React, {ChangeEvent, Dispatch, FC, SetStateAction} from "react";
 import {IoSearch} from "react-icons/io5";
 import classNames from "classnames";
-import ScreenSizes from "@utils/constants/screenSizes";
 import styles from "./SearchBar.module.scss";
-import useWindowSize from "../../hooks/useWindowSize";
 
 interface SearchBarProps {
 	value: string;
@@ -12,16 +10,11 @@ interface SearchBarProps {
 }
 
 const SearchBar: FC<SearchBarProps> = ({value, setValue, className}) => {
-	const {width} = useWindowSize();
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
 		setValue(e.target.value);
 
 	return (
-		<form
-			className={classNames(className, styles.wrapper, {
-				[styles.phone]: width <= ScreenSizes.PhoneWidth
-			})}
-		>
+		<div className={classNames(className, styles.wrapper)}>
 			<input
 				placeholder="Пошук"
 				value={value}
@@ -33,7 +26,7 @@ const SearchBar: FC<SearchBarProps> = ({value, setValue, className}) => {
 			<div className={styles["icon-wrapper"]}>
 				<IoSearch className={styles.icon} size={18} />
 			</div>
-		</form>
+		</div>
 	);
 };
 

@@ -1,9 +1,7 @@
 .stats {
 	display: flex;
 	align-items: center;
-	margin: -8px;
-}
-
-.stat {
-	padding: 8px;
+	gap: 16px;
+	overflow-x: auto;
+	overflow-y: hidden;
 }

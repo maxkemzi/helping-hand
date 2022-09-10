@@ -16,6 +16,8 @@
 
 .horizontal {
 	padding-bottom: 8px;
+	overflow-x: auto;
+	overflow-y: hidden;
 
 	&::before {
 		bottom: 0;
@@ -31,7 +33,7 @@
 		height: 2px;
 	}
 
-	& .list > * {
+	.list > * {
 		padding: 0 14px;
 	}
 }

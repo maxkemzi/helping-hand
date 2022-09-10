@@ -18,9 +18,11 @@ const IntegrationItem: FC<IntegrationItemProps> = ({
 	<div className={classNames(className, styles.item)}>
 		<div className={styles.info}>
 			<Icon className={styles.icon} />
-			<Typography variant="body1" component="p">
-				{text}
-			</Typography>
+			{text && (
+				<Typography className={styles.text} variant="body1" component="p">
+					{text}
+				</Typography>
+			)}
 		</div>
 		<Button text="Приєднати" variant="outline" />
 	</div>

@@ -7,8 +7,14 @@
 .info {
 	display: flex;
 	align-items: center;
+	margin-right: 16px;
 }
 
 .icon {
-	margin-right: 12px;
+	flex-shrink: 0;
+}
+
+.text {
+	margin-left: 12px;
+	white-space: nowrap;
 }

@@ -7,9 +7,13 @@ import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import Typography from "@components/Typography/Typography";
 import Divider from "@components/Divider/Divider";
+import classNames from "classnames";
+import ScreenSizes from "@utils/constants/screenSizes";
 import styles from "./AccountSettings.module.scss";
+import useWindowSize from "../../../hooks/useWindowSize";
 
 const AccountSettings = () => {
+	const {width} = useWindowSize();
 	const validationSchema = yup.object().shape({
 		email: yup.string(),
 		password: yup.string(),
@@ -27,7 +31,11 @@ const AccountSettings = () => {
 				validationSchema={validationSchema}
 				validateOnBlur
 			>
-				<Form className={styles.form}>
+				<Form
+					className={classNames(styles.form, {
+						[styles.phone]: width <= ScreenSizes.PhoneWidth
+					})}
+				>
 					<Typography
 						className={styles["small-title"]}
 						variant="h4"
@@ -82,24 +90,26 @@ const AccountSettings = () => {
 						/>
 					</div>
 					<Button className={styles["submit-btn"]} text="Зберегти" isSubmit />
-					<Divider className={styles.divider} />
-					<div className={styles.inner}>
-						<div>
-							<Typography
-								className={styles["small-title"]}
-								component="h4"
-								variant="h4"
-							>
-								Видалити акаунт
-							</Typography>
-							<Typography variant="body1" component="p">
-								Після видалення акаунту ви втратите всі ваші дані.
-							</Typography>
-						</div>
-						<Button variant="outline" text="Видалити" />
-					</div>
 				</Form>
 			</Formik>
+			<Divider className={styles.divider} />
+			<div
+				className={classNames(styles.inner, {[styles.custom]: width <= 860})}
+			>
+				<div className={styles.row}>
+					<Typography
+						className={styles["small-title"]}
+						component="h4"
+						variant="h4"
+					>
+						Видалити акаунт
+					</Typography>
+					<Typography variant="body1" component="p">
+						Після видалення акаунту ви втратите всі ваші дані.
+					</Typography>
+				</div>
+				<Button variant="outline" text="Видалити" />
+			</div>
 		</>
 	);
 };
