@@ -1,11 +1,20 @@
 import React, {FC} from "react";
-import {IconProps} from "@customTypes/components";
+import {IconProps, PrimaryColor} from "@customTypes/components";
 import classNames from "classnames";
 import styles from "./HumanIcon.module.scss";
 
-const HumanIcon: FC<IconProps> = ({width, className, height}) => (
+interface HumanIconProps {
+	pantsColor?: PrimaryColor;
+}
+
+const HumanIcon: FC<IconProps & HumanIconProps> = ({
+	width,
+	className,
+	height,
+	pantsColor = "lighter"
+}) => (
 	<svg
-		className={classNames(className, styles.icon)}
+		className={classNames(className, styles.icon, styles[pantsColor])}
 		width={width || 320}
 		height={height || 698}
 		viewBox="0 0 320 698"
@@ -59,12 +68,12 @@ const HumanIcon: FC<IconProps> = ({width, className, height}) => (
 			fill="#FCC9A7"
 		/>
 		<path
+			className={styles.pants}
 			d="M126.108 291.268L58.5742 650.28L97.3814 649.911L196.116 291.969L126.108 291.268Z"
-			fill="#2F2B44"
 		/>
 		<path
+			className={styles.pants}
 			d="M234.704 292.042L230.458 650.648H189.435L173.078 294.294L234.704 292.042Z"
-			fill="#2F2B44"
 		/>
 		<path
 			className={styles.accent}

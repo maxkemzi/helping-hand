@@ -110,7 +110,11 @@ html {
 }
 
 .container {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 	position: relative;
+	width: 100%;
 	max-width: 1472px;
 	padding: 0 16px;
 	margin: 0 auto;
@@ -127,5 +131,8 @@ html {
 }
 
 .page {
+	display: flex;
+	flex-direction: column;
 	padding: 28px 0;
+	flex-grow: 1;
 }

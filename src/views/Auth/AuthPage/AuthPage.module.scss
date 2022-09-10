@@ -2,4 +2,10 @@
 .inner {
 	display: flex;
 	justify-content: space-between;
+	flex-grow: 1;
+}
+
+.image {
+	flex-shrink: 0;
+	align-self: center;
 }

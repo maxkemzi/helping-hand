@@ -6,8 +6,20 @@
 .btn {
 	width: 50%;
 
-	& + & {
-		margin-left: 24px;
+	&:not(:last-child) {
+		margin-right: 24px;
 	}
 }
 
+.phone {
+	flex-direction: column;
+
+	.btn {
+		width: 100%;
+
+		&:not(:last-child) {
+			margin-right: 0;
+			margin-bottom: 12px;
+		}
+	}
+}

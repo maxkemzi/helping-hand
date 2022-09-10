@@ -12,7 +12,8 @@
 
 .icon {
 	margin-right: 8px;
-	transition: color var(--transition-base);
+	flex-shrink: 0;
+	transition: fill var(--transition-base);
 }
 
 .big {
@@ -57,7 +58,7 @@
 		border-color: var(--color-accent-darker);
 
 		.icon {
-			color: var(--color-primary);
+			fill: var(--color-primary);
 		}
 	}
 
