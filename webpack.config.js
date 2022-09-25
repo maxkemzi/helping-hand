@@ -59,7 +59,7 @@ const config = {
 	output: {
 		path: path.resolve(__dirname, "./build"),
 		filename: "bundle.js",
-		publicPath: '/'
+		publicPath: "/"
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -68,7 +68,11 @@ const config = {
 		new ESLintWebpackPlugin({
 			extensions: ["js", "tsx", "ts"]
 		}),
-		new CleanWebpackPlugin()
+		new CleanWebpackPlugin(),
+		new webpack.DefinePlugin({
+			"process.env.API_URL": JSON.stringify("http://164.92.252.226:81/api/v2/"),
+			"process.env.APP_URL": JSON.stringify("http://hh-helping.tech/")
+		})
 	]
 };
 
@@ -80,13 +84,7 @@ module.exports = (env, argv) => {
 			open: true,
 			historyApiFallback: true
 		};
-		config.plugins = [
-			...config.plugins,
-			new ReactRefreshWebpackPlugin(),
-			new webpack.DefinePlugin({
-				"process.env.API_URL": JSON.stringify("http://helping-hand.tech:333/")
-			})
-		];
+		config.plugins = [...config.plugins, new ReactRefreshWebpackPlugin()];
 	}
 
 	if (argv.mode === "production") {
