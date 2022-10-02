@@ -67,6 +67,7 @@ const TagsField: FC<TagsFieldProps> = ({
 						element={Input}
 						value={searchValue}
 						label="Теги"
+						required={false}
 					/>
 					<Button
 						className={styles.btn}
@@ -96,8 +97,12 @@ const TagsField: FC<TagsFieldProps> = ({
 								/>
 							))}
 						{tagOptions.filter(item => item.text.includes(searchValue))
-							.length === 0 && "Нічого не знайдено"}
-						{tagOptions.length === 0 && "Порожньо"}
+							.length === 0 && (
+							<div className={styles.messages}>Нічого не знайдено</div>
+						)}
+						{tagOptions.length === 0 && (
+							<div className={styles.messages}>Порожньо</div>
+						)}
 					</div>
 				</div>
 			</div>
