@@ -1,21 +1,16 @@
-import React, {FC} from "react";
+import React from "react";
+import {getIsAuthFetching} from "@store/auth/auth.selectors";
+import * as yup from "yup";
+import {LoginArgs} from "@customTypes/services/auth";
 import {Field, Form, Formik} from "formik";
 import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
-import * as yup from "yup";
 import Button from "@components/Button/Button";
-import {LoginArgs} from "@customTypes/services/auth";
-import {getIsAuthFetching} from "@store/auth/auth.selectors";
-import {TASKS_ROUTE} from "@utils/constants/routes";
-import {useNavigate} from "react-router-dom";
-import styles from "./AuthLoginForm.module.scss";
-import AuthService from "../../../services/auth/auth.service";
-import useAppDispatch from "../../../hooks/useAppDispatch";
-import useAppSelector from "../../../hooks/useAppSelector";
+import useAppSelector from "../../../../hooks/useAppSelector";
+import styles from "./IntegrationAuthForm.module.scss";
+import IntegrationsService from "../../../../services/integrations/integrations.service";
 
-const AuthLoginForm: FC<{className?: string}> = ({className}) => {
-	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
+const IntegrationAuthForm = () => {
 	const authIsFetching = useAppSelector(getIsAuthFetching);
 	const validationSchema = yup.object().shape({
 		login: yup.string(),
@@ -23,8 +18,8 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 	});
 
 	const handleSubmit = async (values: LoginArgs) => {
-		await dispatch(AuthService.login(values));
-		navigate(TASKS_ROUTE);
+		await IntegrationsService.create(values);
+		window.close();
 	};
 
 	return (
@@ -34,7 +29,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 			validationSchema={validationSchema}
 			validateOnBlur
 		>
-			<Form className={className}>
+			<Form>
 				<div className={styles.fields}>
 					<Field
 						label="Ім'я"
@@ -65,4 +60,4 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 	);
 };
 
-export default AuthLoginForm;
+export default IntegrationAuthForm;

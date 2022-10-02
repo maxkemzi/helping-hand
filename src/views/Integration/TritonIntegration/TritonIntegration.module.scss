@@ -1,0 +1,28 @@
+.table {
+	border-collapse: collapse;
+	min-width: 100%;
+
+	td, th {
+		border: 1px solid var(--color-primary-light);
+		padding: 8px;
+		white-space: nowrap;
+	}
+
+	th {
+		font-weight: 400;
+		font-size: 18px;
+	}
+
+	td {
+		font-size: 16px;
+	}
+}
+
+.wrapper {
+	overflow-x: auto;
+	overflow-y: hidden;
+
+	&:not(:last-child) {
+		margin-bottom: 28px;
+	}
+}

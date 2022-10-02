@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, MouseEventHandler} from "react";
 import classNames from "classnames";
 import Button from "@components/Button/Button";
 import Typography from "@components/Typography/Typography";
@@ -8,11 +8,19 @@ interface IntegrationItemProps {
 	className?: string;
 	icon: FC<{className?: string}>;
 	text: string;
+	onClick?: MouseEventHandler;
+	onConnectedClick?: MouseEventHandler;
+	onDelete?: MouseEventHandler;
+	isConnected: boolean;
 }
 
 const IntegrationItem: FC<IntegrationItemProps> = ({
+	isConnected,
 	className,
 	icon: Icon,
+	onClick,
+	onConnectedClick,
+	onDelete,
 	text
 }) => (
 	<div className={classNames(className, styles.item)}>
@@ -24,7 +32,25 @@ const IntegrationItem: FC<IntegrationItemProps> = ({
 				</Typography>
 			)}
 		</div>
-		<Button text="Приєднати" variant="outline" />
+
+		{isConnected ? (
+			<div className={styles.buttons}>
+				<Button
+					className={styles.button}
+					onClick={onConnectedClick}
+					text="Перейти"
+					variant="primary"
+				/>
+				<Button
+					className={styles.button}
+					onClick={onDelete}
+					text="Видалити"
+					variant="outline"
+				/>
+			</div>
+		) : (
+			<Button onClick={onClick} text="Приєднати" variant="outline" />
+		)}
 	</div>
 );
 

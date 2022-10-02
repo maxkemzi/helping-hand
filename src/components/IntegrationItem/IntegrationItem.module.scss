@@ -18,3 +18,11 @@
 	margin-left: 12px;
 	white-space: nowrap;
 }
+
+.buttons {
+	display: flex;
+}
+
+.button:not(:last-child) {
+	margin-right: 16px;
+}

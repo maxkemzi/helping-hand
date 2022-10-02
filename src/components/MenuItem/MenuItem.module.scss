@@ -1,10 +1,11 @@
 .item {
 	overflow: hidden;
-	text-overflow: ellipsis;
 	padding: 8px;
 	transition: all var(--transition-base);
 	border-radius: var(--border-radius-base);
 	color: var(--color-text-dark-lighter);
+	display: flex;
+	flex-direction: column;
 	text-align: center;
 
 	&.active,
@@ -20,9 +21,13 @@
 	span {
 		font-size: 16px;
 		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 }
 
 .icon {
+	align-self: center;
+	margin-bottom: 4px;
 	transition: fill var(--transition-base);
 }

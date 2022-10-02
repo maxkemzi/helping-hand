@@ -22,10 +22,10 @@ describe("auth reducer should work properly", () => {
 	test("should set the user object", () => {
 		const previousState: AuthSliceState = {
 			...initialState,
-			user: {username: "", avatar: ""}
+			user: {username: "", photo: ""}
 		};
 		expect(
-			reducer(previousState, setUser({username: "Max", avatar: "img"}))
+			reducer(previousState, setUser({username: "Max", photo: "img"}))
 		).toEqual({
 			...previousState,
 			user: {username: "Max", avatar: "img"}

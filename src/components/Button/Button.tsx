@@ -7,7 +7,7 @@ type Variant = "primary" | "outline";
 type Size = "big" | "medium" | "small";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	text?: string;
+	text?: string | number;
 	isSubmit?: boolean;
 	variant?: Variant;
 	size?: Size;

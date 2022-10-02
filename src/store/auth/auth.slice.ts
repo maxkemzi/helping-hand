@@ -7,9 +7,9 @@ import {
 } from "@store/auth/auth.types";
 
 export const initialState: AuthSliceState = {
-	user: {username: "", avatar: ""},
-	isAuth: true,
-	isFetching: false
+	user: {username: "", photo: ""},
+	isAuth: false,
+	isFetching: true
 };
 
 const authSlice = createSlice({
