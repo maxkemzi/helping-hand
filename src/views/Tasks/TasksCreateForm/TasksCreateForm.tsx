@@ -7,33 +7,45 @@ import Button from "@components/Button/Button";
 import Textarea from "@components/Textarea/Textarea";
 import FormTagsField from "@components/FormTagsField/FormTagsField";
 import Tag from "@customTypes/entities/tag";
+import {getIsTaskCreating, getTasksLimit} from "@store/tasks/tasks.selectors";
 import styles from "./TasksCreateForm.module.scss";
 import mockData from "../../../mock.json";
+import useAppDispatch from "../../../hooks/useAppDispatch";
+import TasksService from "../../../services/tasks/tasks.service";
+import useAppSelector from "../../../hooks/useAppSelector";
 
 interface TasksCreateFormValues {
 	title: string;
-	description: string;
+	text: string;
 	tags: Tag[];
 }
 
-const TasksCreateForm = () => {
+const TasksCreateForm = ({onSubmit}: {onSubmit: () => void}) => {
+	const dispatch = useAppDispatch();
+	const isFetching = useAppSelector(getIsTaskCreating);
+	const limit = useAppSelector(getTasksLimit);
 	const initialValues: TasksCreateFormValues = {
 		title: "",
-		description: "",
+		text: "",
 		tags: [mockData.tags[0]]
 	};
 
 	const validationSchema = yup.object().shape({
 		title: yup.string(),
-		description: yup.string(),
+		text: yup.string(),
 		tags: yup.array().of(yup.object())
 	});
+
+	const handleSubmit = (values: TasksCreateFormValues) => {
+		dispatch(TasksService.createOne({...values, limit}));
+		onSubmit();
+	};
 
 	return (
 		<Formik
 			initialValues={initialValues}
 			validationSchema={validationSchema}
-			onSubmit={() => console.log("Submit")}
+			onSubmit={handleSubmit}
 			validateOnBlur
 		>
 			<Form>
@@ -56,13 +68,19 @@ const TasksCreateForm = () => {
 					<Field
 						label="Опис"
 						className={styles.field}
-						name="description"
+						name="text"
 						component={FormTextField}
 						element={Textarea}
 						rows={4}
 					/>
 				</div>
-				<Button size="big" className={styles.btn} text="Створити" isSubmit />
+				<Button
+					disabled={isFetching}
+					size="big"
+					className={styles.btn}
+					text="Створити"
+					isSubmit
+				/>
 			</Form>
 		</Formik>
 	);

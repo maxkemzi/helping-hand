@@ -1,11 +1,25 @@
-import React from "react";
+import React, {FC} from "react";
 import UserInfo from "@components/UserInfo/UserInfo";
+import User from "@customTypes/entities/user";
 import styles from "./TaskQuestionSection.module.scss";
 
-const TaskQuestionSection = () => (
+interface TaskQuestionSectionProps {
+	description: string;
+	creator: User;
+}
+
+const TaskQuestionSection: FC<TaskQuestionSectionProps> = ({
+	description,
+	creator
+}) => (
 	<>
-		<UserInfo className={styles.user} avatarPath="" username="Катя" />
-		<p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+		<UserInfo
+			fallbackVariant="light"
+			className={styles.user}
+			avatarPath={creator.photo}
+			username={creator.username}
+		/>
+		<p>{description}</p>
 	</>
 );
 

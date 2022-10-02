@@ -19,84 +19,84 @@
 		{
 			"id": "5",
 			"text": "Фізика"
-		},
-		{
-			"id": "6",
-			"text": "Мова"
-		},
-		{
-			"id": "7",
-			"text": "Література"
 		}
 	],
 	"tasks": [
 		{
-			"id": "1",
-			"description": "descr",
-			"creator": {
-				"username": "Max",
-				"avatar": ""
-			},
-			"date": "22.04",
-			"title": "title",
-			"tags": [
-				{
-					"id": "1",
-					"text": "Програмування"
+			"title": "Title",
+			"status": "open",
+			"score": 0,
+			"positive_score": 0,
+			"negative_score": 0,
+			"category": "",
+			"tags": [],
+			"text": "Description",
+			"created_at": "",
+			"updated_at": "",
+			"uuid": "1",
+			"owner": {
+				"profile": {
+					"username": "username",
+					"photo": ""
 				}
-			],
-			"isActive": true
+			}
 		},
 		{
-			"id": "2",
-			"description": "descr",
-			"creator": {
-				"username": "Max",
-				"avatar": ""
-			},
-			"date": "22.04",
-			"title": "title",
-			"tags": [
-				{
-					"id": "1",
-					"text": "Програмування"
+			"title": "Title",
+			"status": "open",
+			"score": 0,
+			"positive_score": 0,
+			"negative_score": 0,
+			"category": "",
+			"tags": [],
+			"text": "Description",
+			"created_at": "",
+			"updated_at": "",
+			"uuid": "2",
+			"owner": {
+				"profile": {
+					"username": "username",
+					"photo": ""
 				}
-			],
-			"isActive": false
+			}
 		},
 		{
-			"id": "3",
-			"description": "descr",
-			"creator": {
-				"username": "Max",
-				"avatar": ""
-			},
-			"date": "22.04",
-			"title": "title",
-			"tags": [
-				{
-					"id": "1",
-					"text": "Програмування"
+			"title": "Title",
+			"status": "open",
+			"score": 0,
+			"positive_score": 0,
+			"negative_score": 0,
+			"category": "",
+			"tags": [],
+			"text": "Description",
+			"created_at": "",
+			"updated_at": "",
+			"uuid": "3",
+			"owner": {
+				"profile": {
+					"username": "username",
+					"photo": ""
 				}
-			],
-			"isActive": false
+			}
 		},
 		{
-			"id": "4",
-			"description": "descr",
-			"creator": {
-				"username": "Max",
-				"avatar": ""
-			},
-			"date": "22.04",
-			"title": "title",
-			"tags": [
-				{
-					"id": "1",
-					"text": "Програмування"
+			"title": "Title",
+			"status": "open",
+			"score": 0,
+			"positive_score": 0,
+			"negative_score": 0,
+			"category": "",
+			"tags": [],
+			"text": "Description",
+			"created_at": "",
+			"updated_at": "",
+			"uuid": "4",
+			"owner": {
+				"profile": {
+					"username": "username",
+					"photo": ""
 				}
-			],
-			"isActive": false
+			}
 		}
 	],
 	"stats": [

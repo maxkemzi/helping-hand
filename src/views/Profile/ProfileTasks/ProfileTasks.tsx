@@ -101,7 +101,15 @@ const ProfileTasks = () => {
 				})}
 			>
 				{data.tasks.map((task: Task) => (
-					<TaskItem key={task.id} {...task} />
+					<TaskItem
+						key={task.uuid}
+						id={task.uuid}
+						creator={task.owner.profile}
+						description={task.text}
+						title={task.title}
+						date={task.created_at}
+						isActive={task.status === "open"}
+					/>
 				))}
 			</div>
 		</>

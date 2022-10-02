@@ -4,12 +4,17 @@ import {SetIsFetching, SetTask, TaskSliceState} from "@store/task/task.types";
 const initialState: TaskSliceState = {
 	task: {
 		title: "",
-		creator: {username: "", avatar: ""},
-		date: "",
-		id: "",
-		description: "",
+		status: "closed",
+		owner: {profile: {username: "", photo: ""}},
+		created_at: "Sat, 17 Sep 2022 12:03:43 GMT",
+		text: "",
+		positive_score: 0,
 		tags: [],
-		isActive: false
+		category: "",
+		negative_score: 0,
+		score: 0,
+		uuid: "",
+		updated_at: "Sat, 17 Sep 2022 12:03:43 GMT"
 	},
 	isFetching: false
 };

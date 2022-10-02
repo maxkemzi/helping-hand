@@ -8,6 +8,7 @@ export interface TasksSliceState {
 	searchQuery: string;
 	isFetching: boolean;
 	hasMore: boolean;
+	isCreating: boolean;
 	sortBy: {name: string; value: string};
 }
 
@@ -16,6 +17,8 @@ export type SetTasks = PayloadAction<Task[]>;
 export type AddTasks = PayloadAction<Task[]>;
 
 export type SetIsFetching = PayloadAction<boolean>;
+
+export type SetIsCreating = PayloadAction<boolean>;
 
 export type SetPage = PayloadAction<number>;
 

@@ -12,4 +12,7 @@ export const getTasksSearchQuery = (state: RootState) =>
 export const getIsTasksFetching = (state: RootState) =>
 	state.tasksState.isFetching;
 
+export const getIsTaskCreating = (state: RootState) =>
+	state.tasksState.isCreating;
+
 export const getHasMoreTasks = (state: RootState) => state.tasksState.hasMore;

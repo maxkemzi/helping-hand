@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {
 	AddTasks,
 	SetHasMore,
+	SetIsCreating,
 	SetIsFetching,
 	SetPage,
 	SetSearchQuery,
@@ -13,10 +14,11 @@ import {
 const initialState: TasksSliceState = {
 	tasks: [],
 	page: 1,
-	limit: 10,
+	limit: 6,
 	searchQuery: "",
 	isFetching: false,
 	hasMore: false,
+	isCreating: false,
 	sortBy: {
 		name: "Все",
 		value: ""
@@ -47,6 +49,9 @@ const tasksSlice = createSlice({
 		},
 		setHasMore(state, action: SetHasMore) {
 			state.hasMore = action.payload;
+		},
+		setIsCreating(state, action: SetIsCreating) {
+			state.isCreating = action.payload;
 		}
 	}
 });
@@ -57,6 +62,7 @@ export const {
 	setHasMore,
 	setSortBy,
 	setSearchQuery,
+	setIsCreating,
 	setTasks,
 	addTasks,
 	setPage

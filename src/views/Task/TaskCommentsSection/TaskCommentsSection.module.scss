@@ -1,0 +1,25 @@
+.comment {
+	padding: 20px 0;
+}
+
+.comments {
+	margin-bottom: 24px;
+}
+
+.pages {
+	display: flex;
+}
+
+.answer-count {
+	margin-bottom: 24px;
+}
+
+.button:not(:last-child) {
+	margin-right: 8px;
+}
+
+.button {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+}

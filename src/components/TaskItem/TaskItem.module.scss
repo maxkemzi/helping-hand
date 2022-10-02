@@ -5,6 +5,7 @@
 	background: var(--color-primary-light);
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 }
 
 .header {
@@ -15,6 +16,7 @@
 }
 
 .user {
+	align-self: flex-start;
 	margin-bottom: 16px;
 }
 
@@ -35,6 +37,9 @@
 
 .tags {
 	flex-shrink: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
 	margin-bottom: 16px;
 }
 
@@ -71,3 +76,9 @@
 	}
 }
 
+.title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-right: 16px;
+}

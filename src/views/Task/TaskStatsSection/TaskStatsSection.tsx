@@ -1,11 +1,19 @@
-import React from "react";
+import React, {FC} from "react";
 import StatItem from "@components/StatItem/StatItem";
 import styles from "./TaskStatsSection.module.scss";
 
-const TaskStatsSection = () => (
+interface TaskStatsSectionProps {
+	createdDate: string;
+	updatedDate: string;
+}
+
+const TaskStatsSection: FC<TaskStatsSectionProps> = ({
+	createdDate,
+	updatedDate
+}) => (
 	<div className={styles.stats}>
-		<StatItem value="2 години тому" title="Створено" />
-		<StatItem value="1 годину тому" title="Змінено" />
+		<StatItem value={createdDate} title="Створено" />
+		<StatItem value={updatedDate} title="Змінено" />
 		<StatItem value="6" title="Переглядів" />
 	</div>
 );
