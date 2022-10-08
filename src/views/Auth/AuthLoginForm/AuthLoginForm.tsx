@@ -2,7 +2,6 @@ import React, {FC} from "react";
 import {Field, Form, Formik} from "formik";
 import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
-import * as yup from "yup";
 import Button from "@components/Button/Button";
 import {LoginArgs} from "@customTypes/services/auth";
 import {getIsAuthFetching} from "@store/auth/auth.selectors";
@@ -12,15 +11,12 @@ import styles from "./AuthLoginForm.module.scss";
 import AuthService from "../../../services/auth/auth.service";
 import useAppDispatch from "../../../hooks/useAppDispatch";
 import useAppSelector from "../../../hooks/useAppSelector";
+import {loginFormValidation} from "../../../vaildation";
 
 const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const authIsFetching = useAppSelector(getIsAuthFetching);
-	const validationSchema = yup.object().shape({
-		username: yup.string(),
-		password: yup.string()
-	});
 
 	const handleSubmit = async (values: LoginArgs) => {
 		await dispatch(AuthService.login(values));
@@ -31,10 +27,10 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 		<Formik
 			initialValues={{username: "", password: ""}}
 			onSubmit={handleSubmit}
-			validationSchema={validationSchema}
+			validationSchema={loginFormValidation}
 			validateOnBlur
 		>
-			<Form className={className}>
+			<Form className={className} noValidate>
 				<div className={styles.fields}>
 					<Field
 						label="Ім'я"

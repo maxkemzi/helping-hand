@@ -28,3 +28,18 @@
 		color: var(--color-accent);
 	}
 }
+
+.invalid .input {
+	border-color: var(--color-danger);
+
+	&:focus {
+		border-color: var(--color-danger);
+	}
+
+	&:focus + .label {
+		color: var(--color-danger);
+	}
+}
+
+
+

@@ -11,6 +11,8 @@ import styles from "./TextField.module.scss";
 export interface TextFieldProps extends InputProps {
 	element: FC<{className?: string; required: boolean}>;
 	label: string;
+	isInvalid?: boolean;
+	className?: string;
 }
 
 const TextField: FC<
@@ -19,10 +21,14 @@ const TextField: FC<
 			| InputHTMLAttributes<HTMLInputElement>
 			| TextareaHTMLAttributes<HTMLTextAreaElement>
 		)
-> = ({className, element: Element, label, ...props}) => {
+> = ({className, element: Element, label, isInvalid, ...props}) => {
 	const id = useId();
 	return (
-		<div className={classNames(className, styles.item)}>
+		<div
+			className={classNames(className, styles.item, {
+				[styles.invalid]: isInvalid
+			})}
+		>
 			<Element id={id} required className={styles.input} {...props} />
 			<label className={styles.label} htmlFor={id}>
 				{label}
