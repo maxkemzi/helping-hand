@@ -71,7 +71,7 @@ const config = {
 		new CleanWebpackPlugin(),
 		new webpack.DefinePlugin({
 			"process.env.API_URL": JSON.stringify("http://164.92.252.226:81/api/v2/"),
-			"process.env.APP_URL": JSON.stringify("http://hh-helping.tech/")
+			"process.env.APP_URL": JSON.stringify("http://localhost:3000")
 		})
 	]
 };

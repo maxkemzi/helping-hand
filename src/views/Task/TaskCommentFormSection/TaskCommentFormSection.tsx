@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import Textarea from "@components/Textarea/Textarea";
 import Button from "@components/Button/Button";
-import {Field, Form, Formik} from "formik";
+import {Field, Form, Formik, FormikHelpers} from "formik";
 import {getIsCommentCreating} from "@store/comments/comments.selectors";
 import FormTextField from "@components/FormTextField/FormTextField";
 import styles from "./TaskCommentFormSection.module.scss";
@@ -17,8 +17,13 @@ const TaskCommentFormSection: FC<TaskCommentFormSectionProps> = ({id}) => {
 	const dispatch = useAppDispatch();
 	const isFetching = useAppSelector(getIsCommentCreating);
 
-	const handleSubmit = (values: {text: string}) =>
+	const handleSubmit = (
+		values: {text: string},
+		{resetForm}: FormikHelpers<{text: string}>
+	) => {
 		dispatch(CommentsService.createOne(id, values.text));
+		resetForm({values: {text: ""}});
+	};
 
 	return (
 		<>
