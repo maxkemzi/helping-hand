@@ -1,4 +1,9 @@
 export interface LoginArgs {
-	login: string;
+	username: string;
+	password: string;
+}
+
+export interface RegisterArgs {
+	username: string;
 	password: string;
 }

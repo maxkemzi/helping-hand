@@ -4,19 +4,38 @@ import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import * as yup from "yup";
 import Button from "@components/Button/Button";
+import {getIsAuthFetching} from "@store/auth/auth.selectors";
+import {useNavigate} from "react-router-dom";
+import {TASKS_ROUTE} from "@utils/constants/routes";
+import {RegisterArgs} from "@customTypes/services/auth";
 import styles from "./AuthSignupForm.module.scss";
+import useAppDispatch from "../../../hooks/useAppDispatch";
+import useAppSelector from "../../../hooks/useAppSelector";
+import AuthService from "../../../services/auth/auth.service";
 
 const AuthSignupForm: FC<{className?: string}> = ({className}) => {
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const authIsFetching = useAppSelector(getIsAuthFetching);
 	const validationSchema = yup.object().shape({
-		email: yup.string(),
+		// email: yup.string(),
 		password: yup.string(),
 		username: yup.string()
 	});
 
+	const handleSubmit = async (values: RegisterArgs) => {
+		await dispatch(AuthService.register(values));
+		navigate(TASKS_ROUTE);
+	};
+
 	return (
 		<Formik
-			initialValues={{username: "", email: "", password: ""}}
-			onSubmit={() => console.log("Submit")}
+			initialValues={{
+				// email: "",
+				username: "",
+				password: ""
+			}}
+			onSubmit={handleSubmit}
 			validationSchema={validationSchema}
 			validateOnBlur
 		>
@@ -30,13 +49,13 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 						element={Input}
 					/>
 
-					<Field
-						label="Email"
-						className={styles.field}
-						name="email"
-						component={FormTextField}
-						element={Input}
-					/>
+					{/* <Field */}
+					{/*	label="Email" */}
+					{/*	className={styles.field} */}
+					{/*	name="email" */}
+					{/*	component={FormTextField} */}
+					{/*	element={Input} */}
+					{/* /> */}
 
 					<Field
 						label="Пароль"
@@ -48,6 +67,7 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 					/>
 				</div>
 				<Button
+					disabled={authIsFetching}
 					size="big"
 					className={styles.btn}
 					text="Зареєструватись"

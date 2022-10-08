@@ -1,11 +1,11 @@
 import React from "react";
 import {getIsAuthFetching} from "@store/auth/auth.selectors";
 import * as yup from "yup";
-import {LoginArgs} from "@customTypes/services/auth";
 import {Field, Form, Formik} from "formik";
 import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import Button from "@components/Button/Button";
+import {CreateIntegrationArgs} from "@customTypes/services/integrations";
 import useAppSelector from "../../../../hooks/useAppSelector";
 import styles from "./IntegrationAuthForm.module.scss";
 import IntegrationsService from "../../../../services/integrations/integrations.service";
@@ -17,7 +17,7 @@ const IntegrationAuthForm = () => {
 		password: yup.string()
 	});
 
-	const handleSubmit = async (values: LoginArgs) => {
+	const handleSubmit = async (values: CreateIntegrationArgs) => {
 		await IntegrationsService.create(values);
 		window.close();
 	};

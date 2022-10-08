@@ -18,7 +18,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 	const navigate = useNavigate();
 	const authIsFetching = useAppSelector(getIsAuthFetching);
 	const validationSchema = yup.object().shape({
-		login: yup.string(),
+		username: yup.string(),
 		password: yup.string()
 	});
 
@@ -29,7 +29,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 
 	return (
 		<Formik
-			initialValues={{login: "", password: ""}}
+			initialValues={{username: "", password: ""}}
 			onSubmit={handleSubmit}
 			validationSchema={validationSchema}
 			validateOnBlur
@@ -39,7 +39,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 					<Field
 						label="Ім'я"
 						className={styles.field}
-						name="login"
+						name="username"
 						component={FormTextField}
 						element={Input}
 					/>
