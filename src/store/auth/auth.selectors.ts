@@ -6,3 +6,6 @@ export const getAuthUser = (state: RootState) => state.authState.user;
 
 export const getIsAuthFetching = (state: RootState) =>
 	state.authState.isFetching;
+
+export const getIsAuthSubmitting = (state: RootState) =>
+	state.authState.isSubmitting;

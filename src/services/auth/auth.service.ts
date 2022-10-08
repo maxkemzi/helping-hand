@@ -1,12 +1,21 @@
 import {LoginArgs, RegisterArgs} from "@customTypes/services/auth";
-import {setIsAuth, setIsFetching, setUser} from "@store/auth/auth.slice";
+import {
+	setIsAuth,
+	setIsFetching,
+	setIsSubmitting,
+	setUser
+} from "@store/auth/auth.slice";
 import {AppDispatch} from "@store/index";
 import AuthAPI from "../../APIs/auth/auth.api";
 
 class AuthService {
-	static register({username, password}: RegisterArgs) {
+	static register(
+		{username, password}: RegisterArgs,
+		onSuccess?: () => void,
+		onError?: (e: any) => void
+	) {
 		return async (dispatch: AppDispatch) => {
-			dispatch(setIsFetching(true));
+			dispatch(setIsSubmitting(true));
 			try {
 				const response = await AuthAPI.register({username, password});
 				const accessToken = response.data.result.session.access_token;
@@ -19,17 +28,23 @@ class AuthService {
 				localStorage.setItem("refreshToken", refreshToken);
 				dispatch(setIsAuth(true));
 				dispatch(setUser(user));
+				onSuccess();
 			} catch (e) {
 				console.log(e);
+				onError(e);
 			} finally {
-				dispatch(setIsFetching(false));
+				dispatch(setIsSubmitting(false));
 			}
 		};
 	}
 
-	static login({username, password}: LoginArgs) {
+	static login(
+		{username, password}: LoginArgs,
+		onSuccess?: () => void,
+		onError?: (e: any) => void
+	) {
 		return async (dispatch: AppDispatch) => {
-			dispatch(setIsFetching(true));
+			dispatch(setIsSubmitting(true));
 			try {
 				const response = await AuthAPI.login({username, password});
 				const accessToken = response.data.result.session.access_token;
@@ -42,10 +57,12 @@ class AuthService {
 				localStorage.setItem("refreshToken", refreshToken);
 				dispatch(setIsAuth(true));
 				dispatch(setUser(user));
+				onSuccess();
 			} catch (e) {
 				console.log(e);
+				onError(e);
 			} finally {
-				dispatch(setIsFetching(false));
+				dispatch(setIsSubmitting(false));
 			}
 		};
 	}
