@@ -14,6 +14,7 @@ interface MenuItemProps {
 	onClick: MouseEventHandler;
 	as?: As;
 	isActive?: boolean;
+	isDisabled?: boolean;
 }
 
 const MenuItem: FC<MenuItemProps> = ({
@@ -23,11 +24,13 @@ const MenuItem: FC<MenuItemProps> = ({
 	text,
 	path,
 	isActive,
+	isDisabled,
 	as
 }) => {
 	if (as === "button") {
 		return (
 			<button
+				disabled={isDisabled}
 				type="button"
 				onClick={onClick}
 				className={classNames(className, styles.item, {
@@ -42,7 +45,13 @@ const MenuItem: FC<MenuItemProps> = ({
 
 	return (
 		<NavLink
-			onClick={onClick}
+			onClick={
+				isDisabled
+					? e => {
+							e.preventDefault();
+					  }
+					: onClick
+			}
 			to={path}
 			end
 			className={props =>

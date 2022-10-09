@@ -2,6 +2,7 @@ import axios from "axios";
 import AuthResponse from "@customTypes/APIs/auth";
 import {LoginArgs, RegisterArgs} from "@customTypes/services/auth";
 import getFormData from "@utils/helpers/getFormData";
+import $api from "../../axios";
 
 class AuthAPI {
 	static register({username, password}: RegisterArgs) {
@@ -25,6 +26,10 @@ class AuthAPI {
 			`${process.env.API_URL}auth/check_access_token`,
 			data
 		);
+	}
+
+	static logout() {
+		return $api.post("auth/logout");
 	}
 }
 

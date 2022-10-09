@@ -5,6 +5,7 @@ import MenuItem from "@components/MenuItem/MenuItem";
 import {
 	HOME_ROUTE,
 	INTEGRATION_ROUTE,
+	LOGIN_ROUTE,
 	PROFILE_TASKS_ROUTE,
 	SETTINGS_ACCOUNT_ROUTE,
 	SETTINGS_INTERFACE_ROUTE,
@@ -13,6 +14,7 @@ import {
 import Modal from "@components/Modal/Modal";
 import HeaderContactForm from "@views/Header/HeaderContactForm/HeaderContactForm";
 import {
+	IoExit,
 	IoExtensionPuzzle,
 	IoHome,
 	IoLayers,
@@ -21,17 +23,23 @@ import {
 	IoSettings
 } from "react-icons/io5";
 import {getIsIntegrationsConnected} from "@store/integrations/integrations.selectors";
-import {getIsAuth} from "@store/auth/auth.selectors";
+import {getIsAuth, getIsAuthSubmitting} from "@store/auth/auth.selectors";
 import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
 import useListenClickOutside from "../../../hooks/useListenClickOutside";
 import useAppSelector from "../../../hooks/useAppSelector";
+import AuthService from "../../../services/auth/auth.service";
+import useAppDispatch from "../../../hooks/useAppDispatch";
 
 const HeaderMenu = memo(() => {
 	const isAuth = useSelector(getIsAuth);
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const [isVisible, setIsVisible] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const parentRef = useRef<HTMLDivElement>(null);
 	const isConnected = useAppSelector(getIsIntegrationsConnected);
+	const isSubmitting = useAppSelector(getIsAuthSubmitting);
 
 	useListenClickOutside(parentRef, () => setIsOpen(false));
 
@@ -43,6 +51,13 @@ const HeaderMenu = memo(() => {
 		setIsVisible(true);
 		setIsOpen(false);
 	};
+
+	const handleLogout = () =>
+		dispatch(
+			AuthService.logout(() => {
+				navigate(LOGIN_ROUTE);
+			})
+		);
 
 	return (
 		<div ref={parentRef}>
@@ -84,6 +99,15 @@ const HeaderMenu = memo(() => {
 						path={INTEGRATION_ROUTE}
 						icon={IoExtensionPuzzle}
 						text="Triton"
+					/>
+				)}
+				{isAuth && (
+					<MenuItem
+						isDisabled={isSubmitting}
+						onClick={handleLogout}
+						as="button"
+						icon={IoExit}
+						text="Вийти"
 					/>
 				)}
 			</Menu>

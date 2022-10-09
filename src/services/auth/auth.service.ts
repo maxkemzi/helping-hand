@@ -88,6 +88,24 @@ class AuthService {
 			}
 		};
 	}
+
+	static logout(onSuccess?: () => void) {
+		return async (dispatch: AppDispatch) => {
+			dispatch(setIsSubmitting(true));
+			try {
+				await AuthAPI.logout();
+				localStorage.removeItem("accessToken");
+				localStorage.removeItem("refreshToken");
+				dispatch(setIsAuth(false));
+				dispatch(setUser({username: "", photo: ""}));
+				onSuccess();
+			} catch (e) {
+				console.log(e);
+			} finally {
+				dispatch(setIsSubmitting(false));
+			}
+		};
+	}
 }
 
 export default AuthService;
