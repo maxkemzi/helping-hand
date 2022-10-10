@@ -6,13 +6,14 @@ import {
 	setUser
 } from "@store/auth/auth.slice";
 import {AppDispatch} from "@store/index";
+import APIError from "@customTypes/APIs/error";
 import AuthAPI from "../../APIs/auth/auth.api";
 
 class AuthService {
 	static register(
 		{username, password}: RegisterArgs,
 		onSuccess?: () => void,
-		onError?: (e: unknown) => void
+		onError?: (e: APIError) => void
 	) {
 		return async (dispatch: AppDispatch) => {
 			dispatch(setIsSubmitting(true));
@@ -41,7 +42,7 @@ class AuthService {
 	static login(
 		{username, password}: LoginArgs,
 		onSuccess?: () => void,
-		onError?: (e: unknown) => void
+		onError?: (e: APIError) => void
 	) {
 		return async (dispatch: AppDispatch) => {
 			dispatch(setIsSubmitting(true));
