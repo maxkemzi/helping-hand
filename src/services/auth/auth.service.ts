@@ -12,7 +12,7 @@ class AuthService {
 	static register(
 		{username, password}: RegisterArgs,
 		onSuccess?: () => void,
-		onError?: (e: any) => void
+		onError?: (e: unknown) => void
 	) {
 		return async (dispatch: AppDispatch) => {
 			dispatch(setIsSubmitting(true));
@@ -41,7 +41,7 @@ class AuthService {
 	static login(
 		{username, password}: LoginArgs,
 		onSuccess?: () => void,
-		onError?: (e: any) => void
+		onError?: (e: unknown) => void
 	) {
 		return async (dispatch: AppDispatch) => {
 			dispatch(setIsSubmitting(true));
