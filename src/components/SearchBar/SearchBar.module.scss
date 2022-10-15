@@ -3,6 +3,15 @@
 	border-radius: var(--border-radius-base);
 	overflow: hidden;
 	width: 300px;
+	transition: box-shadow var(--transition-base);
+
+	&:focus-within {
+		box-shadow: var(--box-shadow-base);
+	}
+}
+
+.input-wrapper {
+	position: relative;
 }
 
 .input {
@@ -17,11 +26,6 @@
 		opacity: 1;
 		color: var(--color-text-dark-lighter);
 	}
-
-	&:focus + .icon-wrapper .icon,
-	&:valid + .icon-wrapper .icon {
-		color: var(--color-text-lightco);
-	}
 }
 
 .icon-wrapper {
@@ -31,9 +35,34 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	&:disabled .icon {
+		color: var(--color-text-dark-lighter);
+	}
 }
 
 .icon {
-	color: var(--color-text-dark-lighter);
+	color: var(--color-text-light);
 	transition: color var(--transition-base);
+}
+
+.clear-button {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity var(--transition-base);
+	padding: 6px;
+
+	&.visible {
+		opacity: 1;
+	}
+}
+
+.clear-icon {
+	color: var(--color-text-dark-lighter);
 }

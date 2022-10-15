@@ -1,6 +1,6 @@
 import {AxiosError} from "axios";
 
-interface ServerError {
+export interface ServerError {
 	error: {
 		ok: boolean;
 		message: string;

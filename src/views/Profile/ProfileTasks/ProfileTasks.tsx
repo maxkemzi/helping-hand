@@ -1,18 +1,26 @@
 import React, {useState} from "react";
 import TaskItem from "@components/TaskItem/TaskItem";
-import SearchBar from "@components/SearchBar/SearchBar";
 import DropdownOption from "@components/DropdownOption/DropdownOption";
 import Dropdown from "@components/Dropdown/Dropdown";
 import classNames from "classnames";
 import Task from "@customTypes/entities/task";
 import ScreenSizes from "@utils/constants/screenSizes";
+import ProfileSearchBar from "@views/Profile/ProfileSearchBar/ProfileSearchBar";
+import {
+	getIsTasksFetching,
+	getTasksLimit,
+	getTasksPage
+} from "@store/tasks/tasks.selectors";
 import data from "../../../mock.json";
 import styles from "./ProfileTasks.module.scss";
 import useWindowSize from "../../../hooks/useWindowSize";
+import useAppSelector from "../../../hooks/useAppSelector";
 
 const ProfileTasks = () => {
+	const isFetching = useAppSelector(getIsTasksFetching);
+	const page = useAppSelector(getTasksPage);
+	const limit = useAppSelector(getTasksLimit);
 	const {width} = useWindowSize();
-	const [value, setValue] = useState("");
 	const [isDateDropdownOpen, setIsDateDropdownOpen] = useState(false);
 	const [isTypeDropdownOpen, setIsTypeDropdownOpen] = useState(false);
 	const [sortByDateValue, setSortByDateValue] = useState("Нові");
@@ -43,11 +51,7 @@ const ProfileTasks = () => {
 					[styles.phone]: width <= ScreenSizes.PhoneWidth
 				})}
 			>
-				<SearchBar
-					className={styles.search}
-					value={value}
-					setValue={setValue}
-				/>
+				<ProfileSearchBar page={page} limit={limit} isFetching={isFetching} />
 				<div className={styles.sorts}>
 					<Dropdown
 						variant="big"

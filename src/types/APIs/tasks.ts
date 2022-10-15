@@ -1,4 +1,5 @@
 import Task from "@customTypes/entities/task";
+import {ServerError} from "@customTypes/APIs/error";
 
 export interface TasksResponse {
 	result: {
@@ -8,18 +9,12 @@ export interface TasksResponse {
 		total_pages: number;
 		tasks: Task[];
 	};
-	error: {
-		ok: boolean;
-		message: string;
-	};
+	error: ServerError;
 }
 
 export interface TaskResponse {
 	result: {
 		task: Task;
 	};
-	error: {
-		ok: boolean;
-		message: string;
-	};
+	error: ServerError;
 }

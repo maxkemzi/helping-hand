@@ -39,6 +39,31 @@ class TasksService {
 		};
 	}
 
+	static search({page, limit, search}: TasksParams) {
+		return async (dispatch: AppDispatch) => {
+			dispatch(setTasksIsFetching(true));
+			try {
+				const response = await TasksAPI.search({page, limit, search});
+				const {tasks} = response.data.result;
+				const totalPages = response.data.result.total_pages;
+				const currentPage = response.data.result.page;
+				console.log(response);
+
+				dispatch(setHasMore(currentPage < totalPages));
+
+				if (currentPage === 1) {
+					dispatch(setTasks(tasks));
+				} else {
+					dispatch(addTasks(tasks));
+				}
+			} catch (e) {
+				console.log(e);
+			} finally {
+				dispatch(setTasksIsFetching(false));
+			}
+		};
+	}
+
 	static fetchOne(id: string) {
 		return async (dispatch: AppDispatch) => {
 			dispatch(setTaskIsFetching(true));

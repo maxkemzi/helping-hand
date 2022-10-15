@@ -10,6 +10,12 @@ class TasksAPI {
 		});
 	}
 
+	static search({page, limit, search}: TasksParams) {
+		return $api.get<TasksResponse>("task/search_task", {
+			params: {page, per_page: limit, text: search}
+		});
+	}
+
 	static fetchOne(id: string) {
 		return $api.get<TaskResponse>("task/get_task", {params: {task_uuid: id}});
 	}

@@ -44,7 +44,7 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 			validationSchema={signupFormValidation}
 			validateOnBlur
 		>
-			{({status}) => (
+			{({status, isValid}) => (
 				<Form className={className} noValidate>
 					{status && <p className={styles.status}>{status}</p>}
 					<div className={styles.fields}>
@@ -74,7 +74,7 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 						/>
 					</div>
 					<Button
-						disabled={isFetching}
+						disabled={isFetching || !isValid}
 						size="big"
 						className={styles.btn}
 						text="Зареєструватись"

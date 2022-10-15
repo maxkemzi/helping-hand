@@ -1,16 +1,16 @@
 import React, {FC, memo, useState} from "react";
 import SearchBar from "@components/SearchBar/SearchBar";
-import styles from "../TasksPage/TasksPage.module.scss";
+import styles from "../ProfileTasks/ProfileTasks.module.scss";
 import useAppDispatch from "../../../hooks/useAppDispatch";
 import TasksService from "../../../services/tasks/tasks.service";
 
-interface TasksSearchBarProps {
+interface ProfileSearchBarProps {
 	page: number;
 	limit: number;
 	isFetching: boolean;
 }
 
-const TasksSearchBar: FC<TasksSearchBarProps> = memo(
+const ProfileSearchBar: FC<ProfileSearchBarProps> = memo(
 	({page, limit, isFetching}) => {
 		const dispatch = useAppDispatch();
 		const [value, setValue] = useState("");
@@ -41,4 +41,4 @@ const TasksSearchBar: FC<TasksSearchBarProps> = memo(
 	}
 );
 
-export default TasksSearchBar;
+export default ProfileSearchBar;

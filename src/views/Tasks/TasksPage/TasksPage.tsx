@@ -82,10 +82,18 @@ const TasksPage = () => {
 											onClick={handleClick}
 											className={styles["filter-btn"]}
 										/>
-										<TasksSearchBar />
+										<TasksSearchBar
+											isFetching={isFetching}
+											page={page}
+											limit={limit}
+										/>
 									</div>
 								) : (
-									<TasksSearchBar />
+									<TasksSearchBar
+										isFetching={isFetching}
+										page={page}
+										limit={limit}
+									/>
 								)}
 								<Button
 									onClick={() => setIsVisible(true)}

@@ -40,7 +40,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 			validationSchema={loginFormValidation}
 			validateOnBlur
 		>
-			{({status}) => (
+			{({status, isValid}) => (
 				<Form className={className} noValidate>
 					{status && <p className={styles.status}>{status}</p>}
 					<div className={styles.fields}>
@@ -65,7 +65,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 						size="big"
 						className={styles.btn}
 						text="Увійти"
-						disabled={isFetching}
+						disabled={isFetching || !isValid}
 						isSubmit
 					/>
 				</Form>
