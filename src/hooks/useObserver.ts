@@ -19,7 +19,6 @@ const useObserver = (
 
 		const cb = (entries: IntersectionObserverEntry[]) => {
 			if (entries[0].isIntersecting && hasMore) {
-				console.log("sadasd");
 				callback();
 			}
 		};

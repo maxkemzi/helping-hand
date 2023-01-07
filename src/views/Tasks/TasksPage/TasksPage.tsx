@@ -1,32 +1,33 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
 import Button from "@components/Button/Button";
-import TasksSortDropdowns from "@views/Tasks/TasksSortDropdowns/TasksSortDropdowns";
-import TasksSearchBar from "@views/Tasks/TasksSearchBar/TasksSearchBar";
-import TaskItem from "@components/TaskItem/TaskItem";
-import TasksFilters from "@views/Tasks/TasksFilters/TasksFilters";
-import Modal from "@components/Modal/Modal";
-import TasksCreateForm from "@views/Tasks/TasksCreateForm/TasksCreateForm";
-import classNames from "classnames";
-import MainLayout from "@components/MainLayout/MainLayout";
-import Task from "@customTypes/entities/task";
-import ScreenSizes from "@utils/constants/screenSizes";
 import FilterButton from "@components/FilterButton/FilterButton";
+import InfiniteScrollList from "@components/InfiniteScrollList/InfiniteScrollList";
+import MainLayout from "@components/MainLayout/MainLayout";
+import Modal from "@components/Modal/Modal";
+import TaskItem from "@components/TaskItem/TaskItem";
+import {getIsAppInitializing} from "@store/app/app.selectors";
 import {
 	getHasMoreTasks,
 	getIsTasksFetching,
 	getTasks,
 	getTasksLimit,
-	getTasksPage
+	getTasksPage,
+	getTasksSearchQuery
 } from "@store/tasks/tasks.selectors";
+import ScreenSizes from "@utils/constants/screenSizes";
 import getParsedDate from "@utils/helpers/getParsedDate";
-import InfiniteScrollList from "@components/InfiniteScrollList/InfiniteScrollList";
-import {setPage} from "@store/tasks/tasks.slice";
-import styles from "./TasksPage.module.scss";
-import useWindowSize from "../../../hooks/useWindowSize";
-import useListenClickOutside from "../../../hooks/useListenClickOutside";
+import TasksCreateForm from "@views/Tasks/TasksCreateForm/TasksCreateForm";
+import TasksFilters from "@views/Tasks/TasksFilters/TasksFilters";
+import TasksSearchBar from "@views/Tasks/TasksSearchBar/TasksSearchBar";
+import TasksSortDropdowns from "@views/Tasks/TasksSortDropdowns/TasksSortDropdowns";
+import classNames from "classnames";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import useAppDispatch from "../../../hooks/useAppDispatch";
-import TasksService from "../../../services/tasks/tasks.service";
 import useAppSelector from "../../../hooks/useAppSelector";
+import useListenClickOutside from "../../../hooks/useListenClickOutside";
+import useWindowSize from "../../../hooks/useWindowSize";
+import AppService from "../../../services/app/app.service";
+import TasksService from "../../../services/tasks/tasks.service";
+import styles from "./TasksPage.module.scss";
 
 const TasksPage = () => {
 	const dispatch = useAppDispatch();
@@ -39,101 +40,108 @@ const TasksPage = () => {
 	const isFetching = useAppSelector(getIsTasksFetching);
 	const page = useAppSelector(getTasksPage);
 	const limit = useAppSelector(getTasksLimit);
+	const searchQuery = useAppSelector(getTasksSearchQuery);
+	const isInitializing = useAppSelector(getIsAppInitializing);
 
 	const handleClick = () => setIsOpen(!isOpen);
 
 	useListenClickOutside(filterRef, () => setIsOpen(false));
 
 	useEffect(() => {
-		dispatch(TasksService.fetchAll({page, limit}));
-	}, [dispatch, limit, page]);
+		dispatch(AppService.initializeTasksPage({limit}));
+	}, [dispatch, limit]);
+
+	useEffect(() => () => dispatch(TasksService.clear()), [dispatch]);
 
 	const handleLoadMore = useCallback(
-		() => dispatch(setPage(page + 1)),
-		[dispatch, page]
+		() =>
+			dispatch(
+				TasksService.fetchMore({limit, page: page + 1, search: searchQuery})
+			),
+		[dispatch, limit, page, searchQuery]
 	);
 
 	const handleSubmit = () => setIsVisible(false);
 
 	return (
 		<MainLayout>
-			<div
-				className={classNames("page", {
-					[styles["sm-desktop"]]: width <= ScreenSizes.SmDesktopWidth,
-					[styles.tablet]: width <= ScreenSizes.TabletWidth,
-					[styles.phone]: width <= ScreenSizes.PhoneWidth
-				})}
-			>
-				<div className="container">
-					<div className={styles.inner}>
-						<aside
-							ref={filterRef}
-							className={classNames("wrapper", styles.sidebar, {
-								[styles.open]: isOpen
-							})}
-						>
-							<TasksFilters />
-						</aside>
-						<div className={styles.header}>
-							<div className={styles.panel}>
-								{width <= ScreenSizes.TabletWidth ? (
-									<div className={styles.row}>
-										<FilterButton
-											onClick={handleClick}
-											className={styles["filter-btn"]}
-										/>
-										<TasksSearchBar
-											isFetching={isFetching}
-											page={page}
-											limit={limit}
-										/>
-									</div>
-								) : (
-									<TasksSearchBar
-										isFetching={isFetching}
-										page={page}
-										limit={limit}
-									/>
-								)}
-								<Button
-									onClick={() => setIsVisible(true)}
-									className={styles.btn}
-									text="Створити"
-								/>
-							</div>
-							<TasksSortDropdowns />
-						</div>
-						<div className={classNames("wrapper", styles.wrapper)}>
-							<InfiniteScrollList
-								hasMore={hasMore}
-								isFetching={isFetching}
-								onLoadMore={handleLoadMore}
+			{isInitializing ? (
+				"Loading..."
+			) : (
+				<div
+					className={classNames("page", {
+						[styles["sm-desktop"]]: width <= ScreenSizes.SmDesktopWidth,
+						[styles.tablet]: width <= ScreenSizes.TabletWidth,
+						[styles.phone]: width <= ScreenSizes.PhoneWidth
+					})}
+				>
+					<div className="container">
+						<div className={styles.inner}>
+							<aside
+								ref={filterRef}
+								className={classNames("wrapper", styles.sidebar, {
+									[styles.open]: isOpen
+								})}
 							>
-								<div className={styles.items}>
-									{tasks.map((task: Task) => (
-										<TaskItem
-											key={task.uuid}
-											id={task.uuid}
-											creator={task.owner.profile}
-											description={task.text}
-											title={task.title}
-											date={getParsedDate(task.created_at)}
-											isActive={task.status === "open"}
-										/>
-									))}
+								<TasksFilters />
+							</aside>
+							<div className={styles.header}>
+								<div className={styles.panel}>
+									{width <= ScreenSizes.TabletWidth ? (
+										<div className={styles.row}>
+											<FilterButton
+												onClick={handleClick}
+												className={styles["filter-btn"]}
+											/>
+											<TasksSearchBar limit={limit} isFetching={isFetching} />
+										</div>
+									) : (
+										<TasksSearchBar limit={limit} isFetching={isFetching} />
+									)}
+									<Button
+										onClick={() => setIsVisible(true)}
+										className={styles.btn}
+										text="Створити"
+									/>
 								</div>
-							</InfiniteScrollList>
+								<TasksSortDropdowns />
+							</div>
+							<div className={classNames("wrapper", styles.wrapper)}>
+								<InfiniteScrollList
+									searchIsEmpty={searchQuery.length === 0}
+									isEmpty={tasks.length === 0}
+									hasMore={hasMore}
+									isFetching={isFetching}
+									onLoadMore={handleLoadMore}
+								>
+									<div className={styles.items}>
+										{tasks.map(task => (
+											<TaskItem
+												key={task.uuid}
+												id={task.uuid}
+												tags={task.tags}
+												creator={task.owner.profile}
+												description={task.text}
+												title={task.title}
+												date={getParsedDate(task.created_at)}
+												isActive={task.status === "open"}
+											/>
+										))}
+									</div>
+								</InfiniteScrollList>
+							</div>
 						</div>
 					</div>
+					<Modal
+						width="700px"
+						title="Створити завдання"
+						isVisible={isVisible}
+						setIsVisible={setIsVisible}
+					>
+						<TasksCreateForm onSubmit={handleSubmit} />
+					</Modal>
 				</div>
-				<Modal
-					title="Створити завдання"
-					isVisible={isVisible}
-					setIsVisible={setIsVisible}
-				>
-					<TasksCreateForm onSubmit={handleSubmit} />
-				</Modal>
-			</div>
+			)}
 		</MainLayout>
 	);
 };

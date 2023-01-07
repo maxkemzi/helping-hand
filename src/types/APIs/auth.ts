@@ -1,10 +1,12 @@
+import User from "@customTypes/entities/user";
+
 interface AuthResponse {
 	result: {
 		session: {
 			access_token: string;
 			refresh_token: string;
 		};
-		user: {profile: {username: string; photo: string}};
+		user: {profile: User};
 	};
 	error: {
 		ok: boolean;

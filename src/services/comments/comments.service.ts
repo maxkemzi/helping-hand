@@ -67,22 +67,6 @@ class CommentsService {
 			}
 		};
 	}
-
-	static downvote(id: string) {
-		return async (dispatch: AppDispatch) => {
-			dispatch(setIsVoting(true));
-			try {
-				const response = await CommentsAPI.downvote(id);
-				console.log(response);
-				const {comment} = response.data.result;
-				dispatch(updateComment(comment));
-			} catch (e) {
-				console.log(e);
-			} finally {
-				dispatch(setIsVoting(false));
-			}
-		};
-	}
 }
 
 export default CommentsService;

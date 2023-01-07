@@ -7,7 +7,6 @@
 	white-space: nowrap;
 
 	&.active {
-		pointer-events: none;
 		color: var(--color-text-light);
 	}
 

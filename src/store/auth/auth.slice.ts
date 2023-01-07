@@ -8,9 +8,9 @@ import {
 } from "@store/auth/auth.types";
 
 export const initialState: AuthSliceState = {
-	user: {username: "", photo: ""},
+	user: {username: "", photo: "", uuid: "", description: ""},
 	isAuth: false,
-	isFetching: true,
+	isFetching: false,
 	isSubmitting: false
 };
 
@@ -29,10 +29,13 @@ const authSlice = createSlice({
 		},
 		setIsSubmitting(state, action: SetIsSubmitting) {
 			state.isSubmitting = action.payload;
+		},
+		resetUser(state) {
+			state.user = initialState.user;
 		}
 	}
 });
 
 export default authSlice.reducer;
-export const {setIsAuth, setIsFetching, setUser, setIsSubmitting} =
+export const {setIsAuth, setIsFetching, setUser, setIsSubmitting, resetUser} =
 	authSlice.actions;

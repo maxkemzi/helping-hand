@@ -2,18 +2,18 @@ import React, {FC} from "react";
 import Button from "@components/Button/Button";
 import TagItem from "@components/TagItem/TagItem";
 import {NavLink} from "react-router-dom";
-import {PROFILE_TASKS_ROUTE, TASKS_ROUTE} from "@utils/constants/routes";
+import {PROFILE_ROUTE, TASKS_ROUTE} from "@utils/constants/routes";
 import Typography from "@components/Typography/Typography";
 import UserInfo from "@components/UserInfo/UserInfo";
 import StatusIcon from "@icons/StatusIcon/StatusIcon";
 import Tag from "@customTypes/entities/tag";
 import User from "@customTypes/entities/user";
 import styles from "./TaskItem.module.scss";
-import data from "../../mock.json";
 
 interface TaskItemProps {
 	title: string;
 	description: string;
+	tags: Tag[];
 	creator: User;
 	id: string;
 	date: string;
@@ -26,7 +26,8 @@ const TaskItem: FC<TaskItemProps> = ({
 	creator,
 	description,
 	id,
-	isActive
+	isActive,
+	tags
 }) => (
 	<div className={styles.item}>
 		<div className={styles.header}>
@@ -36,7 +37,7 @@ const TaskItem: FC<TaskItemProps> = ({
 			<StatusIcon variant={isActive ? "active" : "inactive"} />
 		</div>
 		<UserInfo
-			path={PROFILE_TASKS_ROUTE}
+			path={`${PROFILE_ROUTE}/${creator.uuid}/tasks`}
 			className={styles.user}
 			avatarPath={creator.photo}
 			username={creator.username}
@@ -45,8 +46,8 @@ const TaskItem: FC<TaskItemProps> = ({
 			{description}
 		</Typography>
 		<div className={styles.tags}>
-			{data.tags.map((tag: Tag) => (
-				<TagItem key={tag.id} {...tag} />
+			{tags.map(tag => (
+				<TagItem key={tag.id} text={tag.text} />
 			))}
 		</div>
 		<div className={styles.footer}>

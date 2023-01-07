@@ -3,7 +3,7 @@ import {AppSliceState, SetIsInitializing, SetTheme} from "@store/app/app.types";
 
 // todo: Add proper synchronization with localStorage
 export const initialState: AppSliceState = {
-	isInitializing: false,
+	isInitializing: true,
 	theme:
 		typeof window !== "undefined"
 			? JSON.parse(localStorage.getItem("theme"))

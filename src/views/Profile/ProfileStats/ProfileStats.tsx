@@ -2,10 +2,12 @@ import React, {FC, useState} from "react";
 import StatItem from "@components/StatItem/StatItem";
 import classNames from "classnames";
 import {IoGrid, IoList} from "react-icons/io5";
-import data from "../../../mock.json";
+import {getProfileStatistics} from "@store/profile/profile.selectors";
 import styles from "./ProfileStats.module.scss";
+import useAppSelector from "../../../hooks/useAppSelector";
 
 const ProfileStats: FC = () => {
+	const statistics = useAppSelector(getProfileStatistics);
 	const [isList, setIsList] = useState(false);
 
 	const handleGrid = () => setIsList(false);
@@ -38,9 +40,12 @@ const ProfileStats: FC = () => {
 					[styles.list]: isList
 				})}
 			>
-				{data.stats.map(stat => (
-					<StatItem size="big" key={stat.id} {...stat} />
-				))}
+				<StatItem
+					title="Коментарів"
+					value={statistics.commentCount}
+					size="big"
+				/>
+				<StatItem title="Завдань" value={statistics.taskCount} size="big" />
 			</div>
 		</>
 	);

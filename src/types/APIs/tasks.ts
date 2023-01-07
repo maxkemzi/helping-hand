@@ -12,6 +12,13 @@ export interface TasksResponse {
 	error: ServerError;
 }
 
+export interface LatestTasksResponse {
+	result: {
+		tasks: Task[];
+	};
+	error: ServerError;
+}
+
 export interface TaskResponse {
 	result: {
 		task: Task;

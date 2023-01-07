@@ -1,4 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
+import tagsReducer from "./tags/tags.slice";
 import profileReducer from "./profile/profile.slice";
 import taskReducer from "./task/task.slice";
 import appReducer from "./app/app.slice";
@@ -17,7 +18,8 @@ const store = configureStore({
 		profileState: profileReducer,
 		taskState: taskReducer,
 		commentsState: commentsReducer,
-		integrationsState: integrationsReducer
+		integrationsState: integrationsReducer,
+		tagsState: tagsReducer
 	}
 });
 

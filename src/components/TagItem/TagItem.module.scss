@@ -10,11 +10,12 @@
 .inner {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .text {
 	margin-right: 6px;
+	white-space: nowrap;
 }
 
 .button {

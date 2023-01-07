@@ -1,13 +1,6 @@
-import React, {FC, useEffect} from "react";
-import TaskTitleSection from "@views/Task/TaskTitleSection/TaskTitleSection";
-import TaskStatsSection from "@views/Task/TaskStatsSection/TaskStatsSection";
-import TaskQuestionSection from "@views/Task/TaskQuestionSection/TaskQuestionSection";
-import TaskCommentsSection from "@views/Task/TaskCommentsSection/TaskCommentsSection";
-import TaskCommentFormSection from "@views/Task/TaskCommentFormSection/TaskCommentFormSection";
-import {useParams} from "react-router-dom";
-import MainLayout from "@components/MainLayout/MainLayout";
 import Divider from "@components/Divider/Divider";
-import {getIsTaskFetching, getTask} from "@store/task/task.selectors";
+import MainLayout from "@components/MainLayout/MainLayout";
+import {getIsAppInitializing} from "@store/app/app.selectors";
 import {
 	getComments,
 	getCommentsLimit,
@@ -16,45 +9,60 @@ import {
 	getCommentsTotalPages,
 	getIsCommentsFetching
 } from "@store/comments/comments.selectors";
+import {getIsTaskVoting, getTask} from "@store/task/task.selectors";
 import getParsedDate from "@utils/helpers/getParsedDate";
-import mockData from "../../../mock.json";
-import styles from "./TaskPage.module.scss";
+import TaskCommentFormSection from "@views/Task/TaskCommentFormSection/TaskCommentFormSection";
+import TaskCommentsSection from "@views/Task/TaskCommentsSection/TaskCommentsSection";
+import TaskQuestionSection from "@views/Task/TaskQuestionSection/TaskQuestionSection";
+import TaskStatsSection from "@views/Task/TaskStatsSection/TaskStatsSection";
+import TaskTitleSection from "@views/Task/TaskTitleSection/TaskTitleSection";
+import React, {FC, useEffect} from "react";
+import {useParams} from "react-router-dom";
 import useAppDispatch from "../../../hooks/useAppDispatch";
-import TasksService from "../../../services/tasks/tasks.service";
 import useAppSelector from "../../../hooks/useAppSelector";
+import AppService from "../../../services/app/app.service";
 import CommentsService from "../../../services/comments/comments.service";
+import TasksService from "../../../services/tasks/tasks.service";
+import styles from "./TaskPage.module.scss";
 
 const TaskPage: FC = () => {
 	const {id} = useParams();
 	const dispatch = useAppDispatch();
 	const task = useAppSelector(getTask);
 	const comments = useAppSelector(getComments);
-	const isTaskFetching = useAppSelector(getIsTaskFetching);
+	const isInitializing = useAppSelector(getIsAppInitializing);
 	const isCommentsFetching = useAppSelector(getIsCommentsFetching);
 	const limit = useAppSelector(getCommentsLimit);
 	const page = useAppSelector(getCommentsPage);
 	const totalPages = useAppSelector(getCommentsTotalPages);
 	const totalCount = useAppSelector(getCommentsTotalCount);
+	const isVoting = useAppSelector(getIsTaskVoting);
 
 	useEffect(() => {
-		Promise.all([
-			dispatch(TasksService.fetchOne(id)),
-			dispatch(CommentsService.fetchAll(id, {limit, page: 1}))
-		]);
+		dispatch(AppService.initializeTaskPage(id, limit));
 	}, [dispatch, id, limit]);
 
 	const handleLoadMore = (p: number) =>
 		dispatch(CommentsService.fetchAll(id, {limit, page: p}));
 
+	const handleUpvote = () => dispatch(TasksService.upvote(id));
+
 	return (
 		<MainLayout>
 			<div className="page">
 				<div className="container container--small">
-					{isTaskFetching ? (
+					{isInitializing ? (
 						"Loading..."
 					) : (
 						<div className="wrapper">
-							<TaskTitleSection title={task.title} tags={mockData.tags} />
+							<TaskTitleSection
+								onUpvote={handleUpvote}
+								voteStatus={task.my_vote.vote}
+								score={task.score}
+								isVoting={isVoting}
+								title={task.title}
+								tags={task.tags}
+							/>
 							<Divider className={styles.divider} />
 							<TaskStatsSection
 								createdDate={getParsedDate(task.created_at)}

@@ -1,39 +1,46 @@
-import React from "react";
-import * as yup from "yup";
-import {Field, Form, Formik} from "formik";
+import Button from "@components/Button/Button";
+import FormDropdownField from "@components/FormDropdownField/FormDropdownField";
+import FormTagsField from "@components/FormTagsField/FormTagsField";
 import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
-import Button from "@components/Button/Button";
 import Textarea from "@components/Textarea/Textarea";
-import FormTagsField from "@components/FormTagsField/FormTagsField";
-import Tag from "@customTypes/entities/tag";
+import {getTags} from "@store/tags/tags.selectors";
 import {getIsTaskCreating, getTasksLimit} from "@store/tasks/tasks.selectors";
-import styles from "./TasksCreateForm.module.scss";
-import mockData from "../../../mock.json";
+import classNames from "classnames";
+import {Field, Form, Formik} from "formik";
+import React from "react";
+import * as yup from "yup";
 import useAppDispatch from "../../../hooks/useAppDispatch";
-import TasksService from "../../../services/tasks/tasks.service";
 import useAppSelector from "../../../hooks/useAppSelector";
+import TasksService from "../../../services/tasks/tasks.service";
+import styles from "./TasksCreateForm.module.scss";
 
 interface TasksCreateFormValues {
 	title: string;
 	text: string;
-	tags: Tag[];
+	tags: string[];
+	course: string[];
+	subject: string[];
 }
 
 const TasksCreateForm = ({onSubmit}: {onSubmit: () => void}) => {
 	const dispatch = useAppDispatch();
+	const tags = useAppSelector(getTags);
+
 	const isFetching = useAppSelector(getIsTaskCreating);
 	const limit = useAppSelector(getTasksLimit);
 	const initialValues: TasksCreateFormValues = {
 		title: "",
 		text: "",
-		tags: [mockData.tags[0]]
+		tags: [],
+		course: [],
+		subject: []
 	};
 
 	const validationSchema = yup.object().shape({
 		title: yup.string(),
 		text: yup.string(),
-		tags: yup.array().of(yup.object())
+		tags: yup.array().of(yup.string())
 	});
 
 	const handleSubmit = (values: TasksCreateFormValues) => {
@@ -54,12 +61,41 @@ const TasksCreateForm = ({onSubmit}: {onSubmit: () => void}) => {
 						className={styles.field}
 						name="tags"
 						component={FormTagsField}
-						tagOptions={mockData.tags}
+						options={tags.general_categories.map(tag => ({
+							value: tag.uuid,
+							id: tag.uuid,
+							text: tag.text
+						}))}
+						placeholder="Категорії"
+					/>
+
+					<Field
+						className={styles.field}
+						name="course"
+						component={FormDropdownField}
+						options={tags.courses.map(tag => ({
+							value: tag.uuid,
+							id: tag.uuid,
+							text: tag.text
+						}))}
+						placeholder="Курси"
+					/>
+
+					<Field
+						className={styles.field}
+						name="subject"
+						component={FormDropdownField}
+						options={tags.subjects.map(subject => ({
+							value: subject.uuid,
+							id: subject.uuid,
+							text: subject.text
+						}))}
+						placeholder="Предмети"
 					/>
 
 					<Field
 						label="Заголовок"
-						className={styles.field}
+						className={classNames(styles.field, styles.title)}
 						name="title"
 						component={FormTextField}
 						element={Input}
@@ -71,7 +107,7 @@ const TasksCreateForm = ({onSubmit}: {onSubmit: () => void}) => {
 						name="text"
 						component={FormTextField}
 						element={Textarea}
-						rows={4}
+						rows={6}
 					/>
 				</div>
 				<Button

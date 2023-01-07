@@ -1,37 +1,39 @@
 import {BrowserRouter as Router} from "react-router-dom";
 import "./app.scss";
-import React, {FC, useEffect} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {GreenTheme} from "@utils/constants/themes";
-import {setIsFetching} from "@store/auth/auth.slice";
-import {getIsAuthFetching} from "@store/auth/auth.selectors";
-import {getIsIntegrationsFetching} from "@store/integrations/integrations.selectors";
 import AppRouter from "./components/AppRouter/AppRouter";
 import useTheme from "./hooks/useTheme";
 import useAppDispatch from "./hooks/useAppDispatch";
 import AuthService from "./services/auth/auth.service";
-import useAppSelector from "./hooks/useAppSelector";
 import IntegrationsService from "./services/integrations/integrations.service";
 
 const App: FC = () => {
 	const dispatch = useAppDispatch();
-	const isFetching = useAppSelector(getIsAuthFetching);
-	const isIntegrationsFetching = useAppSelector(getIsIntegrationsFetching);
+	const [isFetching, setIsFetching] = useState(true);
 	useTheme(GreenTheme);
 
 	// Checking for authorization
 	useEffect(() => {
 		if (localStorage.getItem("accessToken")) {
 			const initialize = async () => {
-				await dispatch(AuthService.check());
-				dispatch(IntegrationsService.get());
+				setIsFetching(true);
+				try {
+					await dispatch(AuthService.check());
+					await dispatch(IntegrationsService.get());
+				} catch (e) {
+					console.log(e);
+				} finally {
+					setIsFetching(false);
+				}
 			};
 			initialize();
 		} else {
-			dispatch(setIsFetching(false));
+			setIsFetching(false);
 		}
 	}, [dispatch]);
 
-	if (isFetching || isIntegrationsFetching) {
+	if (isFetching) {
 		return <div>Loading...</div>;
 	}
 

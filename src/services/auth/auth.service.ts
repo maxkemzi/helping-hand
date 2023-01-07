@@ -1,5 +1,6 @@
 import {LoginArgs, RegisterArgs} from "@customTypes/services/auth";
 import {
+	resetUser,
 	setIsAuth,
 	setIsFetching,
 	setIsSubmitting,
@@ -98,7 +99,7 @@ class AuthService {
 				localStorage.removeItem("accessToken");
 				localStorage.removeItem("refreshToken");
 				dispatch(setIsAuth(false));
-				dispatch(setUser({username: "", photo: ""}));
+				dispatch(resetUser());
 				onSuccess();
 			} catch (e) {
 				console.log(e);

@@ -19,7 +19,7 @@ const SettingsTabs = () => {
 				[styles.tablet]: width <= ScreenSizes.TabletWidth
 			})}
 			variant={width <= ScreenSizes.TabletWidth ? "horizontal" : "vertical"}
-			adaptiveLineSizing={width <= ScreenSizes.TabletWidth}
+			adaptiveLineSizing
 		>
 			<TabItem text="Акаунт" to={SETTINGS_ACCOUNT_ROUTE} />
 

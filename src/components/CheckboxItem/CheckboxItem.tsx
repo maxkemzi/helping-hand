@@ -4,7 +4,8 @@ import styles from "./CheckboxItem.module.scss";
 
 interface CheckboxItemProps {
 	label: string;
-	value: boolean;
+	value?: string;
+	isChecked: boolean;
 	name?: string;
 	onChange?: (label: string) => void;
 	className?: string;
@@ -16,6 +17,7 @@ const CheckboxItem: FC<CheckboxItemProps> = ({
 	className,
 	value,
 	onChange = () => {},
+	isChecked,
 	name,
 	disabled
 }) => (
@@ -24,8 +26,8 @@ const CheckboxItem: FC<CheckboxItemProps> = ({
 			className={styles.checkbox}
 			name={name}
 			type="checkbox"
-			checked={value}
-			onChange={() => onChange(label)}
+			checked={isChecked}
+			onChange={() => onChange(value)}
 			disabled={disabled}
 		/>
 		<span className={styles.fake} />

@@ -10,6 +10,7 @@ interface ModalProps {
 	children: ReactNode;
 	className?: string;
 	isVisible: boolean;
+	width?: string;
 	setIsVisible: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -18,7 +19,8 @@ const Modal: FC<ModalProps> = ({
 	children,
 	className,
 	isVisible,
-	setIsVisible
+	setIsVisible,
+	width
 }) => {
 	useEffect(() => {
 		if (isVisible) {
@@ -42,6 +44,7 @@ const Modal: FC<ModalProps> = ({
 				onClick={e => e.stopPropagation()}
 				role="presentation"
 				className={styles.content}
+				style={{width}}
 			>
 				<div className={styles.header}>
 					<h4 className={styles.title}>{title}</h4>

@@ -33,8 +33,6 @@ const TaskCommentsSection: FC<TaskCommentsSectionProps> = ({
 
 	const handleUpvote = (id: string) => dispatch(CommentsService.upvote(id));
 
-	const handleDownvote = (id: string) => dispatch(CommentsService.downvote(id));
-
 	return (
 		<>
 			<Typography variant="h4" component="h4">
@@ -47,7 +45,6 @@ const TaskCommentsSection: FC<TaskCommentsSectionProps> = ({
 						<CommentItem
 							voteStatus={comment.my_vote.vote}
 							isVoting={isVoting}
-							onDownvote={() => handleDownvote(comment.uuid)}
 							onUpvote={() => handleUpvote(comment.uuid)}
 							className={styles.comment}
 							key={comment.uuid}

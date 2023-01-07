@@ -1,3 +1,4 @@
+import {VoteStatus} from "@customTypes/APIs/global";
 import Tag from "@customTypes/entities/tag";
 import User from "@customTypes/entities/user";
 
@@ -17,6 +18,11 @@ interface Task {
 	uuid: string;
 	owner: {
 		profile: User;
+	};
+	my_vote: {
+		post: string;
+		user: string;
+		vote: VoteStatus;
 	};
 }
 

@@ -1,36 +1,81 @@
-import React, {FC} from "react";
-import TagsField from "@components/TagsField/TagsField";
+import React, {FC, useState} from "react";
+import DropdownField from "@components/DropdownField/DropdownField";
 import {FieldProps} from "formik";
-import Tag from "@customTypes/entities/tag";
+import TagItem from "@components/TagItem/TagItem";
+import DropdownOption from "@components/DropdownOption/DropdownOption";
+import styles from "./FormTagsField.module.scss";
+import {DropdownOption as IDropdownOption} from "../../types/components";
 
 interface FormTagsFieldProps {
 	className?: string;
-	tagOptions: Tag[];
+	options: IDropdownOption[];
+	placeholder: string;
 }
 
 const FormTagsField: FC<FormTagsFieldProps & FieldProps> = ({
 	form: {setFieldValue},
 	className,
-	tagOptions,
+	options,
+	placeholder,
 	field
 }) => {
-	const handleRemoveTag = (id: string) =>
+	const [dropdownValue, setDropdownValue] = useState<IDropdownOption[]>([]);
+	const [isOpen, setIsOpen] = useState(false);
+	const handleClose = () => setIsOpen(false);
+	const toggleOpen = () => setIsOpen(prev => !prev);
+
+	const handleRemove = (id: string, value: string) => {
+		setDropdownValue(prev => prev.filter(option => option.id !== id));
 		setFieldValue(
 			"tags",
-			field.value.filter((tag: Tag) => tag.id !== id)
+			field.value.filter((tag: string) => tag !== value)
 		);
+	};
 
-	const handleAddTags = (items: Tag[]) =>
-		setFieldValue("tags", [...field.value, ...items]);
+	const handleClick = (option: IDropdownOption) => {
+		if (dropdownValue.some(item => item.id === option.id)) {
+			handleRemove(option.id, option.value);
+		} else {
+			setDropdownValue(prev => [...prev, option]);
+			setFieldValue("tags", [...field.value, option.value]);
+		}
+	};
 
 	return (
-		<TagsField
-			className={className}
-			tagOptions={tagOptions}
-			tags={field.value}
-			onAddTags={handleAddTags}
-			onRemoveTag={handleRemoveTag}
-		/>
+		<>
+			{dropdownValue.length !== 0 && (
+				<div className={styles.tags}>
+					{dropdownValue.map(val => (
+						<div key={val.id} className={styles.tag}>
+							<TagItem
+								text={val.text}
+								hasRemoveBtn
+								onRemoveBtnClick={() => handleRemove(val.id, val.value)}
+							/>
+						</div>
+					))}
+				</div>
+			)}
+			<DropdownField
+				placeholder={placeholder}
+				isOpen={isOpen}
+				onClose={handleClose}
+				toggleOpen={toggleOpen}
+				className={className}
+				value={dropdownValue.map(val => val.text)}
+			>
+				{options.map(option => (
+					<DropdownOption
+						key={option.id}
+						id={option.id}
+						text={option.text}
+						value={option.value}
+						onClick={handleClick}
+						isActive={dropdownValue.some(item => item.id === option.id)}
+					/>
+				))}
+			</DropdownField>
+		</>
 	);
 };
 export default FormTagsField;

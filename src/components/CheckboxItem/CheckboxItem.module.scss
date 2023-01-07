@@ -5,12 +5,7 @@
 .item {
 	cursor: pointer;
 	display: flex;
-	align-items: center;
-	overflow: hidden;
-
-	&:not(:last-child) {
-		margin-bottom: 8px;
-	}
+	padding: 6px 0;
 }
 
 .fake {
@@ -42,9 +37,6 @@
 
 .label {
 	font-size: 16px;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
 }
 
 .checkbox:checked + .fake {

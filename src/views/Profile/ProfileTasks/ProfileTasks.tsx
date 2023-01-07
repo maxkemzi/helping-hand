@@ -1,30 +1,35 @@
-import React, {useState} from "react";
-import TaskItem from "@components/TaskItem/TaskItem";
-import DropdownOption from "@components/DropdownOption/DropdownOption";
 import Dropdown from "@components/Dropdown/Dropdown";
-import classNames from "classnames";
-import Task from "@customTypes/entities/task";
-import ScreenSizes from "@utils/constants/screenSizes";
-import ProfileSearchBar from "@views/Profile/ProfileSearchBar/ProfileSearchBar";
+import DropdownOption from "@components/DropdownOption/DropdownOption";
+import TaskItem from "@components/TaskItem/TaskItem";
+import {DropdownOption as IDropdownOption} from "@customTypes/components";
 import {
 	getIsTasksFetching,
-	getTasksLimit,
-	getTasksPage
+	getTasks,
+	getTasksLimit
 } from "@store/tasks/tasks.selectors";
-import data from "../../../mock.json";
-import styles from "./ProfileTasks.module.scss";
-import useWindowSize from "../../../hooks/useWindowSize";
+import ScreenSizes from "@utils/constants/screenSizes";
+import ProfileSearchBar from "@views/Profile/ProfileSearchBar/ProfileSearchBar";
+import classNames from "classnames";
+import React, {useState} from "react";
 import useAppSelector from "../../../hooks/useAppSelector";
+import useWindowSize from "../../../hooks/useWindowSize";
+import styles from "./ProfileTasks.module.scss";
 
 const ProfileTasks = () => {
+	const tasks = useAppSelector(getTasks);
 	const isFetching = useAppSelector(getIsTasksFetching);
-	const page = useAppSelector(getTasksPage);
 	const limit = useAppSelector(getTasksLimit);
 	const {width} = useWindowSize();
 	const [isDateDropdownOpen, setIsDateDropdownOpen] = useState(false);
 	const [isTypeDropdownOpen, setIsTypeDropdownOpen] = useState(false);
-	const [sortByDateValue, setSortByDateValue] = useState("Нові");
-	const [sortByTypeValue, setSortByTypeValue] = useState("Усі");
+	const [sortByDateValue, setSortByDateValue] = useState({
+		text: "Нові",
+		value: "new"
+	});
+	const [sortByTypeValue, setSortByTypeValue] = useState({
+		text: "Усі",
+		value: "all"
+	});
 
 	const handleDateClose = () => setIsDateDropdownOpen(false);
 
@@ -34,13 +39,13 @@ const ProfileTasks = () => {
 
 	const toggleTypeOpen = () => setIsTypeDropdownOpen(!isTypeDropdownOpen);
 
-	const handleSortByDateClick = (itemValue: string) => {
-		setSortByDateValue(itemValue);
+	const handleSortByDateClick = (option: IDropdownOption) => {
+		setSortByDateValue(option);
 		handleDateClose();
 	};
 
-	const handleSortByTypeClick = (itemValue: string) => {
-		setSortByTypeValue(itemValue);
+	const handleSortByTypeClick = (option: IDropdownOption) => {
+		setSortByTypeValue(option);
 		handleTypeClose();
 	};
 
@@ -51,7 +56,7 @@ const ProfileTasks = () => {
 					[styles.phone]: width <= ScreenSizes.PhoneWidth
 				})}
 			>
-				<ProfileSearchBar page={page} limit={limit} isFetching={isFetching} />
+				<ProfileSearchBar limit={limit} isFetching={isFetching} />
 				<div className={styles.sorts}>
 					<Dropdown
 						variant="big"
@@ -59,17 +64,19 @@ const ProfileTasks = () => {
 						isOpen={isDateDropdownOpen}
 						onClose={handleDateClose}
 						toggleOpen={toggleDateOpen}
-						value={sortByDateValue}
+						value={sortByDateValue.text}
 					>
 						<DropdownOption
 							onClick={handleSortByDateClick}
-							isActive={sortByDateValue === "Нові"}
-							value="Нові"
+							isActive={sortByDateValue.value === "new"}
+							value="new"
+							text="Нові"
 						/>
 						<DropdownOption
 							onClick={handleSortByDateClick}
-							isActive={sortByDateValue === "Старі"}
-							value="Старі"
+							isActive={sortByDateValue.value === "old"}
+							value="old"
+							text="Старі"
 						/>
 					</Dropdown>
 
@@ -79,22 +86,25 @@ const ProfileTasks = () => {
 						isOpen={isTypeDropdownOpen}
 						onClose={handleTypeClose}
 						toggleOpen={toggleTypeOpen}
-						value={sortByTypeValue}
+						value={sortByTypeValue.text}
 					>
 						<DropdownOption
 							onClick={handleSortByTypeClick}
-							isActive={sortByTypeValue === "Усі"}
-							value="Усі"
+							isActive={sortByTypeValue.value === "all"}
+							value="all"
+							text="Усі"
 						/>
 						<DropdownOption
 							onClick={handleSortByTypeClick}
-							isActive={sortByTypeValue === "Вирішені"}
-							value="Вирішені"
+							isActive={sortByTypeValue.value === "solved"}
+							value="solved"
+							text="Вирішені"
 						/>
 						<DropdownOption
 							onClick={handleSortByTypeClick}
-							isActive={sortByTypeValue === "Створені"}
-							value="Створені"
+							isActive={sortByTypeValue.value === "created"}
+							value="created"
+							text="Створені"
 						/>
 					</Dropdown>
 				</div>
@@ -104,11 +114,12 @@ const ProfileTasks = () => {
 					[styles.tablet]: width <= ScreenSizes.TabletWidth
 				})}
 			>
-				{data.tasks.map((task: Task) => (
+				{tasks.map(task => (
 					<TaskItem
 						key={task.uuid}
 						id={task.uuid}
 						creator={task.owner.profile}
+						tags={task.tags}
 						description={task.text}
 						title={task.title}
 						date={task.created_at}

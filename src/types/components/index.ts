@@ -17,4 +17,11 @@ export interface Theme {
 	styles: {[key: string]: string};
 }
 
+export interface DropdownOption {
+	id?: string;
+	value: string;
+	isActive?: boolean;
+	text: string;
+}
+
 export type PrimaryColor = "" | "lighter" | "light";

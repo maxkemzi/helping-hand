@@ -1,7 +1,5 @@
-import Tag from "@customTypes/entities/tag";
-
 export interface TasksParams {
-	page: number;
+	page?: number;
 	limit: number;
 	search?: string;
 }
@@ -9,5 +7,7 @@ export interface TasksParams {
 export interface CreateTaskArgs {
 	title: string;
 	text: string;
-	tags: Tag[];
+	tags: string[];
+	course: string[];
+	subject: string[];
 }

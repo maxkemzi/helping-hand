@@ -26,6 +26,7 @@ const InterfaceSettings = () => {
 			<div className={styles.items}>
 				{themes.map(theme => (
 					<ThemeButton
+						key={theme.name}
 						className={styles.item}
 						onClick={handleClick}
 						isActive={theme.name === themeSelector.name}

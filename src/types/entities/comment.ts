@@ -1,6 +1,5 @@
+import {VoteStatus} from "@customTypes/APIs/global";
 import User from "@customTypes/entities/user";
-
-export type CommentVote = "up" | "down";
 
 interface Comment {
 	text: string;
@@ -13,7 +12,7 @@ interface Comment {
 	my_vote: {
 		post: string;
 		user: string;
-		vote: CommentVote;
+		vote: VoteStatus;
 	};
 }
 

@@ -77,6 +77,8 @@ const AppRouter = () => (
 			}
 		>
 			<Route index element={<Navigate to={PROFILE_TASKS_ROUTE} replace />} />
+			<Route path={`${PROFILE_ROUTE}/:id/tasks`} element={<ProfileTasks />} />
+			<Route path={`${PROFILE_ROUTE}/:id/stats`} element={<ProfileStats />} />
 			<Route path={PROFILE_TASKS_ROUTE} element={<ProfileTasks />} />
 			<Route path={PROFILE_STATS_ROUTE} element={<ProfileStats />} />
 			<Route path="*" element={<Navigate to={PROFILE_TASKS_ROUTE} />} />

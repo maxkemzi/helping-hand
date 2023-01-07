@@ -1,0 +1,15 @@
+.button {
+	display: flex;
+	flex-direction: column;
+
+	span {
+		width: 4px;
+		height: 4px;
+		background: var(--color-accent);
+		border-radius: 1px;
+
+		&:not(:last-child) {
+			margin-bottom: 6px;
+		}
+	}
+}

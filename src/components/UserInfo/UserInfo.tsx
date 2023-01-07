@@ -21,7 +21,7 @@ const UserInfo: FC<UserInfoProps> = ({
 	className,
 	fallbackVariant = "lighter"
 }) => (
-	<NavLink to={path} className={classNames(className, styles.info)}>
+	<NavLink end to={path} className={classNames(className, styles.info)}>
 		<div className={styles.inner}>
 			<Avatar
 				fallbackVariant={fallbackVariant}

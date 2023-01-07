@@ -1,18 +1,22 @@
-import React, {useState} from "react";
 import Dropdown from "@components/Dropdown/Dropdown";
 import DropdownOption from "@components/DropdownOption/DropdownOption";
+import {DropdownOption as IDropdownOption} from "@customTypes/components";
+import React, {useState} from "react";
 import styles from "./TasksSortDropdowns.module.scss";
 
 const TasksSortDropdowns = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [sortByDateValue, setSortByDateValue] = useState("Нові");
+	const [sortByDateValue, setSortByDateValue] = useState({
+		text: "Нові",
+		value: "new"
+	});
 
 	const handleClose = () => setIsOpen(false);
 
 	const toggleOpen = () => setIsOpen(!isOpen);
 
-	const handleClick = (itemValue: string) => {
-		setSortByDateValue(itemValue);
+	const handleClick = (option: IDropdownOption) => {
+		setSortByDateValue(option);
 		handleClose();
 	};
 
@@ -23,17 +27,19 @@ const TasksSortDropdowns = () => {
 				isOpen={isOpen}
 				onClose={handleClose}
 				toggleOpen={toggleOpen}
-				value={sortByDateValue}
+				value={sortByDateValue.text}
 			>
 				<DropdownOption
 					onClick={handleClick}
-					isActive={sortByDateValue === "Нові"}
-					value="Нові"
+					isActive={sortByDateValue.value === "new"}
+					text="Нові"
+					value="new"
 				/>
 				<DropdownOption
 					onClick={handleClick}
-					isActive={sortByDateValue === "Старі"}
-					value="Старі"
+					isActive={sortByDateValue.value === "old"}
+					text="Старі"
+					value="old"
 				/>
 			</Dropdown>
 		</div>

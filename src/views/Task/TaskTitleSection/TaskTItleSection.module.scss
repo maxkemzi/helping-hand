@@ -1,11 +1,32 @@
-.title {
-	margin-bottom: 12px;
-}
-
 .tags {
+	margin-top: 12px;
 	display: flex;
 	align-items: center;
 	gap: 16px;
 	overflow-x: auto;
 	overflow-y: hidden;
+}
+
+.title {
+	margin-right: 16px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.vote {
+	margin-right: 16px;
+}
+
+.title-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.title-right {
+	display: flex;
+  align-items: center;
 }

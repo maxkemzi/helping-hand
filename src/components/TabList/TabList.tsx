@@ -1,7 +1,14 @@
-import React, {FC, ReactNode, useEffect, useRef, useState} from "react";
+import React, {
+	FC,
+	ReactNode,
+	useCallback,
+	useEffect,
+	useRef,
+	useState
+} from "react";
 import classNames from "classnames";
-import {useLocation} from "react-router-dom";
 import ANIMATION_DURATION from "@utils/constants/animations";
+import {TabItemLayout} from "@components/TabItem/TabItem";
 import styles from "./TabList.module.scss";
 
 type Variant = "horizontal" | "vertical";
@@ -19,10 +26,10 @@ const TabList: FC<TabListProps> = ({
 	className,
 	adaptiveLineSizing
 }) => {
+	const [lineSize, setLineSize] = useState(0);
+	const [lineOffset, setLineOffset] = useState(0);
 	const [isCalculating, setIsCalculating] = useState(true);
-	const parentRef = useRef<HTMLDivElement>(null);
 	const lineRef = useRef<HTMLDivElement>(null);
-	const location = useLocation();
 
 	// Wait till line transition ends (width and position transition)
 	useEffect(() => {
@@ -35,43 +42,44 @@ const TabList: FC<TabListProps> = ({
 	}, []);
 
 	useEffect(() => {
-		if (parentRef.current && lineRef.current) {
-			// Get active child out of the tab list
-			const child = parentRef.current.querySelector(
-				`a[href="${location.pathname}"]`
-			) as HTMLElement;
-
+		if (lineRef.current) {
 			// Line position calculations for a horizontal/vertical list
-			if (variant === "horizontal") {
-				const tabOffsetLeft = child.querySelector("span").offsetLeft;
-				const tabWidth = child.querySelector("span").offsetWidth;
-
-				lineRef.current.style.left = `${tabOffsetLeft + tabWidth / 2}px`;
-				lineRef.current.style.transform = "translateX(-50%)";
+			if (variant === "vertical") {
+				lineRef.current.style.transform = `translateY(${lineOffset}px)`;
 
 				if (adaptiveLineSizing) {
-					lineRef.current.style.width = `${tabWidth}px`;
+					lineRef.current.style.height = `${lineSize}px`;
 				}
 			} else {
-				const tabOffsetTop = child.querySelector("span").offsetTop;
-				const tabHeight = child.querySelector("span").offsetHeight;
-
-				lineRef.current.style.top = `${tabOffsetTop + tabHeight / 2}px`;
-				lineRef.current.style.transform = "translateY(-50%)";
+				lineRef.current.style.transform = `translateX(${lineOffset}px)`;
 
 				if (adaptiveLineSizing) {
-					lineRef.current.style.height = `${tabHeight}px`;
+					lineRef.current.style.width = `${lineSize}px`;
 				}
 			}
 		}
-	}, [adaptiveLineSizing, location.pathname, variant]);
+	}, [adaptiveLineSizing, lineOffset, lineSize, variant]);
+
+	const handleActiveLayout = useCallback(
+		({offsetWidth, offsetLeft, offsetTop, offsetHeight}: TabItemLayout) => {
+			setLineSize(variant === "vertical" ? offsetHeight : offsetWidth);
+			setLineOffset(variant === "vertical" ? offsetTop : offsetLeft);
+		},
+		[variant]
+	);
 
 	return (
-		<div
-			className={classNames(className, styles.tabs, styles[variant])}
-			ref={parentRef}
-		>
-			<div className={styles.list}>{children}</div>
+		<div className={classNames(className, styles.tabs, styles[variant])}>
+			<div className={styles.list}>
+				{React.Children.map(children, child => {
+					if (React.isValidElement(child)) {
+						return React.cloneElement(child, {
+							onActiveLayout: handleActiveLayout
+						});
+					}
+					return false;
+				})}
+			</div>
 			<div
 				ref={lineRef}
 				className={classNames(styles.line, {

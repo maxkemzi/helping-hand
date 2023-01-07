@@ -19,11 +19,6 @@ class CommentsAPI {
 		const data = getFormData({comment_uuid: id});
 		return $api.post("comment/upvote_comment", data);
 	}
-
-	static downvote(id: string) {
-		const data = getFormData({comment_uuid: id});
-		return $api.post("comment/downvote_comment", data);
-	}
 }
 
 export default CommentsAPI;
