@@ -1,9 +1,7 @@
 import React, {FC} from "react";
-import MoodleIcon from "@images/moodle.svg";
 import TritonIcon from "@images/triton.svg";
 import IntegrationItem from "@components/IntegrationItem/IntegrationItem";
 import Typography from "@components/Typography/Typography";
-import Divider from "@components/Divider/Divider";
 import ScreenSizes from "@utils/constants/screenSizes";
 import {getIsIntegrationsConnected} from "@store/integrations/integrations.selectors";
 import {
@@ -37,16 +35,6 @@ const IntegrationSettings: FC = () => {
 				Інтеграція
 			</Typography>
 			<IntegrationItem
-				isConnected={false}
-				icon={MoodleIcon}
-				text={
-					width <= ScreenSizes.SmTabletWidth
-						? null
-						: "Увійти за допомогою moodle"
-				}
-			/>
-			<Divider className={styles.divider} />
-			<IntegrationItem
 				isConnected={isConnected}
 				onClick={handleClick}
 				onConnectedClick={handleConnectedClick}
@@ -58,6 +46,16 @@ const IntegrationSettings: FC = () => {
 						: "Увійти за допомогою triton"
 				}
 			/>
+			{/* <Divider className={styles.divider} /> */}
+			{/* <IntegrationItem */}
+			{/*	isConnected={false} */}
+			{/*	icon={MoodleIcon} */}
+			{/*	text={ */}
+			{/*		width <= ScreenSizes.SmTabletWidth */}
+			{/*			? null */}
+			{/*			: "Увійти за допомогою moodle" */}
+			{/*	} */}
+			{/* /> */}
 		</>
 	);
 };
