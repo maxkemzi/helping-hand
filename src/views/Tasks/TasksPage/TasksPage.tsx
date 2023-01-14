@@ -2,7 +2,6 @@ import Button from "@components/Button/Button";
 import FilterButton from "@components/FilterButton/FilterButton";
 import InfiniteScrollList from "@components/InfiniteScrollList/InfiniteScrollList";
 import MainLayout from "@components/MainLayout/MainLayout";
-import Modal from "@components/Modal/Modal";
 import TaskItem from "@components/TaskItem/TaskItem";
 import {getIsAppInitializing} from "@store/app/app.selectors";
 import {
@@ -15,12 +14,12 @@ import {
 } from "@store/tasks/tasks.selectors";
 import ScreenSizes from "@utils/constants/screenSizes";
 import getParsedDate from "@utils/helpers/getParsedDate";
-import TasksCreateForm from "@views/Tasks/TasksCreateForm/TasksCreateForm";
 import TasksFilters from "@views/Tasks/TasksFilters/TasksFilters";
 import TasksSearchBar from "@views/Tasks/TasksSearchBar/TasksSearchBar";
 import TasksSortDropdowns from "@views/Tasks/TasksSortDropdowns/TasksSortDropdowns";
 import classNames from "classnames";
 import React, {useCallback, useEffect, useRef, useState} from "react";
+import {ModalTypes} from "@utils/constants/modal";
 import useAppDispatch from "../../../hooks/useAppDispatch";
 import useAppSelector from "../../../hooks/useAppSelector";
 import useListenClickOutside from "../../../hooks/useListenClickOutside";
@@ -28,12 +27,13 @@ import useWindowSize from "../../../hooks/useWindowSize";
 import AppService from "../../../services/app/app.service";
 import TasksService from "../../../services/tasks/tasks.service";
 import styles from "./TasksPage.module.scss";
+import {useModalContext} from "../../../contexts/ModalContext";
 
 const TasksPage = () => {
 	const dispatch = useAppDispatch();
 	const {width} = useWindowSize();
 	const [isOpen, setIsOpen] = useState(false);
-	const [isVisible, setIsVisible] = useState(false);
+	const {openModal, closeModal} = useModalContext();
 	const filterRef = useRef(null);
 	const tasks = useAppSelector(getTasks);
 	const hasMore = useAppSelector(getHasMoreTasks);
@@ -61,7 +61,8 @@ const TasksPage = () => {
 		[dispatch, limit, page, searchQuery]
 	);
 
-	const handleSubmit = () => setIsVisible(false);
+	const handleCreateModalOpen = () =>
+		openModal(ModalTypes.CreateTask, {onClose: closeModal});
 
 	return (
 		<MainLayout>
@@ -99,7 +100,7 @@ const TasksPage = () => {
 										<TasksSearchBar limit={limit} isFetching={isFetching} />
 									)}
 									<Button
-										onClick={() => setIsVisible(true)}
+										onClick={handleCreateModalOpen}
 										className={styles.btn}
 										text="Створити"
 									/>
@@ -132,14 +133,6 @@ const TasksPage = () => {
 							</div>
 						</div>
 					</div>
-					<Modal
-						width="700px"
-						title="Створити завдання"
-						isVisible={isVisible}
-						setIsVisible={setIsVisible}
-					>
-						<TasksCreateForm onSubmit={handleSubmit} />
-					</Modal>
 				</div>
 			)}
 		</MainLayout>

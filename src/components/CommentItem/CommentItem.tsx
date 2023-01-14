@@ -4,6 +4,7 @@ import {VoteStatus} from "@customTypes/APIs/global";
 import User from "@customTypes/entities/user";
 import classNames from "classnames";
 import React, {FC, MouseEventHandler} from "react";
+import Tiptap from "@components/Tiptap/Tiptap";
 import styles from "./CommentItem.module.scss";
 
 interface CommentItemProps {
@@ -33,14 +34,14 @@ const CommentItem: FC<CommentItemProps> = ({
 			status={voteStatus}
 			isDisabled={isVoting}
 		/>
-		<div>
+		<div className={styles.body}>
 			<UserInfo
 				className={styles.user}
 				avatarPath={creator.photo}
 				fallbackVariant="light"
 				username={creator.username}
 			/>
-			<p>{text}</p>
+			<Tiptap content={text} readonly />
 		</div>
 	</div>
 );

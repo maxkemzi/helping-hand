@@ -1,44 +1,35 @@
-import React, {Dispatch, FC, ReactNode, SetStateAction, useEffect} from "react";
+import React, {FC, ReactNode, useEffect} from "react";
 import classNames from "classnames";
 import {IoClose} from "react-icons/io5";
 import Divider from "@components/Divider/Divider";
 import ClickExtender from "@components/ClickExtender/ClickExtender";
 import styles from "./Modal.module.scss";
 
-interface ModalProps {
-	title: string;
-	children: ReactNode;
+export interface ModalProps {
+	title?: string;
+	children?: ReactNode;
 	className?: string;
-	isVisible: boolean;
 	width?: string;
-	setIsVisible: Dispatch<SetStateAction<boolean>>;
+	onClose?: () => void;
 }
 
 const Modal: FC<ModalProps> = ({
 	title,
 	children,
 	className,
-	isVisible,
-	setIsVisible,
+	onClose,
 	width
 }) => {
 	useEffect(() => {
-		if (isVisible) {
-			document.body.classList.add("lock");
-		} else {
-			document.body.classList.remove("lock");
-		}
-	}, [isVisible]);
-
-	const handleClose = () => setIsVisible(false);
+		document.body.classList.add("lock");
+		return () => document.body.classList.remove("lock");
+	}, []);
 
 	return (
 		<div
 			role="presentation"
-			onClick={handleClose}
-			className={classNames(className, styles.modal, {
-				[styles.visible]: isVisible
-			})}
+			onClick={onClose}
+			className={classNames(className, styles.modal, styles.visible)}
 		>
 			<div
 				onClick={e => e.stopPropagation()}
@@ -51,7 +42,7 @@ const Modal: FC<ModalProps> = ({
 					<ClickExtender
 						className={styles["close-btn"]}
 						type="button"
-						onClick={handleClose}
+						onClick={onClose}
 					>
 						<IoClose className={styles["close-icon"]} size={24} />
 					</ClickExtender>

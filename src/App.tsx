@@ -7,6 +7,7 @@ import useTheme from "./hooks/useTheme";
 import useAppDispatch from "./hooks/useAppDispatch";
 import AuthService from "./services/auth/auth.service";
 import IntegrationsService from "./services/integrations/integrations.service";
+import {ModalProvider} from "./contexts/ModalContext";
 
 const App: FC = () => {
 	const dispatch = useAppDispatch();
@@ -39,7 +40,9 @@ const App: FC = () => {
 
 	return (
 		<Router>
-			<AppRouter />
+			<ModalProvider>
+				<AppRouter />
+			</ModalProvider>
 		</Router>
 	);
 };

@@ -5,9 +5,9 @@ import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import Button from "@components/Button/Button";
 import Textarea from "@components/Textarea/Textarea";
-import styles from "./HeaderContactForm.module.scss";
+import styles from "./ContactForm.module.scss";
 
-const HeaderContactForm = () => {
+const ContactForm = () => {
 	const validationSchema = yup.object().shape({
 		email: yup.string(),
 		text: yup.string()
@@ -44,4 +44,4 @@ const HeaderContactForm = () => {
 	);
 };
 
-export default HeaderContactForm;
+export default ContactForm;

@@ -1,9 +1,8 @@
 import React, {FC} from "react";
-import Textarea from "@components/Textarea/Textarea";
 import Button from "@components/Button/Button";
-import {Field, Form, Formik, FormikHelpers} from "formik";
+import {Form, Formik, FormikHelpers} from "formik";
 import {getIsCommentCreating} from "@store/comments/comments.selectors";
-import FormTextField from "@components/FormTextField/FormTextField";
+import Tiptap from "@components/Tiptap/Tiptap";
 import styles from "./TaskCommentFormSection.module.scss";
 import useAppDispatch from "../../../hooks/useAppDispatch";
 import CommentsService from "../../../services/comments/comments.service";
@@ -26,17 +25,12 @@ const TaskCommentFormSection: FC<TaskCommentFormSectionProps> = ({id}) => {
 	};
 
 	return (
-		<>
-			<p className={styles["small-title"]}>Ваша відповідь</p>
-			<Formik initialValues={{text: ""}} onSubmit={handleSubmit} validateOnBlur>
+		<Formik initialValues={{text: ""}} onSubmit={handleSubmit} validateOnBlur>
+			{({setFieldValue}) => (
 				<Form>
-					<Field
-						label="Текст"
-						className={styles.textarea}
-						name="text"
-						component={FormTextField}
-						element={Textarea}
-						rows={6}
+					<Tiptap
+						className={styles.editor}
+						onBlur={value => setFieldValue("text", value)}
 					/>
 					<Button
 						isSubmit
@@ -45,8 +39,8 @@ const TaskCommentFormSection: FC<TaskCommentFormSectionProps> = ({id}) => {
 						text="Відіслати"
 					/>
 				</Form>
-			</Formik>
-		</>
+			)}
+		</Formik>
 	);
 };
 

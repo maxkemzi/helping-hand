@@ -11,8 +11,6 @@ import {
 	SETTINGS_INTERFACE_ROUTE,
 	TASKS_ROUTE
 } from "@utils/constants/routes";
-import Modal from "@components/Modal/Modal";
-import HeaderContactForm from "@views/Header/HeaderContactForm/HeaderContactForm";
 import {
 	IoExit,
 	IoExtensionPuzzle,
@@ -26,16 +24,18 @@ import {getIsIntegrationsConnected} from "@store/integrations/integrations.selec
 import {getIsAuth, getIsAuthSubmitting} from "@store/auth/auth.selectors";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {ModalTypes} from "@utils/constants/modal";
 import useListenClickOutside from "../../../hooks/useListenClickOutside";
 import useAppSelector from "../../../hooks/useAppSelector";
 import AuthService from "../../../services/auth/auth.service";
 import useAppDispatch from "../../../hooks/useAppDispatch";
+import {useModalContext} from "../../../contexts/ModalContext";
 
 const HeaderMenu = memo(() => {
 	const isAuth = useSelector(getIsAuth);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const [isVisible, setIsVisible] = useState(false);
+	const {openModal, closeModal} = useModalContext();
 	const [isOpen, setIsOpen] = useState(false);
 	const parentRef = useRef<HTMLDivElement>(null);
 	const isConnected = useAppSelector(getIsIntegrationsConnected);
@@ -48,7 +48,7 @@ const HeaderMenu = memo(() => {
 	const handleItemClick = () => setIsOpen(false);
 
 	const handleContactClick = () => {
-		setIsVisible(true);
+		openModal(ModalTypes.Contact, {onClose: closeModal});
 		setIsOpen(false);
 	};
 
@@ -111,13 +111,6 @@ const HeaderMenu = memo(() => {
 					/>
 				)}
 			</Menu>
-			<Modal
-				title="Зв'язатись"
-				isVisible={isVisible}
-				setIsVisible={setIsVisible}
-			>
-				<HeaderContactForm />
-			</Modal>
 		</div>
 	);
 });

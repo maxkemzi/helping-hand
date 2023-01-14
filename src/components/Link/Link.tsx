@@ -1,10 +1,10 @@
-import React, {AnchorHTMLAttributes, FC} from "react";
+import React, {AnchorHTMLAttributes, FC, ReactNode} from "react";
 import classNames from "classnames";
 import styles from "./Link.module.scss";
 
 interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 	className?: string;
-	text: string;
+	text: string | ReactNode;
 }
 
 const Link: FC<LinkProps> = ({className, text, ...props}) => (

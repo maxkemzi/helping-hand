@@ -1,0 +1,21 @@
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-primary-light);
+	padding: 8px;
+	border-radius: var(--border-radius-base);
+
+	&:hover .icon {
+		color: var(--color-text-light);
+	}
+
+	&.active .icon {
+		color: var(--color-text-light);
+	}
+}
+
+.icon {
+	transition: color var(--transition-base);
+	color: var(--color-text-dark-lighter);
+}
