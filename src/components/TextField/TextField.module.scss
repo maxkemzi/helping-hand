@@ -36,7 +36,8 @@
 		border-color: var(--color-danger);
 	}
 
-	&:focus + .label {
+	&:focus + .label,
+	&:valid + .label {
 		color: var(--color-danger);
 	}
 }

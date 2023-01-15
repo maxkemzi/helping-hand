@@ -41,7 +41,7 @@ const TaskTitleSection: FC<TaskTitleSectionProps> = ({
 		{tags.length !== 0 && (
 			<div className={styles.tags}>
 				{tags.map(tag => (
-					<TagItem key={tag.id} text={tag.text} />
+					<TagItem key={tag.uuid} text={tag.text} />
 				))}
 			</div>
 		)}

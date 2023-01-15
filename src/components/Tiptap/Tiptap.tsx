@@ -5,6 +5,7 @@ import {Link} from "@tiptap/extension-link";
 import TiptapMenuBar from "@components/Tiptap/TiptapMenuBar/TiptapMenuBar";
 import classNames from "classnames";
 import {CharacterCount} from "@tiptap/extension-character-count";
+import {Placeholder} from "@tiptap/extension-placeholder";
 import styles from "./Tiptap.module.scss";
 
 interface TiptapProps {
@@ -29,14 +30,18 @@ const Tiptap: FC<TiptapProps> = ({className, onBlur, readonly, content}) => {
 				protocols: ["mailto"]
 			}),
 			CharacterCount.configure({
-				limit: 250
+				limit: 15000
+			}),
+			Placeholder.configure({
+				placeholder: "Ваша відповідь",
+				emptyEditorClass: styles["is-editor-empty"]
 			})
 		],
-		content: content || "<p>Пишіть свою відповідь тут</p>",
+		content,
 		editorProps: {
 			attributes: {
 				class: readonly
-					? styles["content-text"]
+					? classNames(styles.readonly, styles["content-text"])
 					: classNames(styles.content, styles["content-text"]),
 				spellcheck: "false"
 			}

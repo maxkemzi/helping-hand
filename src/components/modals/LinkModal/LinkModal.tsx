@@ -1,6 +1,7 @@
 import React, {ChangeEvent, FC, useState} from "react";
 import Modal, {ModalProps} from "@components/Modal/Modal";
 import Button from "@components/Button/Button";
+import TextField from "@components/TextField/TextField";
 import Input from "@components/Input/Input";
 import styles from "./LinkModal.module.scss";
 
@@ -15,19 +16,30 @@ const LinkModal: FC<LinkModalProps> = ({onConfirm, ...props}) => {
 		setValue(e.target.value);
 
 	return (
-		<Modal title="Enter your link" {...props}>
+		<Modal hasHeader={false} {...props}>
 			<div className={styles.content}>
-				<Input
-					placeholder="Link"
+				<TextField
 					className={styles.input}
 					onChange={handleChange}
 					value={value}
+					element={Input}
+					label="Посилання"
 				/>
-				<Button
-					className={styles.button}
-					onClick={() => onConfirm(value)}
-					text="Ok"
-				/>
+				<div className={styles.buttons}>
+					<Button
+						size="small"
+						variant="outline"
+						className={styles.button}
+						onClick={() => onConfirm(value)}
+						text="Скасувати"
+					/>
+					<Button
+						size="small"
+						className={styles.button}
+						onClick={() => onConfirm(value)}
+						text="Ок"
+					/>
+				</div>
 			</div>
 		</Modal>
 	);

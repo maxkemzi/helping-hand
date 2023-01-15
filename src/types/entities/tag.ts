@@ -1,5 +1,5 @@
 interface Tag {
-	id?: string;
+	uuid?: string;
 	text: string;
 }
 

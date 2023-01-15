@@ -7,6 +7,7 @@ import {getIsAuthSubmitting} from "@store/auth/auth.selectors";
 import {useNavigate} from "react-router-dom";
 import {TASKS_ROUTE} from "@utils/constants/routes";
 import {RegisterArgs} from "@customTypes/services/auth";
+import FormPasswordField from "@components/FormPasswordField/FormPasswordField";
 import styles from "./AuthSignupForm.module.scss";
 import useAppDispatch from "../../../hooks/useAppDispatch";
 import useAppSelector from "../../../hooks/useAppSelector";
@@ -38,7 +39,8 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 			initialValues={{
 				// email: "",
 				username: "",
-				password: ""
+				password: "",
+				confirmPassword: ""
 			}}
 			onSubmit={handleSubmit}
 			validationSchema={signupFormValidation}
@@ -66,10 +68,17 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 
 						<Field
 							label="Пароль"
-							type="password"
 							className={styles.field}
 							name="password"
-							component={FormTextField}
+							component={FormPasswordField}
+							element={Input}
+						/>
+
+						<Field
+							label="Підтвердження паролю"
+							className={styles.field}
+							name="confirmPassword"
+							component={FormPasswordField}
 							element={Input}
 						/>
 					</div>

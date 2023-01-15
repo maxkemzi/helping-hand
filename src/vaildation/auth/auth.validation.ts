@@ -40,5 +40,9 @@ export const signupFormValidation = yup.object().shape({
 		.matches(
 			PASSWORD_REGEXP,
 			"Пароль повинен містити щонайменше 1 велику, малу літери та одну цифру"
-		)
+		),
+	confirmPassword: yup
+		.string()
+		.required("Підтвердження обов'язкове")
+		.oneOf([yup.ref("password")], "Паролі не збігаються")
 });

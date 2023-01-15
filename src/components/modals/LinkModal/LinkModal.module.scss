@@ -7,6 +7,8 @@
 	margin-bottom: 16px;
 }
 
-.button {
-	align-self: flex-end;
+.buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px
 }

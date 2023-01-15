@@ -8,6 +8,14 @@
 	max-height: 275px;
 	overflow-y: auto;
 	outline: none;
+
+	p.is-editor-empty:first-child::before {
+		color: var(--color-text-dark-lighter);
+		content: attr(data-placeholder);
+		float: left;
+		height: 0;
+		pointer-events: none;
+	}
 }
 
 .list {
@@ -20,6 +28,10 @@
 	font-size: 16px;
 	line-height: 1.5;
 	color: var(--color-text-light);
+}
+
+.readonly {
+	word-break: break-word;
 }
 
 .code {

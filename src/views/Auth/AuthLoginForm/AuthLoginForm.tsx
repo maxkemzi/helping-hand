@@ -7,6 +7,7 @@ import {LoginArgs} from "@customTypes/services/auth";
 import {getIsAuthSubmitting} from "@store/auth/auth.selectors";
 import {TASKS_ROUTE} from "@utils/constants/routes";
 import {useNavigate} from "react-router-dom";
+import FormPasswordField from "@components/FormPasswordField/FormPasswordField";
 import styles from "./AuthLoginForm.module.scss";
 import AuthService from "../../../services/auth/auth.service";
 import useAppDispatch from "../../../hooks/useAppDispatch";
@@ -54,10 +55,9 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 
 						<Field
 							label="Пароль"
-							type="password"
 							className={styles.field}
 							name="password"
-							component={FormTextField}
+							component={FormPasswordField}
 							element={Input}
 						/>
 					</div>

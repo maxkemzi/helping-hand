@@ -47,7 +47,7 @@ const TaskItem: FC<TaskItemProps> = ({
 		</Typography>
 		<div className={styles.tags}>
 			{tags.map(tag => (
-				<TagItem key={tag.id} text={tag.text} />
+				<TagItem key={tag.uuid} text={tag.text} />
 			))}
 		</div>
 		<div className={styles.footer}>

@@ -11,6 +11,7 @@ export interface ModalProps {
 	className?: string;
 	width?: string;
 	onClose?: () => void;
+	hasHeader?: boolean;
 }
 
 const Modal: FC<ModalProps> = ({
@@ -18,7 +19,8 @@ const Modal: FC<ModalProps> = ({
 	children,
 	className,
 	onClose,
-	width
+	width,
+	hasHeader = true
 }) => {
 	useEffect(() => {
 		document.body.classList.add("lock");
@@ -37,17 +39,21 @@ const Modal: FC<ModalProps> = ({
 				className={styles.content}
 				style={{width}}
 			>
-				<div className={styles.header}>
-					<h4 className={styles.title}>{title}</h4>
-					<ClickExtender
-						className={styles["close-btn"]}
-						type="button"
-						onClick={onClose}
-					>
-						<IoClose className={styles["close-icon"]} size={24} />
-					</ClickExtender>
-				</div>
-				<Divider />
+				{hasHeader && (
+					<>
+						<div className={styles.header}>
+							<h4 className={styles.title}>{title}</h4>
+							<ClickExtender
+								className={styles["close-btn"]}
+								type="button"
+								onClick={onClose}
+							>
+								<IoClose className={styles["close-icon"]} size={24} />
+							</ClickExtender>
+						</div>
+						<Divider />
+					</>
+				)}
 				<div className={styles.body}>{children}</div>
 			</div>
 		</div>

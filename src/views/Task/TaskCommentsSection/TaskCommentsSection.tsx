@@ -41,7 +41,7 @@ const TaskCommentsSection: FC<TaskCommentsSectionProps> = ({
 			</Typography>
 			<div className={styles.comments}>
 				{comments.map((comment, index) => (
-					<>
+					<React.Fragment key={comment.uuid}>
 						<CommentItem
 							voteStatus={comment.my_vote.vote}
 							isVoting={isVoting}
@@ -53,7 +53,7 @@ const TaskCommentsSection: FC<TaskCommentsSectionProps> = ({
 							score={comment.score}
 						/>
 						{index !== comments.length - 1 && <Divider />}
-					</>
+					</React.Fragment>
 				))}
 			</div>
 			{totalPages > 1 && (

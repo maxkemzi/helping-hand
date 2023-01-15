@@ -13,6 +13,7 @@ export interface TextFieldProps extends InputProps {
 	label: string;
 	isInvalid?: boolean;
 	className?: string;
+	inputClassName?: string;
 }
 
 const TextField: FC<
@@ -21,7 +22,14 @@ const TextField: FC<
 			| InputHTMLAttributes<HTMLInputElement>
 			| TextareaHTMLAttributes<HTMLTextAreaElement>
 		)
-> = ({className, element: Element, label, isInvalid, ...props}) => {
+> = ({
+	className,
+	inputClassName,
+	element: Element,
+	label,
+	isInvalid,
+	...props
+}) => {
 	const id = useId();
 	return (
 		<div
@@ -29,7 +37,12 @@ const TextField: FC<
 				[styles.invalid]: isInvalid
 			})}
 		>
-			<Element id={id} required className={styles.input} {...props} />
+			<Element
+				id={id}
+				required
+				className={classNames(inputClassName, styles.input)}
+				{...props}
+			/>
 			<label className={styles.label} htmlFor={id}>
 				{label}
 			</label>
