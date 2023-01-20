@@ -9,6 +9,7 @@ import {
 	PROFILE_TASKS_ROUTE,
 	SETTINGS_ACCOUNT_ROUTE,
 	SETTINGS_INTERFACE_ROUTE,
+	STATISTICS_ROUTE,
 	TASKS_ROUTE
 } from "@utils/constants/routes";
 import {
@@ -18,7 +19,8 @@ import {
 	IoLayers,
 	IoMegaphone,
 	IoPerson,
-	IoSettings
+	IoSettings,
+	IoStatsChart
 } from "react-icons/io5";
 import {getIsIntegrationsConnected} from "@store/integrations/integrations.selectors";
 import {getIsAuth, getIsAuthSubmitting} from "@store/auth/auth.selectors";
@@ -74,6 +76,12 @@ const HeaderMenu = memo(() => {
 					path={TASKS_ROUTE}
 					icon={IoLayers}
 					text="Завдання"
+				/>
+				<MenuItem
+					onClick={handleItemClick}
+					path={STATISTICS_ROUTE}
+					icon={IoStatsChart}
+					text="Статистика"
 				/>
 				<MenuItem
 					onClick={handleItemClick}

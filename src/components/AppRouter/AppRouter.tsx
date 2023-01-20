@@ -14,6 +14,7 @@ import {
 	SETTINGS_INTERFACE_ROUTE,
 	SETTINGS_ROUTE,
 	SIGNUP_ROUTE,
+	STATISTICS_ROUTE,
 	TASK_ROUTE,
 	TASKS_ROUTE
 } from "@utils/constants/routes";
@@ -34,6 +35,7 @@ import PrivateRoute from "@components/PrivateRoute/PrivateRoute";
 import IntegrationPage from "@views/Integration/IntegrationPage/IntegrationPage";
 import IntegrationAuth from "@views/Integration/IntegrationAuth/IntegrationAuth";
 import TritonIntegration from "@views/Integration/TritonIntegration/TritonIntegration";
+import StatisticsPage from "@views/Statistics/StatisticsPage/StatisticsPage";
 
 const AppRouter = () => (
 	<Routes>
@@ -67,6 +69,15 @@ const AppRouter = () => (
 			<Route path={INTEGRATION_AUTH_ROUTE} element={<IntegrationAuth />} />
 			<Route path="*" element={<Navigate to={INTEGRATION_AUTH_ROUTE} />} />
 		</Route>
+
+		<Route
+			path={STATISTICS_ROUTE}
+			element={
+				<PrivateRoute>
+					<StatisticsPage />
+				</PrivateRoute>
+			}
+		/>
 
 		<Route
 			path={PROFILE_ROUTE}

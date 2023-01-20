@@ -1,0 +1,20 @@
+.table-container {
+	border-radius: var(--border-radius-base);
+	overflow: hidden;
+}
+
+.table {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 25%);
+	grid-template-rows: 100% auto;
+}
+
+.row {
+	display: block;
+	width: 100%;
+	text-align: center;
+	padding: 0.5em 0.5em;
+	font-size: 16px;
+	border-bottom: solid 1px var(--color-divider);
+	background-color: var(--color-primary-light);
+}
