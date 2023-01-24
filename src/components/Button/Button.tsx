@@ -13,6 +13,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	size?: Size;
 	className?: string;
 	startIcon?: IconType;
+	endIcon?: IconType;
 	isActive?: boolean;
 	children?: ReactNode;
 }
@@ -22,7 +23,8 @@ const Button: FC<ButtonProps> = ({
 	className,
 	variant = "primary",
 	size = "medium",
-	startIcon: Icon,
+	startIcon: StartIcon,
+	endIcon: EndIcon,
 	isActive,
 	isSubmit,
 	children,
@@ -32,15 +34,23 @@ const Button: FC<ButtonProps> = ({
 		className={classNames(
 			className,
 			styles.button,
-			{[styles["icon-btn"]]: !!Icon, [styles.active]: isActive},
+			{
+				[styles["icon-btn"]]: !!StartIcon || !!EndIcon,
+				[styles.active]: isActive
+			},
 			styles[variant],
 			styles[size]
 		)}
 		type={isSubmit ? "submit" : "button"}
 		{...props}
 	>
-		{Icon && <Icon className={styles.icon} size={20} />}
-		{Icon ? <span>{text || children}</span> : text || children}
+		{StartIcon && (
+			<StartIcon className={classNames(styles.icon, styles.start)} size={20} />
+		)}
+		{StartIcon || EndIcon ? <span>{text || children}</span> : text || children}
+		{EndIcon && (
+			<EndIcon className={classNames(styles.icon, styles.end)} size={20} />
+		)}
 	</button>
 );
 

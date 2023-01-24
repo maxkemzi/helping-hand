@@ -1,47 +1,60 @@
-import React from "react";
+import React, {FC} from "react";
 import classNames from "classnames";
 import styles from "./Table.module.scss";
 
-const Table = () => (
+interface TableProps {
+	koef: number;
+}
+
+const Table: FC<TableProps> = ({koef}) => (
 	<div className={styles["table-container"]} role="table">
 		<div className={classNames(styles.header, styles.table)} role="rowgroup">
-			<div className={styles.row} role="columnheader">
-				Country
+			<div className={classNames(styles.row, styles.head)} role="columnheader">
+				Курс
 			</div>
-			<div className={styles.row} role="columnheader">
-				Events
+			<div className={classNames(styles.row, styles.head)} role="columnheader">
+				Ім&apos;я
 			</div>
-			<div className={styles.row} role="columnheader">
-				Time
+			<div className={classNames(styles.row, styles.head)} role="columnheader">
+				Відповідей
 			</div>
-			<div className={styles.row} role="columnheader">
-				Fees
+			<div className={classNames(styles.row, styles.head)} role="columnheader">
+				Семестр
+			</div>
+			<div className={classNames(styles.row, styles.head)} role="columnheader">
+				Результат
 			</div>
 		</div>
 		<div className={styles.table} role="rowgroup">
 			<div className={styles.row} role="cell">
-				United Kingdom
+				1
 			</div>
 			<div className={styles.row} role="cell">
-				Stonehenge, Windsor and Bath with Pub Lunch
+				Max
 			</div>
 			<div className={styles.row} role="cell">
-				19 Sep, 1p.m.
+				12
 			</div>
 			<div className={styles.row} role="cell">
-				US$500
+				2
 			</div>
 			<div className={styles.row} role="cell">
-				United Kingdom
+				20
 			</div>
 			<div className={styles.row} role="cell">
-				Stonehenge, Windsor and Bath with Pub Lunch
+				2
 			</div>
 			<div className={styles.row} role="cell">
-				19 Sep, 1p.m.
+				Andrew
 			</div>
 			<div className={styles.row} role="cell">
-				US$500
+				12
+			</div>
+			<div className={styles.row} role="cell">
+				2
+			</div>
+			<div className={styles.row} role="cell">
+				12 * {koef} = {Math.round(12 * koef * 10) / 10}
 			</div>
 		</div>
 	</div>

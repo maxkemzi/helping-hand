@@ -11,9 +11,16 @@
 }
 
 .icon {
-	margin-right: 8px;
 	flex-shrink: 0;
 	transition: fill var(--transition-base);
+
+	&.start {
+		margin-right: 8px;
+	}
+
+	&.end {
+		margin-left: 8px;
+	}
 }
 
 .big {
