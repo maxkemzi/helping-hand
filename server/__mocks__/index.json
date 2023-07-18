@@ -1,0 +1,15 @@
+{
+	"auth": {
+		"user": {
+			"id": "user1",
+			"username": "testuser",
+			"password": "Testuser1",
+			"description": "description",
+			"photo": ""
+		},
+		"tokens": {
+			"access": "accessToken",
+			"refresh": "refreshToken"
+		}
+	}
+}
