@@ -70,7 +70,7 @@ const config = {
 		}),
 		new CleanWebpackPlugin(),
 		new webpack.DefinePlugin({
-			"process.env.API_URL": JSON.stringify("http://localhost:8181/api/v2/"),
+			"process.env.API_URL": JSON.stringify("http://localhost:5000/api"),
 			"process.env.APP_URL": JSON.stringify("http://localhost:3000")
 		})
 	]
