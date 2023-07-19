@@ -1,11 +1,1 @@
-{
-  "tasks": [],
-  "users": [
-    {
-			"id": "user1",
-			"username": "testuser",
-			"description": "description",
-			"photo": ""
-		}
-  ]
-}
+{}

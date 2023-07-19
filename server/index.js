@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const router = require("./routers");
-const errorMiddleware = require("./middlwares/errorMiddleware");
+const {errorMiddleware} = require("./middlewares");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
