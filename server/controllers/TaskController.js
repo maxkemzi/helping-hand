@@ -1,17 +1,17 @@
-const {TaskService} = require("../services");
+const {TaskService, UserService} = require("../services");
 
 class TaskController {
 	static async create(req, res, next) {
 		try {
-			const {title, text, tags, course, subject} = req.body;
+			const {title, text, tags} = req.body;
 			const userId = req.user?.id;
 
-			const task = await TaskService.create(userId, {
+			const creator = await UserService.getById(userId);
+			const task = await TaskService.create({
 				title,
 				text,
 				tags,
-				course,
-				subject
+				creator
 			});
 
 			res.status(201).json(task);

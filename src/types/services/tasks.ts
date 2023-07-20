@@ -8,6 +8,4 @@ export interface CreateTaskArgs {
 	title: string;
 	text: string;
 	tags: string[];
-	course: string[];
-	subject: string[];
 }

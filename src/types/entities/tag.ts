@@ -1,6 +1,3 @@
-interface Tag {
-	uuid?: string;
-	text: string;
-}
+type Tag = string;
 
 export default Tag;

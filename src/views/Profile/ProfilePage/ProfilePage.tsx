@@ -1,27 +1,30 @@
-import React, {useEffect} from "react";
 import Avatar from "@components/Avatar/Avatar";
-import Typography from "@components/Typography/Typography";
-import {Outlet, useParams} from "react-router-dom";
-import ProfileTabs from "@views/Profile/ProfileTabs/ProfileTabs";
 import MainLayout from "@components/MainLayout/MainLayout";
-import {IoCheckmark} from "react-icons/io5";
-import ScreenSizes from "@utils/constants/screenSizes";
-import classNames from "classnames";
-import {getProfile} from "@store/profile/profile.selectors";
+import Typography from "@components/Typography/Typography";
 import {getIsAppInitializing} from "@store/app/app.selectors";
-import styles from "./ProfilePage.module.scss";
-import useWindowSize from "../../../hooks/useWindowSize";
+import {getAuthUser} from "@store/auth/auth.selectors";
+import {getProfile} from "@store/profile/profile.selectors";
+import ScreenSizes from "@utils/constants/screenSizes";
+import ProfileTabs from "@views/Profile/ProfileTabs/ProfileTabs";
+import classNames from "classnames";
+import React, {useEffect} from "react";
+import {IoCheckmark} from "react-icons/io5";
+import {Outlet, useParams} from "react-router-dom";
 import useAppDispatch from "../../../hooks/useAppDispatch";
 import useAppSelector from "../../../hooks/useAppSelector";
-import TasksService from "../../../services/tasks/tasks.service";
+import useWindowSize from "../../../hooks/useWindowSize";
 import AppService from "../../../services/app/app.service";
+import TasksService from "../../../services/tasks/tasks.service";
+import styles from "./ProfilePage.module.scss";
 
 const ProfilePage = () => {
-	const {id} = useParams();
+	const params = useParams();
 	const dispatch = useAppDispatch();
 	const {width} = useWindowSize();
 	const profile = useAppSelector(getProfile);
+	const user = useAppSelector(getAuthUser);
 	const isInitializing = useAppSelector(getIsAppInitializing);
+	const id = params.id || user.id;
 
 	useEffect(() => {
 		dispatch(AppService.initializeProfilePage(id));
@@ -70,7 +73,7 @@ const ProfilePage = () => {
 								</Typography>
 							</div>
 						</div>
-						<ProfileTabs id={id} />
+						<ProfileTabs />
 						<div className={styles.content}>
 							<Outlet />
 						</div>

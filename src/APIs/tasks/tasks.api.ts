@@ -1,49 +1,26 @@
-import {
-	LatestTasksResponse,
-	TaskResponse,
-	TasksResponse
-} from "@customTypes/APIs/tasks";
+import {TaskResponse, TasksResponse} from "@customTypes/APIs/tasks";
 import {CreateTaskArgs, TasksParams} from "@customTypes/services/tasks";
-import getFormData from "@utils/helpers/getFormData";
 import $api from "../../axios";
 
 class TasksAPI {
 	static fetchAll({page, limit, search}: TasksParams) {
-		return $api.get<TasksResponse>("task/get_tasks", {
-			params: {page, per_page: limit, ...(search && {text: search})}
-		});
+		return $api.get<TasksResponse>("/task", {params: {page, limit, search}});
 	}
 
 	static fetchLatest(id?: string) {
-		return $api.get<LatestTasksResponse>("user/get_latest_tasks", {
-			params: {user_uuid: id}
-		});
-	}
-
-	static search({page, limit, search}: TasksParams) {
-		return $api.get<TasksResponse>("task/search_task", {
-			params: {page, per_page: limit, text: search}
-		});
+		return $api.get<TasksResponse>(`/task/creator/${id}`);
 	}
 
 	static fetchOne(id: string) {
-		return $api.get<TaskResponse>("task/get_task", {params: {task_uuid: id}});
+		return $api.get<TaskResponse>(`/task/${id}`);
 	}
 
-	static createOne({title, text, tags, course, subject}: CreateTaskArgs) {
-		const data = getFormData({
-			title,
-			text,
-			tags: JSON.stringify(tags),
-			course: JSON.stringify(course),
-			subject: JSON.stringify(subject)
-		});
-		return $api.post("task/create_task", data);
+	static createOne({title, text, tags}: CreateTaskArgs) {
+		return $api.post("/task", {title, text, tags});
 	}
 
 	static upvote(id: string) {
-		const data = getFormData({task_uuid: id});
-		return $api.post("task/upvote_task", data);
+		return $api.post(`/task/upvote/${id}`);
 	}
 }
 

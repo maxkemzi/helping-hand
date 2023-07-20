@@ -118,13 +118,13 @@ const TasksPage = () => {
 									<div className={styles.items}>
 										{tasks.map(task => (
 											<TaskItem
-												key={task.uuid}
-												id={task.uuid}
+												key={task.id}
+												id={task.id}
 												tags={task.tags}
-												creator={task.owner.profile}
+												creator={task.creator}
 												description={task.text}
 												title={task.title}
-												date={getParsedDate(task.created_at)}
+												date={getParsedDate(task.createdAt)}
 												isActive={task.status === "open"}
 											/>
 										))}

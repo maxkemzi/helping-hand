@@ -7,7 +7,7 @@ import {
 } from "@store/profile/profile.types";
 
 export const initialState: ProfileSliceState = {
-	profile: {username: "", photo: "", description: "", uuid: ""},
+	profile: {username: "", photo: "", description: "", id: ""},
 	statistics: {
 		taskCount: 0,
 		commentCount: 0

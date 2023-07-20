@@ -1,7 +1,7 @@
 interface User {
 	username: string;
 	photo: string;
-	uuid: string;
+	id: string;
 	description: string;
 }
 

@@ -1,7 +1,6 @@
 import TagItem from "@components/TagItem/TagItem";
 import Typography from "@components/Typography/Typography";
 import Vote from "@components/Vote/Vote";
-import {VoteStatus} from "@customTypes/APIs/global";
 import Tag from "@customTypes/entities/tag";
 import React, {FC, MouseEventHandler} from "react";
 import styles from "./TaskTItleSection.module.scss";
@@ -11,8 +10,8 @@ interface TaskTitleSectionProps {
 	tags: Tag[];
 	isVoting: boolean;
 	onUpvote: MouseEventHandler;
-	score: number;
-	voteStatus: VoteStatus;
+	upvoteCount: number;
+	isUpvoted: boolean;
 }
 
 const TaskTitleSection: FC<TaskTitleSectionProps> = ({
@@ -20,8 +19,8 @@ const TaskTitleSection: FC<TaskTitleSectionProps> = ({
 	tags,
 	isVoting,
 	onUpvote,
-	score,
-	voteStatus
+	upvoteCount,
+	isUpvoted
 }) => (
 	<>
 		<div className={styles["title-wrapper"]}>
@@ -31,8 +30,8 @@ const TaskTitleSection: FC<TaskTitleSectionProps> = ({
 			<div className={styles["title-right"]}>
 				<Vote
 					className={styles.vote}
-					status={voteStatus}
-					score={score}
+					status={isUpvoted ? "up" : "down"}
+					score={upvoteCount}
 					onUpvote={onUpvote}
 					isDisabled={isVoting}
 				/>
@@ -41,7 +40,7 @@ const TaskTitleSection: FC<TaskTitleSectionProps> = ({
 		{tags.length !== 0 && (
 			<div className={styles.tags}>
 				{tags.map(tag => (
-					<TagItem key={tag.uuid} text={tag.text} />
+					<TagItem key={tag} text={tag} />
 				))}
 			</div>
 		)}

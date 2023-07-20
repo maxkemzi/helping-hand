@@ -1,16 +1,14 @@
 const {ApiError} = require("../error");
+const {TaskStatus} = require("../utils/constants");
 const DbService = require("./DbService");
-const UserService = require("./UserService");
 
 class TaskService {
 	static #db = new DbService("tasks");
 
-	static async create(userId, data) {
-		const creator = await UserService.getById(userId);
-
+	static async create(data) {
 		const task = await TaskService.#db.create({
 			upvotes: [],
-			creator,
+			status: TaskStatus.OPEN,
 			...data
 		});
 
@@ -23,12 +21,11 @@ class TaskService {
 			throw new ApiError(400, "Task by provided id doesn't exist.");
 		}
 
-		if (task.upvotes.includes(userId)) {
-			throw new ApiError(400, "Task has already been upvoted.");
-		}
-
+		const isUpvoted = task.upvotes.includes(userId);
 		const updatedTask = await TaskService.#db.updateById(id, {
-			upvotes: [...task.upvotes, userId]
+			upvotes: isUpvoted
+				? task.upvotes.filter(el => el !== userId)
+				: [...task.upvotes, userId]
 		});
 
 		return updatedTask;
@@ -47,11 +44,11 @@ class TaskService {
 		return {tasks: paginatedTasks, totalCount};
 	}
 
-	static async getAllByUserId(userId, {offset, limit, search}) {
+	static async getAllByUserId(userId, {offset, limit, search} = {}) {
 		const tasks = await TaskService.#db.getAll();
 
 		const filteredTasks = tasks
-			.filter(task => task.creatorId === userId)
+			.filter(task => task.creator.id === userId)
 			.filter(task => task.title.toLowerCase().includes(search.toLowerCase()));
 
 		const paginatedTasks = filteredTasks.slice(offset, offset + limit);

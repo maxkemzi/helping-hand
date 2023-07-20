@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useMemo} from "react";
 import Button from "@components/Button/Button";
 import TagItem from "@components/TagItem/TagItem";
 import {NavLink} from "react-router-dom";
@@ -37,7 +37,7 @@ const TaskItem: FC<TaskItemProps> = ({
 			<StatusIcon variant={isActive ? "active" : "inactive"} />
 		</div>
 		<UserInfo
-			path={`${PROFILE_ROUTE}/${creator.uuid}/tasks`}
+			path={`${PROFILE_ROUTE}/${creator.id}/tasks`}
 			className={styles.user}
 			avatarPath={creator.photo}
 			username={creator.username}
@@ -47,7 +47,7 @@ const TaskItem: FC<TaskItemProps> = ({
 		</Typography>
 		<div className={styles.tags}>
 			{tags.map(tag => (
-				<TagItem key={tag.uuid} text={tag.text} />
+				<TagItem key={tag} text={tag} />
 			))}
 		</div>
 		<div className={styles.footer}>

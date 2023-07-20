@@ -116,13 +116,13 @@ const ProfileTasks = () => {
 			>
 				{tasks.map(task => (
 					<TaskItem
-						key={task.uuid}
-						id={task.uuid}
-						creator={task.owner.profile}
+						key={task.id}
+						id={task.id}
+						creator={task.creator}
 						tags={task.tags}
 						description={task.text}
 						title={task.title}
-						date={task.created_at}
+						date={task.createdAt}
 						isActive={task.status === "open"}
 					/>
 				))}

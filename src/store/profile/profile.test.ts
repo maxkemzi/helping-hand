@@ -24,7 +24,7 @@ describe("profile reducer should work properly", () => {
 	test("should set the profile object", () => {
 		const previousState: ProfileSliceState = {
 			...initialState,
-			profile: {username: "", photo: "", description: "", uuid: ""}
+			profile: {username: "", photo: "", description: "", id: ""}
 		};
 		expect(
 			reducer(
@@ -33,7 +33,7 @@ describe("profile reducer should work properly", () => {
 					username: "Max",
 					photo: "avatar",
 					description: "",
-					uuid: ""
+					id: ""
 				})
 			)
 		).toEqual({

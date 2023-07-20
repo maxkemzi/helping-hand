@@ -1,6 +1,7 @@
 import Divider from "@components/Divider/Divider";
 import MainLayout from "@components/MainLayout/MainLayout";
 import {getIsAppInitializing} from "@store/app/app.selectors";
+import {getAuthUser} from "@store/auth/auth.selectors";
 import {
 	getComments,
 	getCommentsLimit,
@@ -28,6 +29,7 @@ import styles from "./TaskPage.module.scss";
 const TaskPage: FC = () => {
 	const {id} = useParams();
 	const dispatch = useAppDispatch();
+	const user = useAppSelector(getAuthUser);
 	const task = useAppSelector(getTask);
 	const comments = useAppSelector(getComments);
 	const isInitializing = useAppSelector(getIsAppInitializing);
@@ -57,20 +59,20 @@ const TaskPage: FC = () => {
 						<div className="wrapper">
 							<TaskTitleSection
 								onUpvote={handleUpvote}
-								voteStatus={task.my_vote.vote}
-								score={task.score}
+								isUpvoted={task.upvotes.includes(user.id)}
+								upvoteCount={task.upvotes.length}
 								isVoting={isVoting}
 								title={task.title}
 								tags={task.tags}
 							/>
 							<Divider className={styles.divider} />
 							<TaskStatsSection
-								createdDate={getParsedDate(task.created_at)}
-								updatedDate={getParsedDate(task.updated_at)}
+								createdDate={getParsedDate(task.createdAt)}
+								updatedDate={getParsedDate(task.updatedAt)}
 							/>
 							<Divider className={styles.divider} />
 							<TaskQuestionSection
-								creator={task.owner.profile}
+								creator={task.creator}
 								description={task.text}
 							/>
 							<Divider className={styles.divider} />
@@ -86,7 +88,7 @@ const TaskPage: FC = () => {
 								/>
 							)}
 							<Divider className={styles.divider} />
-							<TaskCommentFormSection id={task.uuid} />
+							<TaskCommentFormSection id={task.id} />
 						</div>
 					)}
 				</div>

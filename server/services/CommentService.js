@@ -58,9 +58,12 @@ class CommentService {
 
 	static async getByTaskId(taskId) {
 		const comments = await CommentService.#db.getAll();
+		return comments.filter(el => el.task.id === taskId);
+	}
 
-		const filteredComments = comments.filter(el => el.taskId === taskId);
-		return filteredComments;
+	static async getAllByUserId(userId) {
+		const comments = await CommentService.#db.getAll();
+		return comments.filter(el => el.user.id === userId);
 	}
 }
 

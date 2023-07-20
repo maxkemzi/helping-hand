@@ -1,9 +1,13 @@
-import {UserResponse} from "@customTypes/APIs/user";
+import {UserResponse, StatisticsResponse} from "@customTypes/APIs/user";
 import $api from "../../axios";
 
 class UsersAPI {
 	static fetchOne(id?: string) {
-		return $api.get<UserResponse>("user/get_user", {params: {user_uuid: id}});
+		return $api.get<UserResponse>(`/user/${id}`);
+	}
+
+	static fetchStatistics(id?: string) {
+		return $api.get<StatisticsResponse>(`/user/${id}/statistics`);
 	}
 }
 

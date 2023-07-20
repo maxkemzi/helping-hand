@@ -30,7 +30,12 @@ class DbService {
 	async create(data) {
 		const db = await this.#getDb();
 
-		const newEntity = {id: nanoid(), ...data};
+		const newEntity = {
+			id: nanoid(),
+			createdAt: new Date().toISOString(),
+			updatedAt: new Date().toISOString(),
+			...data
+		};
 		const updatedDb = {
 			...db,
 			[this.#entityKey]: [...db[this.#entityKey], newEntity]
@@ -68,7 +73,9 @@ class DbService {
 		const updatedDb = {
 			...db,
 			[this.#entityKey]: db[this.#entityKey].map(el =>
-				el.id === id ? {...el, ...data} : el
+				el.id === id
+					? {...el, ...data, updatedAt: new Date().toISOString()}
+					: el
 			)
 		};
 		await fsPromise.writeFile(

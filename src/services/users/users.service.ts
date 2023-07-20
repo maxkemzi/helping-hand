@@ -12,17 +12,22 @@ class UsersService {
 			dispatch(setIsFetching(true));
 			try {
 				const response = await UsersAPI.fetchOne(id);
-				const {
-					user: {profile, statistics}
-				} = response.data.result;
 
-				dispatch(setProfile(profile));
-				dispatch(
-					setStatistics({
-						commentCount: statistics.comment_count,
-						taskCount: statistics.task_count
-					})
-				);
+				dispatch(setProfile(response.data));
+			} catch (e) {
+				console.log(e);
+			} finally {
+				dispatch(setIsFetching(false));
+			}
+		};
+	}
+
+	static fetchStatistics(id?: string) {
+		return async (dispatch: AppDispatch) => {
+			dispatch(setIsFetching(true));
+			try {
+				const response = await UsersAPI.fetchStatistics(id);
+				dispatch(setStatistics(response.data));
 			} catch (e) {
 				console.log(e);
 			} finally {

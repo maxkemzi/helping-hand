@@ -12,7 +12,6 @@ const TasksSortDropdowns = () => {
 	});
 
 	const handleClose = () => setIsOpen(false);
-
 	const toggleOpen = () => setIsOpen(!isOpen);
 
 	const handleClick = (option: IDropdownOption) => {

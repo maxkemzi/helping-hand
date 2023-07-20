@@ -8,7 +8,7 @@ import {
 } from "@store/auth/auth.types";
 
 export const initialState: AuthSliceState = {
-	user: {username: "", photo: "", uuid: "", description: ""},
+	user: {username: "", photo: "", id: "", description: ""},
 	isAuth: false,
 	isFetching: false,
 	isSubmitting: false

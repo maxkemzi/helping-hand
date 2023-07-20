@@ -11,21 +11,14 @@ const initialState: TaskSliceState = {
 	task: {
 		title: "",
 		status: "closed",
-		owner: {profile: {username: "", photo: "", description: "", uuid: ""}},
-		created_at: "Sat, 17 Sep 2022 12:03:43 GMT",
+		creator: {username: "", photo: "", description: "", id: ""},
+		createdAt: "Sat, 17 Sep 2022 12:03:43 GMT",
 		text: "",
-		positive_score: 0,
 		tags: [],
+		upvotes: [],
 		category: "",
-		negative_score: 0,
-		score: 0,
-		uuid: "",
-		updated_at: "Sat, 17 Sep 2022 12:03:43 GMT",
-		my_vote: {
-			post: "",
-			user: "",
-			vote: null
-		}
+		id: "",
+		updatedAt: "Sat, 17 Sep 2022 12:03:43 GMT"
 	},
 	isFetching: false,
 	isVoting: false

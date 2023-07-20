@@ -6,8 +6,12 @@ const taskRouter = Router();
 
 taskRouter.post("/", authMiddleware, TaskController.create);
 taskRouter.post("/upvote/:id", authMiddleware, TaskController.upvoteById);
-taskRouter.get("/", TaskController.getAll);
-taskRouter.get("/:id", TaskController.getById);
-taskRouter.get("/creator/:userId", TaskController.getAllByUserId);
+taskRouter.get("/", authMiddleware, TaskController.getAll);
+taskRouter.get("/:id", authMiddleware, TaskController.getById);
+taskRouter.get(
+	"/creator/:userId",
+	authMiddleware,
+	TaskController.getAllByUserId
+);
 
 module.exports = taskRouter;
