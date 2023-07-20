@@ -1,13 +1,13 @@
 import axios from "axios";
-import getFormData from "@utils/helpers/getFormData";
 import AuthResponse from "@customTypes/APIs/auth";
 
 const $api = axios.create({
+	withCredentials: true,
 	baseURL: process.env.API_URL
 });
 
 $api.interceptors.request.use(config => {
-	config.headers.Bearer = localStorage.getItem("accessToken");
+	config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
 	return config;
 });
 
@@ -22,22 +22,12 @@ $api.interceptors.response.use(
 		) {
 			originalRequest.isRetry = true;
 			try {
-				const data = getFormData({
-					refresh_token: localStorage.getItem("refreshToken")
-				});
-				const response = await axios.post<AuthResponse>(
-					`${process.env.API_URL}auth/check_access_token`,
-					data
+				const response = await axios.get<AuthResponse>(
+					`${process.env.API_URL}/auth/check`,
+					{withCredentials: true}
 				);
+				localStorage.setItem("token", response.data.token);
 
-				localStorage.setItem(
-					"accessToken",
-					response.data.result.session.access_token
-				);
-				localStorage.setItem(
-					"refreshToken",
-					response.data.result.session.refresh_token
-				);
 				return await $api.request(originalRequest);
 			} catch (e) {
 				console.log("Not authorized!");

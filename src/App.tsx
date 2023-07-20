@@ -16,7 +16,7 @@ const App: FC = () => {
 
 	// Checking for authorization
 	useEffect(() => {
-		if (localStorage.getItem("accessToken")) {
+		if (localStorage.getItem("token")) {
 			const initialize = async () => {
 				setIsFetching(true);
 				try {

@@ -1,35 +1,31 @@
 import axios from "axios";
 import AuthResponse from "@customTypes/APIs/auth";
 import {LoginArgs, RegisterArgs} from "@customTypes/services/auth";
-import getFormData from "@utils/helpers/getFormData";
 import $api from "../../axios";
 
 class AuthAPI {
 	static register({username, password}: RegisterArgs) {
-		const data = getFormData({login: username, password});
-		return axios.post<AuthResponse>(
-			`${process.env.API_URL}auth/register`,
-			data
-		);
+		return $api.post<AuthResponse>("/auth/register", {
+			username,
+			password
+		});
 	}
 
 	static login({username, password}: LoginArgs) {
-		const data = getFormData({login: username, password});
-		return axios.post<AuthResponse>(`${process.env.API_URL}auth/login`, data);
+		return $api.post<AuthResponse>("/auth/login", {
+			username,
+			password
+		});
 	}
 
 	static check() {
-		const data = getFormData({
-			refresh_token: localStorage.getItem("refreshToken")
+		return axios.get<AuthResponse>(`${process.env.API_URL}/auth/check`, {
+			withCredentials: true
 		});
-		return axios.post<AuthResponse>(
-			`${process.env.API_URL}auth/check_access_token`,
-			data
-		);
 	}
 
 	static logout() {
-		return $api.post("auth/logout");
+		return $api.post("/auth/logout");
 	}
 }
 

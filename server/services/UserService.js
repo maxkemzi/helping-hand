@@ -1,4 +1,5 @@
 const DbService = require("./DbService");
+const {ApiError} = require("../error");
 
 class UserService {
 	static #db = new DbService("users");

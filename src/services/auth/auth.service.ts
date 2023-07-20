@@ -20,14 +20,11 @@ class AuthService {
 			dispatch(setIsSubmitting(true));
 			try {
 				const response = await AuthAPI.register({username, password});
-				const accessToken = response.data.result.session.access_token;
-				const refreshToken = response.data.result.session.refresh_token;
-				const user = response.data.result.user.profile;
+				const {token, user} = response.data;
 
 				console.log(response);
 
-				localStorage.setItem("accessToken", accessToken);
-				localStorage.setItem("refreshToken", refreshToken);
+				localStorage.setItem("token", token);
 				dispatch(setIsAuth(true));
 				dispatch(setUser(user));
 				onSuccess();
@@ -49,14 +46,11 @@ class AuthService {
 			dispatch(setIsSubmitting(true));
 			try {
 				const response = await AuthAPI.login({username, password});
-				const accessToken = response.data.result.session.access_token;
-				const refreshToken = response.data.result.session.refresh_token;
-				const user = response.data.result.user.profile;
+				const {token, user} = response.data;
 
 				console.log(response);
 
-				localStorage.setItem("accessToken", accessToken);
-				localStorage.setItem("refreshToken", refreshToken);
+				localStorage.setItem("token", token);
 				dispatch(setIsAuth(true));
 				dispatch(setUser(user));
 				onSuccess();
@@ -74,13 +68,11 @@ class AuthService {
 			dispatch(setIsFetching(true));
 			try {
 				const response = await AuthAPI.check();
-				console.log(response);
-				const accessToken = response.data.result.session.access_token;
-				const refreshToken = response.data.result.session.refresh_token;
-				const user = response.data.result.user.profile;
+				const {token, user} = response.data;
 
-				localStorage.setItem("accessToken", accessToken);
-				localStorage.setItem("refreshToken", refreshToken);
+				console.log(response);
+
+				localStorage.setItem("token", token);
 				dispatch(setIsAuth(true));
 				dispatch(setUser(user));
 			} catch (e) {
@@ -96,8 +88,7 @@ class AuthService {
 			dispatch(setIsSubmitting(true));
 			try {
 				await AuthAPI.logout();
-				localStorage.removeItem("accessToken");
-				localStorage.removeItem("refreshToken");
+				localStorage.removeItem("token");
 				dispatch(setIsAuth(false));
 				dispatch(resetUser());
 				onSuccess();

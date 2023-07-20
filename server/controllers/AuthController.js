@@ -37,14 +37,14 @@ class AuthController {
 			const usernameDoesNotExist = user == null;
 			if (usernameDoesNotExist) {
 				throw new ApiError(
-					404,
+					400,
 					`User with username of ${username} doesn't exist.`
 				);
 			}
 
 			const passwordIsWrong = user.password !== password;
 			if (passwordIsWrong) {
-				throw new ApiError(404, "Wrong password.");
+				throw new ApiError(400, "Wrong password.");
 			}
 
 			const {token} = await TokenService.createOrUpdate(user);
