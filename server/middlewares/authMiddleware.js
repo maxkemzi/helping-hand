@@ -1,25 +1,24 @@
 const {ApiError} = require("../error");
-const {
-	auth: {tokens, user}
-} = require("../__mocks__/index.json");
+const {TokenService} = require("../services");
 
-const authMiddleware = (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
 	try {
 		const authorizationHeader = req.headers.authorization;
 		if (!authorizationHeader) {
 			throw new ApiError(403, "Not authorized.");
 		}
 
-		const accessToken = authorizationHeader.split(" ")[1];
-		if (!accessToken) {
+		const token = authorizationHeader.split(" ")[1];
+		if (!token) {
 			throw new ApiError(403, "Not authorized.");
 		}
 
-		const accessTokenIsInvalid = accessToken !== tokens.access;
-		if (accessTokenIsInvalid) {
+		const tokenIsInvalid = !(await TokenService.isValid(token));
+		if (tokenIsInvalid) {
 			throw new ApiError(403, "Not authorized.");
 		}
 
+		const {user} = await TokenService.getByToken(token);
 		req.user = user;
 		next();
 	} catch (e) {

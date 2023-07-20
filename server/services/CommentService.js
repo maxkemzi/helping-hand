@@ -1,14 +1,19 @@
 const DbService = require("./DbService");
 const {ApiError} = require("../error");
+const UserService = require("./UserService");
+const TaskService = require("./TaskService");
 
 class CommentService {
 	static #db = new DbService("comments");
 
 	static async create({taskId, userId, text}) {
+		const task = await TaskService.getById(taskId);
+		const user = await UserService.getById(userId);
+
 		const comment = await CommentService.#db.create({
 			text,
-			taskId,
-			userId,
+			task,
+			user,
 			upvotes: [],
 			downvotes: []
 		});

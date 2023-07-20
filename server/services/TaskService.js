@@ -1,13 +1,16 @@
 const {ApiError} = require("../error");
 const DbService = require("./DbService");
+const UserService = require("./UserService");
 
 class TaskService {
 	static #db = new DbService("tasks");
 
-	static async create(creatorId, data) {
+	static async create(userId, data) {
+		const creator = await UserService.getById(userId);
+
 		const task = await TaskService.#db.create({
 			upvotes: [],
-			creatorId,
+			creator,
 			...data
 		});
 

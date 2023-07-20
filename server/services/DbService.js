@@ -44,6 +44,24 @@ class DbService {
 		return newEntity;
 	}
 
+	async deleteById(id) {
+		const db = await this.#getDb();
+		const entities = db[this.#entityKey];
+
+		const entityToDelete = entities.find(el => el.id === id);
+		const updatedDb = {
+			...db,
+			[this.#entityKey]: entities.filter(el => el.id !== id)
+		};
+		await fsPromise.writeFile(
+			this.#DB_FILE_PATH,
+			JSON.stringify(updatedDb, null, 2),
+			"utf-8"
+		);
+
+		return entityToDelete;
+	}
+
 	async updateById(id, data) {
 		const db = await this.#getDb();
 
