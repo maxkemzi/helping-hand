@@ -20,13 +20,13 @@ const ProfileSearchBar: FC<ProfileSearchBarProps> = memo(
 		const handleClear = () => {
 			dispatch(setSearchQuery(""));
 			setValue("");
-			dispatch(TasksService.search({page: 1, limit, search: ""}));
+			dispatch(TasksService.fetchAll({page: 1, limit, search: ""}));
 		};
 
 		const handleSearch = () => {
 			dispatch(setSearchQuery(value.toLowerCase().trim()));
 			dispatch(
-				TasksService.search({
+				TasksService.fetchAll({
 					page: 1,
 					limit,
 					search: value.toLowerCase().trim()

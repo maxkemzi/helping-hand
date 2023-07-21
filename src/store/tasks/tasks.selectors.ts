@@ -16,3 +16,6 @@ export const getIsTaskCreating = (state: RootState) =>
 	state.tasksState.isCreating;
 
 export const getHasMoreTasks = (state: RootState) => state.tasksState.hasMore;
+
+export const getShouldRefetchTasks = (state: RootState) =>
+	state.tasksState.shouldRefetch;

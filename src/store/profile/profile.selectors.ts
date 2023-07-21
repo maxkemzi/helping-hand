@@ -8,3 +8,6 @@ export const getProfileStatistics = (state: RootState): ProfileStatistics =>
 
 export const getIsProfileFetching = (state: RootState) =>
 	state.profileState.isFetching;
+
+export const getIsStatisticsFetching = (state: RootState) =>
+	state.profileState.isStatisticsFetching;

@@ -1,6 +1,7 @@
 const {ApiError} = require("../error");
 const {TaskStatus} = require("../utils/constants");
 const DbService = require("./DbService");
+const {hasSameMembers} = require("../utils/helpers");
 
 class TaskService {
 	static #db = new DbService("tasks");
@@ -31,12 +32,15 @@ class TaskService {
 		return updatedTask;
 	}
 
-	static async getAll({offset, limit, search}) {
+	static async getAll({offset, limit, search, tags}) {
 		const tasks = await TaskService.#db.getAll();
 
-		const filteredTasks = tasks.filter(task =>
-			task.title.toLowerCase().includes(search.toLowerCase())
-		);
+		let filteredTasks = tasks
+			.filter(task => task.title.toLowerCase().includes(search.toLowerCase()));
+
+		if (tags != null) {
+			filteredTasks = filteredTasks.filter(task => hasSameMembers(task.tags, tags));
+		}
 
 		const paginatedTasks = filteredTasks.slice(offset, offset + limit);
 		const totalCount = filteredTasks.length;
@@ -44,7 +48,7 @@ class TaskService {
 		return {tasks: paginatedTasks, totalCount};
 	}
 
-	static async getAllByUserId(userId, {offset, limit, search} = {}) {
+	static async getAllByUserId(userId, {offset, limit, search}) {
 		const tasks = await TaskService.#db.getAll();
 
 		const filteredTasks = tasks

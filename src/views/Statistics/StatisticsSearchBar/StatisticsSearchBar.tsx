@@ -1,16 +1,15 @@
-import React, {FC, memo, useState} from "react";
 import SearchBar from "@components/SearchBar/SearchBar";
 import {setSearchQuery} from "@store/tasks/tasks.slice";
-import styles from "../StatisticsPage/StatisticsPage.module.scss";
+import React, {FC, memo, useState} from "react";
 import useAppDispatch from "../../../hooks/useAppDispatch";
+import styles from "../StatisticsPage/StatisticsPage.module.scss";
 
 interface StatisticsSearchBarProps {
 	isFetching: boolean;
-	limit: number;
 }
 
 const StatisticsSearchBar: FC<StatisticsSearchBarProps> = memo(
-	({isFetching, limit}) => {
+	({isFetching}) => {
 		const dispatch = useAppDispatch();
 		const [value, setValue] = useState("");
 

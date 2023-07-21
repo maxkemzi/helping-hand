@@ -20,7 +20,7 @@ const TasksSearchBar: FC<TasksSearchBarProps> = memo(({isFetching, limit}) => {
 		setValue("");
 		dispatch(setSearchQuery(""));
 		dispatch(
-			TasksService.search({
+			TasksService.fetchAll({
 				page: 1,
 				limit,
 				search: ""
@@ -31,7 +31,7 @@ const TasksSearchBar: FC<TasksSearchBarProps> = memo(({isFetching, limit}) => {
 	const handleSearch = () => {
 		dispatch(setSearchQuery(value.toLowerCase().trim()));
 		dispatch(
-			TasksService.search({
+			TasksService.fetchAll({
 				page: 1,
 				limit,
 				search: value.toLowerCase().trim()

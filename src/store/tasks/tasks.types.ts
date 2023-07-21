@@ -9,6 +9,7 @@ export interface TasksSliceState {
 	isFetching: boolean;
 	hasMore: boolean;
 	isCreating: boolean;
+	shouldRefetch: boolean;
 	sortBy: {name: string; value: string};
 }
 

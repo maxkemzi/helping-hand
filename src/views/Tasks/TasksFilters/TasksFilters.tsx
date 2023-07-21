@@ -1,11 +1,21 @@
 import CheckboxGroup from "@components/CheckboxGroup/CheckboxGroup";
 import CheckboxItem from "@components/CheckboxItem/CheckboxItem";
-import React, {useState} from "react";
+import {getTasksLimit} from "@store/tasks/tasks.selectors";
+import React, {useEffect, useState} from "react";
+import useAppDispatch from "../../../hooks/useAppDispatch";
+import useAppSelector from "../../../hooks/useAppSelector";
 import mock from "../../../mock.json";
+import TasksService from "../../../services/tasks/tasks.service";
 import styles from "./TasksFilters.module.scss";
 
 const TasksFilters = () => {
+	const dispatch = useAppDispatch();
+	const limit = useAppSelector(getTasksLimit);
 	const [selectedCategories, setSelectedCategories] = useState([]);
+
+	useEffect(() => {
+		dispatch(TasksService.fetchAll({page: 1, limit, tags: selectedCategories}));
+	}, [dispatch, limit, selectedCategories]);
 
 	const handleCategoriesChange = (value: string) => {
 		if (value) {
@@ -28,12 +38,12 @@ const TasksFilters = () => {
 			title="Категорії"
 		>
 			<CheckboxItem label="Усі" isChecked={selectedCategories.length === 0} />
-			{mock.tags.map(category => (
+			{mock.categories.map(category => (
 				<CheckboxItem
-					key={category.text}
-					label={category.text}
-					value={category.text}
-					isChecked={selectedCategories.includes(category.text)}
+					key={category}
+					label={category}
+					value={category}
+					isChecked={selectedCategories.includes(category)}
 				/>
 			))}
 		</CheckboxGroup>

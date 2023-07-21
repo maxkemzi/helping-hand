@@ -3,12 +3,14 @@ import {CreateTaskArgs, TasksParams} from "@customTypes/services/tasks";
 import $api from "../../axios";
 
 class TasksAPI {
-	static fetchAll({page, limit, search}: TasksParams) {
-		return $api.get<TasksResponse>("/task", {params: {page, limit, search}});
+	static fetchAll({page, limit, search, tags}: TasksParams) {
+		return $api.get<TasksResponse>("/task", {
+			params: {page, limit, search, tags}
+		});
 	}
 
-	static fetchLatest(id?: string) {
-		return $api.get<TasksResponse>(`/task/creator/${id}`);
+	static fetchLatest(id: string, {limit}: TasksParams) {
+		return $api.get<TasksResponse>(`/task/creator/${id}`, {params: {limit}});
 	}
 
 	static fetchOne(id: string) {

@@ -23,3 +23,6 @@ export const getCommentsTotalCount = (state: RootState) =>
 
 export const getHasMoreComments = (state: RootState) =>
 	state.commentsState.hasMore;
+
+export const getShouldRefetchComments = (state: RootState) =>
+	state.commentsState.shouldRefetch;

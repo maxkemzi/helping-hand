@@ -3,7 +3,7 @@ import FormTagsField from "@components/FormTagsField/FormTagsField";
 import FormTextField from "@components/FormTextField/FormTextField";
 import Input from "@components/Input/Input";
 import Textarea from "@components/Textarea/Textarea";
-import {getIsTaskCreating, getTasksLimit} from "@store/tasks/tasks.selectors";
+import {getIsTaskCreating} from "@store/tasks/tasks.selectors";
 import classNames from "classnames";
 import {Field, Form, Formik} from "formik";
 import React from "react";
@@ -24,7 +24,6 @@ const TasksCreateForm = ({onSubmit}: {onSubmit: () => void}) => {
 	const dispatch = useAppDispatch();
 
 	const isFetching = useAppSelector(getIsTaskCreating);
-	const limit = useAppSelector(getTasksLimit);
 	const initialValues: TasksCreateFormValues = {
 		title: "",
 		text: "",
@@ -38,7 +37,7 @@ const TasksCreateForm = ({onSubmit}: {onSubmit: () => void}) => {
 	});
 
 	const handleSubmit = (values: TasksCreateFormValues) => {
-		dispatch(TasksService.createOne({...values, limit}));
+		dispatch(TasksService.createOne(values));
 		onSubmit();
 	};
 
@@ -55,10 +54,10 @@ const TasksCreateForm = ({onSubmit}: {onSubmit: () => void}) => {
 						className={styles.field}
 						name="tags"
 						component={FormTagsField}
-						options={mock.tags.map(tag => ({
-							value: tag.text,
-							id: tag.id,
-							text: tag.text
+						options={mock.categories.map(category => ({
+							value: category,
+							id: category,
+							text: category
 						}))}
 						placeholder="Категорії"
 					/>

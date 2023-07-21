@@ -48,12 +48,14 @@ class TaskController {
 
 	static async getAll(req, res, next) {
 		try {
+			const {tags} = req.query;
 			let {page, limit, search, offset} = parseGetParams(req.query);
 
 			const {tasks, totalCount} = await TaskService.getAll({
 				offset,
 				limit,
-				search
+				search,
+				tags
 			});
 			const totalPages = calcTotalPages(totalCount, limit);
 

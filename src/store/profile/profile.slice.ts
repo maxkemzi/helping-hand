@@ -12,7 +12,8 @@ export const initialState: ProfileSliceState = {
 		taskCount: 0,
 		commentCount: 0
 	},
-	isFetching: false
+	isFetching: false,
+	isStatisticsFetching: false
 };
 
 const profileSlice = createSlice({
@@ -27,9 +28,17 @@ const profileSlice = createSlice({
 		},
 		setIsFetching(state, action: SetIsFetching) {
 			state.isFetching = action.payload;
+		},
+		setStatisticsIsFetching(state, action: SetIsFetching) {
+			state.isStatisticsFetching = action.payload;
 		}
 	}
 });
 
 export default profileSlice.reducer;
-export const {setIsFetching, setProfile, setStatistics} = profileSlice.actions;
+export const {
+	setIsFetching,
+	setProfile,
+	setStatistics,
+	setStatisticsIsFetching
+} = profileSlice.actions;

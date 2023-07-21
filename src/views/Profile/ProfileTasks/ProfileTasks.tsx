@@ -2,21 +2,30 @@ import Dropdown from "@components/Dropdown/Dropdown";
 import DropdownOption from "@components/DropdownOption/DropdownOption";
 import TaskItem from "@components/TaskItem/TaskItem";
 import {DropdownOption as IDropdownOption} from "@customTypes/components";
+import {getAuthUser} from "@store/auth/auth.selectors";
 import {
 	getIsTasksFetching,
 	getTasks,
 	getTasksLimit
 } from "@store/tasks/tasks.selectors";
 import ScreenSizes from "@utils/constants/screenSizes";
+import getParsedDate from "@utils/helpers/getParsedDate";
 import ProfileSearchBar from "@views/Profile/ProfileSearchBar/ProfileSearchBar";
 import classNames from "classnames";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import useAppDispatch from "../../../hooks/useAppDispatch";
 import useAppSelector from "../../../hooks/useAppSelector";
 import useWindowSize from "../../../hooks/useWindowSize";
+import TasksService from "../../../services/tasks/tasks.service";
 import styles from "./ProfileTasks.module.scss";
 
 const ProfileTasks = () => {
+	const params = useParams();
+	const user = useAppSelector(getAuthUser);
+	const id = params.id || user.id;
 	const tasks = useAppSelector(getTasks);
+	const dispatch = useAppDispatch();
 	const isFetching = useAppSelector(getIsTasksFetching);
 	const limit = useAppSelector(getTasksLimit);
 	const {width} = useWindowSize();
@@ -48,6 +57,10 @@ const ProfileTasks = () => {
 		setSortByTypeValue(option);
 		handleTypeClose();
 	};
+
+	useEffect(() => {
+		dispatch(TasksService.fetchLatest(id, {limit}));
+	}, [dispatch, id, limit]);
 
 	return (
 		<>
@@ -114,18 +127,20 @@ const ProfileTasks = () => {
 					[styles.tablet]: width <= ScreenSizes.TabletWidth
 				})}
 			>
-				{tasks.map(task => (
-					<TaskItem
-						key={task.id}
-						id={task.id}
-						creator={task.creator}
-						tags={task.tags}
-						description={task.text}
-						title={task.title}
-						date={task.createdAt}
-						isActive={task.status === "open"}
-					/>
-				))}
+				{isFetching
+					? "Loading..."
+					: tasks.map(task => (
+							<TaskItem
+								key={task.id}
+								id={task.id}
+								creator={task.creator}
+								tags={task.tags}
+								description={task.text}
+								title={task.title}
+								date={getParsedDate(task.createdAt)}
+								isActive={task.status === "open"}
+							/>
+					  ))}
 			</div>
 		</>
 	);

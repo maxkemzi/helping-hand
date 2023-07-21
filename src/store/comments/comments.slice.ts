@@ -17,7 +17,8 @@ const initialState: CommentsSliceState = {
 	hasMore: false,
 	totalPages: 1,
 	totalCount: 0,
-	isVoting: false
+	isVoting: false,
+	shouldRefetch: false
 };
 
 const commentsSlice = createSlice({
@@ -56,6 +57,9 @@ const commentsSlice = createSlice({
 		},
 		setTotalCount(state, action: SetPage) {
 			state.totalCount = action.payload;
+		},
+		refetch(state) {
+			state.shouldRefetch = !state.shouldRefetch;
 		}
 	}
 });
@@ -70,5 +74,6 @@ export const {
 	setIsCreating,
 	setTotalCount,
 	setIsVoting,
-	updateComment
+	updateComment,
+	refetch
 } = commentsSlice.actions;

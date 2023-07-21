@@ -5,7 +5,8 @@ import {
 	setIsCreating,
 	setIsFetching as setTasksIsFetching,
 	setPage,
-	setTasks
+	setTasks,
+	refetch
 } from "@store/tasks/tasks.slice";
 import {CreateTaskArgs, TasksParams} from "@customTypes/services/tasks";
 import {
@@ -17,17 +18,17 @@ import {
 import TasksAPI from "../../APIs/tasks/tasks.api";
 
 class TasksService {
-	static fetchAll({page, limit}: TasksParams) {
+	static fetchAll({page, limit, search, tags}: TasksParams) {
 		return async (dispatch: AppDispatch) => {
 			dispatch(setTasksIsFetching(true));
 			try {
-				const response = await TasksAPI.fetchAll({page, limit});
+				const response = await TasksAPI.fetchAll({page, limit, search, tags});
 				const {tasks, totalPages, page: pageFromApi} = response.data;
 
 				console.log(response);
 
 				dispatch(setHasMore(pageFromApi < totalPages));
-
+				dispatch(setPage(pageFromApi));
 				dispatch(setTasks(tasks));
 			} catch (e) {
 				console.log(e);
@@ -37,18 +38,15 @@ class TasksService {
 		};
 	}
 
-	static fetchMore({page, limit, search}: TasksParams) {
+	static fetchMore({page, limit, search, tags}: TasksParams) {
 		return async (dispatch: AppDispatch) => {
 			dispatch(setTasksIsFetching(true));
 			try {
-				const response = await TasksAPI.fetchAll({page, limit, search});
+				const response = await TasksAPI.fetchAll({page, limit, search, tags});
 				const {tasks, totalPages, page: pageFromApi} = response.data;
-
-				console.log(response);
 
 				dispatch(setHasMore(pageFromApi < totalPages));
 				dispatch(setPage(pageFromApi));
-
 				dispatch(addTasks(tasks));
 			} catch (e) {
 				console.log(e);
@@ -58,38 +56,15 @@ class TasksService {
 		};
 	}
 
-	static fetchLatest(id?: string) {
+	static fetchLatest(id: string, {limit}: TasksParams) {
 		return async (dispatch: AppDispatch) => {
 			dispatch(setTasksIsFetching(true));
 			try {
-				const response = await TasksAPI.fetchLatest(id);
+				const response = await TasksAPI.fetchLatest(id, {limit});
 				const {tasks} = response.data;
 				console.log(response);
 
 				dispatch(setTasks(tasks));
-			} catch (e) {
-				console.log(e);
-			} finally {
-				dispatch(setTasksIsFetching(false));
-			}
-		};
-	}
-
-	static search({page, limit, search}: TasksParams) {
-		return async (dispatch: AppDispatch) => {
-			dispatch(setTasksIsFetching(true));
-			try {
-				const response = await TasksAPI.fetchAll({page, limit, search});
-				const {tasks, totalPages, page: pageFromApi} = response.data;
-				console.log(response);
-
-				dispatch(setHasMore(pageFromApi < totalPages));
-
-				if (pageFromApi === 1) {
-					dispatch(setTasks(tasks));
-				} else {
-					dispatch(addTasks(tasks));
-				}
 			} catch (e) {
 				console.log(e);
 			} finally {
@@ -115,12 +90,7 @@ class TasksService {
 		};
 	}
 
-	static createOne({
-		title,
-		text,
-		tags,
-		limit
-	}: CreateTaskArgs & {limit: number}) {
+	static createOne({title, text, tags}: CreateTaskArgs) {
 		return async (dispatch: AppDispatch) => {
 			dispatch(setIsCreating(true));
 			try {
@@ -130,7 +100,7 @@ class TasksService {
 					tags
 				});
 				console.log(response);
-				dispatch(this.fetchAll({page: 1, limit}));
+				dispatch(refetch());
 			} catch (e) {
 				console.log(e);
 			} finally {

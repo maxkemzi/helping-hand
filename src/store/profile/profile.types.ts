@@ -9,6 +9,7 @@ export interface ProfileStatistics {
 export interface ProfileSliceState {
 	profile: User;
 	isFetching: boolean;
+	isStatisticsFetching: boolean;
 	statistics: ProfileStatistics;
 }
 

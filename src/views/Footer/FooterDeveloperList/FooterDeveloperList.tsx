@@ -10,13 +10,6 @@ const FooterDeveloperList = () => (
 			job="Front-end"
 			linkPath="https://t.me/maxkemzi"
 		/>
-
-		<DeveloperItem
-			className={styles.dev}
-			name="Andreas M."
-			job="Back-end"
-			linkPath="https://t.me/mi_xxx"
-		/>
 	</div>
 );
 

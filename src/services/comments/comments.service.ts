@@ -1,5 +1,6 @@
 import {AppDispatch} from "@store/index";
 import {
+	refetch,
 	setComments,
 	setHasMore,
 	setIsCreating,
@@ -45,7 +46,7 @@ class CommentsService {
 			dispatch(setIsCreating(true));
 			try {
 				await CommentsAPI.createOne(id, text);
-				dispatch(this.fetchAll(id, {page: 1, limit: 6}));
+				dispatch(refetch());
 			} catch (e) {
 				console.log(e);
 			} finally {

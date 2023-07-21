@@ -19,6 +19,7 @@ const initialState: TasksSliceState = {
 	isFetching: false,
 	hasMore: false,
 	isCreating: false,
+	shouldRefetch: false,
 	sortBy: {
 		name: "Все",
 		value: ""
@@ -52,6 +53,9 @@ const tasksSlice = createSlice({
 		},
 		setIsCreating(state, action: SetIsCreating) {
 			state.isCreating = action.payload;
+		},
+		refetch(state) {
+			state.shouldRefetch = !state.shouldRefetch;
 		}
 	}
 });
@@ -65,5 +69,6 @@ export const {
 	setIsCreating,
 	setTasks,
 	addTasks,
-	setPage
+	setPage,
+	refetch
 } = tasksSlice.actions;

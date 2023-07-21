@@ -1,13 +1,13 @@
-import React, {FC, useMemo} from "react";
 import Button from "@components/Button/Button";
 import TagItem from "@components/TagItem/TagItem";
-import {NavLink} from "react-router-dom";
-import {PROFILE_ROUTE, TASKS_ROUTE} from "@utils/constants/routes";
 import Typography from "@components/Typography/Typography";
 import UserInfo from "@components/UserInfo/UserInfo";
-import StatusIcon from "@icons/StatusIcon/StatusIcon";
 import Tag from "@customTypes/entities/tag";
 import User from "@customTypes/entities/user";
+import StatusIcon from "@icons/StatusIcon/StatusIcon";
+import {PROFILE_ROUTE, TASKS_ROUTE} from "@utils/constants/routes";
+import React, {FC} from "react";
+import {NavLink} from "react-router-dom";
 import styles from "./TaskItem.module.scss";
 
 interface TaskItemProps {

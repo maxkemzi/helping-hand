@@ -1,9 +1,11 @@
 import Avatar from "@components/Avatar/Avatar";
 import MainLayout from "@components/MainLayout/MainLayout";
 import Typography from "@components/Typography/Typography";
-import {getIsAppInitializing} from "@store/app/app.selectors";
 import {getAuthUser} from "@store/auth/auth.selectors";
-import {getProfile} from "@store/profile/profile.selectors";
+import {
+	getIsProfileFetching,
+	getProfile
+} from "@store/profile/profile.selectors";
 import ScreenSizes from "@utils/constants/screenSizes";
 import ProfileTabs from "@views/Profile/ProfileTabs/ProfileTabs";
 import classNames from "classnames";
@@ -13,8 +15,8 @@ import {Outlet, useParams} from "react-router-dom";
 import useAppDispatch from "../../../hooks/useAppDispatch";
 import useAppSelector from "../../../hooks/useAppSelector";
 import useWindowSize from "../../../hooks/useWindowSize";
-import AppService from "../../../services/app/app.service";
 import TasksService from "../../../services/tasks/tasks.service";
+import UsersService from "../../../services/users/users.service";
 import styles from "./ProfilePage.module.scss";
 
 const ProfilePage = () => {
@@ -23,18 +25,18 @@ const ProfilePage = () => {
 	const {width} = useWindowSize();
 	const profile = useAppSelector(getProfile);
 	const user = useAppSelector(getAuthUser);
-	const isInitializing = useAppSelector(getIsAppInitializing);
+	const isProfileFetching = useAppSelector(getIsProfileFetching);
 	const id = params.id || user.id;
 
 	useEffect(() => {
-		dispatch(AppService.initializeProfilePage(id));
+		dispatch(UsersService.fetchOne(id));
 	}, [dispatch, id]);
 
 	useEffect(() => () => dispatch(TasksService.clear()), [dispatch]);
 
 	return (
 		<MainLayout>
-			{isInitializing ? (
+			{isProfileFetching ? (
 				"Loading..."
 			) : (
 				<div className="page">
@@ -66,7 +68,7 @@ const ProfilePage = () => {
 									variant="subtitle2"
 									component="p"
 								>
-									sdfdsfsdfds
+									{profile.description || "Profile description"}
 								</Typography>
 								<Typography variant="h4" component="h4">
 									Expert

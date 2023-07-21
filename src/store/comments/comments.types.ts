@@ -11,6 +11,7 @@ export interface CommentsSliceState {
 	limit: number;
 	totalPages: number;
 	totalCount: number;
+	shouldRefetch: boolean;
 }
 
 export type SetComments = PayloadAction<Comment[]>;

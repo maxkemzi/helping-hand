@@ -1,6 +1,5 @@
 import Divider from "@components/Divider/Divider";
 import MainLayout from "@components/MainLayout/MainLayout";
-import {getIsAppInitializing} from "@store/app/app.selectors";
 import {getAuthUser} from "@store/auth/auth.selectors";
 import {
 	getComments,
@@ -8,9 +7,14 @@ import {
 	getCommentsPage,
 	getCommentsTotalCount,
 	getCommentsTotalPages,
-	getIsCommentsFetching
+	getIsCommentsFetching,
+	getShouldRefetchComments
 } from "@store/comments/comments.selectors";
-import {getIsTaskVoting, getTask} from "@store/task/task.selectors";
+import {
+	getIsTaskFetching,
+	getIsTaskVoting,
+	getTask
+} from "@store/task/task.selectors";
 import getParsedDate from "@utils/helpers/getParsedDate";
 import TaskCommentFormSection from "@views/Task/TaskCommentFormSection/TaskCommentFormSection";
 import TaskCommentsSection from "@views/Task/TaskCommentsSection/TaskCommentsSection";
@@ -21,7 +25,6 @@ import React, {FC, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import useAppDispatch from "../../../hooks/useAppDispatch";
 import useAppSelector from "../../../hooks/useAppSelector";
-import AppService from "../../../services/app/app.service";
 import CommentsService from "../../../services/comments/comments.service";
 import TasksService from "../../../services/tasks/tasks.service";
 import styles from "./TaskPage.module.scss";
@@ -32,17 +35,22 @@ const TaskPage: FC = () => {
 	const user = useAppSelector(getAuthUser);
 	const task = useAppSelector(getTask);
 	const comments = useAppSelector(getComments);
-	const isInitializing = useAppSelector(getIsAppInitializing);
+	const isTaskFetching = useAppSelector(getIsTaskFetching);
 	const isCommentsFetching = useAppSelector(getIsCommentsFetching);
 	const limit = useAppSelector(getCommentsLimit);
 	const page = useAppSelector(getCommentsPage);
 	const totalPages = useAppSelector(getCommentsTotalPages);
 	const totalCount = useAppSelector(getCommentsTotalCount);
+	const shouldRefetch = useAppSelector(getShouldRefetchComments);
 	const isVoting = useAppSelector(getIsTaskVoting);
 
 	useEffect(() => {
-		dispatch(AppService.initializeTaskPage(id, limit));
+		dispatch(TasksService.fetchOne(id));
 	}, [dispatch, id, limit]);
+
+	useEffect(() => {
+		dispatch(CommentsService.fetchAll(id, {limit, page: 1}));
+	}, [dispatch, id, limit, shouldRefetch]);
 
 	const handleLoadMore = (p: number) =>
 		dispatch(CommentsService.fetchAll(id, {limit, page: p}));
@@ -53,7 +61,7 @@ const TaskPage: FC = () => {
 		<MainLayout>
 			<div className="page">
 				<div className="container container--small">
-					{isInitializing ? (
+					{isTaskFetching ? (
 						"Loading..."
 					) : (
 						<div className="wrapper">

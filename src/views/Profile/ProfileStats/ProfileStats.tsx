@@ -1,6 +1,9 @@
 import StatItem from "@components/StatItem/StatItem";
 import {getAuthUser} from "@store/auth/auth.selectors";
-import {getProfileStatistics} from "@store/profile/profile.selectors";
+import {
+	getIsStatisticsFetching,
+	getProfileStatistics
+} from "@store/profile/profile.selectors";
 import classNames from "classnames";
 import React, {FC, useEffect, useState} from "react";
 import {IoGrid, IoList} from "react-icons/io5";
@@ -15,6 +18,7 @@ const ProfileStats: FC = () => {
 	const dispatch = useAppDispatch();
 	const user = useAppSelector(getAuthUser);
 	const statistics = useAppSelector(getProfileStatistics);
+	const isFetching = useAppSelector(getIsStatisticsFetching);
 	const [isList, setIsList] = useState(false);
 	const id = params.id || user.id;
 
@@ -51,12 +55,18 @@ const ProfileStats: FC = () => {
 					[styles.list]: isList
 				})}
 			>
-				<StatItem
-					title="Коментарів"
-					value={statistics.commentCount}
-					size="big"
-				/>
-				<StatItem title="Завдань" value={statistics.taskCount} size="big" />
+				{isFetching ? (
+					"Loading..."
+				) : (
+					<>
+						<StatItem
+							title="Коментарів"
+							value={statistics.commentCount}
+							size="big"
+						/>
+						<StatItem title="Завдань" value={statistics.taskCount} size="big" />
+					</>
+				)}
 			</div>
 		</>
 	);
