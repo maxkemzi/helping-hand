@@ -1,17 +1,11 @@
 import Comment from "@customTypes/entities/comment";
 
 interface CommentsResponse {
-	result: {
-		total_count: number;
-		page: number;
-		per_page: number;
-		total_pages: number;
-		comments: Comment[];
-	};
-	error: {
-		ok: boolean;
-		message: string;
-	};
+	comments: Comment[];
+	totalPages: number;
+	page: number;
+	totalCount: number;
+	limit: number;
 }
 
 export default CommentsResponse;

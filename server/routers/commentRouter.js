@@ -6,7 +6,6 @@ const commentRouter = Router();
 
 commentRouter.post("/:taskId", authMiddleware, CommentController.create);
 commentRouter.post("/upvote/:id", authMiddleware, CommentController.upvoteById);
-commentRouter.post("/downvote/:id", authMiddleware, CommentController.downvoteById);
-commentRouter.get("/:taskId", CommentController.getByTaskId);
+commentRouter.get("/:taskId", authMiddleware, CommentController.getByTaskId);
 
 module.exports = commentRouter;

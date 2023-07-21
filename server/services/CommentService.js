@@ -14,8 +14,7 @@ class CommentService {
 			text,
 			task,
 			user,
-			upvotes: [],
-			downvotes: []
+			upvotes: []
 		});
 		return comment;
 	}
@@ -27,38 +26,24 @@ class CommentService {
 		}
 
 		const alreadyUpvoted = comment.upvotes.includes(userId);
-		if (alreadyUpvoted) {
-			throw new ApiError(400, "Task has already been upvoted.");
-		}
-
 		const updatedComment = await CommentService.#db.updateById(id, {
-			upvotes: [...comment.upvotes, userId],
-			downvotes: comment.downvotes.filter(el => el !== userId)
+			upvotes: alreadyUpvoted
+				? comment.upvotes.filter(el => el !== userId)
+				: [...comment.upvotes, userId]
 		});
+
 		return updatedComment;
 	}
 
-	static async downvoteById(id, userId) {
-		const comment = await CommentService.#db.getById(id);
-		if (comment === null) {
-			throw new ApiError(400, "Comment with provided id doesn't exist.");
-		}
-
-		const alreadyDownvoted = comment.downvotes.includes(userId);
-		if (alreadyDownvoted) {
-			throw new ApiError(400, "Task has already been downvoted.");
-		}
-
-		const updatedComment = await CommentService.#db.updateById(id, {
-			downvotes: [...comment.downvotes, userId],
-			upvotes: comment.upvotes.filter(el => el !== userId)
-		});
-		return updatedComment;
-	}
-
-	static async getByTaskId(taskId) {
+	static async getByTaskId(taskId, {offset, limit}) {
 		const comments = await CommentService.#db.getAll();
-		return comments.filter(el => el.task.id === taskId);
+
+		const filteredComments = comments.filter(el => el.task.id === taskId);
+
+		const paginatedComments = filteredComments.slice(offset, offset + limit);
+		const totalCount = filteredComments.length;
+
+		return {comments: paginatedComments, totalCount};
 	}
 
 	static async getAllByUserId(userId) {

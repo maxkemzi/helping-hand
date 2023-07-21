@@ -19,16 +19,18 @@ class CommentsService {
 			dispatch(setIsFetching(true));
 			try {
 				const response = await CommentsAPI.fetchAll(id, {page, limit});
-				const {comments} = response.data.result;
-				const totalPages = response.data.result.total_pages;
-				const currentPage = response.data.result.page;
-				const totalCount = response.data.result.total_count;
+				const {
+					comments,
+					totalPages,
+					page: pageFromApi,
+					totalCount
+				} = response.data;
 
 				console.log(response);
-				dispatch(setPage(currentPage));
+				dispatch(setPage(pageFromApi));
 				dispatch(setTotalCount(totalCount));
 				dispatch(setTotalPages(totalPages));
-				dispatch(setHasMore(currentPage < totalPages));
+				dispatch(setHasMore(pageFromApi < totalPages));
 				dispatch(setComments(comments));
 			} catch (e) {
 				console.log(e);
@@ -58,8 +60,7 @@ class CommentsService {
 			try {
 				const response = await CommentsAPI.upvote(id);
 				console.log(response);
-				const {comment} = response.data.result;
-				dispatch(updateComment(comment));
+				dispatch(updateComment(response.data));
 			} catch (e) {
 				console.log(e);
 			} finally {

@@ -1,4 +1,5 @@
 const {TaskService, UserService} = require("../services");
+const {parseGetParams, calcTotalPages} = require("../utils/helpers");
 
 class TaskController {
 	static async create(req, res, next) {
@@ -47,16 +48,14 @@ class TaskController {
 
 	static async getAll(req, res, next) {
 		try {
-			let {page, limit, search, offset} = TaskController.#parseQueryParams(
-				req.query
-			);
+			let {page, limit, search, offset} = parseGetParams(req.query);
 
 			const {tasks, totalCount} = await TaskService.getAll({
 				offset,
 				limit,
 				search
 			});
-			const totalPages = TaskController.#calcTotalPages(totalCount, limit);
+			const totalPages = calcTotalPages(totalCount, limit);
 
 			res.json({
 				page,
@@ -73,16 +72,14 @@ class TaskController {
 	static async getAllByUserId(req, res, next) {
 		try {
 			const {userId} = req.params;
-			let {page, limit, search, offset} = TaskController.#parseQueryParams(
-				req.query
-			);
+			let {page, limit, search, offset} = parseGetParams(req.query);
 
 			const {tasks, totalCount} = await TaskService.getAllByUserId(userId, {
 				offset,
 				limit,
 				search
 			});
-			const totalPages = TaskController.#calcTotalPages(totalCount, limit);
+			const totalPages = calcTotalPages(totalCount, limit);
 
 			res.json({
 				page,
@@ -94,21 +91,6 @@ class TaskController {
 		} catch (e) {
 			next(e);
 		}
-	}
-
-	static #parseQueryParams(query) {
-		let {page, limit, search} = query;
-
-		page = page ? Number(page) : 1;
-		limit = limit ? Number(limit) : 10;
-		search = search || "";
-		const offset = (page - 1) * limit;
-
-		return {page, limit, search, offset};
-	}
-
-	static #calcTotalPages(totalCount, limit) {
-		return Math.ceil(totalCount / limit);
 	}
 }
 

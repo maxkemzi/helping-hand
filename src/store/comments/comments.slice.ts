@@ -29,7 +29,7 @@ const commentsSlice = createSlice({
 		},
 		updateComment(state, action) {
 			state.comments = state.comments.map(comment => {
-				if (comment.uuid === action.payload.uuid) {
+				if (comment.id === action.payload.id) {
 					return {...comment, ...action.payload};
 				}
 

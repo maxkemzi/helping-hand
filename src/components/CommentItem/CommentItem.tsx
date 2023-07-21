@@ -1,10 +1,11 @@
+import Tiptap from "@components/Tiptap/Tiptap";
 import UserInfo from "@components/UserInfo/UserInfo";
 import Vote from "@components/Vote/Vote";
 import {VoteStatus} from "@customTypes/APIs/global";
 import User from "@customTypes/entities/user";
+import {PROFILE_ROUTE} from "@utils/constants/routes";
 import classNames from "classnames";
 import React, {FC, MouseEventHandler} from "react";
-import Tiptap from "@components/Tiptap/Tiptap";
 import styles from "./CommentItem.module.scss";
 
 interface CommentItemProps {
@@ -36,6 +37,7 @@ const CommentItem: FC<CommentItemProps> = ({
 		/>
 		<div className={styles.body}>
 			<UserInfo
+				path={`${PROFILE_ROUTE}/${creator.id}/tasks`}
 				className={styles.user}
 				avatarPath={creator.photo}
 				fallbackVariant="light"

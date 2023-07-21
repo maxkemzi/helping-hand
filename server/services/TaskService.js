@@ -21,9 +21,9 @@ class TaskService {
 			throw new ApiError(400, "Task by provided id doesn't exist.");
 		}
 
-		const isUpvoted = task.upvotes.includes(userId);
+		const alreadyUpvoted = task.upvotes.includes(userId);
 		const updatedTask = await TaskService.#db.updateById(id, {
-			upvotes: isUpvoted
+			upvotes: alreadyUpvoted
 				? task.upvotes.filter(el => el !== userId)
 				: [...task.upvotes, userId]
 		});
