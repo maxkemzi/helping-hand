@@ -20,3 +20,6 @@ Run the development server and mock API:
 npm start
 ```
 Open http://localhost:3000 with your browser to see the result.
+
+### Important:
+Sign up via the signup form in order to get access to the site pages and functionality.
