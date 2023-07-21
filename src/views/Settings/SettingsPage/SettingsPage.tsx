@@ -19,7 +19,7 @@ const SettingsPage: FC = () => {
 						variant={width <= ScreenSizes.PhoneWidth ? "h3" : "h2"}
 						component="h2"
 					>
-						Налаштування
+						Settings
 					</Typography>
 					<div
 						className={classNames(styles.inner, {

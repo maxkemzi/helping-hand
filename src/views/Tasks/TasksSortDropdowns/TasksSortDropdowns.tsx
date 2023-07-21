@@ -7,7 +7,7 @@ import styles from "./TasksSortDropdowns.module.scss";
 const TasksSortDropdowns = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [sortByDateValue, setSortByDateValue] = useState({
-		text: "Нові",
+		text: "New",
 		value: "new"
 	});
 
@@ -31,13 +31,13 @@ const TasksSortDropdowns = () => {
 				<DropdownOption
 					onClick={handleClick}
 					isActive={sortByDateValue.value === "new"}
-					text="Нові"
+					text="New"
 					value="new"
 				/>
 				<DropdownOption
 					onClick={handleClick}
 					isActive={sortByDateValue.value === "old"}
-					text="Старі"
+					text="Old"
 					value="old"
 				/>
 			</Dropdown>

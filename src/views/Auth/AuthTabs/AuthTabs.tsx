@@ -6,8 +6,8 @@ import styles from "./AuthTabs.module.scss";
 
 const AuthTabs: FC = () => (
 	<TabList className={styles.tabs} adaptiveLineSizing>
-		<TabItem to={LOGIN_ROUTE} className={styles.tab} text="вхід" />
-		<TabItem to={SIGNUP_ROUTE} className={styles.tab} text="Реєстрація" />
+		<TabItem to={LOGIN_ROUTE} className={styles.tab} text="login" />
+		<TabItem to={SIGNUP_ROUTE} className={styles.tab} text="signup" />
 	</TabList>
 );
 

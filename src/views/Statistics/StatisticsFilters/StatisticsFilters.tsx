@@ -25,9 +25,9 @@ const StatisticsFilters = () => {
 			onChange={handleCategoriesChange}
 			name="categories"
 			className={styles.checkbox}
-			title="Категорії"
+			title="Categories"
 		>
-			<CheckboxItem label="Усі" isChecked={selectedCategories.length === 0} />
+			<CheckboxItem label="All" isChecked={selectedCategories.length === 0} />
 			{mock.categories.map(category => (
 				<CheckboxItem
 					key={category}

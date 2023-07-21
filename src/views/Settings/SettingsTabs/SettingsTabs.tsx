@@ -21,11 +21,11 @@ const SettingsTabs = () => {
 			variant={width <= ScreenSizes.TabletWidth ? "horizontal" : "vertical"}
 			adaptiveLineSizing
 		>
-			<TabItem text="Акаунт" to={SETTINGS_ACCOUNT_ROUTE} />
+			<TabItem text="Account" to={SETTINGS_ACCOUNT_ROUTE} />
 
-			<TabItem text="Інтеграція" to={SETTINGS_INTEGRATION_ROUTE} />
+			<TabItem text="Integration" to={SETTINGS_INTEGRATION_ROUTE} />
 
-			<TabItem to={SETTINGS_INTERFACE_ROUTE} text="Інтерфейс" />
+			<TabItem to={SETTINGS_INTERFACE_ROUTE} text="Interface" />
 		</TabList>
 	);
 };

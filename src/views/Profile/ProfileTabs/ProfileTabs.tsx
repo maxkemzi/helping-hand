@@ -16,12 +16,12 @@ const ProfileTabs: FC = () => {
 		<TabList className={styles.tabs} adaptiveLineSizing>
 			<TabItem
 				to={id ? `${PROFILE_ROUTE}/${id}/tasks` : PROFILE_TASKS_ROUTE}
-				text="Завдання"
+				text="Tasks"
 			/>
 
 			<TabItem
 				to={id ? `${PROFILE_ROUTE}/${id}/stats` : PROFILE_STATS_ROUTE}
-				text="Статистика"
+				text="Statistics"
 			/>
 		</TabList>
 	);

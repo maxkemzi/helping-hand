@@ -12,9 +12,9 @@ const TaskStatsSection: FC<TaskStatsSectionProps> = ({
 	updatedDate
 }) => (
 	<div className={styles.stats}>
-		<StatItem value={createdDate} title="Створено" />
-		<StatItem value={updatedDate} title="Змінено" />
-		<StatItem value="6" title="Переглядів" />
+		<StatItem value={createdDate} title="Created" />
+		<StatItem value={updatedDate} title="Updated" />
+		<StatItem value="0" title="Views" />
 	</div>
 );
 

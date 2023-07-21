@@ -25,9 +25,9 @@ const InfiniteScrollList: FC<InfiniteScrollListProps> = ({
 	return (
 		<>
 			{isEmpty && !searchIsEmpty && !isFetching && (
-				<p>За Вашим запитом немає результатів</p>
+				<p>No results for your search query</p>
 			)}
-			{isEmpty && searchIsEmpty && !isFetching && <p>Немає завдань</p>}
+			{isEmpty && searchIsEmpty && !isFetching && <p>There are no tasks</p>}
 			{!isEmpty && children}
 			{isFetching && "Loading..."}
 			{!isFetching && <div ref={lastElementRef} />}

@@ -38,18 +38,18 @@ const IntegrationItem: FC<IntegrationItemProps> = ({
 				<Button
 					className={styles.button}
 					onClick={onConnectedClick}
-					text="Перейти"
+					text="Navigate"
 					variant="primary"
 				/>
 				<Button
 					className={styles.button}
 					onClick={onDelete}
-					text="Видалити"
+					text="Disconnect"
 					variant="outline"
 				/>
 			</div>
 		) : (
-			<Button onClick={onClick} text="Приєднати" variant="outline" />
+			<Button onClick={onClick} text="Connect" variant="outline" />
 		)}
 	</div>
 );

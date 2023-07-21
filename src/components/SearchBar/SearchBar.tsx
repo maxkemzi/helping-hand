@@ -39,7 +39,7 @@ const SearchBar: FC<SearchBarProps> = ({
 		>
 			<div className={styles["input-wrapper"]}>
 				<input
-					placeholder="Пошук"
+					placeholder="Search"
 					value={value}
 					onKeyDown={handleKeyDown}
 					onChange={e => onChange?.(e.target.value)}

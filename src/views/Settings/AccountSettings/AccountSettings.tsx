@@ -23,7 +23,7 @@ const AccountSettings = () => {
 	return (
 		<>
 			<Typography className={styles.title} component="h3" variant="h3">
-				Акаунт
+				Account
 			</Typography>
 			<Formik
 				initialValues={{username: "", email: "", password: ""}}
@@ -41,7 +41,7 @@ const AccountSettings = () => {
 						variant="h4"
 						component="h4"
 					>
-						Зображення профілю
+						Profile image
 					</Typography>
 					<div className={styles.user}>
 						<Avatar
@@ -51,21 +51,13 @@ const AccountSettings = () => {
 							fallbackVariant="light"
 						/>
 						<div className={styles.btns}>
-							<Button
-								className={styles.btn}
-								variant="outline"
-								text="Завантажити"
-							/>
-							<Button
-								className={styles.btn}
-								variant="outline"
-								text="Видалити"
-							/>
+							<Button className={styles.btn} variant="outline" text="Upload" />
+							<Button className={styles.btn} variant="outline" text="Delete" />
 						</div>
 					</div>
 					<div className={styles.fields}>
 						<Field
-							label="Ім'я"
+							label="Name"
 							className={styles.field}
 							name="username"
 							component={FormTextField}
@@ -81,7 +73,7 @@ const AccountSettings = () => {
 						/>
 
 						<Field
-							label="Пароль"
+							label="Password"
 							type="password"
 							className={styles.field}
 							name="password"
@@ -89,7 +81,7 @@ const AccountSettings = () => {
 							element={Input}
 						/>
 					</div>
-					<Button className={styles["submit-btn"]} text="Зберегти" isSubmit />
+					<Button className={styles["submit-btn"]} text="Save" isSubmit />
 				</Form>
 			</Formik>
 			<Divider className={styles.divider} />
@@ -102,13 +94,13 @@ const AccountSettings = () => {
 						component="h4"
 						variant="h4"
 					>
-						Видалити акаунт
+						Delete account
 					</Typography>
 					<Typography variant="body1" component="p">
-						Після видалення акаунту ви втратите всі ваші дані.
+						After deleting your account, you will lose all your data.
 					</Typography>
 				</div>
-				<Button variant="outline" text="Видалити" />
+				<Button variant="outline" text="Delete" />
 			</div>
 		</>
 	);

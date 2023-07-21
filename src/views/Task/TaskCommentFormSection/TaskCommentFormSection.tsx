@@ -36,7 +36,7 @@ const TaskCommentFormSection: FC<TaskCommentFormSectionProps> = ({id}) => {
 						isSubmit
 						className={styles.btn}
 						disabled={isFetching}
-						text="Відіслати"
+						text="Send"
 					/>
 				</Form>
 			)}

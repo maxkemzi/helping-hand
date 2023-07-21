@@ -7,7 +7,7 @@ interface ContactFormModalProps extends ModalProps {
 }
 
 const ContactFormModal: FC<ContactFormModalProps> = ({onClose, ...props}) => (
-	<Modal title="Зв'язатись" onClose={onClose} {...props}>
+	<Modal title="Contact" onClose={onClose} {...props}>
 		<ContactForm />
 	</Modal>
 );

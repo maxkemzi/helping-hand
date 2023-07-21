@@ -60,11 +60,11 @@ const ProfileStats: FC = () => {
 				) : (
 					<>
 						<StatItem
-							title="Коментарів"
+							title="Comments"
 							value={statistics.commentCount}
 							size="big"
 						/>
-						<StatItem title="Завдань" value={statistics.taskCount} size="big" />
+						<StatItem title="Tasks" value={statistics.taskCount} size="big" />
 					</>
 				)}
 			</div>

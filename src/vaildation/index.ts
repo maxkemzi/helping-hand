@@ -1,6 +1,4 @@
-import {
-	loginFormValidation,
-	signupFormValidation
-} from "./auth/auth.validation";
+import {signupFormValidation} from "./auth/auth.validation";
 
-export {loginFormValidation, signupFormValidation};
+// eslint-disable-next-line import/prefer-default-export
+export {signupFormValidation};

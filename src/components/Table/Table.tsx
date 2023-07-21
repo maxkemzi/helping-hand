@@ -10,19 +10,19 @@ const Table: FC<TableProps> = ({koef}) => (
 	<div className={styles["table-container"]} role="table">
 		<div className={classNames(styles.header, styles.table)} role="rowgroup">
 			<div className={classNames(styles.row, styles.head)} role="columnheader">
-				Курс
+				Course
 			</div>
 			<div className={classNames(styles.row, styles.head)} role="columnheader">
 				Ім&apos;я
 			</div>
 			<div className={classNames(styles.row, styles.head)} role="columnheader">
-				Відповідей
+				Answers
 			</div>
 			<div className={classNames(styles.row, styles.head)} role="columnheader">
-				Семестр
+				Year
 			</div>
 			<div className={classNames(styles.row, styles.head)} role="columnheader">
-				Результат
+				Result
 			</div>
 		</div>
 		<div className={styles.table} role="rowgroup">

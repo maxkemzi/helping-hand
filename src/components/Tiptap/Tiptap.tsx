@@ -33,7 +33,7 @@ const Tiptap: FC<TiptapProps> = ({className, onBlur, readonly, content}) => {
 				limit: 15000
 			}),
 			Placeholder.configure({
-				placeholder: "Ваша відповідь",
+				placeholder: "Your answer",
 				emptyEditorClass: styles["is-editor-empty"]
 			})
 		],

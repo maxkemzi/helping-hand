@@ -59,11 +59,11 @@ const TasksCreateForm = ({onSubmit}: {onSubmit: () => void}) => {
 							id: category,
 							text: category
 						}))}
-						placeholder="Категорії"
+						placeholder="Categories"
 					/>
 
 					<Field
-						label="Заголовок"
+						label="Title"
 						className={classNames(styles.field, styles.title)}
 						name="title"
 						component={FormTextField}
@@ -71,7 +71,7 @@ const TasksCreateForm = ({onSubmit}: {onSubmit: () => void}) => {
 					/>
 
 					<Field
-						label="Опис"
+						label="Description"
 						className={styles.field}
 						name="text"
 						component={FormTextField}
@@ -83,7 +83,7 @@ const TasksCreateForm = ({onSubmit}: {onSubmit: () => void}) => {
 					disabled={isFetching}
 					size="big"
 					className={styles.btn}
-					text="Створити"
+					text="Create"
 					isSubmit
 				/>
 			</Form>

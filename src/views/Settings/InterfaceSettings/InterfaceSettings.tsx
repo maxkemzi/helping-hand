@@ -18,10 +18,10 @@ const InterfaceSettings = () => {
 	return (
 		<>
 			<Typography className={styles.title} variant="h3" component="h3">
-				Інтерфейс
+				Interface
 			</Typography>
 			<Typography className={styles["small-title"]} variant="h4" component="h4">
-				Акцентний колір
+				Accent color
 			</Typography>
 			<div className={styles.items}>
 				{themes.map(theme => (

@@ -12,15 +12,13 @@ const IntegrationSettings: FC = () => {
 	return (
 		<>
 			<Typography className={styles.title} variant="h3" component="h3">
-				Інтеграція
+				Integration
 			</Typography>
 			<IntegrationItem
 				isConnected={false}
 				icon={TritonIcon}
 				text={
-					width <= ScreenSizes.SmTabletWidth
-						? null
-						: "Увійти за допомогою triton"
+					width <= ScreenSizes.SmTabletWidth ? null : "Sign in using triton"
 				}
 			/>
 		</>

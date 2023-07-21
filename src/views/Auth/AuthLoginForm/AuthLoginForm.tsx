@@ -12,7 +12,6 @@ import styles from "./AuthLoginForm.module.scss";
 import AuthService from "../../../services/auth/auth.service";
 import useAppDispatch from "../../../hooks/useAppDispatch";
 import useAppSelector from "../../../hooks/useAppSelector";
-import {loginFormValidation} from "../../../vaildation";
 
 const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 	const dispatch = useAppDispatch();
@@ -38,7 +37,6 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 		<Formik
 			initialValues={{username: "", password: ""}}
 			onSubmit={handleSubmit}
-			validationSchema={loginFormValidation}
 			validateOnBlur
 		>
 			{({status, isValid}) => (
@@ -46,7 +44,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 					{status && <p className={styles.status}>{status}</p>}
 					<div className={styles.fields}>
 						<Field
-							label="Ім'я"
+							label="Name"
 							className={styles.field}
 							name="username"
 							component={FormTextField}
@@ -54,7 +52,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 						/>
 
 						<Field
-							label="Пароль"
+							label="Password"
 							className={styles.field}
 							name="password"
 							component={FormPasswordField}
@@ -64,7 +62,7 @@ const AuthLoginForm: FC<{className?: string}> = ({className}) => {
 					<Button
 						size="big"
 						className={styles.btn}
-						text="Увійти"
+						text="Log in"
 						disabled={isFetching || !isValid}
 						isSubmit
 					/>

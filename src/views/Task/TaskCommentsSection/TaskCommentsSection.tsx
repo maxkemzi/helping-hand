@@ -38,8 +38,7 @@ const TaskCommentsSection: FC<TaskCommentsSectionProps> = ({
 	return (
 		<>
 			<Typography variant="h4" component="h4">
-				{totalCount}{" "}
-				{declOfNum(totalCount, ["віповідь", "відповіді", "відповідей"])}
+				{totalCount} {declOfNum(totalCount, ["answer", "answers", "answers"])}
 			</Typography>
 			<div className={styles.comments}>
 				{comments.map((comment, index) => (

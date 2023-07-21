@@ -31,14 +31,14 @@ const ContactForm = () => {
 					/>
 
 					<Field
-						label="Текст"
+						label="Text"
 						className={styles.field}
 						name="text"
 						component={FormTextField}
 						element={Textarea}
 					/>
 				</div>
-				<Button size="big" className={styles.btn} text="Відправити" isSubmit />
+				<Button size="big" className={styles.btn} text="Send" isSubmit />
 			</Form>
 		</Formik>
 	);

@@ -51,23 +51,15 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 					{status && <p className={styles.status}>{status}</p>}
 					<div className={styles.fields}>
 						<Field
-							label="Ім'я"
+							label="Name"
 							className={styles.field}
 							name="username"
 							component={FormTextField}
 							element={Input}
 						/>
 
-						{/* <Field */}
-						{/*	label="Email" */}
-						{/*	className={styles.field} */}
-						{/*	name="email" */}
-						{/*	component={FormTextField} */}
-						{/*	element={Input} */}
-						{/* /> */}
-
 						<Field
-							label="Пароль"
+							label="Password"
 							className={styles.field}
 							name="password"
 							component={FormPasswordField}
@@ -75,7 +67,7 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 						/>
 
 						<Field
-							label="Підтвердження паролю"
+							label="Confirm password"
 							className={styles.field}
 							name="confirmPassword"
 							component={FormPasswordField}
@@ -86,7 +78,7 @@ const AuthSignupForm: FC<{className?: string}> = ({className}) => {
 						disabled={isFetching || !isValid}
 						size="big"
 						className={styles.btn}
-						text="Зареєструватись"
+						text="Sign up"
 						isSubmit
 					/>
 				</Form>

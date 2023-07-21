@@ -1,48 +1,25 @@
 import * as yup from "yup";
 import {PASSWORD_REGEXP, USERNAME_REGEXP} from "@utils/constants/regexps";
 
-export const loginFormValidation = yup.object().shape({
-	username: yup
-		.string()
-		.required("Ім'я обов'язкове")
-		.min(6, "Ім'я занадто коротке")
-		.max(20, "Ім'я занадто довге")
-		.matches(
-			USERNAME_REGEXP,
-			"Ім'я користувача повинно містити хоча б 1 букву"
-		),
-	password: yup
-		.string()
-		.required("Пароль обов'язковий")
-		.min(8, "Пароль занадто короткий")
-		.max(40, "Пароль занадто довгий")
-		.matches(
-			PASSWORD_REGEXP,
-			"Пароль повинен містити щонайменше 1 велику, малу літери та одну цифру"
-		)
-});
-
+// eslint-disable-next-line import/prefer-default-export
 export const signupFormValidation = yup.object().shape({
 	username: yup
 		.string()
-		.required("Ім'я обов'язкове")
-		.min(6, "Ім'я занадто коротке")
-		.max(20, "Ім'я занадто довге")
-		.matches(
-			USERNAME_REGEXP,
-			"Ім'я користувача повинно містити хоча б 1 букву"
-		),
+		.required("Username is required")
+		.min(6, "Username is too short")
+		.max(20, "Username is too long")
+		.matches(USERNAME_REGEXP, "Username must contain at least 1 letter"),
 	password: yup
 		.string()
-		.required("Пароль обов'язковий")
-		.min(8, "Пароль занадто короткий")
-		.max(40, "Пароль занадто довгий")
+		.required("Password is required")
+		.min(8, "Password is too short")
+		.max(40, "Password is too long")
 		.matches(
 			PASSWORD_REGEXP,
-			"Пароль повинен містити щонайменше 1 велику, малу літери та одну цифру"
+			"Password must contain at least 1 uppercase, lowercase letter and one digit"
 		),
 	confirmPassword: yup
 		.string()
-		.required("Підтвердження обов'язкове")
-		.oneOf([yup.ref("password")], "Паролі не збігаються")
+		.required("Confirm your password")
+		.oneOf([yup.ref("password")], "Passwords do not match")
 });

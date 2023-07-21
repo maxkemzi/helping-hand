@@ -32,11 +32,11 @@ const ProfileTasks = () => {
 	const [isDateDropdownOpen, setIsDateDropdownOpen] = useState(false);
 	const [isTypeDropdownOpen, setIsTypeDropdownOpen] = useState(false);
 	const [sortByDateValue, setSortByDateValue] = useState({
-		text: "Нові",
+		text: "New",
 		value: "new"
 	});
 	const [sortByTypeValue, setSortByTypeValue] = useState({
-		text: "Усі",
+		text: "All",
 		value: "all"
 	});
 
@@ -83,13 +83,13 @@ const ProfileTasks = () => {
 							onClick={handleSortByDateClick}
 							isActive={sortByDateValue.value === "new"}
 							value="new"
-							text="Нові"
+							text="New"
 						/>
 						<DropdownOption
 							onClick={handleSortByDateClick}
 							isActive={sortByDateValue.value === "old"}
 							value="old"
-							text="Старі"
+							text="Old"
 						/>
 					</Dropdown>
 
@@ -105,19 +105,19 @@ const ProfileTasks = () => {
 							onClick={handleSortByTypeClick}
 							isActive={sortByTypeValue.value === "all"}
 							value="all"
-							text="Усі"
+							text="All"
 						/>
 						<DropdownOption
 							onClick={handleSortByTypeClick}
 							isActive={sortByTypeValue.value === "solved"}
 							value="solved"
-							text="Вирішені"
+							text="Solved"
 						/>
 						<DropdownOption
 							onClick={handleSortByTypeClick}
 							isActive={sortByTypeValue.value === "created"}
 							value="created"
-							text="Створені"
+							text="Created"
 						/>
 					</Dropdown>
 				</div>

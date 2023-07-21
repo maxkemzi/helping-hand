@@ -98,7 +98,7 @@ const TasksPage = () => {
 								<Button
 									onClick={handleCreateModalOpen}
 									className={styles.btn}
-									text="Створити"
+									text="Create"
 								/>
 							</div>
 							<TasksSortDropdowns />

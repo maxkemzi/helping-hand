@@ -65,37 +65,37 @@ const HeaderMenu = memo(() => {
 					onClick={handleItemClick}
 					path={HOME_ROUTE}
 					icon={IoHome}
-					text="Головна"
+					text="Home"
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={TASKS_ROUTE}
 					icon={IoLayers}
-					text="Завдання"
+					text="Tasks"
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={STATISTICS_ROUTE}
 					icon={IoStatsChart}
-					text="Статистика"
+					text="Statistics"
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={PROFILE_TASKS_ROUTE}
 					icon={IoPerson}
-					text="Профіль"
+					text="Profile"
 				/>
 				<MenuItem
 					onClick={handleItemClick}
 					path={isAuth ? SETTINGS_ACCOUNT_ROUTE : SETTINGS_INTERFACE_ROUTE}
 					icon={IoSettings}
-					text="Налаштування"
+					text="Settings"
 				/>
 				<MenuItem
 					onClick={handleContactClick}
 					as="button"
 					icon={IoMegaphone}
-					text="Зв'язатись"
+					text="Contact"
 				/>
 				{isAuth && (
 					<MenuItem
@@ -103,7 +103,7 @@ const HeaderMenu = memo(() => {
 						onClick={handleLogout}
 						as="button"
 						icon={IoExit}
-						text="Вийти"
+						text="Log out"
 					/>
 				)}
 			</Menu>
