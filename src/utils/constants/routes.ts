@@ -17,7 +17,4 @@ export const SETTINGS_ACCOUNT_ROUTE = "/settings/account";
 export const SETTINGS_INTEGRATION_ROUTE = "/settings/integration";
 export const SETTINGS_INTERFACE_ROUTE = "/settings/interface";
 
-export const INTEGRATION_AUTH_ROUTE = "/integration/auth";
-export const INTEGRATION_ROUTE = "/integration";
-
 export const TASK_ROUTE = "/tasks/:id";

@@ -1,10 +1,7 @@
-import React from "react";
-import {Navigate, Route, Routes} from "react-router-dom";
+import PrivateRoute from "@components/PrivateRoute/PrivateRoute";
 import {
 	AUTH_ROUTE,
 	HOME_ROUTE,
-	INTEGRATION_AUTH_ROUTE,
-	INTEGRATION_ROUTE,
 	LOGIN_ROUTE,
 	PROFILE_ROUTE,
 	PROFILE_STATS_ROUTE,
@@ -15,27 +12,25 @@ import {
 	SETTINGS_ROUTE,
 	SIGNUP_ROUTE,
 	STATISTICS_ROUTE,
-	TASK_ROUTE,
-	TASKS_ROUTE
+	TASKS_ROUTE,
+	TASK_ROUTE
 } from "@utils/constants/routes";
-import HomePage from "@views/Home/HomePage/HomePage";
-import AuthPage from "@views/Auth/AuthPage/AuthPage";
 import AuthLoginForm from "@views/Auth/AuthLoginForm/AuthLoginForm";
+import AuthPage from "@views/Auth/AuthPage/AuthPage";
 import AuthSignupForm from "@views/Auth/AuthSignupForm/AuthSignupForm";
-import TasksPage from "@views/Tasks/TasksPage/TasksPage";
+import HomePage from "@views/Home/HomePage/HomePage";
 import ProfilePage from "@views/Profile/ProfilePage/ProfilePage";
-import ProfileTasks from "@views/Profile/ProfileTasks/ProfileTasks";
 import ProfileStats from "@views/Profile/ProfileStats/ProfileStats";
-import SettingsPage from "@views/Settings/SettingsPage/SettingsPage";
+import ProfileTasks from "@views/Profile/ProfileTasks/ProfileTasks";
 import AccountSettings from "@views/Settings/AccountSettings/AccountSettings";
 import IntegrationSettings from "@views/Settings/IntegrationSettings/IntegrationSettings";
 import InterfaceSettings from "@views/Settings/InterfaceSettings/InterfaceSettings";
-import TaskPage from "@views/Task/TaskPage/TaskPage";
-import PrivateRoute from "@components/PrivateRoute/PrivateRoute";
-import IntegrationPage from "@views/Integration/IntegrationPage/IntegrationPage";
-import IntegrationAuth from "@views/Integration/IntegrationAuth/IntegrationAuth";
-import TritonIntegration from "@views/Integration/TritonIntegration/TritonIntegration";
+import SettingsPage from "@views/Settings/SettingsPage/SettingsPage";
 import StatisticsPage from "@views/Statistics/StatisticsPage/StatisticsPage";
+import TaskPage from "@views/Task/TaskPage/TaskPage";
+import TasksPage from "@views/Tasks/TasksPage/TasksPage";
+import React from "react";
+import {Navigate, Route, Routes} from "react-router-dom";
 
 const AppRouter = () => (
 	<Routes>
@@ -56,19 +51,6 @@ const AppRouter = () => (
 				</PrivateRoute>
 			}
 		/>
-
-		<Route
-			path={INTEGRATION_ROUTE}
-			element={
-				<PrivateRoute>
-					<IntegrationPage />
-				</PrivateRoute>
-			}
-		>
-			<Route index element={<TritonIntegration />} />
-			<Route path={INTEGRATION_AUTH_ROUTE} element={<IntegrationAuth />} />
-			<Route path="*" element={<Navigate to={INTEGRATION_AUTH_ROUTE} />} />
-		</Route>
 
 		<Route
 			path={STATISTICS_ROUTE}

@@ -1,13 +1,12 @@
 import {configureStore} from "@reduxjs/toolkit";
-import tagsReducer from "./tags/tags.slice";
-import profileReducer from "./profile/profile.slice";
-import taskReducer from "./task/task.slice";
 import appReducer from "./app/app.slice";
 import authReducer from "./auth/auth.slice";
+import commentsReducer from "./comments/comments.slice";
+import profileReducer from "./profile/profile.slice";
+import tagsReducer from "./tags/tags.slice";
+import taskReducer from "./task/task.slice";
 import tasksReducer from "./tasks/tasks.slice";
 import usersReducer from "./users/users.slice";
-import commentsReducer from "./comments/comments.slice";
-import integrationsReducer from "./integrations/integrations.slice";
 
 const store = configureStore({
 	reducer: {
@@ -18,7 +17,6 @@ const store = configureStore({
 		profileState: profileReducer,
 		taskState: taskReducer,
 		commentsState: commentsReducer,
-		integrationsState: integrationsReducer,
 		tagsState: tagsReducer
 	}
 });

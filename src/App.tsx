@@ -1,36 +1,27 @@
+import {getIsAuthFetching} from "@store/auth/auth.selectors";
+import {setIsFetching} from "@store/auth/auth.slice";
+import {GreenTheme} from "@utils/constants/themes";
+import React, {FC, useEffect} from "react";
 import {BrowserRouter as Router} from "react-router-dom";
 import "./app.scss";
-import React, {FC, useEffect, useState} from "react";
-import {GreenTheme} from "@utils/constants/themes";
 import AppRouter from "./components/AppRouter/AppRouter";
-import useTheme from "./hooks/useTheme";
-import useAppDispatch from "./hooks/useAppDispatch";
-import AuthService from "./services/auth/auth.service";
-import IntegrationsService from "./services/integrations/integrations.service";
 import {ModalProvider} from "./contexts/ModalContext";
+import useAppDispatch from "./hooks/useAppDispatch";
+import useAppSelector from "./hooks/useAppSelector";
+import useTheme from "./hooks/useTheme";
+import AuthService from "./services/auth/auth.service";
 
 const App: FC = () => {
 	const dispatch = useAppDispatch();
-	const [isFetching, setIsFetching] = useState(true);
+	const isFetching = useAppSelector(getIsAuthFetching);
 	useTheme(GreenTheme);
 
 	// Checking for authorization
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
-			const initialize = async () => {
-				setIsFetching(true);
-				try {
-					await dispatch(AuthService.check());
-					await dispatch(IntegrationsService.get());
-				} catch (e) {
-					console.log(e);
-				} finally {
-					setIsFetching(false);
-				}
-			};
-			initialize();
+			dispatch(AuthService.check());
 		} else {
-			setIsFetching(false);
+			dispatch(setIsFetching(false));
 		}
 	}, [dispatch]);
 

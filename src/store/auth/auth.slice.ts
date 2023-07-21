@@ -10,7 +10,7 @@ import {
 export const initialState: AuthSliceState = {
 	user: {username: "", photo: "", id: "", description: ""},
 	isAuth: false,
-	isFetching: false,
+	isFetching: true,
 	isSubmitting: false
 };
 
